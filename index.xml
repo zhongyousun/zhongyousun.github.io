@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sun Notes</title>
+    <link>http://sunnote.xyz/</link>
+    <description>Recent content on Sun Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Thu, 22 Dec 2022 10:44:38 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQL-merge into statement</title>
+      <link>http://sunnote.xyz/sql-merge-into-statement/</link>
+      <pubDate>Thu, 22 Dec 2022 10:44:38 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/sql-merge-into-statement/</guid>
+      <description>&lt;p&gt;I was assigned to implement the function of synchronizing from different databases.&lt;br&gt;
+The company currently has an ERP system.&lt;br&gt;
+All data sources are based on this standard, so that customers can create , update, write to ERP,&lt;br&gt;
+and synchronize with ERP in their own systems&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode(Medium) 146. LRU Cache (Python)</title>
+      <link>http://sunnote.xyz/leetcodemedium-146.-lru-cache-python/</link>
+      <pubDate>Sun, 04 Dec 2022 19:44:38 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/leetcodemedium-146.-lru-cache-python/</guid>
+      <description>&lt;p&gt;LRU Cache can be regarded as an interesting topic that I have encountered, and I feel that it is also a concept that will be used in many systems.&lt;br&gt;
+Unfortunately, I never encountered this problem on my job yet&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Study tour in Cebu - Jeepney &#43; Cebu Theme Park Day Trip</title>
+      <link>http://sunnote.xyz/study-tour-in-cebu-jeepney--cebu-theme-park-day-trip/</link>
+      <pubDate>Fri, 02 Dec 2022 16:28:53 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/study-tour-in-cebu-jeepney--cebu-theme-park-day-trip/</guid>
+      <description>&lt;p&gt;Experienced the long-awaited Cebu common transportation Jeepney and the largest and newest theme park in Cebu : &lt;strong&gt;Anjo World Theme Park&lt;/strong&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Study tour in Cebu - Christmas in Cebu</title>
+      <link>http://sunnote.xyz/study-tour-in-cebu-christmas-in-cebu/</link>
+      <pubDate>Wed, 30 Nov 2022 19:28:53 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/study-tour-in-cebu-christmas-in-cebu/</guid>
+      <description>&lt;p&gt;After December, the number of new students in language schools generally decreases, because most students need to go back to their hometown for New Year’s Eve, or come after the Lunar New Year. I am very happy to experience the local festive atmosphere during this time, but sometimes I still feel a little bit sad.😂&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Study tour in Cebu - Daily life Part 2</title>
+      <link>http://sunnote.xyz/study-tour-in-cebu-daily-life-part-2/</link>
+      <pubDate>Wed, 30 Nov 2022 17:28:53 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/study-tour-in-cebu-daily-life-part-2/</guid>
+      <description>&lt;p&gt;Jsut want to record the daily life of the language school and the environment of city when I lived in Cebu. My purpose at that time was increase english skills for interview, So there is no itinerary such as island hopping or nightlife.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Study tour in Cebu - Daily life Part 1</title>
+      <link>http://sunnote.xyz/study-tour-in-cebu-daily-life-part-1/</link>
+      <pubDate>Wed, 30 Nov 2022 16:28:53 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/study-tour-in-cebu-daily-life-part-1/</guid>
+      <description>&lt;p&gt;Jsut want to record the daily life of the language school and the environment of city when I lived in Cebu. My purpose at that time was increase english skills for interview, So there is no itinerary such as island hopping or nightlife.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Study tour in Cebu - pre-departure mood record</title>
+      <link>http://sunnote.xyz/study-tour-in-cebu-pre-departure-mood-record/</link>
+      <pubDate>Tue, 29 Nov 2022 16:28:53 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/study-tour-in-cebu-pre-departure-mood-record/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Archives</title>
+      <link>http://sunnote.xyz/archives/</link>
+      <pubDate>Sat, 01 Jan 2022 16:28:53 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/archives/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Site Search</title>
+      <link>http://sunnote.xyz/search/</link>
+      <pubDate>Sat, 01 Jan 2022 16:28:53 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/search/</guid>
+      <description>search.</description>
+    </item>
+    
+  </channel>
+</rss>
