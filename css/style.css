@@ -124,6 +124,71 @@ textarea {
 }
 
 /* Button */
+/*---------------------------------
+my sun dark mode button
+flip card ref: https://3dtransforms.desandro.com/card-flip
+----------------------------------*/
+.scene {
+    width: 30px;
+    height: 30px;
+    perspective: 600px;
+    position: fixed;
+    z-index: 99999;
+    top: 10px;
+    right: 5px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transform-origin: center right;
+    transition: transform 1s;
+    border: 1px solid rgb(150, 150, 150, .5);
+}
+
+.card.is-flipped {
+    transform: translateX(-100%) rotateY(-180deg);
+}
+
+.card__face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 16px;
+    backface-visibility: hidden;
+}
+
+.card__face--front {
+    color: black !important;
+    background: white;
+}
+
+.card__face--front:hover {
+    color: white !important;
+    background-color: black;
+}
+
+.card__face--back {
+    color: white !important;
+    background: black;
+    transform: rotateY(180deg);
+}
+
+.card__face--back:hover {
+    color: black !important;
+    background-color: white;
+}
+
+.darkmodecolor {
+    background-color: #2B2B2B !important;
+    color: #C5C5C5 !important;
+    box-shadow: none;
+}
+/* Button */
+
 .btn {
 	padding: 5px 10px;
 	font-weight: 700;

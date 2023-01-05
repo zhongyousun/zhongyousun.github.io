@@ -41,6 +41,7 @@ if (!doNotTrack) {
 }
 </script>
 
+
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -106,6 +107,7 @@ if (!doNotTrack) {
 }
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
+
 
 
 
@@ -379,14 +381,63 @@ Thank you for your tolerance. 🙂
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 
 		</div>
-		
 	</div>
+
+	
 </footer>
 
 	</div>
 <script async defer src="/js/menu.js"></script>
-<script src="/js/custom.js"></script></body>
+<script src="/js/custom.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+
+<div class="scene scene--card sundarkmodep">
+	<div class="card">
+	  <div class="card__face card__face--front"><span class="fa fa-moon" aria-hidden="true"></div>
+	  <div class="card__face card__face--back"><span class="fa fa-sun" aria-hidden="true"></div>
+	</div>
+</div>
+    
+<script type="text/javascript">
+	var card = document.querySelector('.card');
+	card.addEventListener( 'click', function() {
+	  card.classList.toggle('is-flipped');          
+  });
+  </script>  
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script>
+
+        $('.sundarkmodep').click(function() {
+            
+            if ($('*').hasClass("darkmodecolor")) {
+                $.removeCookie('darkmodeStatus', {path: '/'});
+                $.cookie('darkmodeStatus', 'sunmode', {path: '/'});
+            } else if (!$('.main-body').hasClass("darkmodecolor")) {
+                $.removeCookie('darkmodeStatus', {path: '/'});
+                $.cookie('darkmodeStatus', 'darkmode', {path: '/'});
+            }
+
+            $('*').toggleClass("darkmodecolor");
+        });
+
+        var darkmodeStatus = $.cookie('darkmodeStatus');
+
+        if (darkmodeStatus == 'darkmode') {
+            $('*').addClass("darkmodecolor");
+        } else if (darkmodeStatus == 'sunmode') {
+            $('*').removeClass("darkmodecolor");
+        }
+</script>
+
+</body>
 </html>
+
 
 <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
 <script>addBackToTop({

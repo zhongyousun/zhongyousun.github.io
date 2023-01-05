@@ -17,7 +17,7 @@
 		<meta itemprop="name" content="宿霧遊學-希瑪拉教堂(Simala Church)一日遊">
 <meta itemprop="description" content="有幸造訪宿霧最大的教堂希瑪拉教堂，此文主要紀錄當時的行程規劃、偶然的參與彌撒與雄偉的建築。"><meta itemprop="datePublished" content="2022-12-01T16:28:53+08:00" />
 <meta itemprop="dateModified" content="2022-12-01T16:28:53+08:00" />
-<meta itemprop="wordCount" content="56">
+<meta itemprop="wordCount" content="57">
 <meta itemprop="keywords" content="菲律賓,宿霧," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="宿霧遊學-希瑪拉教堂(Simala Church)一日遊"/>
@@ -43,6 +43,7 @@ if (!doNotTrack) {
 	gtag('config', 'G-MWPM4C5TJS', { 'anonymize_ip': false });
 }
 </script>
+
 
 </head>
 <body class="body">
@@ -109,6 +110,7 @@ if (!doNotTrack) {
 }
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
+
 
 
 
@@ -222,8 +224,17 @@ if (!doNotTrack) {
 <figure><img src="pics/IMG_0557.jpeg"
          alt="sleeping cat" width="80%"/>
 </figure>
+
+天花板上的壁畫
+<figure><img src="pics/IMG_0571.jpeg"
+         alt="frescoes" width="80%"/>
+</figure>
 </p>
-<p>然後就是參加正在舉行的彌撒，這是我第一次參加這種宗教活動，覺得來參與的每個人都好虔誠。教堂內的氣氛很莊嚴榮種，就沒留下什麼照片了。而因為過程中大家都是使用宿霧語，我可以說是完全聽不懂，看大家做什麼就跟著做啦。😎</p>
+<p>然後就是參加正在舉行的彌撒，這是我第一次參加這種宗教活動，覺得來參與的每個人都好虔誠。教堂內的氣氛很莊嚴榮種。而因為過程中大家都是使用宿霧語，我可以說是完全聽不懂，看大家做什麼就跟著做啦。😎
+<figure><img src="pics/IMG_0572.jpeg"
+         alt="mass" width="80%"/>
+</figure>
+</p>
 <h3 id="彌撒時間">彌撒時間</h3>
 <blockquote>
 <p>禮拜一➝禮拜五: 12:00<br>
@@ -234,7 +245,11 @@ if (!doNotTrack) {
          alt="prayer" width="80%"/>
 </figure>
 </p>
-<p>結束後就繼續繞著外圍參觀這華麗的教堂
+<p><figure><img src="pics/IMG_0574.jpeg"
+         alt="blessing candle" width="80%"/>
+</figure>
+
+結束後就繼續繞著外圍參觀這華麗的教堂
 <figure><img src="pics/IMG_0562.jpeg"
          alt="Simala Church" width="80%"/>
 </figure>
@@ -445,16 +460,65 @@ if (!doNotTrack) {
 			<span class="footer__copyright-credits">使用 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 技術與 <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>主題</span>
 
 		</div>
-		
 	</div>
+
+	
 </footer>
 
 	</div>
 <script async defer src="/js/menu.js"></script>
 <script src="/js/custom.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+
+<div class="scene scene--card sundarkmodep">
+	<div class="card">
+	  <div class="card__face card__face--front"><span class="fa fa-moon" aria-hidden="true"></div>
+	  <div class="card__face card__face--back"><span class="fa fa-sun" aria-hidden="true"></div>
+	</div>
+</div>
+    
+<script type="text/javascript">
+	var card = document.querySelector('.card');
+	card.addEventListener( 'click', function() {
+	  card.classList.toggle('is-flipped');          
+  });
+  </script>  
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script>
+
+        $('.sundarkmodep').click(function() {
+            
+            if ($('*').hasClass("darkmodecolor")) {
+                $.removeCookie('darkmodeStatus', {path: '/'});
+                $.cookie('darkmodeStatus', 'sunmode', {path: '/'});
+            } else if (!$('.main-body').hasClass("darkmodecolor")) {
+                $.removeCookie('darkmodeStatus', {path: '/'});
+                $.cookie('darkmodeStatus', 'darkmode', {path: '/'});
+            }
+
+            $('*').toggleClass("darkmodecolor");
+        });
+
+        var darkmodeStatus = $.cookie('darkmodeStatus');
+
+        if (darkmodeStatus == 'darkmode') {
+            $('*').addClass("darkmodecolor");
+        } else if (darkmodeStatus == 'sunmode') {
+            $('*').removeClass("darkmodecolor");
+        }
+</script>
+
 </body>
 </html>
+
 
 <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
 <script>addBackToTop({
