@@ -12,6 +12,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://sunnote.xyz/zh-tw/404.html" />
 
+
 		<meta itemprop="name" content="404 Page not found">
 <meta itemprop="description" content="Life is tough, but so are you.">
 		<meta name="twitter:card" content="summary"/>
@@ -220,8 +221,11 @@ if (!doNotTrack) {
 			<span class="footer__copyright-credits">使用 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 技術與 <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>主題</span>
 
 		</div>
-	</div>
 
+		<span id="busuanzi_container_site_uv">
+			🗿 : <span id="busuanzi_value_site_uv"></span>
+		  </span>
+	</div>
 	
 </footer>
 
@@ -244,39 +248,38 @@ if (!doNotTrack) {
 	card.addEventListener( 'click', function() {
 	  card.classList.toggle('is-flipped');          
   });
-  </script>  
+</script>  
+
 
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
+
+
 <script>
+	$('.sundarkmodep').click(function() {
+		if ($('*').hasClass("darkmodecolor")) {
+			localStorage.setItem("darkmodeStatus", "sunmode");
+		} else if (!$('.main-body').hasClass("darkmodecolor")) {
+			localStorage.setItem("darkmodeStatus", "darkmode");
+		}
+		$('*').toggleClass("darkmodecolor");
+	});
 
-        $('.sundarkmodep').click(function() {
-            
-            if ($('*').hasClass("darkmodecolor")) {
-                $.removeCookie('darkmodeStatus', {path: '/'});
-                $.cookie('darkmodeStatus', 'sunmode', {path: '/'});
-            } else if (!$('.main-body').hasClass("darkmodecolor")) {
-                $.removeCookie('darkmodeStatus', {path: '/'});
-                $.cookie('darkmodeStatus', 'darkmode', {path: '/'});
-            }
+	var darkmodeStatus = localStorage.getItem("darkmodeStatus");
 
-            $('*').toggleClass("darkmodecolor");
-        });
-
-        var darkmodeStatus = $.cookie('darkmodeStatus');
-
-        if (darkmodeStatus == 'darkmode') {
-            $('*').addClass("darkmodecolor");
-        } else if (darkmodeStatus == 'sunmode') {
-            $('*').removeClass("darkmodecolor");
-        }
+	if (darkmodeStatus == "darkmode") {
+		$('*').addClass("darkmodecolor");
+	}
 </script>
+
 
 </body>
 </html>
 
+
+</script>
 
 
 <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
@@ -287,3 +290,9 @@ if (!doNotTrack) {
 })</script>
 
 
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>

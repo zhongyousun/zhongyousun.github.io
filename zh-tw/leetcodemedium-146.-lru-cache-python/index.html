@@ -15,6 +15,7 @@
 <meta property="article:published_time" content="2022-12-04T19:44:38+08:00" />
 <meta property="article:modified_time" content="2022-12-04T19:44:38+08:00" />
 
+
 		<meta itemprop="name" content="Leetcode(Medium) 146. LRU Cache (Python)">
 <meta itemprop="description" content="LRU Cache算是我遇過覺得蠻有趣生活化的題目，感覺也是在很多底層系統會需要用到的觀念。
 可惜的是目前工作還沒使用到&hellip;"><meta itemprop="datePublished" content="2022-12-04T19:44:38+08:00" />
@@ -136,7 +137,9 @@ if (!doNotTrack) {
 <div class="meta__item-translations meta__item">
 	<span class="meta__text">翻譯: <a class="meta__link" href="/leetcodemedium-146.-lru-cache-python/">EN</a>
 	</span>
-</div></div>
+</div><span id="busuanzi_container_page_uv">
+	　👁‍🗨️:<span id="busuanzi_value_page_uv"></span>
+	  </span></div>
 		</header>
 		
 <div class="post__toc toc">
@@ -345,8 +348,11 @@ if (!doNotTrack) {
 			<span class="footer__copyright-credits">使用 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 技術與 <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>主題</span>
 
 		</div>
-	</div>
 
+		<span id="busuanzi_container_site_uv">
+			🗿 : <span id="busuanzi_value_site_uv"></span>
+		  </span>
+	</div>
 	
 </footer>
 
@@ -371,39 +377,38 @@ if (!doNotTrack) {
 	card.addEventListener( 'click', function() {
 	  card.classList.toggle('is-flipped');          
   });
-  </script>  
+</script>  
+
 
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
+
+
 <script>
+	$('.sundarkmodep').click(function() {
+		if ($('*').hasClass("darkmodecolor")) {
+			localStorage.setItem("darkmodeStatus", "sunmode");
+		} else if (!$('.main-body').hasClass("darkmodecolor")) {
+			localStorage.setItem("darkmodeStatus", "darkmode");
+		}
+		$('*').toggleClass("darkmodecolor");
+	});
 
-        $('.sundarkmodep').click(function() {
-            
-            if ($('*').hasClass("darkmodecolor")) {
-                $.removeCookie('darkmodeStatus', {path: '/'});
-                $.cookie('darkmodeStatus', 'sunmode', {path: '/'});
-            } else if (!$('.main-body').hasClass("darkmodecolor")) {
-                $.removeCookie('darkmodeStatus', {path: '/'});
-                $.cookie('darkmodeStatus', 'darkmode', {path: '/'});
-            }
+	var darkmodeStatus = localStorage.getItem("darkmodeStatus");
 
-            $('*').toggleClass("darkmodecolor");
-        });
-
-        var darkmodeStatus = $.cookie('darkmodeStatus');
-
-        if (darkmodeStatus == 'darkmode') {
-            $('*').addClass("darkmodecolor");
-        } else if (darkmodeStatus == 'sunmode') {
-            $('*').removeClass("darkmodecolor");
-        }
+	if (darkmodeStatus == "darkmode") {
+		$('*').addClass("darkmodecolor");
+	}
 </script>
+
 
 </body>
 </html>
 
+
+</script>
 
 
 <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
@@ -414,3 +419,9 @@ if (!doNotTrack) {
 })</script>
 
 
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>

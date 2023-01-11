@@ -12,6 +12,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://sunnote.xyz/categories/program/" /><meta property="og:site_name" content="Sun Notes" />
 
+
 		<meta itemprop="name" content="Program">
 <meta itemprop="description" content="Life is tough, but so are you.">
 		<meta name="twitter:card" content="summary"/>
@@ -138,7 +139,9 @@ if (!doNotTrack) {
 <div class="meta__item-translations meta__item">
 	<span class="meta__text">Translations: <a class="meta__link" href="/zh-tw/sql-merge-into-%E8%AA%9E%E6%B3%95%E7%B4%80%E9%8C%84/">ZH-TW</a>
 	</span>
-</div></div>
+</div><span id="busuanzi_container_page_uv">
+	　👁‍🗨️:<span id="busuanzi_value_page_uv"></span>
+	  </span></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		<p>I was assigned to implement the function of synchronizing from different databases.<br>
@@ -169,7 +172,9 @@ and synchronize with ERP in their own systems&hellip;</p>
 <div class="meta__item-translations meta__item">
 	<span class="meta__text">Translations: <a class="meta__link" href="/zh-tw/leetcodemedium-146.-lru-cache-python/">ZH-TW</a>
 	</span>
-</div></div>
+</div><span id="busuanzi_container_page_uv">
+	　👁‍🗨️:<span id="busuanzi_value_page_uv"></span>
+	  </span></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		<p>LRU Cache can be regarded as an interesting topic that I have encountered, and I feel that it is also a concept that will be used in many systems.<br>
@@ -279,8 +284,11 @@ Thank you for your tolerance. 🙂
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 
 		</div>
-	</div>
 
+		<span id="busuanzi_container_site_uv">
+			🗿 : <span id="busuanzi_value_site_uv"></span>
+		  </span>
+	</div>
 	
 </footer>
 
@@ -303,39 +311,38 @@ Thank you for your tolerance. 🙂
 	card.addEventListener( 'click', function() {
 	  card.classList.toggle('is-flipped');          
   });
-  </script>  
+</script>  
+
 
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
+
+
 <script>
+	$('.sundarkmodep').click(function() {
+		if ($('*').hasClass("darkmodecolor")) {
+			localStorage.setItem("darkmodeStatus", "sunmode");
+		} else if (!$('.main-body').hasClass("darkmodecolor")) {
+			localStorage.setItem("darkmodeStatus", "darkmode");
+		}
+		$('*').toggleClass("darkmodecolor");
+	});
 
-        $('.sundarkmodep').click(function() {
-            
-            if ($('*').hasClass("darkmodecolor")) {
-                $.removeCookie('darkmodeStatus', {path: '/'});
-                $.cookie('darkmodeStatus', 'sunmode', {path: '/'});
-            } else if (!$('.main-body').hasClass("darkmodecolor")) {
-                $.removeCookie('darkmodeStatus', {path: '/'});
-                $.cookie('darkmodeStatus', 'darkmode', {path: '/'});
-            }
+	var darkmodeStatus = localStorage.getItem("darkmodeStatus");
 
-            $('*').toggleClass("darkmodecolor");
-        });
-
-        var darkmodeStatus = $.cookie('darkmodeStatus');
-
-        if (darkmodeStatus == 'darkmode') {
-            $('*').addClass("darkmodecolor");
-        } else if (darkmodeStatus == 'sunmode') {
-            $('*').removeClass("darkmodecolor");
-        }
+	if (darkmodeStatus == "darkmode") {
+		$('*').addClass("darkmodecolor");
+	}
 </script>
+
 
 </body>
 </html>
 
+
+</script>
 
 
 <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
@@ -346,3 +353,9 @@ Thank you for your tolerance. 🙂
 })</script>
 
 
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>

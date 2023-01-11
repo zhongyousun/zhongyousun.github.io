@@ -122,7 +122,6 @@ textarea {
 	font-size: inherit;
 	line-height: inherit;
 }
-
 /* Button */
 /*---------------------------------
 my sun dark mode button
@@ -187,6 +186,7 @@ flip card ref: https://3dtransforms.desandro.com/card-flip
     color: #C5C5C5 !important;
     box-shadow: none;
 }
+
 /* Button */
 
 .btn {
@@ -1415,4 +1415,9 @@ textarea {
 		font-size: 11px;
 		font-size: .6875rem;
 	}
+}
+
+
+p {
+    font-size: 18px;
 }
