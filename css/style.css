@@ -1421,3 +1421,32 @@ textarea {
 p {
     font-size: 18px;
 }
+/* copy btn */
+.highlight {
+    position: relative;
+}
+
+.highlight pre {
+    padding-right: 75px;
+    background-color:#f8f8f8 !important;
+}
+
+.highlight-copy-btn {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    border: 0;
+    border-radius: 4px;
+    padding: 1px;
+    font-size: 0.8em;
+    line-height: 1.8;
+    color: rgb(0, 0, 0);
+    background-color:#f5f5f5;
+    min-width: 55px;
+    text-align: center;
+}
+
+.highlight-copy-btn:hover {
+    background-color: #ACD6FF;
+}
+/* copy btn */
