@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://sunnote.xyz/categories/</loc>
-    <lastmod>2022-12-22T10:44:38+08:00</lastmod>
+    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -18,7 +18,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/posts/</loc>
-    <lastmod>2022-12-22T10:44:38+08:00</lastmod>
+    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -68,7 +68,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/</loc>
-    <lastmod>2022-12-22T10:44:38+08:00</lastmod>
+    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -83,7 +83,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/</loc>
-    <lastmod>2022-12-22T10:44:38+08:00</lastmod>
+    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -143,27 +143,42 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/cebu/</loc>
-    <lastmod>2022-12-02T16:28:53+08:00</lastmod>
+    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/categories/life-record/</loc>
-    <lastmod>2022-12-02T16:28:53+08:00</lastmod>
+    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/categories/overseas-travel/</loc>
-    <lastmod>2022-12-02T16:28:53+08:00</lastmod>
+    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/tags/philippines/</loc>
-    <lastmod>2022-12-02T16:28:53+08:00</lastmod>
+    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>http://sunnote.xyz/study-tour-in-cebu-bohol-island-day-tour-tarsier--chocolate-hills/</loc>
+    <lastmod>2022-12-03T16:28:53+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/%E5%AE%BF%E9%9C%A7%E9%81%8A%E5%AD%B8-%E8%96%84%E8%8D%B7%E5%B3%B6%E4%B8%80%E6%97%A5%E9%81%8A%E7%9C%BC%E9%8F%A1%E7%8C%B4--%E5%B7%A7%E5%85%8B%E5%8A%9B%E5%B1%B1/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/study-tour-in-cebu-bohol-island-day-tour-tarsier--chocolate-hills/"
+                />
+  </url><url>
     <loc>http://sunnote.xyz/study-tour-in-cebu-jeepney--cebu-theme-park-day-trip/</loc>
-    <lastmod>2022-12-02T16:28:53+08:00</lastmod>
+    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link

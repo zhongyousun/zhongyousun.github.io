@@ -717,11 +717,20 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 	max-width: 1030px;
 	margin: 0 0 20px;
 	margin-bottom: 0 0 1.25rem;
+	overflow:hidden;
+}
+.post__thumbnail img {
+	width: 90%;
+	border-radius: 10px;
+	transform:scale(0.9,0.9);
+	transition: all 0.3s ease-out;
+	
+}
+.post__thumbnail img:hover{
+	transform:scale(1.0,1.0);
 }
 
-.post__thumbnail img {
-	width: 100%;
-}
+
 
 .content a,
 .warning a,
@@ -963,16 +972,25 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 .list__thumbnail {
 	float: left;
 	margin: 0 20px 0 0;
+	overflow:hidden;
+	border-radius: 20px;
 }
 
 .list__thumbnail img {
 	width: 100%;
 	max-width: 235px;
+	transform:scale(0.97,0.97);
+	transition: all 0.5s ease-out;
+	border-radius: 20px;
+}
+
+.list__thumbnail img:hover{
+	transform:scale(1.0,1.0);
 }
 
 .list__footer-readmore {
 	float: right;
-	margin-top: 10px;
+	margin-top: 5px;
 }
 
 /* Pagination */
