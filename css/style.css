@@ -1292,11 +1292,12 @@ textarea {
 }
 
 /* code block color */
-.highlight pre {
-	background-color: rgb(255, 253, 253) !important;
-	}
 .highlight span {
-		color: rgb(3, 3, 3);
+	background-color: #f6f8fa!important; /* 背景顏色 */
+    color: #333; /* 文字顏色 */
+    font-family: 'Source Code Pro', monospace; /* 字體 */
+    font-size: 14px; /* 字體大小 */
+    line-height: 1.6; /* 行高 */
 		}
 
 
@@ -1452,7 +1453,7 @@ p {
 }
 
 .highlight pre {
-    padding-right: 75px;
+    padding-right: 7px;
     background-color:#f8f8f8 !important;
 }
 
@@ -1466,7 +1467,7 @@ p {
     font-size: 0.8em;
     line-height: 1.8;
     color: rgb(0, 0, 0);
-    background-color:#f5f5f5;
+    background-color:#cccbcb;
     min-width: 55px;
     text-align: center;
 }

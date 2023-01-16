@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Sun 記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Thu, 22 Dec 2022 10:44:38 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Jan 2023 08:49:07 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C# Enum(枚舉)</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/csharp-enum/</link>
+      <pubDate>Sun, 15 Jan 2023 08:49:07 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/csharp-enum/</guid>
+      <description>&lt;p&gt;C#-Enum(枚舉)用途與使用擴充方法取得description詳細紀錄。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>SQL-merge into 語法紀錄</title>
       <link>http://sunnote.xyz/zh-tw/sql-merge-into-%E8%AA%9E%E6%B3%95%E7%B4%80%E9%8C%84/</link>

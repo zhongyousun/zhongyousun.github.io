@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C# on Sun 記事</title>
+    <link>http://sunnote.xyz/zh-tw/tags/c#/</link>
+    <description>Recent content in C# on Sun 記事</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sun, 15 Jan 2023 08:49:07 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/tags/c#/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C# Enum(枚舉)</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/csharp-enum/</link>
+      <pubDate>Sun, 15 Jan 2023 08:49:07 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/csharp-enum/</guid>
+      <description>&lt;p&gt;C#-Enum(枚舉)用途與使用擴充方法取得description詳細紀錄。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
