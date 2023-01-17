@@ -1476,3 +1476,17 @@ p {
     background-color: #ACD6FF;
 }
 /* copy btn */
+/* code type */
+code[data-lang]::before {
+    content: attr(data-lang);
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #cccbcb;
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+}
+/* code type */
