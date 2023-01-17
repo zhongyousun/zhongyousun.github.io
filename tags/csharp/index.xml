@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Csharp on Sun Notes</title>
+    <link>http://sunnote.xyz/tags/csharp/</link>
+    <description>Recent content in Csharp on Sun Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sun, 15 Jan 2023 08:49:07 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C# Enum</title>
+      <link>http://sunnote.xyz/tutorials/csharp-enum/</link>
+      <pubDate>Sun, 15 Jan 2023 08:49:07 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/tutorials/csharp-enum/</guid>
+      <description>&lt;p&gt;C#-Enum (enumeration) uses and uses the extension method to obtain detailed description records.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -2,15 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://sunnote.xyz/zh-tw/tags/c#/</loc>
-    <lastmod>2023-01-15T08:49:07+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>http://sunnote.xyz/zh-tw/tutorials/csharp-enum/</loc>
     <lastmod>2023-01-15T08:49:07+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tutorials/csharp-enum/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tutorials/csharp-enum/"
+                />
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/categories/</loc>
     <lastmod>2023-01-15T08:49:07+08:00</lastmod>
@@ -25,6 +30,21 @@
                 rel="alternate"
                 hreflang="zh-tw"
                 href="http://sunnote.xyz/zh-tw/categories/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/zh-tw/tags/csharp/</loc>
+    <lastmod>2023-01-15T08:49:07+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/csharp/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/csharp/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/posts/</loc>
@@ -167,10 +187,20 @@
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://sunnote.xyz/zh-tw/%E5%AE%BF%E9%9C%A7%E9%81%8A%E5%AD%B8-%E6%B7%B1%E5%85%A5%E5%AE%BF%E9%9C%A7%E4%BD%8F%E5%AE%85%E5%8D%80/</loc>
+    <loc>http://sunnote.xyz/zh-tw/cebu/residential_area/</loc>
     <lastmod>2022-12-04T16:28:53+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/cebu/residential_area/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/cebu/residential_area/"
+                />
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/tags/%E8%8F%B2%E5%BE%8B%E8%B3%93/</loc>
     <lastmod>2022-12-30T00:00:00+00:00</lastmod>

@@ -2,6 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://sunnote.xyz/tutorials/csharp-enum/</loc>
+    <lastmod>2023-01-15T08:49:07+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tutorials/csharp-enum/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tutorials/csharp-enum/"
+                />
+  </url><url>
     <loc>http://sunnote.xyz/categories/</loc>
     <lastmod>2023-12-30T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
@@ -15,6 +30,21 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://sunnote.xyz/categories/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tags/csharp/</loc>
+    <lastmod>2023-01-15T08:49:07+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/csharp/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/csharp/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/posts/</loc>
@@ -33,39 +63,9 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/categories/program/</loc>
-    <lastmod>2022-12-22T10:44:38+08:00</lastmod>
+    <lastmod>2023-01-15T08:49:07+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
-  </url><url>
-    <loc>http://sunnote.xyz/tags/sql/</loc>
-    <lastmod>2022-12-22T10:44:38+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/sql/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/sql/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/sql-merge-into-statement/</loc>
-    <lastmod>2022-12-22T10:44:38+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/sql-merge-into-%E8%AA%9E%E6%B3%95%E7%B4%80%E9%8C%84/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/sql-merge-into-statement/"
-                />
   </url><url>
     <loc>http://sunnote.xyz/</loc>
     <lastmod>2023-12-30T00:00:00+00:00</lastmod>
@@ -95,6 +95,36 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://sunnote.xyz/tags/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tags/sql/</loc>
+    <lastmod>2022-12-22T10:44:38+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/sql/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/sql/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/sql-merge-into-statement/</loc>
+    <lastmod>2022-12-22T10:44:38+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/sql-merge-into-%E8%AA%9E%E6%B3%95%E7%B4%80%E9%8C%84/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/sql-merge-into-statement/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/leetcode/</loc>
@@ -161,6 +191,21 @@
     <lastmod>2023-12-30T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/cebu/residential_area/</loc>
+    <lastmod>2022-12-04T16:28:53+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/cebu/residential_area/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/cebu/residential_area/"
+                />
   </url><url>
     <loc>http://sunnote.xyz/study-tour-in-cebu-bohol-island-day-tour-tarsier--chocolate-hills/</loc>
     <lastmod>2022-12-03T16:28:53+08:00</lastmod>
