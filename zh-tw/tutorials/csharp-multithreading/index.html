@@ -4,25 +4,24 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>C# 多執行緒 - Sun 記事</title>
+	<title>C# 多執行緒原理、非同步用法與帶入自定義物件 - Sun 記事</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="C# 多執行緒用法紀錄">
-		<meta property="og:title" content="C# 多執行緒" />
-<meta property="og:description" content="C# 多執行緒用法紀錄" />
+	<meta name="description" content="C# 多執行緒原理、非同步用法與帶入自定義物件紀錄">
+		<meta property="og:title" content="C# 多執行緒原理、非同步用法與帶入自定義物件" />
+<meta property="og:description" content="C# 多執行緒原理、非同步用法與帶入自定義物件紀錄" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://sunnote.xyz/zh-tw/tutorials/csharp-multithreading/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-01-19T11:49:15+08:00" />
 <meta property="article:modified_time" content="2023-01-19T11:49:15+08:00" />
 
-
-		<meta itemprop="name" content="C# 多執行緒">
-<meta itemprop="description" content="C# 多執行緒用法紀錄"><meta itemprop="datePublished" content="2023-01-19T11:49:15+08:00" />
+		<meta itemprop="name" content="C# 多執行緒原理、非同步用法與帶入自定義物件">
+<meta itemprop="description" content="C# 多執行緒原理、非同步用法與帶入自定義物件紀錄"><meta itemprop="datePublished" content="2023-01-19T11:49:15+08:00" />
 <meta itemprop="dateModified" content="2023-01-19T11:49:15+08:00" />
-<meta itemprop="wordCount" content="652">
+<meta itemprop="wordCount" content="259">
 <meta itemprop="keywords" content="Csharp," />
 		<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="C# 多執行緒"/>
-<meta name="twitter:description" content="C# 多執行緒用法紀錄"/>
+<meta name="twitter:title" content="C# 多執行緒原理、非同步用法與帶入自定義物件"/>
+<meta name="twitter:description" content="C# 多執行緒原理、非同步用法與帶入自定義物件紀錄"/>
 
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -123,7 +122,7 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">C# 多執行緒</h1>
+			<h1 class="post__title">C# 多執行緒原理、非同步用法與帶入自定義物件</h1>
 			<div class="post__meta meta"><div class="meta__item-author meta__item">
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">Alvin</span>
 </div>
@@ -137,11 +136,6 @@ if (!doNotTrack) {
 			</div>
 		</header>
 		
-	<figure class="post__thumbnail thumbnail">
-		
-		<img class="thumbnail__image" src="https://sunnote.xyz/image/funny/BOU9Hs7h.jpg" alt="C# 多執行緒">
-		
-	</figure>
 <div class="post__toc toc">
 	<div class="toc__title">目錄</div>
 	<div class="toc__menu">
@@ -149,20 +143,22 @@ if (!doNotTrack) {
   <ul>
     <li>
       <ul>
+        <li><a href="#前言">前言</a></li>
         <li><a href="#原理">原理</a></li>
         <li><a href="#用途">用途</a></li>
-        <li><a href="#學習動機">學習動機</a></li>
         <li><a href="#範例">範例</a></li>
-        <li><a href="#非同步方法">非同步方法</a></li>
-        <li><a href="#執行執行緒時帶入參數">執行執行緒時帶入參數</a></li>
+        <li><a href="#帶入自定義參數">帶入自定義參數</a></li>
+        <li><a href="#非同步方法待續">非同步方法(待續)</a></li>
       </ul>
     </li>
   </ul>
 </nav>
 	</div>
 </div><div class="content post__content clearfix">
-			<p>C# 多執行緒用法紀錄</p>
-<p>目前遇到的專案都沒有硬性需求使用到多執行緒，此篇為紀錄自學的過程。</p>
+			<p>C# 多執行緒原理、非同步用法與帶入自定義物件學習過程紀錄。<br>
+目前遇到的專案都沒有硬性需求使用到多執行緒，此篇為紀錄自己的理解與學習的過程。</p>
+<h3 id="前言">前言</h3>
+<p>公司專案有個檔案預先儲存的功能，因為每天都有新檔案，需要每天跑排程執行。原本的寫法，是A的部分下載完，再下載B的部分。會想試試看改用多執行緒的方式寫的原因，主要只是覺得在測試時資料量太大，需要先等A跑完才能測試B的部分很煩而已。😎</p>
 <h3 id="原理">原理</h3>
 <p>得先了解Program(程式)/Process(程序)/Thread(執行緒)的差異。</p>
 <ol>
@@ -170,7 +166,7 @@ if (!doNotTrack) {
 <li><strong>Process(程序)</strong> : 已經執行並且載入到記憶體中的 Program ，程序中的每一行程式碼隨時都有可能被CPU執行。</li>
 <li><strong>Thread(執行緒)</strong> : 同一個 Process 中會有很多個 Thread ，每一個 Thread 負責某一項功能。</li>
 </ol>
-<p>以例子來舉例:</p>
+<p>以工廠來舉例:</p>
 <p><strong>Program(程式)</strong> = 工廠的詳細製造圖與人員配置<br>
 <strong>Process(程序)</strong> = 已經在運行的工廠<br>
 <strong>Thread(執行緒)</strong> = 工廠裡的每位工作人員</p>
@@ -183,12 +179,10 @@ if (!doNotTrack) {
 <li>需要執行一個任務，但不想因為它阻塞其他任務。例如，在同時運行的另一個執行線中執行網路連接。</li>
 <li>需要在多個核心上執行任務，以利用多核 CPU 的性能。</li>
 </ol>
-<h3 id="學習動機">學習動機</h3>
-<p>公司專案有個檔案預先儲存的功能，因為每天都有新檔案，需要每天跑排程執行。原本的寫法，是A的部分下載完，再下載B的部分。會想試試看改用多執行緒的方式寫的原因，主要只是覺得在測試時資料量太大，需要先等A跑完才能測試B的部分很煩而已。😎</p>
 <h3 id="範例">範例</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">using</span> System.Threading;
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>Thread thread1 = <span style="color:#66d9ef">new</span> Thread(Task1);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>Thread thread1 = <span style="color:#66d9ef">new</span> Thread(Task1); 
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>thread1.Start();
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>Thread thread2 = <span style="color:#66d9ef">new</span> Thread(Task2);
@@ -228,133 +222,39 @@ Task 2
 Task 1
 </code></pre><p><strong>為什麼會先出現 &ldquo;Completed&rdquo; ?</strong><br>
 這是因為在上面的程式碼中，兩個執行緒被同時啟動，並且主執行緒不等待其中任何一個執行緒完成，而是立即寫出 &ldquo;Completed&rdquo; 並結束程式。因此，無論哪個執行緒先完成，程式都會先寫出 &ldquo;Completed&rdquo;。</p>
-<p>如果想要等待 thread2 完成，可以加上 thread2.Join() 使主執行緒等待 thread2 執行完畢。</p>
-<h3 id="非同步方法">非同步方法</h3>
-<h3 id="執行執行緒時帶入參數">執行執行緒時帶入參數</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1</span><span><span style="color:#a6e22e">[Route(&#34;api/dlcoaschedule&#34;)]</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  2</span><span><span style="color:#a6e22e">        [HttpPost]</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  3</span><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> DlCoaSchedule()
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  4</span><span>        {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  5</span><span>            <span style="color:#75715e">///外銷COA 預存</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  6</span><span>            List&lt;<span style="color:#66d9ef">dynamic</span>&gt; expnoList = DataObject.Object.SQL.coa_prevdl_file.Schedule();
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  7</span><span>            <span style="color:#66d9ef">if</span> (expnoList == <span style="color:#66d9ef">null</span>) <span style="color:#66d9ef">return</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  8</span><span>            <span style="color:#66d9ef">byte</span>[] file;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  9</span><span>            <span style="color:#66d9ef">var</span> listContainer1 = <span style="color:#66d9ef">new</span> ListContainer1 { TheList = expnoList };
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 10</span><span>            <span style="color:#75715e">// 建立新的執行序</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 11</span><span>            Thread t1 = <span style="color:#66d9ef">new</span> Thread(<span style="color:#66d9ef">new</span> ParameterizedThreadStart(ExportCOA));
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 12</span><span>            <span style="color:#75715e">// 傳遞參數</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 13</span><span>            t1.Start(listContainer1);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 14</span><span>            <span style="color:#75715e">//t1.Join();</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 15</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 16</span><span>            <span style="color:#75715e">//內銷COA 預存</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 17</span><span>            List&lt;<span style="color:#66d9ef">string</span>&gt; codivs = <span style="color:#66d9ef">new</span> List&lt;<span style="color:#66d9ef">string</span>&gt;();
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 18</span><span>            codivs.Add(Codiv.PE);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 19</span><span>            codivs.Add(Codiv.PP);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 20</span><span>            List&lt;coa_prevdl_file&gt; inqtnoList = DataObject.Object.SQL.coa_prevdl_file.GetList(codivs);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 21</span><span>            <span style="color:#66d9ef">if</span> (inqtnoList == <span style="color:#66d9ef">null</span>) <span style="color:#66d9ef">return</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 22</span><span>            
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 23</span><span>            <span style="color:#66d9ef">var</span> listContainer2 = <span style="color:#66d9ef">new</span> ListContainer2 { TheList = inqtnoList };
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 24</span><span>            <span style="color:#75715e">// 建立新的執行序</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 25</span><span>            Thread t2 = <span style="color:#66d9ef">new</span> Thread(<span style="color:#66d9ef">new</span> ParameterizedThreadStart(Domestic));
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 26</span><span>            <span style="color:#75715e">// 傳遞參數</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 27</span><span>            t2.Start(listContainer2);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 28</span><span>            <span style="color:#75715e">//t2.Join();</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 29</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 30</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 31</span><span>        }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 32</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 33</span><span>        <span style="color:#75715e">// Create an object to hold the list</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 34</span><span>        <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ListContainer1</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 35</span><span>        {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 36</span><span>            <span style="color:#66d9ef">public</span> List&lt;<span style="color:#66d9ef">dynamic</span>&gt; TheList { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 37</span><span>        }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 38</span><span>        <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ListContainer2</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 39</span><span>        {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 40</span><span>            <span style="color:#66d9ef">public</span> List&lt;coa_prevdl_file&gt; TheList { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 41</span><span>        }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 42</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 43</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 44</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 45</span><span>        <span style="color:#66d9ef">void</span> ExportCOA(Object listContainer)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 46</span><span>        {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 47</span><span>            ListContainer1 container = (ListContainer1)listContainer;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 48</span><span>            List&lt;<span style="color:#66d9ef">dynamic</span>&gt; expnoList = container.TheList;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 49</span><span>            <span style="color:#66d9ef">byte</span>[] file;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 50</span><span>            <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">var</span> item <span style="color:#66d9ef">in</span> expnoList)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 51</span><span>            {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 52</span><span>                <span style="color:#66d9ef">string</span> expno = item.expno;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 53</span><span>                <span style="color:#66d9ef">string</span> codiv = item.codiv;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 54</span><span>                <span style="color:#66d9ef">try</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 55</span><span>                {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 56</span><span>                    <span style="color:#75715e">//製作pdf檔</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 57</span><span>                    <span style="color:#66d9ef">if</span> (Codiv.PE.Equals(codiv))
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 58</span><span>                    {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 59</span><span>                        DataObject._8.Object.SQL.coa_data.DlCOA(codiv, expno, <span style="color:#66d9ef">out</span> file, <span style="color:#e6db74">&#34;N&#34;</span>, <span style="color:#e6db74">&#34;en&#34;</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 60</span><span>                        <span style="color:#66d9ef">if</span> (file != <span style="color:#66d9ef">null</span>) DataObject.Object.SQL.coa_prevdl_file.GetCOAFileInAdvance(expno, file, <span style="color:#e6db74">&#34;en&#34;</span>, SalesArea.Export);<span style="color:#75715e">//儲存pdf檔</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 61</span><span>                        file = <span style="color:#66d9ef">null</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 62</span><span>                        DataObject._8.Object.SQL.coa_data.DlCOA(codiv, expno, <span style="color:#66d9ef">out</span> file, <span style="color:#e6db74">&#34;N&#34;</span>, <span style="color:#e6db74">&#34;zh&#34;</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 63</span><span>                        <span style="color:#66d9ef">if</span> (file != <span style="color:#66d9ef">null</span>) DataObject.Object.SQL.coa_prevdl_file.GetCOAFileInAdvance(expno, file, <span style="color:#e6db74">&#34;zh&#34;</span>, SalesArea.Export);<span style="color:#75715e">//儲存pdf檔</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 64</span><span>                    }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 65</span><span>                    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (Codiv.PP.Equals(codiv.ToLower()))
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 66</span><span>                    {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 67</span><span>                        DataObject.P.Object.SQL.coa_data.DlCOA(codiv, expno, <span style="color:#e6db74">&#34;en&#34;</span>, <span style="color:#66d9ef">out</span> file);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 68</span><span>                        <span style="color:#66d9ef">if</span> (file != <span style="color:#66d9ef">null</span>) DataObject.Object.SQL.coa_prevdl_file.GetCOAFileInAdvance(expno, file, <span style="color:#e6db74">&#34;en&#34;</span>, SalesArea.Export);<span style="color:#75715e">//儲存pdf檔</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 69</span><span>                    }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 70</span><span>                    
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 71</span><span>                }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 72</span><span>                <span style="color:#66d9ef">catch</span> (Exception e)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 73</span><span>                {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 74</span><span>                    <span style="color:#66d9ef">if</span> (Convert.ToBoolean(isOfficial)) SPMTools.fpcetgAlert.pushMessage(Developer.Sun, expno + <span style="color:#e6db74">&#34; COA DL Error&#34;</span> + e);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 75</span><span>                    <span style="color:#66d9ef">else</span> SPMTools.fpcetgAlert.pushMessage(Developer.Sun, <span style="color:#e6db74">&#34;(測試機)&#34;</span> + expno + <span style="color:#e6db74">&#34; COA DL Error&#34;</span> + e);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 76</span><span>                }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 77</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 78</span><span>            }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 79</span><span>            <span style="color:#66d9ef">if</span> (Convert.ToBoolean(isOfficial)) SPMTools.fpcetgAlert.pushMessage(Developer.Sun, DateTime.Now.ToString() + <span style="color:#e6db74">&#34;外銷COA預存執行成功&#34;</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 80</span><span>            <span style="color:#66d9ef">else</span> SPMTools.fpcetgAlert.pushMessage(Developer.Sun, DateTime.Now.ToString() + <span style="color:#e6db74">&#34;(測試機)外銷COA預存執行成功&#34;</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 81</span><span>            
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 82</span><span>        }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 83</span><span>        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Domestic(Object listContainer)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 84</span><span>        {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 85</span><span>            ListContainer2 container = (ListContainer2)listContainer;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 86</span><span>            List&lt;coa_prevdl_file&gt; inqtnoList = container.TheList;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 87</span><span>            <span style="color:#66d9ef">byte</span>[] file;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 88</span><span>            file = <span style="color:#66d9ef">null</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 89</span><span>            <span style="color:#66d9ef">foreach</span> (coa_prevdl_file item <span style="color:#66d9ef">in</span> inqtnoList)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 90</span><span>            {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 91</span><span>                <span style="color:#66d9ef">bool</span> is_finished = <span style="color:#66d9ef">false</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 92</span><span>                <span style="color:#66d9ef">try</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 93</span><span>                {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 94</span><span>                    <span style="color:#66d9ef">if</span> (Codiv.PE.Equals(item.codiv.ToLower()))
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 95</span><span>                    {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 96</span><span>                        <span style="color:#66d9ef">if</span> (item.acdlqty == item.old_acdlqty) <span style="color:#66d9ef">continue</span>; <span style="color:#75715e">//如果出貨量沒改變就不重新下載</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 97</span><span>                        DataObject._8.Object.SQL.coa_data.DomesticCOADl(item.no, <span style="color:#66d9ef">out</span> file);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 98</span><span>                        <span style="color:#66d9ef">if</span> (item.acdlqty &gt;= item.aoqty) is_finished = <span style="color:#66d9ef">true</span>; <span style="color:#75715e">//已出貨量大於訂貨量，is_finished= true</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 99</span><span>                        <span style="color:#75715e">//儲存pdf檔</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">100</span><span>                        <span style="color:#66d9ef">if</span> (file != <span style="color:#66d9ef">null</span>) DataObject.Object.SQL.coa_prevdl_file.GetCOAFileInAdvance(item.no, file, <span style="color:#e6db74">&#34;zh&#34;</span>, SalesArea.Domestic, <span style="color:#66d9ef">null</span>, item.acdlqty, is_finished);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">101</span><span>                    }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">102</span><span>                    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (Codiv.PP.Equals(item.codiv.ToLower()))
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">103</span><span>                    {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">104</span><span>                        <span style="color:#66d9ef">if</span> (item.acdlqty == item.old_acdlqty) <span style="color:#66d9ef">continue</span>; <span style="color:#75715e">//如果出貨量沒改變就不重新下載</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">105</span><span>                        DataObject.P.Object.SQL.coa_data.DomesticCOADl(item.no, <span style="color:#66d9ef">out</span> file);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">106</span><span>                        <span style="color:#66d9ef">if</span> (item.acdlqty &gt;= item.aoqty) is_finished = <span style="color:#66d9ef">true</span>; <span style="color:#75715e">//已出貨量大於訂貨量，is_finished= true</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">107</span><span>                        <span style="color:#75715e">//儲存pdf檔</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">108</span><span>                        <span style="color:#66d9ef">if</span> (file != <span style="color:#66d9ef">null</span>) DataObject.Object.SQL.coa_prevdl_file.GetCOAFileInAdvance(item.no, file, <span style="color:#e6db74">&#34;zh&#34;</span>, SalesArea.Domestic, <span style="color:#66d9ef">null</span>, item.acdlqty, is_finished);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">109</span><span>                    }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">110</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">111</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">112</span><span>                }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">113</span><span>                <span style="color:#66d9ef">catch</span> (Exception e)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">114</span><span>                {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">115</span><span>                    <span style="color:#66d9ef">if</span> (Convert.ToBoolean(isOfficial)) SPMTools.fpcetgAlert.pushMessage(Developer.Sun, item.no + <span style="color:#e6db74">&#34; COA DL Error&#34;</span> + e);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">116</span><span>                    <span style="color:#66d9ef">else</span> SPMTools.fpcetgAlert.pushMessage(Developer.Sun, <span style="color:#e6db74">&#34;(測試機)&#34;</span> + item.no + <span style="color:#e6db74">&#34; COA DL Error&#34;</span> + e);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">117</span><span>                }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">118</span><span>            }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">119</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">120</span><span>            <span style="color:#66d9ef">if</span> (Convert.ToBoolean(isOfficial)) SPMTools.fpcetgAlert.pushMessage(Developer.Sun, DateTime.Now.ToString() + <span style="color:#e6db74">&#34;內銷COA預存執行成功&#34;</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">121</span><span>            <span style="color:#66d9ef">else</span> SPMTools.fpcetgAlert.pushMessage(Developer.Sun, DateTime.Now.ToString() + <span style="color:#e6db74">&#34;(測試機)內銷COA預存執行成功&#34;</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">122</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">123</span><span>        }
-</span></span></code></pre></div>
+<p>如果想要等待 thread2 完成，可以加上 thread2.Join() 使主執行緒等待 thread2 執行完畢，再接著執行<code>Console.WriteLine(&quot;Completed&quot;);</code>。</p>
+<h3 id="帶入自定義參數">帶入自定義參數</h3>
+<p>實際使用時執行緒常會有帶入參數的需求，可以使用ParameterizedThreadStart，ParameterizedThreadStart是一個委派，它指向一個object參數並沒有返回值的方法。所以在使用ParameterizedThreadStart 委派時，需要傳入一個object類型參數。<br>
+但通常資料類型都不會是object，大部分是JObject或是自定義的類型，以下是實作方式。</p>
+<p>針對不同執行緒建立對應的物件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#75715e">// Create an object to hold the list</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ListContainer1</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>        <span style="color:#66d9ef">public</span> List&lt;<span style="color:#66d9ef">dynamic</span>&gt; TheList { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ListContainer2</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>        <span style="color:#66d9ef">public</span> List&lt;customize&gt; TheList { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span>    }
+</span></span></code></pre></div><p>傳遞 <code>List&lt;dynamic&gt;</code> customize_obj 至 Task1，在 Task1 函式中取得 customize_obj 並執行</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>List&lt;<span style="color:#66d9ef">dynamic</span>&gt; customize_obj  = <span style="color:#66d9ef">new</span> List&lt;<span style="color:#66d9ef">dynamic</span>&gt;();
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#66d9ef">var</span> listContainer1 = <span style="color:#66d9ef">new</span> ListContainer1 { TheList = customize_obj };
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#75715e">// create new thread</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>Thread t1 = <span style="color:#66d9ef">new</span> Thread(<span style="color:#66d9ef">new</span> ParameterizedThreadStart(Task1));
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#75715e">// pass parameters and start thread</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>t1.Start(listContainer1);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#66d9ef">void</span> Task1(Object listContainer)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    <span style="color:#75715e">// get customize_obj</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    ListContainer1 container = (ListContainer1)listContainer;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>    List&lt;<span style="color:#66d9ef">dynamic</span>&gt; customize_obj = container.TheList;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    <span style="color:#75715e">//...</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>    <span style="color:#75715e">//code</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>    <span style="color:#75715e">//...</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>}
+</span></span></code></pre></div><h3 id="非同步方法待續">非同步方法(待續)</h3>
 		</div>
 		<br>
 		<br>
@@ -447,7 +347,7 @@ Task 1
 		<ul class="widget__list">
 			
 			
-			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/csharp-multithreading/">C# 多執行緒</a></li>
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/csharp-multithreading/">C# 多執行緒原理、非同步用法與帶入自定義物件</a></li>
 			
 			
 			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/csharp-enum/">C# Enum(枚舉)</a></li>
