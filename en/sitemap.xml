@@ -2,19 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://sunnote.xyz/tutorials/csharp-enum/</loc>
-    <lastmod>2023-01-15T08:49:07+08:00</lastmod>
+    <loc>http://sunnote.xyz/tutorials/csharp-multithreading/</loc>
+    <lastmod>2023-01-19T11:49:15+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tutorials/csharp-enum/"
+                href="http://sunnote.xyz/zh-tw/tutorials/csharp-multithreading/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://sunnote.xyz/tutorials/csharp-enum/"
+                href="http://sunnote.xyz/tutorials/csharp-multithreading/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/categories/</loc>
@@ -33,7 +33,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/csharp/</loc>
-    <lastmod>2023-01-15T08:49:07+08:00</lastmod>
+    <lastmod>2023-01-19T11:49:15+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -63,7 +63,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/categories/program/</loc>
-    <lastmod>2023-01-15T08:49:07+08:00</lastmod>
+    <lastmod>2023-01-19T11:49:15+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -97,6 +97,21 @@
                 href="http://sunnote.xyz/tags/"
                 />
   </url><url>
+    <loc>http://sunnote.xyz/tutorials/csharp-enum/</loc>
+    <lastmod>2023-01-15T08:49:07+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tutorials/csharp-enum/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tutorials/csharp-enum/"
+                />
+  </url><url>
     <loc>http://sunnote.xyz/tags/sql/</loc>
     <lastmod>2022-12-22T10:44:38+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -112,19 +127,19 @@
                 href="http://sunnote.xyz/tags/sql/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/sql-merge-into-statement/</loc>
+    <loc>http://sunnote.xyz/tutorials/sql-merge-into-statement/</loc>
     <lastmod>2022-12-22T10:44:38+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/sql-merge-into-%E8%AA%9E%E6%B3%95%E7%B4%80%E9%8C%84/"
+                href="http://sunnote.xyz/zh-tw/tutorials/sql-merge-into-statement/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://sunnote.xyz/sql-merge-into-statement/"
+                href="http://sunnote.xyz/tutorials/sql-merge-into-statement/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/leetcode/</loc>
@@ -142,19 +157,19 @@
                 href="http://sunnote.xyz/tags/leetcode/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/leetcodemedium-146.-lru-cache-python/</loc>
+    <loc>http://sunnote.xyz/tutorials/leetcode-lru-cache-medium-python/</loc>
     <lastmod>2022-12-04T19:44:38+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/leetcodemedium-146.-lru-cache-python/"
+                href="http://sunnote.xyz/zh-tw/tutorials/leetcode-lru-cache-medium-python/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://sunnote.xyz/leetcodemedium-146.-lru-cache-python/"
+                href="http://sunnote.xyz/tutorials/leetcode-lru-cache-medium-python/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/python/</loc>
@@ -222,49 +237,49 @@
                 href="http://sunnote.xyz/cebu/bohol-island-day-tour-tarsier-chocolate-hills/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/study-tour-in-cebu-jeepney--cebu-theme-park-day-trip/</loc>
+    <loc>http://sunnote.xyz/cebu/jeepney-anjo-world-theme-park-day-trip/</loc>
     <lastmod>2023-12-30T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/%E5%AE%BF%E9%9C%A7%E9%81%8A%E5%AD%B8-%E5%90%89%E6%99%AE%E5%B0%BC%E9%AB%94%E9%A9%97-%E5%AE%BF%E9%9C%A7%E4%B8%BB%E9%A1%8C%E6%A8%82%E5%9C%92%E4%B8%80%E6%97%A5%E9%81%8A/"
+                href="http://sunnote.xyz/zh-tw/cebu/jeepney-anjo-world-theme-park-day-trip/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://sunnote.xyz/study-tour-in-cebu-jeepney--cebu-theme-park-day-trip/"
+                href="http://sunnote.xyz/cebu/jeepney-anjo-world-theme-park-day-trip/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/study-tour-in-cebu-simala-church-day-trip/</loc>
+    <loc>http://sunnote.xyz/cebu/simala-church-day-trip/</loc>
     <lastmod>2022-12-01T16:28:53+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/%E5%AE%BF%E9%9C%A7%E9%81%8A%E5%AD%B8-%E5%B8%8C%E7%91%AA%E6%8B%89%E6%95%99%E5%A0%82simala-church%E4%B8%80%E6%97%A5%E9%81%8A/"
+                href="http://sunnote.xyz/zh-tw/cebu/simala-church-day-trip/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://sunnote.xyz/study-tour-in-cebu-simala-church-day-trip/"
+                href="http://sunnote.xyz/cebu/simala-church-day-trip/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/study-tour-in-cebu-christmas-in-cebu/</loc>
+    <loc>http://sunnote.xyz/cebu/christmas-in-cebu/</loc>
     <lastmod>2022-11-30T19:28:53+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/%E5%AE%BF%E9%9C%A7%E9%81%8A%E5%AD%B8-%E5%9C%A8%E5%AE%BF%E9%9C%A7%E7%9A%84%E8%81%96%E8%AA%95%E6%B0%A3%E6%B0%9B/"
+                href="http://sunnote.xyz/zh-tw/cebu/christmas-in-cebu/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://sunnote.xyz/study-tour-in-cebu-christmas-in-cebu/"
+                href="http://sunnote.xyz/cebu/christmas-in-cebu/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/language-school/</loc>
@@ -272,49 +287,49 @@
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://sunnote.xyz/study-tour-in-cebu-daily-life-part-2/</loc>
+    <loc>http://sunnote.xyz/cebu/daily-life-part2/</loc>
     <lastmod>2022-11-30T17:28:53+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/%E5%AE%BF%E9%9C%A7%E9%81%8A%E5%AD%B8-%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB%E4%BA%8C/"
+                href="http://sunnote.xyz/zh-tw/cebu/daily-life-part2/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://sunnote.xyz/study-tour-in-cebu-daily-life-part-2/"
+                href="http://sunnote.xyz/cebu/daily-life-part2/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/study-tour-in-cebu-daily-life-part-1/</loc>
+    <loc>http://sunnote.xyz/cebu/daily-life-part1/</loc>
     <lastmod>2022-11-30T16:28:53+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/%E5%AE%BF%E9%9C%A7%E9%81%8A%E5%AD%B8-%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB%E4%B8%80/"
+                href="http://sunnote.xyz/zh-tw/cebu/daily-life-part1/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://sunnote.xyz/study-tour-in-cebu-daily-life-part-1/"
+                href="http://sunnote.xyz/cebu/daily-life-part1/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/study-tour-in-cebu-pre-departure-mood-record/</loc>
+    <loc>http://sunnote.xyz/cebu/pre-departure-mood-record/</loc>
     <lastmod>2022-11-29T16:28:53+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/%E5%AE%BF%E9%9C%A7%E9%81%8A%E5%AD%B8-%E8%A1%8C%E5%89%8D%E5%BF%83%E6%83%85%E7%B4%80%E9%8C%84/"
+                href="http://sunnote.xyz/zh-tw/cebu/pre-departure-mood-record/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://sunnote.xyz/study-tour-in-cebu-pre-departure-mood-record/"
+                href="http://sunnote.xyz/cebu/pre-departure-mood-record/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/archives/</loc>

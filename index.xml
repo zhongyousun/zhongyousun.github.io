@@ -6,7 +6,17 @@
     <description>Recent content on Sun Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 15 Jan 2023 08:49:07 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 Jan 2023 11:49:15 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C# Multi-threading principle, asynchronous usage and parameter with custom objects</title>
+      <link>http://sunnote.xyz/tutorials/csharp-multithreading/</link>
+      <pubDate>Thu, 19 Jan 2023 11:49:15 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/tutorials/csharp-multithreading/</guid>
+      <description>&lt;p&gt;The principle of C# multi-threading, asynchronous usage and parameter with custom objects records.&lt;br&gt;
+None of the projects encountered so far have a hard requirement to use multi-threading. This article is to record my own understanding and learning process.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>C# Enum</title>
       <link>http://sunnote.xyz/tutorials/csharp-enum/</link>
@@ -18,10 +28,10 @@
     
     <item>
       <title>SQL-merge into statement</title>
-      <link>http://sunnote.xyz/sql-merge-into-statement/</link>
+      <link>http://sunnote.xyz/tutorials/sql-merge-into-statement/</link>
       <pubDate>Thu, 22 Dec 2022 10:44:38 +0800</pubDate>
       
-      <guid>http://sunnote.xyz/sql-merge-into-statement/</guid>
+      <guid>http://sunnote.xyz/tutorials/sql-merge-into-statement/</guid>
       <description>&lt;p&gt;I was assigned to implement the function of synchronizing from different databases.&lt;br&gt;
 The company currently has an ERP system.&lt;br&gt;
 All data sources are based on this standard, so that customers can create , update, write to ERP,&lt;br&gt;
@@ -30,10 +40,10 @@ and synchronize with ERP in their own systems&amp;hellip;&lt;/p&gt;</description
     
     <item>
       <title>Leetcode(Medium) 146. LRU Cache (Python)</title>
-      <link>http://sunnote.xyz/leetcodemedium-146.-lru-cache-python/</link>
+      <link>http://sunnote.xyz/tutorials/leetcode-lru-cache-medium-python/</link>
       <pubDate>Sun, 04 Dec 2022 19:44:38 +0800</pubDate>
       
-      <guid>http://sunnote.xyz/leetcodemedium-146.-lru-cache-python/</guid>
+      <guid>http://sunnote.xyz/tutorials/leetcode-lru-cache-medium-python/</guid>
       <description>&lt;p&gt;LRU Cache can be regarded as an interesting topic that I have encountered, and I feel that it is also a concept that will be used in many systems.&lt;br&gt;
 Unfortunately, I never encountered this problem on my job yet&amp;hellip;&lt;/p&gt;</description>
     </item>
@@ -58,55 +68,55 @@ Unfortunately, I never encountered this problem on my job yet&amp;hellip;&lt;/p&
     
     <item>
       <title>Study tour in Cebu - Jeepney &#43; Cebu Theme Park Day Trip</title>
-      <link>http://sunnote.xyz/study-tour-in-cebu-jeepney--cebu-theme-park-day-trip/</link>
+      <link>http://sunnote.xyz/cebu/jeepney-anjo-world-theme-park-day-trip/</link>
       <pubDate>Fri, 02 Dec 2022 16:28:53 +0800</pubDate>
       
-      <guid>http://sunnote.xyz/study-tour-in-cebu-jeepney--cebu-theme-park-day-trip/</guid>
+      <guid>http://sunnote.xyz/cebu/jeepney-anjo-world-theme-park-day-trip/</guid>
       <description>&lt;p&gt;Experienced the long-awaited Cebu common transportation Jeepney and the largest and newest theme park in Cebu : &lt;strong&gt;Anjo World Theme Park&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Study tour in Cebu - Simala Church Day Trip</title>
-      <link>http://sunnote.xyz/study-tour-in-cebu-simala-church-day-trip/</link>
+      <link>http://sunnote.xyz/cebu/simala-church-day-trip/</link>
       <pubDate>Thu, 01 Dec 2022 16:28:53 +0800</pubDate>
       
-      <guid>http://sunnote.xyz/study-tour-in-cebu-simala-church-day-trip/</guid>
+      <guid>http://sunnote.xyz/cebu/simala-church-day-trip/</guid>
       <description>&lt;p&gt;I was fortunate enough to visit the Simala Church, the largest church in Cebu. This article mainly records the itinerary planning at that time, the mass participation and the majestic architecture.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Study tour in Cebu - Christmas in Cebu</title>
-      <link>http://sunnote.xyz/study-tour-in-cebu-christmas-in-cebu/</link>
+      <link>http://sunnote.xyz/cebu/christmas-in-cebu/</link>
       <pubDate>Wed, 30 Nov 2022 19:28:53 +0800</pubDate>
       
-      <guid>http://sunnote.xyz/study-tour-in-cebu-christmas-in-cebu/</guid>
+      <guid>http://sunnote.xyz/cebu/christmas-in-cebu/</guid>
       <description>&lt;p&gt;After December, the number of new students in language schools generally decreases, because most students need to go back to their hometown for New Year’s Eve, or come after the Lunar New Year. I am very happy to experience the local festive atmosphere during this time, but sometimes I still feel a little bit sad.😂&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Study tour in Cebu - Daily life Part 2</title>
-      <link>http://sunnote.xyz/study-tour-in-cebu-daily-life-part-2/</link>
+      <link>http://sunnote.xyz/cebu/daily-life-part2/</link>
       <pubDate>Wed, 30 Nov 2022 17:28:53 +0800</pubDate>
       
-      <guid>http://sunnote.xyz/study-tour-in-cebu-daily-life-part-2/</guid>
+      <guid>http://sunnote.xyz/cebu/daily-life-part2/</guid>
       <description>&lt;p&gt;Jsut want to record the daily life of the language school and the environment of city when I lived in Cebu. My purpose at that time was increase english skills for interview, So there is no itinerary such as island hopping or nightlife.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Study tour in Cebu - Daily life Part 1</title>
-      <link>http://sunnote.xyz/study-tour-in-cebu-daily-life-part-1/</link>
+      <link>http://sunnote.xyz/cebu/daily-life-part1/</link>
       <pubDate>Wed, 30 Nov 2022 16:28:53 +0800</pubDate>
       
-      <guid>http://sunnote.xyz/study-tour-in-cebu-daily-life-part-1/</guid>
+      <guid>http://sunnote.xyz/cebu/daily-life-part1/</guid>
       <description>&lt;p&gt;Jsut want to record the daily life of the language school and the environment of city when I lived in Cebu. My purpose at that time was increase english skills for interview, So there is no itinerary such as island hopping or nightlife.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Study tour in Cebu - pre-departure mood record</title>
-      <link>http://sunnote.xyz/study-tour-in-cebu-pre-departure-mood-record/</link>
+      <link>http://sunnote.xyz/cebu/pre-departure-mood-record/</link>
       <pubDate>Tue, 29 Nov 2022 16:28:53 +0800</pubDate>
       
-      <guid>http://sunnote.xyz/study-tour-in-cebu-pre-departure-mood-record/</guid>
+      <guid>http://sunnote.xyz/cebu/pre-departure-mood-record/</guid>
       <description></description>
     </item>
     
