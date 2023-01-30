@@ -819,8 +819,9 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 	float: left;
 	margin: 0 6px 6px 0;
 	margin: 0 .375rem .375rem 0;
-	text-transform: uppercase;
 	background: #2a2a2a;
+	border-radius: 10px;
+	text-decoration: underline;
 }
 
 .tags__item:hover {
@@ -830,7 +831,7 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 .tags__link,
 .tags__link:hover {
 	display: block;
-	padding: 10px 15px;
+	padding: 10px 10px;
 }
 
 .tags__badge {
@@ -841,6 +842,7 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 	margin-right: 6px;
 	background: #ACD6FF;
 	fill: #fff;
+	border-radius: 10px;
 }
 
 /* Table of Contents */
