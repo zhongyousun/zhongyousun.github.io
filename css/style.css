@@ -187,6 +187,11 @@ flip card ref: https://3dtransforms.desandro.com/card-flip
     color: #C5C5C5 !important;
     box-shadow: none;
 }
+.darkmodecolor #toggle-sidebar{
+	border-color:rgb(255, 255, 255);
+	border-width:1px
+}
+
 
 /* Button */
 
@@ -210,6 +215,12 @@ flip card ref: https://3dtransforms.desandro.com/card-flip
     right: 5px;
 	width:30px;
 	height:30px;
+  }
+#toggle-sidebar:hover {
+    transform: translateY(-0.1px);
+  }
+#toggle-sidebar:active {
+    transform: translateY(-1px) scale(.98);
   }
 @media (max-width: 991px) {
 	button#toggle-sidebar {
