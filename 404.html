@@ -220,6 +220,10 @@ please feel free to contact me, Thanks. 🙂<br>
 	</div>
 <script async defer src="/js/menu.js"></script>
 <script src="/js/custom.js"></script>
+<button id="toggle-sidebar"><img src="https://www.svgrepo.com/show/309910/reading-mode.svg"></button>
+
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
@@ -283,4 +287,17 @@ please feel free to contact me, Thanks. 🙂<br>
 
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+
+<script>
+const toggleButton = document.getElementById('toggle-sidebar');
+const asideElement = document.querySelector("aside.sidebar");
+toggleButton.addEventListener('click', function() {
+  if (asideElement.style.display === 'none') {
+    asideElement.style.display = 'block';
+  } else {
+    asideElement.style.display = 'none';
+  }
+});
 </script>

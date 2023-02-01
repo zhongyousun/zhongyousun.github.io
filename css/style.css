@@ -89,6 +89,7 @@ body {
 	order: 2;
 	min-width: 0;
 	margin: 0 0 0 2.5%;
+	display: block;
 }
 
 .sidebar--left {
@@ -203,6 +204,18 @@ flip card ref: https://3dtransforms.desandro.com/card-flip
 	background: #ACD6FF;
 }
 
+#toggle-sidebar {
+	position: fixed;
+	top: 50px;
+    right: 5px;
+	width:30px;
+	height:30px;
+  }
+@media (max-width: 991px) {
+	button#toggle-sidebar {
+	  display: none;
+	}
+  }
 /* Animation */
 .menu__item,
 .btn {
