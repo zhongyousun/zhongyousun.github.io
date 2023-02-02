@@ -427,8 +427,8 @@ please feel free to contact me, Thanks. 🙂<br>
 </script>
 
 
-<script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
 
+<script src="https://sunnote.xyz/js-pkg/BackToTopButton.js"></script>
 <script>addBackToTop({
   diameter: 52,
   backgroundColor: 'rgb(172, 214, 255)',
@@ -451,8 +451,10 @@ const asideElement = document.querySelector("aside.sidebar");
 toggleButton.addEventListener('click', function() {
   if (asideElement.style.display === 'none') {
     asideElement.style.display = 'block';
+	document.querySelector(".toc-side").className = "post__toc toc";
   } else {
     asideElement.style.display = 'none';
+	document.querySelector(".post__toc.toc").className = "toc-side";
   }
 });
 </script>

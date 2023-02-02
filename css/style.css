@@ -886,6 +886,22 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 	margin-bottom: 100px;
 	border-radius:10px 10px 10px 10px;
 }
+.toc-side {
+	position: fixed;
+	top: 100px;
+	right: 5px;
+	width: 200px;
+	background-color: white;
+	padding: 20px;
+	display: block;
+	border-radius: 15px;
+}
+
+@media screen and (max-width: 1300px) {
+	.toc-side {
+		display: none;
+	}
+}
 
 .toc__title {
 	padding: 5px 10px;
@@ -945,7 +961,7 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 .authorbox {
 	padding: 25px 0;
 	margin-bottom: 25px;
-	line-height: 1.5;
+	line-height: 1.6;
 	border-top: 1px solid #ebebeb;
 	border-bottom: 1px solid #ebebeb;
 }
