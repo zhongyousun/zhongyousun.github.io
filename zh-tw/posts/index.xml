@@ -8,7 +8,7 @@
     <language>zh-tw</language>
     <lastBuildDate>Tue, 07 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>SQL-partition by 實現資料分割</title>
+      <title>SQL-partition by 實現資料分組</title>
       <link>http://sunnote.xyz/zh-tw/tutorials/sql-partition-by/</link>
       <pubDate>Tue, 07 Feb 2023 00:00:00 +0000</pubDate>
       
@@ -27,7 +27,7 @@
     </item>
     
     <item>
-      <title>C# Enum(枚舉)</title>
+      <title>C# Enum(枚舉) 用法紀錄</title>
       <link>http://sunnote.xyz/zh-tw/tutorials/csharp-enum/</link>
       <pubDate>Sun, 15 Jan 2023 08:49:07 +0800</pubDate>
       
@@ -177,7 +177,7 @@
     <item>
       <title>文章歸檔</title>
       <link>http://sunnote.xyz/zh-tw/archives/</link>
-      <pubDate>Sat, 01 Jan 2022 16:28:53 +0800</pubDate>
+      <pubDate>Sun, 20 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>http://sunnote.xyz/zh-tw/archives/</guid>
       <description>歷史文章按照年月歸檔</description>
@@ -186,7 +186,7 @@
     <item>
       <title>站內查詢</title>
       <link>http://sunnote.xyz/zh-tw/search/</link>
-      <pubDate>Sat, 01 Jan 2022 16:28:53 +0800</pubDate>
+      <pubDate>Sun, 20 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>http://sunnote.xyz/zh-tw/search/</guid>
       <description>search</description>

@@ -27,7 +27,7 @@ None of the projects encountered so far have a hard requirement to use multi-thr
     </item>
     
     <item>
-      <title>C# Enum</title>
+      <title>C# Enum Usage Record</title>
       <link>http://sunnote.xyz/tutorials/csharp-enum/</link>
       <pubDate>Sun, 15 Jan 2023 08:49:07 +0800</pubDate>
       
@@ -132,7 +132,7 @@ Unfortunately, I never encountered this problem on my job yet&amp;hellip;&lt;/p&
     <item>
       <title>Archives</title>
       <link>http://sunnote.xyz/archives/</link>
-      <pubDate>Sat, 01 Jan 2022 16:28:53 +0800</pubDate>
+      <pubDate>Sun, 20 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>http://sunnote.xyz/archives/</guid>
       <description></description>
@@ -141,7 +141,7 @@ Unfortunately, I never encountered this problem on my job yet&amp;hellip;&lt;/p&
     <item>
       <title>Site Search</title>
       <link>http://sunnote.xyz/search/</link>
-      <pubDate>Sat, 01 Jan 2022 16:28:53 +0800</pubDate>
+      <pubDate>Sun, 20 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>http://sunnote.xyz/search/</guid>
       <description>search.</description>

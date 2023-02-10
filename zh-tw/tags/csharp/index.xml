@@ -8,7 +8,7 @@
     <language>zh-tw</language>
     <lastBuildDate>Tue, 07 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>SQL-partition by 實現資料分割</title>
+      <title>SQL-partition by 實現資料分組</title>
       <link>http://sunnote.xyz/zh-tw/tutorials/sql-partition-by/</link>
       <pubDate>Tue, 07 Feb 2023 00:00:00 +0000</pubDate>
       
@@ -27,7 +27,7 @@
     </item>
     
     <item>
-      <title>C# Enum(枚舉)</title>
+      <title>C# Enum(枚舉) 用法紀錄</title>
       <link>http://sunnote.xyz/zh-tw/tutorials/csharp-enum/</link>
       <pubDate>Sun, 15 Jan 2023 08:49:07 +0800</pubDate>
       

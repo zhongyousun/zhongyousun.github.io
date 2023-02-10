@@ -388,7 +388,7 @@
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/archives/</loc>
-    <lastmod>2022-01-01T16:28:53+08:00</lastmod>
+    <lastmod>2022-11-20T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -403,7 +403,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/search/</loc>
-    <lastmod>2022-01-01T16:28:53+08:00</lastmod>
+    <lastmod>2022-11-20T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
