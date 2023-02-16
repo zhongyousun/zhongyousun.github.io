@@ -133,7 +133,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-11-29T14:58:22&#43;08:00">November 29, 2022</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/zh-tw/categories/%E7%B4%94%E7%B2%B9%E5%88%86%E4%BA%AB/" rel="category">純粹分享</a>, <a class="meta__link" href="/zh-tw/categories/%E8%8B%B1%E6%96%87%E5%AD%B8%E7%BF%92/" rel="category">英文學習</a>
 	</span>
 </div>
-				
+
 				
 				
 				<span>　💬 : 3 min read.</span>
@@ -141,10 +141,11 @@ if (!doNotTrack) {
 
 
 				<span id="busuanzi_container_page_pv">
-					　👁‍🗨️ : <span id="busuanzi_value_page_pv"></span>
-					  
+					　👁‍🗨️ : <span
+						id="busuanzi_value_page_pv"></span>
+
 				</span>
-				
+
 			</div>
 		</header>
 		
@@ -249,16 +250,189 @@ if (!doNotTrack) {
 </section>
 
 <div>
-	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img
+			src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
 </div>
 
-<script src="https://utteranc.es/client.js"
-  repo="zhongyousun/messageboard"
-  issue-term="pathname"
-  theme="github-light"
-  crossorigin="anonymous"
-  async>
-</script> 
+
+
+<style>
+	.nav {
+		display: inline-flex;
+		position: relative;
+		overflow: hidden;
+		max-width: 100%;
+		background-color: #fff;
+		padding: 0 20px;
+		border-radius: 40px;
+		box-shadow: 0 10px 40px rgba(255, 255, 255, 0.8);
+		display: flex;
+		justify-content: center;
+
+	}
+
+	.nav-item {
+		color: #83818c;
+		padding: 20px;
+		text-decoration: none;
+		transition: .3s;
+		margin: 0 6px;
+		z-index: 1;
+		font-family: 'DM Sans', sans-serif;
+		font-weight: 500;
+		position: relative;
+
+		&:before {
+			content: "";
+			position: absolute;
+			bottom: -6px;
+			left: 0;
+			width: 100%;
+			height: 5px;
+			background-color: #dfe2ea;
+			border-radius: 8px 8px 0 0;
+			opacity: 0;
+			transition: .3s;
+		}
+	}
+
+	.nav-item:not(.is-active):hover:before {
+		opacity: 1;
+		bottom: 0;
+	}
+
+
+	.nav-item:not(.is-active):hover {
+		color: #333;
+	}
+
+	.nav-indicator {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		height: 4px;
+		transition: .4s;
+		height: 5px;
+		z-index: 1;
+		border-radius: 8px 8px 0 0;
+	}
+
+	.nav-item {
+		border: none;
+		outline: none;
+		background-color: #fff;
+	}
+
+	@media (max-width: 580px) {
+		.nav {
+			overflow: auto;
+		}
+	}
+</style>
+<br>
+<br>
+<br>
+<p>board</p>
+<br>
+<br><br>
+<nav class="nav">
+	<button id="github-btn" class="nav-item is-active" active-color="#ACD6FF">Github</button>
+	<button id="disqus-btn" class="nav-item" active-color="#ACD6FF">Disqus</button>
+	<button id="fb-btn" class="nav-item" active-color="#ACD6FF">FB</button>
+	<span class="nav-indicator"></span>
+</nav>
+
+<script>
+	const indicator = document.querySelector('.nav-indicator');
+	const items = document.querySelectorAll('.nav-item');
+
+	function handleIndicator(el) {
+		items.forEach(item => {
+			item.classList.remove('is-active');
+			item.removeAttribute('style');
+		});
+
+		indicator.style.width = `${el.offsetWidth}px`;
+		indicator.style.left = `${el.offsetLeft}px`;
+		indicator.style.backgroundColor = el.getAttribute('active-color');
+
+		el.classList.add('is-active');
+		el.style.color = el.getAttribute('active-color');
+	}
+
+
+	items.forEach((item, index) => {
+		item.addEventListener('click', (e) => { handleIndicator(e.target) });
+		item.classList.contains('is-active') && handleIndicator(item);
+	});
+
+
+</script>
+<br><br>
+
+
+<div id="disqus-comments" class="comments markdown">
+	<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    
+    
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'sun';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+
+</div>
+
+<div id="utterances-comments" class="comments markdown" style="display: none;">
+	<script src="https://utteranc.es/client.js" repo="zhongyousun/messageboard" issue-term="pathname"
+		theme="github-light" crossorigin="anonymous" async>
+		</script>
+</div>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+	src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0&appId=725315935966817&autoLogAppEvents=1"
+	nonce="jztcRVgA"></script>
+<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width=""
+	data-numposts="5"></div>
+
+<script>
+
+	
+	const githubBtn = document.getElementById("github-btn");
+	const disqusBtn = document.getElementById("disqus-btn");
+	const fbBtn = document.getElementById("fb-btn");
+
+	
+	const githubBoard = document.getElementById("utterances-comments");
+	const disqusBoard = document.getElementById("disqus-comments");
+	const fbBoard = document.getElementById("fb-comments");
+	
+	githubBtn.addEventListener("click", function () {
+		githubBoard.style.display = "block";
+		disqusBoard.style.display = "none";
+		fbBoard.style.display = "none";
+	});
+	disqusBtn.addEventListener("click", function () {
+		githubBoard.style.display = "none";
+		disqusBoard.style.display = "block";
+		fbBoard.style.display = "none";
+	});
+	fbBtn.addEventListener("click", function () {
+		githubBoard.style.display = "none";
+		disqusBoard.style.display = "none";
+		fbBoard.style.display = "block";
+	});
+</script>
+
+
+
 
 			</div>
 			<aside class="sidebar">
