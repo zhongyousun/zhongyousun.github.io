@@ -390,7 +390,7 @@ But I have curfew, I don&rsquo;t really want to spend the night outside, so I go
 		left: 0;
 		bottom: 0;
 		height: 4px;
-		transition: .4s;
+		transition: .5s;
 		height: 5px;
 		z-index: 1;
 		border-radius: 8px 8px 0 0;
@@ -409,15 +409,11 @@ But I have curfew, I don&rsquo;t really want to spend the night outside, so I go
 	}
 </style>
 <br>
-<br>
-<br>
-<p>board</p>
-<br>
-<br><br>
+
 <nav class="nav">
-	<button id="github-btn" class="nav-item is-active" active-color="#ACD6FF">Github</button>
+	<button id="fb-btn" class="nav-item is-active" active-color="#ACD6FF">Facebook</button>
+	<button id="github-btn" class="nav-item" active-color="#ACD6FF">Github</button>
 	<button id="disqus-btn" class="nav-item" active-color="#ACD6FF">Disqus</button>
-	<button id="fb-btn" class="nav-item" active-color="#ACD6FF">FB</button>
 	<span class="nav-indicator"></span>
 </nav>
 
@@ -450,7 +446,7 @@ But I have curfew, I don&rsquo;t really want to spend the night outside, so I go
 <br><br>
 
 
-<div id="disqus-comments" class="comments markdown">
+<div id="disqus-comments" class="comments markdown" style="display: none;">
 	<div id="disqus_thread"></div>
 <script type="text/javascript">
 
@@ -476,10 +472,9 @@ But I have curfew, I don&rsquo;t really want to spend the night outside, so I go
 </div>
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous"
-	src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0&appId=725315935966817&autoLogAppEvents=1"
-	nonce="jztcRVgA"></script>
-<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width=""
-	data-numposts="5"></div>
+	src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0&appId= 725315935966817&autoLogAppEvents=1"
+	nonce="nrLIREBy"></script>
+<div id="facebook-comments" class="fb-comments" data-href="https://sunnote.xyz/" data-width="100%" data-numposts="5" style="display: block;"></div>
 
 <script>
 
@@ -491,7 +486,7 @@ But I have curfew, I don&rsquo;t really want to spend the night outside, so I go
 	
 	const githubBoard = document.getElementById("utterances-comments");
 	const disqusBoard = document.getElementById("disqus-comments");
-	const fbBoard = document.getElementById("fb-comments");
+	const fbBoard = document.getElementById("facebook-comments");
 	
 	githubBtn.addEventListener("click", function () {
 		githubBoard.style.display = "block";
@@ -509,7 +504,6 @@ But I have curfew, I don&rsquo;t really want to spend the night outside, so I go
 		fbBoard.style.display = "block";
 	});
 </script>
-
 
 
 
