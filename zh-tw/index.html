@@ -1,37 +1,44 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zh-tw">
+
 <head>
 	<meta name="generator" content="Hugo 0.108.0">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0"></script>
+
+	<div id="fb-root"></div>
+	<script async defer crossorigin="anonymous"
+		src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0&appId=725315935966817&autoLogAppEvents=1"
+		nonce="3mlRVE2G"></script>
 	<meta property="fb:app_id" content="&#123;725315935966817&#125;" />
 	<title>Sun 記事</title>
-	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="Life is tough, but so are you.">
-		<meta property="og:title" content="Sun 記事" />
+	<script>(function (d, e) { d[e] = d[e].replace("no-js", "js"); })(document.documentElement, "className");</script>
+	<meta name="description"
+		content="Life is tough, but so are you.">
+	<meta property="og:title" content="Sun 記事" />
 <meta property="og:description" content="Life is tough, but so are you." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://sunnote.xyz/zh-tw/" />
 
-		<meta itemprop="name" content="Sun 記事">
+	<meta itemprop="name" content="Sun 記事">
 <meta itemprop="description" content="Life is tough, but so are you.">
-		<meta name="twitter:card" content="summary"/>
+	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Sun 記事"/>
 <meta name="twitter:description" content="Life is tough, but so are you."/>
 
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" >
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
+	
 	<link rel="alternate" type="application/rss+xml" href="/zh-tw/index.xml" title="Sun 記事">
 
-	<link rel="shortcut icon" href="/favicon.ico">
-		
+	<link rel="shortcut icon" href="/%20favicon.ico">
+	
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MWPM4C5TJS"></script>
 <script>
 var doNotTrack = false;
@@ -45,6 +52,7 @@ if (!doNotTrack) {
 
 
 </head>
+
 <body class="body">
 	<div class="container container--outer">
 		<header class="header">
@@ -117,7 +125,7 @@ if (!doNotTrack) {
 
 		<div class="wrapper flex">
 			<div class="primary">
-			
+				
 <main class="main list" role="main">
 	
 <article class="list__item post">
@@ -370,56 +378,57 @@ if (!doNotTrack) {
 
 <script src="/js/copy-to-clipboard.js"></script>
 	</div>
-<script async defer src="/js/menu.js"></script>
-<script src="/js/custom.js"></script>
-<button id="toggle-sidebar"><img src="/svg/glasses_lightgray.svg"></button>
+	<script async defer src="/%20js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	<button id="toggle-sidebar"><img src="/svg/glasses_lightgray.svg"></button>
 
 
+	
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
-
-<div class="scene scene--card sundarkmodep">
-	<div class="card">
-	  <div class="card__face card__face--front"><span class="fa fa-moon" aria-hidden="true"></div>
-	  <div class="card__face card__face--back"><span class="fa fa-sun" aria-hidden="true"></div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+	
+	<div class="scene scene--card sundarkmodep">
+		<div class="card">
+			<div class="card__face card__face--front"><span class="fa fa-moon" aria-hidden="true"></div>
+			<div class="card__face card__face--back"><span class="fa fa-sun" aria-hidden="true"></div>
+		</div>
 	</div>
-</div>
-    
-<script type="text/javascript">
-	var card = document.querySelector('.card');
-	card.addEventListener( 'click', function() {
-	  card.classList.toggle('is-flipped');          
-  });
-</script>  
+	
+	<script type="text/javascript">
+		var card = document.querySelector('.card');
+		card.addEventListener('click', function () {
+			card.classList.toggle('is-flipped');
+		});
+	</script>
 
 
 
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	
 
+	<script>
+		$('.sundarkmodep').click(function () {
+			if ($('*').hasClass("darkmodecolor")) {
+				localStorage.setItem("darkmodeStatus", "sunmode");
+			} else if (!$('.main-body').hasClass("darkmodecolor")) {
+				localStorage.setItem("darkmodeStatus", "darkmode");
+			}
+			$('*').toggleClass("darkmodecolor");
+		});
 
+		var darkmodeStatus = localStorage.getItem("darkmodeStatus");
 
-<script>
-	$('.sundarkmodep').click(function() {
-		if ($('*').hasClass("darkmodecolor")) {
-			localStorage.setItem("darkmodeStatus", "sunmode");
-		} else if (!$('.main-body').hasClass("darkmodecolor")) {
-			localStorage.setItem("darkmodeStatus", "darkmode");
+		if (darkmodeStatus == "darkmode") {
+			$('*').addClass("darkmodecolor");
 		}
-		$('*').toggleClass("darkmodecolor");
-	});
-
-	var darkmodeStatus = localStorage.getItem("darkmodeStatus");
-
-	if (darkmodeStatus == "darkmode") {
-		$('*').addClass("darkmodecolor");
-	}
-</script>
+	</script>
 
 
 </body>
+
 </html>
 
 
@@ -429,12 +438,12 @@ if (!doNotTrack) {
 
 <script src="https://sunnote.xyz/js-pkg/BackToTopButton.js"></script>
 <script>addBackToTop({
-  diameter: 52,
-  backgroundColor: 'rgb(172, 214, 255)',
-  textColor: '#fff',
-  scrollDuration:300,
-  showWhenScrollTopIs:800
-})</script>
+		diameter: 52,
+		backgroundColor: 'rgb(172, 214, 255)',
+		textColor: '#fff',
+		scrollDuration: 300,
+		showWhenScrollTopIs: 800
+	})</script>
 
 
 
@@ -445,15 +454,15 @@ if (!doNotTrack) {
 
 
 <script>
-const toggleButton = document.getElementById('toggle-sidebar');
-const asideElement = document.querySelector("aside.sidebar");
-toggleButton.addEventListener('click', function() {
-  if (asideElement.style.display === 'none') {
-    asideElement.style.display = 'block';
-	document.querySelector(".toc-side").className = "post__toc toc";
-  } else {
-    asideElement.style.display = 'none';
-	document.querySelector(".post__toc.toc").className = "toc-side";
-  }
-});
+	const toggleButton = document.getElementById('toggle-sidebar');
+	const asideElement = document.querySelector("aside.sidebar");
+	toggleButton.addEventListener('click', function () {
+		if (asideElement.style.display === 'none') {
+			asideElement.style.display = 'block';
+			document.querySelector(".toc-side").className = "post__toc toc";
+		} else {
+			asideElement.style.display = 'none';
+			document.querySelector(".post__toc.toc").className = "toc-side";
+		}
+	});
 </script>
