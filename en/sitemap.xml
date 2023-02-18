@@ -17,19 +17,34 @@
                 href="http://sunnote.xyz/categories/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/tags/csharp/</loc>
-    <lastmod>2023-02-07T00:00:00+00:00</lastmod>
+    <loc>http://sunnote.xyz/tags/hugo/</loc>
+    <lastmod>2023-02-16T10:11:38+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/csharp/"
+                href="http://sunnote.xyz/zh-tw/tags/hugo/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://sunnote.xyz/tags/csharp/"
+                href="http://sunnote.xyz/tags/hugo/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tutorials/hugo-multiple-comments/</loc>
+    <lastmod>2023-02-16T10:11:38+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tutorials/hugo-multiple-comments/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tutorials/hugo-multiple-comments/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/posts/</loc>
@@ -48,39 +63,9 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/categories/program/</loc>
-    <lastmod>2023-02-07T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-16T10:11:38+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
-  </url><url>
-    <loc>http://sunnote.xyz/tags/sql/</loc>
-    <lastmod>2023-02-07T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/sql/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/sql/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/tutorials/sql-partition-by/</loc>
-    <lastmod>2023-02-07T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tutorials/sql-partition-by/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tutorials/sql-partition-by/"
-                />
   </url><url>
     <loc>http://sunnote.xyz/</loc>
     <lastmod>2023-12-30T00:00:00+00:00</lastmod>
@@ -110,6 +95,51 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://sunnote.xyz/tags/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tags/csharp/</loc>
+    <lastmod>2023-02-07T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/csharp/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/csharp/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tags/sql/</loc>
+    <lastmod>2023-02-07T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/sql/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/sql/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tutorials/sql-partition-by/</loc>
+    <lastmod>2023-02-07T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tutorials/sql-partition-by/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tutorials/sql-partition-by/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/csharp-multithreading/</loc>
