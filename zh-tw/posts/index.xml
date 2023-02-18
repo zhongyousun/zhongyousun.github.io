@@ -22,7 +22,7 @@
       <pubDate>Tue, 07 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>http://sunnote.xyz/zh-tw/tutorials/sql-partition-by/</guid>
-      <description>&lt;p&gt;使用SQL &lt;code&gt;partition by&lt;/code&gt; 實現資料分割，比較LINQ與partition by效能。&lt;/p&gt;</description>
+      <description>&lt;p&gt;使用SQL partition by 實現資料分割，比較LINQ與partition by效能。&lt;/p&gt;</description>
     </item>
     
     <item>

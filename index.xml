@@ -22,7 +22,7 @@
       <pubDate>Tue, 07 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>http://sunnote.xyz/tutorials/sql-partition-by/</guid>
-      <description>&lt;p&gt;Implement data partitioning using SQL &lt;code&gt;partition by&lt;/code&gt; and compare the performance with LINQ.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Implement data partitioning using SQL partition by and compare the performance with LINQ.&lt;/p&gt;</description>
     </item>
     
     <item>

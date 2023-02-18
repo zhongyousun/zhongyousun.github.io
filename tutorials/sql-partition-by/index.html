@@ -10,22 +10,23 @@
 	<title>SQL-implement data partitioning (partition by) - Sun Notes</title>
 	<script>(function (d, e) { d[e] = d[e].replace("no-js", "js"); })(document.documentElement, "className");</script>
 	<meta name="description"
-		content="Example article description">
+		content="Implement data partitioning using SQL partition by and compare the performance with LINQ.">
 	<meta property="og:title" content="SQL-implement data partitioning (partition by)" />
-<meta property="og:description" content="Example article description" />
+<meta property="og:description" content="Implement data partitioning using SQL partition by and compare the performance with LINQ." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://sunnote.xyz/tutorials/sql-partition-by/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-02-07T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-02-07T00:00:00+00:00" /><meta property="og:site_name" content="Sun Notes" />
 
+
 	<meta itemprop="name" content="SQL-implement data partitioning (partition by)">
-<meta itemprop="description" content="Example article description"><meta itemprop="datePublished" content="2023-02-07T00:00:00+00:00" />
+<meta itemprop="description" content="Implement data partitioning using SQL partition by and compare the performance with LINQ."><meta itemprop="datePublished" content="2023-02-07T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-02-07T00:00:00+00:00" />
 <meta itemprop="wordCount" content="361">
 <meta itemprop="keywords" content="SQL,Csharp," />
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="SQL-implement data partitioning (partition by)"/>
-<meta name="twitter:description" content="Example article description"/>
+<meta name="twitter:description" content="Implement data partitioning using SQL partition by and compare the performance with LINQ."/>
 
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -54,23 +55,23 @@ if (!doNotTrack) {
 <body class="body">
 	
 	<script>
-		window.fbAsyncInit = function() {
-		  FB.init({
-			appId      : '725315935966817',
-			xfbml      : true,
-			version    : 'v16.0'
-		  });
-		  FB.AppEvents.logPageView();
+		window.fbAsyncInit = function () {
+			FB.init({
+				appId: '725315935966817',
+				xfbml: true,
+				version: 'v16.0'
+			});
+			FB.AppEvents.logPageView();
 		};
-	  
-		(function(d, s, id){
-		   var js, fjs = d.getElementsByTagName(s)[0];
-		   if (d.getElementById(id)) {return;}
-		   js = d.createElement(s); js.id = id;
-		   js.src = "https://connect.facebook.net/en_US/sdk.js";
-		   fjs.parentNode.insertBefore(js, fjs);
-		 }(document, 'script', 'facebook-jssdk'));
-	  </script>
+
+		(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) { return; }
+			js = d.createElement(s); js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
 
 
 	<div class="container container--outer">
@@ -202,7 +203,7 @@ if (!doNotTrack) {
 </nav>
 	</div>
 </div><div class="content post__content clearfix">
-			<p>Implement data partitioning using SQL <code>partition by</code> and compare the performance with LINQ.</p>
+			<p>Implement data partitioning using SQL partition by and compare the performance with LINQ.</p>
 <h3 id="foreword">Foreword</h3>
 <p>The data I received this time is the GPS positioning data of the trucks, including truck-related information, latitude and longitude, direction of travel, current speed, etc. The data volume is quite large because the data update frequency is once per 15 minutes. However, I only need to provide the latest information of all trucks, so that the front-end can display it on the map.</p>
 <h3 id="using-linq">Using LINQ</h3>
@@ -556,7 +557,7 @@ LINQ is very convenient!!😂</p>
 
 <script src="/js/copy-to-clipboard.js"></script>
 	</div>
-	<script async defer src="/%20js/menu.js"></script>
+	<script async defer src="/js/menu.js"></script>
 	<script src="/js/custom.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
 

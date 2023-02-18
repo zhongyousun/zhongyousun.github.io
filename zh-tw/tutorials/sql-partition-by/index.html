@@ -10,22 +10,23 @@
 	<title>SQL-partition by 實現資料分組 - Sun 記事</title>
 	<script>(function (d, e) { d[e] = d[e].replace("no-js", "js"); })(document.documentElement, "className");</script>
 	<meta name="description"
-		content="">
+		content="使用SQL partition by 實現資料分割，比較LINQ與partition by效能">
 	<meta property="og:title" content="SQL-partition by 實現資料分組" />
-<meta property="og:description" content="使用SQL partition by 實現資料分割，比較LINQ與partition by效能。" />
+<meta property="og:description" content="使用SQL partition by 實現資料分割，比較LINQ與partition by效能" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://sunnote.xyz/zh-tw/tutorials/sql-partition-by/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-02-07T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-02-07T00:00:00+00:00" />
 
+
 	<meta itemprop="name" content="SQL-partition by 實現資料分組">
-<meta itemprop="description" content="使用SQL partition by 實現資料分割，比較LINQ與partition by效能。"><meta itemprop="datePublished" content="2023-02-07T00:00:00+00:00" />
+<meta itemprop="description" content="使用SQL partition by 實現資料分割，比較LINQ與partition by效能"><meta itemprop="datePublished" content="2023-02-07T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-02-07T00:00:00+00:00" />
 <meta itemprop="wordCount" content="128">
 <meta itemprop="keywords" content="SQL,Csharp," />
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="SQL-partition by 實現資料分組"/>
-<meta name="twitter:description" content="使用SQL partition by 實現資料分割，比較LINQ與partition by效能。"/>
+<meta name="twitter:description" content="使用SQL partition by 實現資料分割，比較LINQ與partition by效能"/>
 
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -54,23 +55,23 @@ if (!doNotTrack) {
 <body class="body">
 	
 	<script>
-		window.fbAsyncInit = function() {
-		  FB.init({
-			appId      : '725315935966817',
-			xfbml      : true,
-			version    : 'v16.0'
-		  });
-		  FB.AppEvents.logPageView();
+		window.fbAsyncInit = function () {
+			FB.init({
+				appId: '725315935966817',
+				xfbml: true,
+				version: 'v16.0'
+			});
+			FB.AppEvents.logPageView();
 		};
-	  
-		(function(d, s, id){
-		   var js, fjs = d.getElementsByTagName(s)[0];
-		   if (d.getElementById(id)) {return;}
-		   js = d.createElement(s); js.id = id;
-		   js.src = "https://connect.facebook.net/en_US/sdk.js";
-		   fjs.parentNode.insertBefore(js, fjs);
-		 }(document, 'script', 'facebook-jssdk'));
-	  </script>
+
+		(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) { return; }
+			js = d.createElement(s); js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
 
 
 	<div class="container container--outer">
@@ -201,7 +202,7 @@ if (!doNotTrack) {
 </nav>
 	</div>
 </div><div class="content post__content clearfix">
-			<p>使用SQL <code>partition by</code> 實現資料分割，比較LINQ與partition by效能。</p>
+			<p>使用SQL partition by 實現資料分割，比較LINQ與partition by效能。</p>
 <h3 id="前言">前言</h3>
 <p>這次拿到的是貨車GPS定位的資料，包含貨車相關資訊、經緯度、行進方向、當下車速之類的。因為資料更新頻率每15分鐘一次，所以資料量算是非常龐大，而我只需要給出所有貨車當下的最新資訊，讓前端能顯示在地圖上。</p>
 <h3 id="使用linq">使用LINQ</h3>
@@ -564,7 +565,7 @@ LINQ好好用!!😂</p>
 
 <script src="/js/copy-to-clipboard.js"></script>
 	</div>
-	<script async defer src="/%20js/menu.js"></script>
+	<script async defer src="/js/menu.js"></script>
 	<script src="/js/custom.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
 
