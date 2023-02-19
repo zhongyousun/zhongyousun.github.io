@@ -97,6 +97,31 @@
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>http://sunnote.xyz/zh-tw/tags/%E7%94%9F%E6%B4%BB/</loc>
+    <lastmod>2023-02-14T10:11:38+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/zh-tw/categories/%E7%B4%94%E7%B2%B9%E5%88%86%E4%BA%AB/</loc>
+    <lastmod>2023-02-14T10:11:38+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/zh-tw/life/valentine-gift-marimo/</loc>
+    <lastmod>2023-02-14T10:11:38+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/life/valentine-gift-marimo/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/life/valentine-gift-marimo/"
+                />
+  </url><url>
     <loc>http://sunnote.xyz/zh-tw/tags/csharp/</loc>
     <lastmod>2023-02-07T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
@@ -378,11 +403,6 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/categories/%E8%8B%B1%E6%96%87%E5%AD%B8%E7%BF%92/</loc>
-    <lastmod>2022-11-29T14:58:22+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://sunnote.xyz/zh-tw/categories/%E7%B4%94%E7%B2%B9%E5%88%86%E4%BA%AB/</loc>
     <lastmod>2022-11-29T14:58:22+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>

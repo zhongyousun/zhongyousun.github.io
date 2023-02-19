@@ -97,6 +97,31 @@
                 href="http://sunnote.xyz/tags/"
                 />
   </url><url>
+    <loc>http://sunnote.xyz/categories/just-sharing/</loc>
+    <lastmod>2023-02-14T10:11:38+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/tags/life/</loc>
+    <lastmod>2023-02-14T10:11:38+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/life/valentine-gift-marimo/</loc>
+    <lastmod>2023-02-14T10:11:38+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/life/valentine-gift-marimo/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/life/valentine-gift-marimo/"
+                />
+  </url><url>
     <loc>http://sunnote.xyz/tags/csharp/</loc>
     <lastmod>2023-02-07T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>

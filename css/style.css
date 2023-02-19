@@ -249,7 +249,7 @@ h6 {
 
 h1 {
 	font-size: 32px;
-	font-size: 2rem;
+	/* font-size: 2rem; */
 }
 
 h2 {
@@ -1004,7 +1004,7 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 
 .list__title {
 	font-size: 20px;
-	font-size: 1.25rem;
+	/* font-size: 1.25rem; */
 }
 
 .list__meta {
