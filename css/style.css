@@ -191,8 +191,9 @@ flip card ref: https://3dtransforms.desandro.com/card-flip
 	border-color:rgb(255, 255, 255);
 	border-width:1px
 }
-
-
+.darkmodecolor span.nav-indicator{
+    background-color: #ACD6FF !important;
+}
 /* Button */
 
 .btn {
