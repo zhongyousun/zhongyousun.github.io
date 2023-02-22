@@ -1104,7 +1104,9 @@ img {
 	margin:auto;
 	display: block;
 }
-
+figcaption{
+	text-align:center;
+}
 iframe,
 embed,
 object,
