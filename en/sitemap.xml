@@ -402,6 +402,21 @@
                 href="http://sunnote.xyz/cebu/pre-departure-mood-record/"
                 />
   </url><url>
+    <loc>http://sunnote.xyz/about/</loc>
+    <lastmod>2022-11-20T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/about/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/about/"
+                />
+  </url><url>
     <loc>http://sunnote.xyz/archives/</loc>
     <lastmod>2022-11-20T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
