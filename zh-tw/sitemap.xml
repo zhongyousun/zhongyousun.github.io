@@ -466,5 +466,10 @@
                 hreflang="zh-tw"
                 href="http://sunnote.xyz/zh-tw/search/"
                 />
+  </url><url>
+    <loc>http://sunnote.xyz/zh-tw/about/</loc>
+    <lastmod>2022-11-20T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>

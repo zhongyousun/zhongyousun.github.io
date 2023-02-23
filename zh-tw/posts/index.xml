@@ -210,5 +210,14 @@
       <description>search</description>
     </item>
     
+    <item>
+      <title>關於</title>
+      <link>http://sunnote.xyz/zh-tw/about/</link>
+      <pubDate>Sun, 20 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/about/</guid>
+      <description>關於</description>
+    </item>
+    
   </channel>
 </rss>
