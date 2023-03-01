@@ -34,7 +34,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" >
 
 	<link rel="stylesheet" href="/css/style.css">
-	
+	<link rel="stylesheet" href="/css/carousel.css">
 
 	<link rel="shortcut icon" href="/favicon.ico">
 	
@@ -149,6 +149,32 @@ if (!doNotTrack) {
 
 
 
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"></link>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"></link>
+<style>
+	.owl-theme .item {
+	  height: 15rem;
+	   
+	  background-color: rgba(245, 245, 245, 0.3);
+	  padding: 0.5rem;
+	  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1); 
+	}
+	
+	.owl-carousel .item h4 {
+	  color: #000000;
+	  font-weight: 400;
+	  font-size: 1rem;
+	  margin-top: 0rem;
+	}
+	.owl-carousel .item img {
+	  width: 100%;
+	  height: 7rem;
+	  border-radius: 4px;
+	}
+</style>
 
 <main class="main" role="main">
 	<article class="post">
@@ -292,50 +318,72 @@ LINQ好好用!!😂</p>
 </main>
 
 
+<hr>
+<div class="related-content">
+
+<h3>也可以看看</h3>
+
+<div class="owl-carousel owl-theme">
+	<div class="item">
 		
-		<hr>
-    	<div class="related-content">
+			<h4><a href="/zh-tw/tutorials/csharp-multithreading/">C# 多執行緒原理、非同步用法與帶入自定義物件
+				&ndash; 
+				<time datetime="2023-01-19T03:49:15&#43;0000">
+					Jan 19, 2023
+				</time></a><h4></h4>
+				<hr>
+				<small>C# 多執行緒原理、非同步用法與帶入自定義物件學習過程紀錄。
+目前遇到的專案都沒有硬性需求使用到多執行緒，此篇為紀錄自己的理解與學習的過程。
+</small>
+
 		
-        <h3>也可以看看</h3>
+			
 		
-        <ul style="list-style-type:none">
-            <li>
-                <a href="/zh-tw/tutorials/csharp-multithreading/">C# 多執行緒原理、非同步用法與帶入自定義物件</a>
-                &ndash; 
-                <time datetime="2023-01-19T03:49:15&#43;0000">
-                    Jan 19, 2023
-                </time>
-                <br> 
-				
-            </li>
-          
-            <li>
-                <a href="/zh-tw/tutorials/csharp-enum/">C# Enum(枚舉) 用法紀錄</a>
-                &ndash; 
-                <time datetime="2023-01-15T00:49:07&#43;0000">
-                    Jan 15, 2023
-                </time>
-                <br> 
-				
-            </li>
-          
-            <li>
-                <a href="/zh-tw/tutorials/sql-merge-into-statement/">SQL-merge into 語法紀錄</a>
-                &ndash; 
-                <time datetime="2022-12-22T02:44:38&#43;0000">
-                    Dec 22, 2022
-                </time>
-                <br> 
-				
-            </li>
-          
-        </ul>
-    	</div>
-		<br>
-		<br>
+			
+	</div>
+  
+	<div class="item">
+		
+			<h4><a href="/zh-tw/tutorials/csharp-enum/">C# Enum(枚舉) 用法紀錄
+				&ndash; 
+				<time datetime="2023-01-15T00:49:07&#43;0000">
+					Jan 15, 2023
+				</time></a><h4></h4>
+				<hr>
+				<small>C#-Enum(枚舉)用途與使用擴充方法取得description詳細紀錄。
+</small>
+
+		
+			
+		
+			
+	</div>
+  
+	<div class="item">
+		
+			<h4><a href="/zh-tw/tutorials/sql-merge-into-statement/">SQL-merge into 語法紀錄
+				&ndash; 
+				<time datetime="2022-12-22T02:44:38&#43;0000">
+					Dec 22, 2022
+				</time></a><h4></h4>
+				<hr>
+				<small>這次被指派實作不同資料庫同步的功能，公司現有一個ERP系統，
+資料來源一律以此為標準，讓客戶可在自家系統新增、編輯、寫入ERP、與ERP同步…
+</small>
+
+		
+			
+		
+			
+	</div>
+  
+</div>
+</div>
+<br>
+<br>
 
 
-
+		
 
 <div class="authorbox clearfix">
 	<figure class="authorbox__avatar">
@@ -363,7 +411,6 @@ LINQ好好用!!😂</p>
 	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img
 			src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
 </div>
-
 
 
 <style>
@@ -504,8 +551,6 @@ LINQ好好用!!😂</p>
 
 <div id="facebook-comments" class="fb-comments" data-href="http://sunnote.xyz/zh-tw/tutorials/sql-partition-by/" data-width="100%" data-numposts="5"
 	data-csp="true" data-order-by="reverse_time" style="display: block;"></div>
-
-
 <script>
 
 	
@@ -534,6 +579,32 @@ LINQ好好用!!😂</p>
 		fbBoard.style.display = "block";
 	});
 </script>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+$(".owl-carousel").owlCarousel({
+  loop: true, 
+  margin: 10, 
+  nav: true, 
+  responsive: {
+    0: {
+      items: 2 
+    },
+    600: {
+      items: 4 
+    },
+    1000: {
+      items: 4 
+    }
+  }
+});
+</script>
+
 
 
 

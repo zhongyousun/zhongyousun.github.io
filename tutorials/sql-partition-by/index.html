@@ -34,7 +34,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" >
 
 	<link rel="stylesheet" href="/css/style.css">
-	
+	<link rel="stylesheet" href="/css/carousel.css">
 
 	<link rel="shortcut icon" href="/favicon.ico">
 	
@@ -149,6 +149,32 @@ if (!doNotTrack) {
 
 
 
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"></link>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"></link>
+<style>
+	.owl-theme .item {
+	  height: 15rem;
+	   
+	  background-color: rgba(245, 245, 245, 0.3);
+	  padding: 0.5rem;
+	  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1); 
+	}
+	
+	.owl-carousel .item h4 {
+	  color: #000000;
+	  font-weight: 400;
+	  font-size: 1rem;
+	  margin-top: 0rem;
+	}
+	.owl-carousel .item img {
+	  width: 100%;
+	  height: 7rem;
+	  border-radius: 4px;
+	}
+</style>
 
 <main class="main" role="main">
 	<article class="post">
@@ -293,50 +319,74 @@ LINQ is very convenient!!😂</p>
 </main>
 
 
+<hr>
+<div class="related-content">
+
+<h3>See Also</h3>
+
+<div class="owl-carousel owl-theme">
+	<div class="item">
 		
-		<hr>
-    	<div class="related-content">
+			<h4><a href="/tutorials/csharp-multithreading/">C# Multi-threading principle, asynchronous usage and parameter with custom objects
+				&ndash; 
+				<time datetime="2023-01-19T03:49:15&#43;0000">
+					Jan 19, 2023
+				</time></a><h4></h4>
+				<hr>
+				<small>The principle of C# multi-threading, asynchronous usage and parameter with custom objects records.
+None of the projects encountered so far have a hard requirement to use multi-threading. This article is to record my own understanding and learning process.
+</small>
+
 		
-		<h3>See Also</h3>
+			
 		
-        <ul style="list-style-type:none">
-            <li>
-                <a href="/tutorials/csharp-multithreading/">C# Multi-threading principle, asynchronous usage and parameter with custom objects</a>
-                &ndash; 
-                <time datetime="2023-01-19T03:49:15&#43;0000">
-                    Jan 19, 2023
-                </time>
-                <br> 
-				
-            </li>
-          
-            <li>
-                <a href="/tutorials/csharp-enum/">C# Enum Usage Record</a>
-                &ndash; 
-                <time datetime="2023-01-15T00:49:07&#43;0000">
-                    Jan 15, 2023
-                </time>
-                <br> 
-				
-            </li>
-          
-            <li>
-                <a href="/tutorials/sql-merge-into-statement/">SQL-merge into statement</a>
-                &ndash; 
-                <time datetime="2022-12-22T02:44:38&#43;0000">
-                    Dec 22, 2022
-                </time>
-                <br> 
-				
-            </li>
-          
-        </ul>
-    	</div>
-		<br>
-		<br>
+			
+	</div>
+  
+	<div class="item">
+		
+			<h4><a href="/tutorials/csharp-enum/">C# Enum Usage Record
+				&ndash; 
+				<time datetime="2023-01-15T00:49:07&#43;0000">
+					Jan 15, 2023
+				</time></a><h4></h4>
+				<hr>
+				<small>C#-Enum (enumeration) uses and uses the extension method to obtain detailed description records.
+</small>
+
+		
+			
+		
+			
+	</div>
+  
+	<div class="item">
+		
+			<h4><a href="/tutorials/sql-merge-into-statement/">SQL-merge into statement
+				&ndash; 
+				<time datetime="2022-12-22T02:44:38&#43;0000">
+					Dec 22, 2022
+				</time></a><h4></h4>
+				<hr>
+				<small>I was assigned to implement the function of synchronizing from different databases.
+The company currently has an ERP system.
+All data sources are based on this standard, so that customers can create , update, write to ERP,
+and synchronize with ERP in their own systems…
+</small>
+
+		
+			
+		
+			
+	</div>
+  
+</div>
+</div>
+<br>
+<br>
 
 
-
+		
 
 <div class="authorbox clearfix">
 	<figure class="authorbox__avatar">
@@ -364,7 +414,6 @@ LINQ is very convenient!!😂</p>
 	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img
 			src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
 </div>
-
 
 
 <style>
@@ -505,8 +554,6 @@ LINQ is very convenient!!😂</p>
 
 <div id="facebook-comments" class="fb-comments" data-href="http://sunnote.xyz/tutorials/sql-partition-by/" data-width="100%" data-numposts="5"
 	data-csp="true" data-order-by="reverse_time" style="display: block;"></div>
-
-
 <script>
 
 	
@@ -535,6 +582,32 @@ LINQ is very convenient!!😂</p>
 		fbBoard.style.display = "block";
 	});
 </script>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+$(".owl-carousel").owlCarousel({
+  loop: true, 
+  margin: 10, 
+  nav: true, 
+  responsive: {
+    0: {
+      items: 2 
+    },
+    600: {
+      items: 4 
+    },
+    1000: {
+      items: 4 
+    }
+  }
+});
+</script>
+
 
 
 
