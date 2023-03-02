@@ -6,7 +6,16 @@
     <description>Recent content in 程式語言 on Sun 記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Thu, 16 Feb 2023 10:11:38 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Feb 2023 11:02:15 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo 實現推薦文章功能與輪播顯示</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/hugo-related-posts-supports-carousel-display/</link>
+      <pubDate>Wed, 22 Feb 2023 11:02:15 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/hugo-related-posts-supports-carousel-display/</guid>
+      <description>&lt;p&gt;簡單實現以輪播方式顯示推薦文章列表。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Hugo 實現提供多種留言版選擇</title>
       <link>http://sunnote.xyz/zh-tw/tutorials/hugo-multiple-comments/</link>

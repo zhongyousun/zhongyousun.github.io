@@ -18,7 +18,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/hugo/</loc>
-    <lastmod>2023-02-16T10:11:38+08:00</lastmod>
+    <lastmod>2023-02-22T11:02:15+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -32,19 +32,19 @@
                 href="http://sunnote.xyz/tags/hugo/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/tutorials/hugo-multiple-comments/</loc>
-    <lastmod>2023-02-16T10:11:38+08:00</lastmod>
+    <loc>http://sunnote.xyz/tutorials/hugo-related-posts-supports-carousel-display/</loc>
+    <lastmod>2023-02-22T11:02:15+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tutorials/hugo-multiple-comments/"
+                href="http://sunnote.xyz/zh-tw/tutorials/hugo-related-posts-supports-carousel-display/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://sunnote.xyz/tutorials/hugo-multiple-comments/"
+                href="http://sunnote.xyz/tutorials/hugo-related-posts-supports-carousel-display/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/posts/</loc>
@@ -63,7 +63,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/categories/program/</loc>
-    <lastmod>2023-02-16T10:11:38+08:00</lastmod>
+    <lastmod>2023-02-22T11:02:15+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -95,6 +95,21 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://sunnote.xyz/tags/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tutorials/hugo-multiple-comments/</loc>
+    <lastmod>2023-02-16T10:11:38+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tutorials/hugo-multiple-comments/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tutorials/hugo-multiple-comments/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/categories/just-sharing/</loc>
