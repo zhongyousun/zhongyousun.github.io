@@ -6,7 +6,16 @@
     <description>Recent content on Sun 記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Wed, 22 Feb 2023 11:02:15 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Mar 2023 16:05:44 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JWT 驗證機制原理與實作範例 (C#)</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/jwt-authentication-mechanism/</link>
+      <pubDate>Mon, 06 Mar 2023 16:05:44 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/jwt-authentication-mechanism/</guid>
+      <description>&lt;p&gt;JWT（JSON Web Token）是一種開放標準，用於在各方之間安全地傳遞資訊。JWT使用JSON物件表示要傳遞的訊息，並使用數字簽名或加密來保護這些訊息。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Hugo 實現推薦文章功能與輪播顯示</title>
       <link>http://sunnote.xyz/zh-tw/tutorials/hugo-related-posts-supports-carousel-display/</link>

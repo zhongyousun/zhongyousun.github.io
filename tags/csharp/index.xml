@@ -6,7 +6,16 @@
     <description>Recent content in Csharp on Sun Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 07 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://sunnote.xyz/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Mar 2023 16:05:44 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JWT Authentication Mechanism Principles and Implementation Examples (C#) </title>
+      <link>http://sunnote.xyz/tutorials/jwt-authentication-mechanism/</link>
+      <pubDate>Mon, 06 Mar 2023 16:05:44 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/tutorials/jwt-authentication-mechanism/</guid>
+      <description>&lt;p&gt;JWT (JSON Web Token) is an open standard used for securely transmitting information between parties. JWT uses JSON objects to represent the messages to be transmitted and uses digital signatures or encryption to protect these messages.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>SQL-implement data partitioning (partition by)</title>
       <link>http://sunnote.xyz/tutorials/sql-partition-by/</link>
