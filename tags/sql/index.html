@@ -366,7 +366,17 @@ and synchronize with ERP in their own systems&hellip;</p>
 	</div>
 	<script async defer src="/js/menu.js"></script>
 	
+	
 	<button id="toggle-sidebar"><img src="/svg/glasses_lightgray.svg"></button>
+	<script>
+		var sidebar  = document.querySelector('.sidebar');
+		
+		if (sidebar) {
+        	document.getElementById("toggle-sidebar").style.display = "block";
+    	} else {
+        	document.getElementById("toggle-sidebar").style.display = "none";
+		}
+	</script>
 
 
 	

@@ -606,7 +606,6 @@ But I have curfew, I don&rsquo;t really want to spend the night outside, so I go
 <br>
 
 
-		
 
 <div class="authorbox clearfix">
 	<figure class="authorbox__avatar">
@@ -648,6 +647,32 @@ But I have curfew, I don&rsquo;t really want to spend the night outside, so I go
 	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img
 			src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
 </div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script> 
+<script>
+	var owl = $('.owl-carousel');
+	owl.owlCarousel({
+  loop: true, 
+  margin: 10, 
+  nav: true, 
+  responsive: {
+    0: {
+      items: 2 
+    },
+    600: {
+      items: 3 
+    },
+    1000: {
+      items: 4 
+    }
+  }
+});
+</script>
+
+
+
 
 
 <style>
@@ -822,28 +847,6 @@ But I have curfew, I don&rsquo;t really want to spend the night outside, so I go
 
 
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-<script>
-$(".owl-carousel").owlCarousel({
-  loop: true, 
-  margin: 10, 
-  nav: true, 
-  responsive: {
-    0: {
-      items: 2 
-    },
-    600: {
-      items: 4 
-    },
-    1000: {
-      items: 4 
-    }
-  }
-});
-</script>
-
-
 
 
 			</div>
@@ -958,7 +961,17 @@ $(".owl-carousel").owlCarousel({
 	
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
 
+	
 	<button id="toggle-sidebar"><img src="/svg/glasses_lightgray.svg"></button>
+	<script>
+		var sidebar  = document.querySelector('.sidebar');
+		
+		if (sidebar) {
+        	document.getElementById("toggle-sidebar").style.display = "block";
+    	} else {
+        	document.getElementById("toggle-sidebar").style.display = "none";
+		}
+	</script>
 
 
 	
