@@ -942,17 +942,7 @@ Only found this funny sign when I on the way home.😎
 	
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
 
-	
 	<button id="toggle-sidebar"><img src="/svg/glasses_lightgray.svg"></button>
-	<script>
-		var sidebar  = document.querySelector('.sidebar');
-		
-		if (sidebar) {
-        	document.getElementById("toggle-sidebar").style.display = "block";
-    	} else {
-        	document.getElementById("toggle-sidebar").style.display = "none";
-		}
-	</script>
 
 
 	
@@ -1037,4 +1027,11 @@ Only found this funny sign when I on the way home.😎
 			document.querySelector(".post__toc.toc").className = "toc-side";
 		}
 	});
+
+	
+	if (asideElement && window.innerWidth >= 992 ) {
+		document.getElementById("toggle-sidebar").style.display = "block";
+	} else {
+		document.getElementById("toggle-sidebar").style.display = "none";
+	}
 </script>

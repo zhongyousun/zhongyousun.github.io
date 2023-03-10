@@ -471,17 +471,7 @@ None of the projects encountered so far have a hard requirement to use multi-thr
 	</div>
 	<script async defer src="/js/menu.js"></script>
 	
-	
 	<button id="toggle-sidebar"><img src="/svg/glasses_lightgray.svg"></button>
-	<script>
-		var sidebar  = document.querySelector('.sidebar');
-		
-		if (sidebar) {
-        	document.getElementById("toggle-sidebar").style.display = "block";
-    	} else {
-        	document.getElementById("toggle-sidebar").style.display = "none";
-		}
-	</script>
 
 
 	
@@ -566,4 +556,11 @@ None of the projects encountered so far have a hard requirement to use multi-thr
 			document.querySelector(".post__toc.toc").className = "toc-side";
 		}
 	});
+
+	
+	if (asideElement && window.innerWidth >= 992 ) {
+		document.getElementById("toggle-sidebar").style.display = "block";
+	} else {
+		document.getElementById("toggle-sidebar").style.display = "none";
+	}
 </script>
