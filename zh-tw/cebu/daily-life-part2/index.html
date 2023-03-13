@@ -155,6 +155,7 @@ if (!doNotTrack) {
 
 
 
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"></link>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"></link>
 <style>
@@ -398,6 +399,9 @@ if (!doNotTrack) {
 
 		<br>
 		<br>
+		<div id="type-effect">
+		</div>
+		<br>
 		<footer class="post__footer">
 			
 <div class="post__tags tags clearfix">
@@ -417,6 +421,55 @@ if (!doNotTrack) {
 		</footer>
 	</article>
 </main>
+
+<style>
+	#type-effect {
+	  white-space: nowrap;
+	  overflow: hidden;
+	  font-size: 20px;
+	  font-family: monospace, sans-serif  ;
+	  border-right: 1px solid rgb(255, 255, 255);
+	   
+	  padding-right: 5px;
+	  white-space: pre-wrap;
+	   
+	}
+  </style>
+  <script>
+  	var url = window.location.href;
+	var ln = "en";
+	if (url.indexOf("/zh-tw/") > -1) {
+  	ln = "zh";
+	}
+	if (ln === "zh") {
+	  var message = "如果這個文章對您有幫助或是有任何疑問，歡迎留言。👍"
+	  speed = 100
+	}
+	else {
+	  var message = "If this posts was helpful to you or if you have any questions, feel free to leave a comment and ask.👍"
+	  speed = 50
+	}
+  
+	const typeEffectDiv = document.getElementById("type-effect");
+  
+	function typeEffect(message, element) {
+	  let i = 0;
+	  const interval = setInterval(function () {
+		if (i === message.length) {
+		  clearInterval(interval);
+		  setTimeout(function () {
+			element.textContent = "";
+			typeEffect(message, element);
+		  }, 2000); 
+		} else {
+		  element.textContent += message[i];
+		  i++;
+		}
+	  }, speed); 
+	}
+	typeEffect(message, typeEffectDiv);
+  </script>
+
 
 
 <hr>

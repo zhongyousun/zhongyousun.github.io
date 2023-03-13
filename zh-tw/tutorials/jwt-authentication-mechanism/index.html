@@ -22,7 +22,7 @@
 	<meta itemprop="name" content="JWT 驗證機制原理與實作範例 (C#)">
 <meta itemprop="description" content="JWT（JSON Web Token）是一種開放標準，用於在各方之間安全地傳遞資訊。JWT使用JSON物件表示要傳遞的訊息，並使用數字簽名或加密來保護這些訊息。"><meta itemprop="datePublished" content="2023-03-06T16:05:44+08:00" />
 <meta itemprop="dateModified" content="2023-03-06T16:05:44+08:00" />
-<meta itemprop="wordCount" content="382">
+<meta itemprop="wordCount" content="381">
 <meta itemprop="keywords" content="Csharp,Web," />
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="JWT 驗證機制原理與實作範例 (C#)"/>
@@ -146,6 +146,7 @@ if (!doNotTrack) {
 		<div class="wrapper flex">
 			<div class="primary">
 				
+
 
 
 
@@ -469,10 +470,12 @@ if (!doNotTrack) {
 </ul>
 <h3 id="總結">總結</h3>
 <p>目前開發上只用在輕型網站的登入系統驗證機制，但其實JWT還有其他的用途像是資源權限授權、單點登錄(SSO)、時效性服務、應用程序間通訊等。藉由派發有時效性的JWT並在每次存取資源時驗證可以使其應用更廣泛。</p>
-<p>如果有幫助到你或有任何問題，歡迎留言詢問。</p>
 		</div>
 
 		<br>
+		<br>
+		<div id="type-effect">
+		</div>
 		<br>
 		<footer class="post__footer">
 			
@@ -490,6 +493,55 @@ if (!doNotTrack) {
 		</footer>
 	</article>
 </main>
+
+<style>
+	#type-effect {
+	  white-space: nowrap;
+	  overflow: hidden;
+	  font-size: 20px;
+	  font-family: monospace, sans-serif  ;
+	  border-right: 1px solid rgb(255, 255, 255);
+	   
+	  padding-right: 5px;
+	  white-space: pre-wrap;
+	   
+	}
+  </style>
+  <script>
+  	var url = window.location.href;
+	var ln = "en";
+	if (url.indexOf("/zh-tw/") > -1) {
+  	ln = "zh";
+	}
+	if (ln === "zh") {
+	  var message = "如果這個文章對您有幫助或是有任何疑問，歡迎留言。👍"
+	  speed = 100
+	}
+	else {
+	  var message = "If this posts was helpful to you or if you have any questions, feel free to leave a comment and ask.👍"
+	  speed = 50
+	}
+  
+	const typeEffectDiv = document.getElementById("type-effect");
+  
+	function typeEffect(message, element) {
+	  let i = 0;
+	  const interval = setInterval(function () {
+		if (i === message.length) {
+		  clearInterval(interval);
+		  setTimeout(function () {
+			element.textContent = "";
+			typeEffect(message, element);
+		  }, 2000); 
+		} else {
+		  element.textContent += message[i];
+		  i++;
+		}
+	  }, speed); 
+	}
+	typeEffect(message, typeEffectDiv);
+  </script>
+
 
 
 <hr>
