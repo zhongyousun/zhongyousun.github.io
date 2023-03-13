@@ -7,26 +7,26 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
 	<meta property="fb:app_id" content="725315935966817" />
-	<title>C# 多執行緒原理、非同步用法與帶入自定義物件 - Sun 記事</title>
+	<title>歐美語言學校 vs 菲律賓語言學校 - Sun 記事</title>
 	<script>(function (d, e) { d[e] = d[e].replace("no-js", "js"); })(document.documentElement, "className");</script>
 	<meta name="description"
-		content="C# 多執行緒原理、非同步用法與帶入自定義物件紀錄">
-	<meta property="og:title" content="C# 多執行緒原理、非同步用法與帶入自定義物件" />
-<meta property="og:description" content="C# 多執行緒原理、非同步用法與帶入自定義物件紀錄" />
+		content="">
+	<meta property="og:title" content="歐美語言學校 vs 菲律賓語言學校" />
+<meta property="og:description" content="" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://sunnote.xyz/zh-tw/tutorials/csharp-multithreading/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-01-19T11:49:15+08:00" />
-<meta property="article:modified_time" content="2023-01-19T11:49:15+08:00" />
+<meta property="og:url" content="http://sunnote.xyz/zh-tw/%E6%AD%90%E7%BE%8E%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1-vs-%E8%8F%B2%E5%BE%8B%E8%B3%93%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-11-28T15:35:05+08:00" />
+<meta property="article:modified_time" content="2022-11-28T15:35:05+08:00" />
 
 		  	<meta property="og:image" content="https://sunnote.xyz/TravelIsGoodForTheSoul.webp" />
-	<meta itemprop="name" content="C# 多執行緒原理、非同步用法與帶入自定義物件">
-<meta itemprop="description" content="C# 多執行緒原理、非同步用法與帶入自定義物件紀錄"><meta itemprop="datePublished" content="2023-01-19T11:49:15+08:00" />
-<meta itemprop="dateModified" content="2023-01-19T11:49:15+08:00" />
-<meta itemprop="wordCount" content="259">
-<meta itemprop="keywords" content="Csharp," />
+	<meta itemprop="name" content="歐美語言學校 vs 菲律賓語言學校">
+<meta itemprop="description" content=""><meta itemprop="datePublished" content="2022-11-28T15:35:05+08:00" />
+<meta itemprop="dateModified" content="2022-11-28T15:35:05+08:00" />
+<meta itemprop="wordCount" content="39">
+<meta itemprop="keywords" content="菲律賓,語言學校,宿霧," />
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="C# 多執行緒原理、非同步用法與帶入自定義物件"/>
-<meta name="twitter:description" content="C# 多執行緒原理、非同步用法與帶入自定義物件紀錄"/>
+<meta name="twitter:title" content="歐美語言學校 vs 菲律賓語言學校"/>
+<meta name="twitter:description" content=""/>
 
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -185,7 +185,8 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">C# 多執行緒原理、非同步用法與帶入自定義物件</h1>
+			<h1 class="post__title">歐美語言學校 vs 菲律賓語言學校</h1>
+			<p class="post__lead">沒什麼好比的，要念書就選菲律賓啦</p>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	
@@ -194,30 +195,13 @@ if (!doNotTrack) {
 <path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 5.332031 L 2 12.667969 C 2 13.035156 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 5.332031 C 14 4.964844 13.703125 4.667969 13.335938 4.667969 L 2.664062 4.667969 C 2.296875 4.667969 2 4.964844 2 5.332031 Z M 0.667969 5.332031 C 0.667969 4.230469 1.558594 3.332031 2.664062 3.332031 L 13.335938 3.332031 C 14.441406 3.332031 15.332031 4.230469 15.332031 5.332031 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.769531 0.667969 12.667969 Z M 2 7.332031 L 2 6 L 14 6 L 14 7.332031 Z M 4 2 C 4 1.632812 4.296875 1.332031 4.667969 1.332031 C 5.035156 1.332031 5.332031 1.628906 5.332031 2 L 5.332031 3.332031 L 4 3.332031 Z M 10.667969 2 C 10.667969 1.632812 10.960938 1.332031 11.332031 1.332031 C 11.703125 1.332031 12 1.628906 12 2 L 12 3.332031 L 10.667969 3.332031 Z M 10.667969 2 "/>
 </g>
 </svg>
-<time class="meta__text" datetime="2023-01-19T11:49:15&#43;08:00">January 19, 2023</time></div><div class="meta__item-categories meta__item">
+<time class="meta__text" datetime="2022-11-28T15:35:05&#43;08:00">November 28, 2022</time></div><div class="meta__item-categories meta__item">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-folders"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <g id="surface1">
 <path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 6 L 2 12.664062 C 2 13.03125 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 8 C 14 7.632812 13.703125 7.332031 13.335938 7.332031 L 9.808594 7.332031 L 8.03125 5.332031 L 2.667969 5.332031 C 2.300781 5.332031 2 5.632812 2 6 Z M 13.335938 6 C 14.4375 6 15.332031 6.894531 15.332031 8 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.761719 0.667969 12.664062 L 0.667969 6 C 0.667969 4.894531 1.5625 4 2.667969 4 L 8.632812 4 L 10.40625 6 Z M 4.425781 3.625 C 4.425781 3.625 4.425781 3.703125 4.425781 4.074219 C 4.425781 4.328125 5.15625 4.75 6 4.667969 C 6.777344 4.589844 8.453125 4.589844 8.796875 5.050781 C 10 6.667969 14.242188 7.15625 14.242188 6.667969 L 14.242188 5.25 C 14.242188 4.949219 14 4.707031 13.699219 4.707031 L 10.8125 4.707031 L 9.359375 3.082031 L 4.972656 3.082031 C 4.667969 3.082031 4.425781 3.328125 4.425781 3.625 Z M 13.699219 3.625 C 14.601562 3.625 15.332031 4.351562 15.332031 5.25 L 15.332031 8 C 15.332031 8.304688 14.667969 6.667969 10 6.667969 C 8.652344 6.160156 9.402344 5.636719 8 5.25 C 6.496094 4.832031 4.703125 5.296875 3.863281 5.285156 C 3.320312 5.273438 3.332031 4.855469 3.332031 4.667969 L 3.332031 3.625 C 3.332031 2.726562 4.066406 2 4.972656 2 L 9.851562 2 L 11.300781 3.625 Z M 13.699219 3.625 "/>
 </g>
 </svg>
-<span class="meta__text"><a class="meta__link" href="/zh-tw/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/" rel="category">程式語言</a>
-	</span>
-</div>
-<div class="meta__item-translations meta__item"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-translate" width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
-<g id="surface1">
-<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(16.078431%,17.647059%,19.607843%);stroke-opacity:1;stroke-miterlimit:4;" d="M 19.060547 18.667969 L 16.921875 14.402344 L 14.777344 18.667969 " transform="matrix(0.666667,0,0,0.666667,0,0)"/>
-<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(16.078431%,17.647059%,19.607843%);stroke-opacity:1;stroke-miterlimit:4;" d="M 15.169922 17.912109 L 18.691406 17.912109 " transform="matrix(0.666667,0,0,0.666667,0,0)"/>
-<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(16.078431%,17.647059%,19.607843%);stroke-opacity:1;stroke-miterlimit:4;" d="M 16.921875 22.001953 C 14.121094 22.001953 11.841797 19.728516 11.841797 16.921875 C 11.841797 14.121094 14.109375 11.841797 16.921875 11.841797 C 19.722656 11.841797 22.001953 14.109375 22.001953 16.921875 C 22.001953 19.728516 19.728516 22.001953 16.921875 22.001953 Z M 16.921875 22.001953 " transform="matrix(0.666667,0,0,0.666667,0,0)"/>
-<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(16.078431%,17.647059%,19.607843%);stroke-opacity:1;stroke-miterlimit:4;" d="M 5.021484 1.998047 L 8.941406 1.998047 C 11.009766 1.998047 12.011719 3 11.958984 5.021484 L 11.958984 8.941406 C 12.011719 11.009766 11.009766 12.011719 8.941406 11.958984 L 5.021484 11.958984 C 3 12 1.998047 10.998047 1.998047 8.929687 L 1.998047 5.009766 C 1.998047 3 3 1.998047 5.021484 1.998047 Z M 5.021484 1.998047 " transform="matrix(0.666667,0,0,0.666667,0,0)"/>
-<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(16.078431%,17.647059%,19.607843%);stroke-opacity:1;stroke-miterlimit:4;" d="M 9.011719 5.847656 L 4.951172 5.847656 " transform="matrix(0.666667,0,0,0.666667,0,0)"/>
-<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(16.078431%,17.647059%,19.607843%);stroke-opacity:1;stroke-miterlimit:4;" d="M 6.972656 5.167969 L 6.972656 5.847656 " transform="matrix(0.666667,0,0,0.666667,0,0)"/>
-<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(16.078431%,17.647059%,19.607843%);stroke-opacity:1;stroke-miterlimit:4;" d="M 7.992187 5.841797 C 7.992187 7.587891 6.621094 9.011719 4.939453 9.011719 " transform="matrix(0.666667,0,0,0.666667,0,0)"/>
-<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(16.078431%,17.647059%,19.607843%);stroke-opacity:1;stroke-miterlimit:4;" d="M 9.011719 9.011719 C 8.279297 9.011719 7.617187 8.619141 7.160156 7.998047 " transform="matrix(0.666667,0,0,0.666667,0,0)"/>
-<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(16.078431%,17.647059%,19.607843%);stroke-opacity:1;stroke-miterlimit:4;" d="M 1.998047 15 C 1.998047 18.867187 5.132812 22.001953 9 22.001953 L 7.951172 20.25 " transform="matrix(0.666667,0,0,0.666667,0,0)"/>
-<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(16.078431%,17.647059%,19.607843%);stroke-opacity:1;stroke-miterlimit:4;" d="M 22.001953 9 C 22.001953 5.132812 18.867187 1.998047 15 1.998047 L 16.048828 3.75 " transform="matrix(0.666667,0,0,0.666667,0,0)"/>
-</g>
-</svg>
-<span class="meta__text"><a class="meta__link" href="/tutorials/csharp-multithreading/">EN</a>
+<span class="meta__text"><a class="meta__link" href="/zh-tw/categories/%E7%B4%94%E7%B2%B9%E5%88%86%E4%BA%AB/" rel="category">純粹分享</a>, <a class="meta__link" href="/zh-tw/categories/%E8%8B%B1%E6%96%87%E5%AD%B8%E7%BF%92/" rel="category">英文學習</a>
 	</span>
 </div>
 
@@ -230,7 +214,7 @@ if (!doNotTrack) {
 <path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 8 12.667969 C 10.578125 12.667969 12.667969 10.578125 12.667969 8 C 12.667969 5.421875 10.578125 3.332031 8 3.332031 C 5.421875 3.332031 3.332031 5.421875 3.332031 8 C 3.332031 10.578125 5.421875 12.667969 8 12.667969 Z M 3.957031 12.433594 C 2.753906 11.335938 2 9.757812 2 8 C 2 4.6875 4.6875 2 8 2 C 11.3125 2 14 4.6875 14 8 C 14 9.757812 13.246094 11.335938 12.042969 12.433594 L 12.9375 13.328125 C 13.207031 13.597656 13.203125 14.015625 12.941406 14.277344 C 12.679688 14.539062 12.257812 14.535156 11.996094 14.273438 L 10.949219 13.226562 C 10.078125 13.71875 9.070312 14 8 14 C 6.929688 14 5.921875 13.71875 5.050781 13.226562 L 4.003906 14.273438 C 3.738281 14.539062 3.316406 14.535156 3.058594 14.277344 C 2.796875 14.015625 2.796875 13.589844 3.0625 13.328125 Z M 7.332031 5.335938 C 7.332031 4.964844 7.628906 4.667969 8 4.667969 C 8.367188 4.667969 8.667969 4.957031 8.667969 5.335938 L 8.667969 9.332031 L 7.332031 9.332031 Z M 5.332031 8.667969 C 5.332031 8.296875 5.628906 8 6 8 L 7.332031 8 L 7.332031 9.332031 L 6 9.332031 C 5.632812 9.332031 5.332031 9.039062 5.332031 8.667969 Z M 5.332031 8.667969 "/>
 </g>
 </svg>
-6 min read.　</span>
+3 min read.　</span>
 				
 			
 				<div id="busuanzi_container_page_pv">
@@ -261,118 +245,81 @@ if (!doNotTrack) {
   <ul>
     <li>
       <ul>
-        <li><a href="#前言">前言</a></li>
-        <li><a href="#原理">原理</a></li>
-        <li><a href="#用途">用途</a></li>
-        <li><a href="#範例">範例</a></li>
-        <li><a href="#帶入自定義參數">帶入自定義參數</a></li>
-        <li><a href="#非同步方法待續">非同步方法(待續)</a></li>
+        <li><a href="#比較表">比較表</a></li>
+        <li><a href="#結論">結論</a></li>
       </ul>
     </li>
   </ul>
 </nav>
 	</div>
 </div><div class="content post__content clearfix">
-			<p>C# 多執行緒原理、非同步用法與帶入自定義物件學習過程紀錄。<br>
-目前遇到的專案都沒有硬性需求使用到多執行緒，此篇為紀錄自己的理解與學習的過程。</p>
-<h3 id="前言">前言</h3>
-<p>公司專案有個檔案預先儲存的功能，因為每天都有新檔案，需要每天跑排程執行。原本的寫法，是A的部分下載完，再下載B的部分。會想試試看改用多執行緒的方式寫的原因，主要只是覺得在測試時資料量太大，需要先等A跑完才能測試B的部分很煩而已。😎</p>
-<h3 id="原理">原理</h3>
-<p>得先了解Program(程式)/Process(程序)/Thread(執行緒)的差異。</p>
+			<h3 id="比較表">比較表</h3>
+<p>此表為當時從代辦取得的一些資訊，僅供參考。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">歐美語言學校</th>
+<th style="text-align:center">菲律賓語言學校</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">價格</td>
+<td style="text-align:center">偏貴</td>
+<td style="text-align:center">便宜</td>
+</tr>
+<tr>
+<td style="text-align:center">課程</td>
+<td style="text-align:center">課堂較少採自主學習、快樂學習制</td>
+<td style="text-align:center">斯巴達(課程從早排到晚不念書也難)、考試證照取向、一對一</td>
+</tr>
+<tr>
+<td style="text-align:center">距離</td>
+<td style="text-align:center">遠</td>
+<td style="text-align:center">非常近(有什麼問題可以馬上飛回台)</td>
+</tr>
+<tr>
+<td style="text-align:center">飲食</td>
+<td style="text-align:center">普遍外食偏貴</td>
+<td style="text-align:center">學餐偏難吃、但外食消費與台灣差不多</td>
+</tr>
+<tr>
+<td style="text-align:center">安全</td>
+<td style="text-align:center">台灣最安全不同國家區域治安都不太相同請提前做好功課</td>
+<td style="text-align:center">台灣最安全不同國家區域治安都不太相同請提前做好功課</td>
+</tr>
+<tr>
+<td style="text-align:center">時差</td>
+<td style="text-align:center">有時差</td>
+<td style="text-align:center">相同(比較好與在台家人聯絡)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="結論">結論</h3>
+<p><strong>沒有不好，只有適不適合</strong></p>
+<p>接下來的分享，主要著重分享菲律賓語言學校的細節與優勢。</p>
+<p>因為我當初就是選擇菲律賓的語言學校，評價比較客觀。</p>
 <ol>
-<li><strong>Program(程式)</strong> : 還尚未載入記憶體的程式代碼。</li>
-<li><strong>Process(程序)</strong> : 已經執行並且載入到記憶體中的 Program ，程序中的每一行程式碼隨時都有可能被CPU執行。</li>
-<li><strong>Thread(執行緒)</strong> : 同一個 Process 中會有很多個 Thread ，每一個 Thread 負責某一項功能。</li>
+<li>
+<p>如果你本身偏害羞，人多團體班就不太說話，菲律賓的一對一學制非常適合你。<br>
+一天基本上會有半天你都必須關在一個小房間與老師說話，除非你是啞巴，口說不進步都難!!</p>
+</li>
+<li>
+<p>如果你追求CP值，想用比較少的錢就達到英文能力提升，考過多益、雅思甚至托福，
+菲律賓的學制非常適合你，像我參與的雅思課程強迫每個禮拜都有一次標準雅思的mock test，
+上了一整天的課，晚上還必須得在考場待到結束的那種不是開玩笑的~!<br>
+能讓你考試考到像在吃飯，全程參與不放棄，我是不相信證照考試不會通過啦。</p>
+</li>
+<li>
+<p>如果你讀書很吃氣氛環境，喜歡全神貫注不需要擔心任何事，那菲律賓的制度很適合你，<br>
+語言學校供三餐、宿舍有人打掃、衣服有專門送洗、課堂排的滿滿滿，周遭也都是準備考試的戰友(雖然還是有純粹來度假的啦哈哈)。<br>
+我讀到最後，真的是每天沉浸在英語的環境，每天都覺得自己的英語水平一直在進步，還不用擔心多餘的生活瑣事。</p>
+</li>
 </ol>
-<p>以工廠來舉例:</p>
-<p><strong>Program(程式)</strong> = 工廠的詳細製造圖與人員配置<br>
-<strong>Process(程序)</strong> = 已經在運行的工廠<br>
-<strong>Thread(執行緒)</strong> = 工廠裡的每位工作人員</p>
-<p>普遍程式執行時都是照著順序一行一行執行，相似於工廠裡的工人照著順序完成自己的任務。這就會產生程式執行過久，工人運用效率不高的問題，如果工人們可以同時執行各自的任務(多執行緒)，這樣效率就會變快很多，但缺點就是硬體不足時(工廠空間太小)，太多工人一起執行任務就會互搶資源導致程式<strong>死結(Deadlock)</strong>。</p>
-<h3 id="用途">用途</h3>
-<p>使用多執行緒的情況通常包括：</p>
-<ol>
-<li>需要同時執行多個任務，而這些任務之間沒有關聯。例如，同時下載多個文件或計算多個值。</li>
-<li>需要等待一個長時間運行的任務，但不想讓界面變得不可互動。例如，在同時運行的另一個執行線中執行資料庫查詢。</li>
-<li>需要執行一個任務，但不想因為它阻塞其他任務。例如，在同時運行的另一個執行線中執行網路連接。</li>
-<li>需要在多個核心上執行任務，以利用多核 CPU 的性能。</li>
-</ol>
-<h3 id="範例">範例</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">using</span> System.Threading;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>Thread thread1 = <span style="color:#66d9ef">new</span> Thread(Task1); 
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>thread1.Start();
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>Thread thread2 = <span style="color:#66d9ef">new</span> Thread(Task2);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>thread2.Start();
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>Console.WriteLine(<span style="color:#e6db74">&#34;Completed&#34;</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>Console.ReadKey();
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Task1()
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i = <span style="color:#ae81ff">0</span>; i &lt; <span style="color:#ae81ff">5</span>; i++)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>    {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>        Console.WriteLine(<span style="color:#e6db74">&#34;Task 1&#34;</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>        Thread.Sleep(<span style="color:#ae81ff">1000</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>    }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>}
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Task2()
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i = <span style="color:#ae81ff">0</span>; i &lt; <span style="color:#ae81ff">5</span>; i++)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>    {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>        Console.WriteLine(<span style="color:#e6db74">&#34;Task 2&#34;</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>        Thread.Sleep(<span style="color:#ae81ff">1000</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>    }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>}
-</span></span></code></pre></div><p>結果:</p>
-<pre tabindex="0"><code>Completed
-Task 1
-Task 2
-Task 1
-Task 2
-Task 1
-Task 2
-Task 1
-Task 2
-Task 2
-Task 1
-</code></pre><p><strong>為什麼會先出現 &ldquo;Completed&rdquo; ?</strong><br>
-這是因為在上面的程式碼中，兩個執行緒被同時啟動，並且主執行緒不等待其中任何一個執行緒完成，而是立即寫出 &ldquo;Completed&rdquo; 並結束程式。因此，無論哪個執行緒先完成，程式都會先寫出 &ldquo;Completed&rdquo;。</p>
-<p>如果想要等待 thread2 完成，可以加上 thread2.Join() 使主執行緒等待 thread2 執行完畢，再接著執行<code>Console.WriteLine(&quot;Completed&quot;);</code>。</p>
-<h3 id="帶入自定義參數">帶入自定義參數</h3>
-<p>實際使用時執行緒常會有帶入參數的需求，可以使用ParameterizedThreadStart，ParameterizedThreadStart是一個委派，它指向一個object參數並沒有返回值的方法。所以在使用ParameterizedThreadStart 委派時，需要傳入一個object類型參數。<br>
-但通常資料類型都不會是object，大部分是JObject或是自定義的類型，以下是實作方式。</p>
-<p>針對不同執行緒建立對應的物件</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#75715e">// Create an object to hold the list</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ListContainer1</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>    {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>        <span style="color:#66d9ef">public</span> List&lt;<span style="color:#66d9ef">dynamic</span>&gt; TheList { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>    }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ListContainer2</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>    {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>        <span style="color:#66d9ef">public</span> List&lt;customize&gt; TheList { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span>    }
-</span></span></code></pre></div><p>傳遞 <code>List&lt;dynamic&gt;</code> customize_obj 至 Task1，在 Task1 函式中取得 customize_obj 並執行</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>List&lt;<span style="color:#66d9ef">dynamic</span>&gt; customize_obj  = <span style="color:#66d9ef">new</span> List&lt;<span style="color:#66d9ef">dynamic</span>&gt;();
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#66d9ef">var</span> listContainer1 = <span style="color:#66d9ef">new</span> ListContainer1 { TheList = customize_obj };
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#75715e">// create new thread</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>Thread t1 = <span style="color:#66d9ef">new</span> Thread(<span style="color:#66d9ef">new</span> ParameterizedThreadStart(Task1));
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#75715e">// pass parameters and start thread</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>t1.Start(listContainer1);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#66d9ef">void</span> Task1(Object listContainer)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    <span style="color:#75715e">// get customize_obj</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    ListContainer1 container = (ListContainer1)listContainer;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>    List&lt;<span style="color:#66d9ef">dynamic</span>&gt; customize_obj = container.TheList;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    <span style="color:#75715e">//...</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>    <span style="color:#75715e">//code</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>    <span style="color:#75715e">//...</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>}
-</span></span></code></pre></div><h3 id="非同步方法待續">非同步方法(待續)</h3>
+<p>接下來會分享 <strong>菲律賓語言學校選城市與選校的心得</strong></p>
+<p>，</p>
 		</div>
 
 		<br>
@@ -386,7 +333,13 @@ Task 1
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
 		<li class="tags__item">
-			<a class="tags__link btn" href="/zh-tw/tags/csharp/" rel="tag">Csharp</a>
+			<a class="tags__link btn" href="/zh-tw/tags/%E8%8F%B2%E5%BE%8B%E8%B3%93/" rel="tag">菲律賓</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/zh-tw/tags/%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1/" rel="tag">語言學校</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/zh-tw/tags/%E5%AE%BF%E9%9C%A7/" rel="tag">宿霧</a>
 		</li>
 	</ul>
 </div>
@@ -457,156 +410,6 @@ Task 1
 	<div class="item">
 		
 			<div class="related-post__image">
-				<a href="/zh-tw/tutorials/jwt-authentication-mechanism/">
-					<img src="http://sunnote.xyz/img/thumbnail/022.png" alt="JWT 驗證機制原理與實作範例 (C#)"/>
-				</a>
-			
-
-			<h6><a href="/zh-tw/tutorials/jwt-authentication-mechanism/">JWT 驗證機制原理與實作範例 (C#)
-				&ndash; 
-				<time datetime="2023-03-06T08:05:44&#43;0000">
-					Mar 6, 2023
-				</time></a></h6></div>
-
-		
-			
-		
-			
-	</div>
-   
-	<div class="item">
-		
-			<h6><a href="/zh-tw/tutorials/sql-partition-by/">SQL-partition by 實現資料分組
-				&ndash; 
-				<time datetime="2023-02-07T00:00:00&#43;0000">
-					Feb 7, 2023
-				</time></a></h6>
-				<hr>
-				<small>使用SQL partition by 實現資料分割，比較LINQ與partition by效能。
-</small>
-
-		
-			
-		
-			
-	</div>
-   
-	<div class="item">
-		
-			<h6><a href="/zh-tw/tutorials/csharp-enum/">C# Enum(枚舉) 用法紀錄
-				&ndash; 
-				<time datetime="2023-01-15T00:49:07&#43;0000">
-					Jan 15, 2023
-				</time></a></h6>
-				<hr>
-				<small>C#-Enum(枚舉)用途與使用擴充方法取得description詳細紀錄。
-</small>
-
-		
-			
-		
-			
-	</div>
-   
-	<div class="item">
-		
-			<div class="related-post__image">
-				<a href="/zh-tw/tutorials/hugo-related-posts-supports-carousel-display/">
-					<img src="http://sunnote.xyz/img/thumbnail/021.png" alt="Hugo 實現推薦文章功能與輪播顯示"/>
-				</a>
-			
-
-			<h6><a href="/zh-tw/tutorials/hugo-related-posts-supports-carousel-display/">Hugo 實現推薦文章功能與輪播顯示
-				&ndash; 
-				<time datetime="2023-02-22T03:02:15&#43;0000">
-					Feb 22, 2023
-				</time></a></h6></div>
-
-		
-			
-		
-			
-	</div>
-   
-	<div class="item">
-		
-			<div class="related-post__image">
-				<a href="/zh-tw/tutorials/hugo-multiple-comments/">
-					<img src="http://sunnote.xyz/img/thumbnail/020.png" alt="Hugo 實現提供多種留言版選擇"/>
-				</a>
-			
-
-			<h6><a href="/zh-tw/tutorials/hugo-multiple-comments/">Hugo 實現提供多種留言版選擇
-				&ndash; 
-				<time datetime="2023-02-16T02:11:38&#43;0000">
-					Feb 16, 2023
-				</time></a></h6></div>
-
-		
-			
-		
-			
-	</div>
-   
-	<div class="item">
-		
-			<div class="related-post__image">
-				<a href="/zh-tw/life/valentine-gift-marimo/">
-					<img src="http://sunnote.xyz/img/thumbnail/019mario.jpg" alt="情人節就送這個當禮物:綠藻球Marimo (基本介紹、飼養方式、象徵意義)"/>
-				</a>
-			
-
-			<h6><a href="/zh-tw/life/valentine-gift-marimo/">情人節就送這個當禮物:綠藻球Marimo (基本介紹、飼養方式、象徵意義)
-				&ndash; 
-				<time datetime="2023-02-14T02:11:38&#43;0000">
-					Feb 14, 2023
-				</time></a></h6></div>
-
-		
-			
-		
-			
-	</div>
-   
-	<div class="item">
-		
-			<h6><a href="/zh-tw/tutorials/sql-merge-into-statement/">SQL-merge into 語法紀錄
-				&ndash; 
-				<time datetime="2022-12-22T02:44:38&#43;0000">
-					Dec 22, 2022
-				</time></a></h6>
-				<hr>
-				<small>這次被指派實作不同資料庫同步的功能，公司現有一個ERP系統，
-資料來源一律以此為標準，讓客戶可在自家系統新增、編輯、寫入ERP、與ERP同步…
-</small>
-
-		
-			
-		
-			
-	</div>
-   
-	<div class="item">
-		
-			<h6><a href="/zh-tw/tutorials/leetcode-lru-cache-medium-python/">Leetcode(Medium) 146. LRU Cache (Python)
-				&ndash; 
-				<time datetime="2022-12-04T11:44:38&#43;0000">
-					Dec 4, 2022
-				</time></a></h6>
-				<hr>
-				<small>LRU Cache算是我遇過覺得蠻有趣生活化的題目，感覺也是在很多底層系統會需要用到的觀念。
-可惜的是目前工作還沒使用到…
-</small>
-
-		
-			
-		
-			
-	</div>
-   
-	<div class="item">
-		
-			<div class="related-post__image">
 				<a href="/zh-tw/cebu/residential_area/">
 					<img src="http://sunnote.xyz/img/thumbnail/015Cabantan_Street.jpg" alt="深入宿霧住宅區"/>
 				</a>
@@ -617,6 +420,174 @@ Task 1
 				<time datetime="2022-12-04T08:28:53&#43;0000">
 					Dec 4, 2022
 				</time></a></h6></div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/cebu/bohol-island-day-tour-tarsier-chocolate-hills/">
+					<img src="http://sunnote.xyz/img/thumbnail/014IMG_1491.jpeg" alt="宿霧-薄荷島一日遊(眼鏡猴 &#43; 巧克力山)"/>
+				</a>
+			
+
+			<h6><a href="/zh-tw/cebu/bohol-island-day-tour-tarsier-chocolate-hills/">宿霧-薄荷島一日遊(眼鏡猴 &#43; 巧克力山)
+				&ndash; 
+				<time datetime="2022-12-03T08:28:53&#43;0000">
+					Dec 3, 2022
+				</time></a></h6></div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/cebu/jeepney-anjo-world-theme-park-day-trip/">
+					<img src="http://sunnote.xyz/img/thumbnail/012IMG_1129.jpeg" alt="菲律賓吉普尼體驗&#43;宿霧主題樂園一日遊"/>
+				</a>
+			
+
+			<h6><a href="/zh-tw/cebu/jeepney-anjo-world-theme-park-day-trip/">菲律賓吉普尼體驗&#43;宿霧主題樂園一日遊
+				&ndash; 
+				<time datetime="2022-12-02T08:28:53&#43;0000">
+					Dec 2, 2022
+				</time></a></h6></div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/cebu/simala-church-day-trip/">
+					<img src="http://sunnote.xyz/img/thumbnail/013IMG_0563.jpeg" alt="宿霧-希瑪拉教堂(Simala Church)一日遊"/>
+				</a>
+			
+
+			<h6><a href="/zh-tw/cebu/simala-church-day-trip/">宿霧-希瑪拉教堂(Simala Church)一日遊
+				&ndash; 
+				<time datetime="2022-12-01T08:28:53&#43;0000">
+					Dec 1, 2022
+				</time></a></h6></div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/cebu/christmas-in-cebu/">
+					<img src="http://sunnote.xyz/img/thumbnail/011IMG_0714.jpeg" alt="在宿霧的聖誕氣氛"/>
+				</a>
+			
+
+			<h6><a href="/zh-tw/cebu/christmas-in-cebu/">在宿霧的聖誕氣氛
+				&ndash; 
+				<time datetime="2022-11-30T11:28:53&#43;0000">
+					Nov 30, 2022
+				</time></a></h6></div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/cebu/daily-life-part2/">
+					<img src="http://sunnote.xyz/img/thumbnail/010.IMG_1727.jpeg" alt="宿霧遊學-日常生活(二)"/>
+				</a>
+			
+
+			<h6><a href="/zh-tw/cebu/daily-life-part2/">宿霧遊學-日常生活(二)
+				&ndash; 
+				<time datetime="2022-11-30T09:28:53&#43;0000">
+					Nov 30, 2022
+				</time></a></h6></div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/cebu/daily-life-part1/">
+					<img src="http://sunnote.xyz/img/thumbnail/009.IMG_0720.jpeg" alt="宿霧遊學-日常生活(一)"/>
+				</a>
+			
+
+			<h6><a href="/zh-tw/cebu/daily-life-part1/">宿霧遊學-日常生活(一)
+				&ndash; 
+				<time datetime="2022-11-30T08:28:53&#43;0000">
+					Nov 30, 2022
+				</time></a></h6></div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<h6><a href="/zh-tw/cebu/pre-departure-mood-record/">宿霧遊學-行前心情紀錄
+				&ndash; 
+				<time datetime="2022-11-29T08:28:53&#43;0000">
+					Nov 29, 2022
+				</time></a></h6>
+				<hr>
+				<small></small>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<h6><a href="/zh-tw/%E8%8B%B1%E6%96%87%E5%BE%88%E7%88%9B%E8%83%BD%E5%8E%BB%E5%BF%B5%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E5%97%8E%E6%95%88%E7%9B%8A%E8%A9%95%E4%BC%B0/">英文很爛能去念語言學校嗎(效益評估)
+				&ndash; 
+				<time datetime="2022-11-29T06:58:22&#43;0000">
+					Nov 29, 2022
+				</time></a></h6>
+				<hr>
+				<small></small>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<h6><a href="/zh-tw/%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E7%B4%80%E9%8C%84-%E8%A9%B2%E9%81%B8%E5%93%AA%E9%96%93%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E5%91%A2/">語言學校紀錄-該選哪間語言學校呢
+				&ndash; 
+				<time datetime="2022-11-29T05:57:21&#43;0000">
+					Nov 29, 2022
+				</time></a></h6>
+				<hr>
+				<small></small>
 
 		
 			
@@ -647,6 +618,20 @@ Task 1
 	</div>
 </div>
 
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/zh-tw/%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E7%B4%80%E9%8C%84-%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E5%8E%BB%E8%8F%B2%E5%BE%8B%E8%B3%93%E5%BF%B5%E8%8B%B1%E6%96%87/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;上一篇文章</span>
+			<p class="pager__title">語言學校紀錄-為什麼要去菲律賓念英文?</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/zh-tw/%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E7%B4%80%E9%8C%84-%E8%A9%B2%E9%81%B8%E5%93%AA%E9%96%93%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E5%91%A2/" rel="next">
+			<span class="pager__subtitle">下一篇文章&thinsp;»</span>
+			<p class="pager__title">語言學校紀錄-該選哪間語言學校呢</p>
+		</a>
+	</div>
+</nav>
 
 <section class="comments">
 	
@@ -821,7 +806,7 @@ Task 1
 		</script>
 </div>
 
-<div id="facebook-comments" class="fb-comments" data-href="http://sunnote.xyz/zh-tw/tutorials/csharp-multithreading/" data-width="100%" data-numposts="5"
+<div id="facebook-comments" class="fb-comments" data-href="http://sunnote.xyz/zh-tw/%E6%AD%90%E7%BE%8E%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1-vs-%E8%8F%B2%E5%BE%8B%E8%B3%93%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1/" data-width="100%" data-numposts="5"
 	data-csp="true" data-order-by="reverse_time" style="display: block;"></div>
 <script>
 

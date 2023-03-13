@@ -307,21 +307,6 @@
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://sunnote.xyz/categories/life-record/</loc>
-    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://sunnote.xyz/categories/overseas-travel/</loc>
-    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://sunnote.xyz/tags/philippines/</loc>
-    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>http://sunnote.xyz/cebu/residential_area/</loc>
     <lastmod>2022-12-04T16:28:53+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -336,6 +321,21 @@
                 hreflang="en"
                 href="http://sunnote.xyz/cebu/residential_area/"
                 />
+  </url><url>
+    <loc>http://sunnote.xyz/categories/life-record/</loc>
+    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/categories/overseas-travel/</loc>
+    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/tags/philippines/</loc>
+    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/cebu/bohol-island-day-tour-tarsier-chocolate-hills/</loc>
     <lastmod>2022-12-03T16:28:53+08:00</lastmod>
