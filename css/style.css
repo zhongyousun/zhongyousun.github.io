@@ -719,6 +719,7 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 
 .post__title {
 	margin: 0;
+	/* font-family: 'Courier New', Courier, monospace; */
 }
 
 .post__meta {
