@@ -151,6 +151,9 @@ if (!doNotTrack) {
 		<header class="post__header">
 			<h1 class="post__title">文章歸檔</h1>
 			
+			<br>
+			<h6>總文章數 : <span class="count" style="color: #ACD6FF; font-size: 25px; font-family: 'Courier New', Courier, monospace;">25</span></h6>
+			
 		</header>
 		<div class="content post__content clearfix">
 			
@@ -365,6 +368,20 @@ if (!doNotTrack) {
 	
 </section>
 
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script>
+	$('.count').each(function () {
+    $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 4000,
+        easing: 'swing',
+        step: function (now) {
+            $(this).text(Math.ceil(now));
+        }
+    });
+});
+</script>
 
 			</div>
 			
