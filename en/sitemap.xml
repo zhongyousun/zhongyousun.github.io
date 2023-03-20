@@ -17,36 +17,6 @@
                 href="http://sunnote.xyz/categories/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/tags/csharp/</loc>
-    <lastmod>2023-03-06T16:05:44+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/csharp/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/csharp/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/tutorials/jwt-authentication-mechanism/</loc>
-    <lastmod>2023-03-06T16:05:44+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tutorials/jwt-authentication-mechanism/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tutorials/jwt-authentication-mechanism/"
-                />
-  </url><url>
     <loc>http://sunnote.xyz/posts/</loc>
     <lastmod>2023-12-30T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
@@ -63,9 +33,39 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/categories/program/</loc>
-    <lastmod>2023-03-06T16:05:44+08:00</lastmod>
+    <lastmod>2023-03-20T10:44:19+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/tags/sql/</loc>
+    <lastmod>2023-03-20T10:44:19+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/sql/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/sql/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tutorials/sql-scopeidentity-identity-diff/</loc>
+    <lastmod>2023-03-20T10:44:19+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tutorials/sql-scopeidentity-identity-diff/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tutorials/sql-scopeidentity-identity-diff/"
+                />
   </url><url>
     <loc>http://sunnote.xyz/</loc>
     <lastmod>2023-12-30T00:00:00+00:00</lastmod>
@@ -95,6 +95,36 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://sunnote.xyz/tags/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tags/csharp/</loc>
+    <lastmod>2023-03-06T16:05:44+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/csharp/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/csharp/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tutorials/jwt-authentication-mechanism/</loc>
+    <lastmod>2023-03-06T16:05:44+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tutorials/jwt-authentication-mechanism/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tutorials/jwt-authentication-mechanism/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/web/</loc>
@@ -180,21 +210,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://sunnote.xyz/life/valentine-gift-marimo/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/tags/sql/</loc>
-    <lastmod>2023-02-07T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/sql/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/sql/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/sql-partition-by/</loc>

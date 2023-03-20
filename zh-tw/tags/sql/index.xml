@@ -6,7 +6,16 @@
     <description>Recent content in SQL on Sun 記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 07 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/tags/sql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Mar 2023 10:44:19 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/tags/sql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQL SCOPE_IDENTITY() 與 @@IDENTITY 取得自動增量值差異</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/sql-scopeidentity-identity-diff/</link>
+      <pubDate>Mon, 20 Mar 2023 10:44:19 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/sql-scopeidentity-identity-diff/</guid>
+      <description>&lt;p&gt;SQL Server使用 SCOPE_IDENTITY() 取得最近新增一筆的資料，並比較 SCOPE_IDENTITY() 與 @@IDENTITY 取值差異。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>SQL-partition by 實現資料分組</title>
       <link>http://sunnote.xyz/zh-tw/tutorials/sql-partition-by/</link>

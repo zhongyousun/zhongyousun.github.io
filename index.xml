@@ -6,7 +6,16 @@
     <description>Recent content on Sun Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 06 Mar 2023 16:05:44 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Mar 2023 10:44:19 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQL SCOPE_IDENTITY() and @@IDENTITY Differences in Retrieving Auto-Increment Values</title>
+      <link>http://sunnote.xyz/tutorials/sql-scopeidentity-identity-diff/</link>
+      <pubDate>Mon, 20 Mar 2023 10:44:19 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/tutorials/sql-scopeidentity-identity-diff/</guid>
+      <description>&lt;p&gt;Using SCOPE_IDENTITY() in SQL Server to Retrieve the Most Recently Insert Data and Comparing it with @@IDENTITY for Value Retrieval Differences.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>JWT Authentication Mechanism Principles and Implementation Examples (C#) </title>
       <link>http://sunnote.xyz/tutorials/jwt-authentication-mechanism/</link>

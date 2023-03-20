@@ -6,7 +6,16 @@
     <description>Recent content in 程式語言 on Sun 記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 06 Mar 2023 16:05:44 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Mar 2023 10:44:19 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQL SCOPE_IDENTITY() 與 @@IDENTITY 取得自動增量值差異</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/sql-scopeidentity-identity-diff/</link>
+      <pubDate>Mon, 20 Mar 2023 10:44:19 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/sql-scopeidentity-identity-diff/</guid>
+      <description>&lt;p&gt;SQL Server使用 SCOPE_IDENTITY() 取得最近新增一筆的資料，並比較 SCOPE_IDENTITY() 與 @@IDENTITY 取值差異。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>JWT 驗證機制原理與實作範例 (C#)</title>
       <link>http://sunnote.xyz/zh-tw/tutorials/jwt-authentication-mechanism/</link>
