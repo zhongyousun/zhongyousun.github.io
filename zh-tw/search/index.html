@@ -50,7 +50,56 @@ if (!doNotTrack) {
 </script>
 
 
+	
 </head>
+<span class="sun-btn">&#x2600;</span>
+<span class="moon-btn">&#x263D;</span>
+
+<script>
+	
+let darkModeState = false;
+
+const sun = document.querySelector('.sun-btn');
+const moon = document.querySelector('.moon-btn');
+
+
+const useDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+
+function toggleDarkMode(state) {
+  document.documentElement.classList.toggle("dark-mode", state);
+  darkModeState = state;
+}
+
+
+function setDarkModeLocalStorage(state) {
+  localStorage.setItem("dark-mode", state);
+}
+
+
+toggleDarkMode(localStorage.getItem("dark-mode") == "true");
+
+
+
+  useDark.addEventListener('change', (evt) => {
+    toggleDarkMode(evt.matches);
+  });
+
+
+
+sun.addEventListener("click", () => {
+  darkModeState = !darkModeState;
+
+  toggleDarkMode(darkModeState);
+  setDarkModeLocalStorage(darkModeState);
+});
+moon.addEventListener("click", () => {
+  darkModeState = !darkModeState;
+
+  toggleDarkMode(darkModeState);
+  setDarkModeLocalStorage(darkModeState);
+});
+</script>
 
 <body class="body">
 	
@@ -312,48 +361,7 @@ if (!doNotTrack) {
 	<button id="toggle-sidebar"><img src="/svg/glasses_lightgray.svg"></button>
 
 
-	
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
-	
-	<div class="scene scene--card sundarkmodep">
-		<div class="card">
-			<div class="card__face card__face--front"><span class="fa fa-moon" aria-hidden="true"></div>
-			<div class="card__face card__face--back"><span class="fa fa-sun" aria-hidden="true"></div>
-		</div>
-	</div>
-	
-	<script type="text/javascript">
-		var card = document.querySelector('.card');
-		card.addEventListener('click', function () {
-			card.classList.toggle('is-flipped');
-		});
-	</script>
-
-
-
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-
-	
-
-	<script>
-		$('.sundarkmodep').click(function () {
-			if ($('*').hasClass("darkmodecolor")) {
-				localStorage.setItem("darkmodeStatus", "sunmode");
-			} else if (!$('.main-body').hasClass("darkmodecolor")) {
-				localStorage.setItem("darkmodeStatus", "darkmode");
-			}
-			$('*').toggleClass("darkmodecolor");
-		});
-
-		var darkmodeStatus = localStorage.getItem("darkmodeStatus");
-
-		if (darkmodeStatus == "darkmode") {
-			$('*').addClass("darkmodecolor");
-		}
-	</script>
 
 
 </body>
@@ -362,6 +370,11 @@ if (!doNotTrack) {
 
 
 </script>
+
+
+
+
+
 
 
 
