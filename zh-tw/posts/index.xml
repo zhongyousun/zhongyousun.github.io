@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Sun 記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 20 Mar 2023 10:44:19 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Mar 2023 11:34:07 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>黑暗模式(dark mode)設計與Hugo實作</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/dark-mode-tips-hugo/</link>
+      <pubDate>Wed, 22 Mar 2023 11:34:07 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/dark-mode-tips-hugo/</guid>
+      <description>&lt;p&gt;紀錄一下網站增加黑暗模式功能踩到的一些坑、一些前端顯示的細節還有在Hugo上實作。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>SQL SCOPE_IDENTITY() 與 @@IDENTITY 取得自動增量值差異</title>
       <link>http://sunnote.xyz/zh-tw/tutorials/sql-scopeidentity-identity-diff/</link>

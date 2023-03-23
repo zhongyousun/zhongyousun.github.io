@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<meta property="fb:app_id" content="725315935966817" />
+	<title>Designing and Implementing Dark Mode in Hugo - Sun Notes</title>
+	<script>(function (d, e) { d[e] = d[e].replace("no-js", "js"); })(document.documentElement, "className");</script>
+	<meta name="description"
+		content="">
+	<meta property="og:title" content="Designing and Implementing Dark Mode in Hugo" />
+<meta property="og:description" content="Recording the hurdles encountered while adding dark mode functionality to a website, as well as frontend display tips and implementation on Hugo." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://sunnote.xyz/tutorials/dark-mode-tips-hugo/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-22T11:34:07+08:00" />
+<meta property="article:modified_time" content="2023-03-22T11:34:07+08:00" /><meta property="og:site_name" content="Sun Notes" />
+<meta property="og:image" content="http://sunnote.xyz/img/thumbnail/024en.webp" />
+		  	
+	<meta itemprop="name" content="Designing and Implementing Dark Mode in Hugo">
+<meta itemprop="description" content="Recording the hurdles encountered while adding dark mode functionality to a website, as well as frontend display tips and implementation on Hugo."><meta itemprop="datePublished" content="2023-03-22T11:34:07+08:00" />
+<meta itemprop="dateModified" content="2023-03-22T11:34:07+08:00" />
+<meta itemprop="wordCount" content="1008">
+<meta itemprop="keywords" content="Hugo,Web,CSS,JavaScript," />
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Designing and Implementing Dark Mode in Hugo"/>
+<meta name="twitter:description" content="Recording the hurdles encountered while adding dark mode functionality to a website, as well as frontend display tips and implementation on Hugo."/>
+
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" >
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MWPM4C5TJS"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-MWPM4C5TJS', { 'anonymize_ip': false });
+}
+</script>
+
+
+	
+</head>
+<span class="sun-btn">&#x2600;</span>
+<span class="moon-btn">&#x263D;</span>
+
+<script>
+	
+let darkModeState = false;
+
+const sun = document.querySelector('.sun-btn');
+const moon = document.querySelector('.moon-btn');
+
+
+const useDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+
+function toggleDarkMode(state) {
+  document.documentElement.classList.toggle("dark-mode", state);
+  darkModeState = state;
+}
+
+
+function setDarkModeLocalStorage(state) {
+  localStorage.setItem("dark-mode", state);
+}
+
+
+toggleDarkMode(localStorage.getItem("dark-mode") == "true");
+
+
+
+  useDark.addEventListener('change', (evt) => {
+    toggleDarkMode(evt.matches);
+  });
+
+
+
+sun.addEventListener("click", () => {
+  darkModeState = !darkModeState;
+
+  toggleDarkMode(darkModeState);
+  setDarkModeLocalStorage(darkModeState);
+});
+moon.addEventListener("click", () => {
+  darkModeState = !darkModeState;
+
+  toggleDarkMode(darkModeState);
+  setDarkModeLocalStorage(darkModeState);
+});
+</script>
+
+<body class="body">
+	
+	<script>
+		window.fbAsyncInit = function () {
+			FB.init({
+				appId: '725315935966817',
+				xfbml: true,
+				version: 'v16.0'
+			});
+			FB.AppEvents.logPageView();
+		};
+
+		(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) { return; }
+			js = d.createElement(s); js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
+
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Sun Notes" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Sun Notes</div>
+					<div class="logo__tagline">Life is tough, but so are you.</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">☰Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about" >
+				
+				<span class="menu__text">📃About me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/search" >
+				
+				<span class="menu__text">🔍Site Search</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/archives" >
+				
+				<span class="menu__text">🗄️Archives</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/zh-tw" >
+				
+				<span class="menu__text">🌐</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-MWPM4C5TJS', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+		<div class="wrapper flex">
+			<div class="primary">
+				
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"></link>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"></link>
+<style>
+	.owl-theme .item {
+	  height: 15rem;
+	   
+	  background-color: rgba(245, 245, 245, 0.3);
+	  padding: 0.5rem;
+	  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1); 
+	  transform:scale(0.9,0.9);
+	  transition: all 0.3s ease-out;
+	}
+	.owl-theme .item:hover {
+		transform:scale(1.0,1.0);
+	}
+	
+	.owl-carousel .item h6 {
+	  color: #000000;
+	  font-weight: 400;
+	  font-size: 1rem;
+	  margin-top: 0rem;
+	}
+	.owl-carousel .item img {
+	  width: 100%;
+	  height: 7rem;
+	  border-radius: 4px;
+	}
+</style>
+
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Designing and Implementing Dark Mode in Hugo</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-calendar"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 5.332031 L 2 12.667969 C 2 13.035156 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 5.332031 C 14 4.964844 13.703125 4.667969 13.335938 4.667969 L 2.664062 4.667969 C 2.296875 4.667969 2 4.964844 2 5.332031 Z M 0.667969 5.332031 C 0.667969 4.230469 1.558594 3.332031 2.664062 3.332031 L 13.335938 3.332031 C 14.441406 3.332031 15.332031 4.230469 15.332031 5.332031 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.769531 0.667969 12.667969 Z M 2 7.332031 L 2 6 L 14 6 L 14 7.332031 Z M 4 2 C 4 1.632812 4.296875 1.332031 4.667969 1.332031 C 5.035156 1.332031 5.332031 1.628906 5.332031 2 L 5.332031 3.332031 L 4 3.332031 Z M 10.667969 2 C 10.667969 1.632812 10.960938 1.332031 11.332031 1.332031 C 11.703125 1.332031 12 1.628906 12 2 L 12 3.332031 L 10.667969 3.332031 Z M 10.667969 2 "/>
+</g>
+</svg>
+<time class="meta__text" datetime="2023-03-22T11:34:07&#43;08:00">March 22, 2023</time></div><div class="meta__item-categories meta__item">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-folders"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 6 L 2 12.664062 C 2 13.03125 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 8 C 14 7.632812 13.703125 7.332031 13.335938 7.332031 L 9.808594 7.332031 L 8.03125 5.332031 L 2.667969 5.332031 C 2.300781 5.332031 2 5.632812 2 6 Z M 13.335938 6 C 14.4375 6 15.332031 6.894531 15.332031 8 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.761719 0.667969 12.664062 L 0.667969 6 C 0.667969 4.894531 1.5625 4 2.667969 4 L 8.632812 4 L 10.40625 6 Z M 4.425781 3.625 C 4.425781 3.625 4.425781 3.703125 4.425781 4.074219 C 4.425781 4.328125 5.15625 4.75 6 4.667969 C 6.777344 4.589844 8.453125 4.589844 8.796875 5.050781 C 10 6.667969 14.242188 7.15625 14.242188 6.667969 L 14.242188 5.25 C 14.242188 4.949219 14 4.707031 13.699219 4.707031 L 10.8125 4.707031 L 9.359375 3.082031 L 4.972656 3.082031 C 4.667969 3.082031 4.425781 3.328125 4.425781 3.625 Z M 13.699219 3.625 C 14.601562 3.625 15.332031 4.351562 15.332031 5.25 L 15.332031 8 C 15.332031 8.304688 14.667969 6.667969 10 6.667969 C 8.652344 6.160156 9.402344 5.636719 8 5.25 C 6.496094 4.832031 4.703125 5.296875 3.863281 5.285156 C 3.320312 5.273438 3.332031 4.855469 3.332031 4.667969 L 3.332031 3.625 C 3.332031 2.726562 4.066406 2 4.972656 2 L 9.851562 2 L 11.300781 3.625 Z M 13.699219 3.625 "/>
+</g>
+</svg>
+<span class="meta__text"><a class="meta__link" href="/categories/program/" rel="category">Program</a>
+	</span>
+</div>
+<div class="meta__item-translations meta__item"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-translate" width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(16.078431%,17.647059%,19.607843%);stroke-opacity:1;stroke-miterlimit:4;" d="M 19.060547 18.667969 L 16.921875 14.402344 L 14.777344 18.667969 " transform="matrix(0.666667,0,0,0.666667,0,0)"/>
+<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(16.078431%,17.647059%,19.607843%);stroke-opacity:1;stroke-miterlimit:4;" d="M 15.169922 17.912109 L 18.691406 17.912109 " transform="matrix(0.666667,0,0,0.666667,0,0)"/>
+<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(16.078431%,17.647059%,19.607843%);stroke-opacity:1;stroke-miterlimit:4;" d="M 16.921875 22.001953 C 14.121094 22.001953 11.841797 19.728516 11.841797 16.921875 C 11.841797 14.121094 14.109375 11.841797 16.921875 11.841797 C 19.722656 11.841797 22.001953 14.109375 22.001953 16.921875 C 22.001953 19.728516 19.728516 22.001953 16.921875 22.001953 Z M 16.921875 22.001953 " transform="matrix(0.666667,0,0,0.666667,0,0)"/>
+<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(16.078431%,17.647059%,19.607843%);stroke-opacity:1;stroke-miterlimit:4;" d="M 5.021484 1.998047 L 8.941406 1.998047 C 11.009766 1.998047 12.011719 3 11.958984 5.021484 L 11.958984 8.941406 C 12.011719 11.009766 11.009766 12.011719 8.941406 11.958984 L 5.021484 11.958984 C 3 12 1.998047 10.998047 1.998047 8.929687 L 1.998047 5.009766 C 1.998047 3 3 1.998047 5.021484 1.998047 Z M 5.021484 1.998047 " transform="matrix(0.666667,0,0,0.666667,0,0)"/>
+<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(16.078431%,17.647059%,19.607843%);stroke-opacity:1;stroke-miterlimit:4;" d="M 9.011719 5.847656 L 4.951172 5.847656 " transform="matrix(0.666667,0,0,0.666667,0,0)"/>
+<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(16.078431%,17.647059%,19.607843%);stroke-opacity:1;stroke-miterlimit:4;" d="M 6.972656 5.167969 L 6.972656 5.847656 " transform="matrix(0.666667,0,0,0.666667,0,0)"/>
+<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(16.078431%,17.647059%,19.607843%);stroke-opacity:1;stroke-miterlimit:4;" d="M 7.992187 5.841797 C 7.992187 7.587891 6.621094 9.011719 4.939453 9.011719 " transform="matrix(0.666667,0,0,0.666667,0,0)"/>
+<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(16.078431%,17.647059%,19.607843%);stroke-opacity:1;stroke-miterlimit:4;" d="M 9.011719 9.011719 C 8.279297 9.011719 7.617187 8.619141 7.160156 7.998047 " transform="matrix(0.666667,0,0,0.666667,0,0)"/>
+<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(16.078431%,17.647059%,19.607843%);stroke-opacity:1;stroke-miterlimit:4;" d="M 1.998047 15 C 1.998047 18.867187 5.132812 22.001953 9 22.001953 L 7.951172 20.25 " transform="matrix(0.666667,0,0,0.666667,0,0)"/>
+<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(16.078431%,17.647059%,19.607843%);stroke-opacity:1;stroke-miterlimit:4;" d="M 22.001953 9 C 22.001953 5.132812 18.867187 1.998047 15 1.998047 L 16.048828 3.75 " transform="matrix(0.666667,0,0,0.666667,0,0)"/>
+</g>
+</svg>
+<span class="meta__text"><a class="meta__link" href="/zh-tw/tutorials/dark-mode-tips-hugo/">ZH-TW</a>
+	</span>
+</div>
+
+				
+				
+				
+				<span>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-clock"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 8 12.667969 C 10.578125 12.667969 12.667969 10.578125 12.667969 8 C 12.667969 5.421875 10.578125 3.332031 8 3.332031 C 5.421875 3.332031 3.332031 5.421875 3.332031 8 C 3.332031 10.578125 5.421875 12.667969 8 12.667969 Z M 3.957031 12.433594 C 2.753906 11.335938 2 9.757812 2 8 C 2 4.6875 4.6875 2 8 2 C 11.3125 2 14 4.6875 14 8 C 14 9.757812 13.246094 11.335938 12.042969 12.433594 L 12.9375 13.328125 C 13.207031 13.597656 13.203125 14.015625 12.941406 14.277344 C 12.679688 14.539062 12.257812 14.535156 11.996094 14.273438 L 10.949219 13.226562 C 10.078125 13.71875 9.070312 14 8 14 C 6.929688 14 5.921875 13.71875 5.050781 13.226562 L 4.003906 14.273438 C 3.738281 14.539062 3.316406 14.535156 3.058594 14.277344 C 2.796875 14.015625 2.796875 13.589844 3.0625 13.328125 Z M 7.332031 5.335938 C 7.332031 4.964844 7.628906 4.667969 8 4.667969 C 8.367188 4.667969 8.667969 4.957031 8.667969 5.335938 L 8.667969 9.332031 L 7.332031 9.332031 Z M 5.332031 8.667969 C 5.332031 8.296875 5.628906 8 6 8 L 7.332031 8 L 7.332031 9.332031 L 6 9.332031 C 5.632812 9.332031 5.332031 9.039062 5.332031 8.667969 Z M 5.332031 8.667969 "/>
+</g>
+</svg>
+1678 words</span>
+				<span>| 5 min read.　</span>
+				
+			
+				<div id="busuanzi_container_page_pv">
+					
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-eye"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 8 12.667969 C 6.34375 12.667969 4.679688 11.953125 3.066406 10.777344 C 2.515625 10.371094 2.007812 9.941406 1.554688 9.507812 C 1.28125 9.246094 1.082031 9.039062 1 8.941406 C 0.488281 8.425781 0.488281 7.585938 0.976562 7.082031 C 1.082031 6.960938 1.28125 6.753906 1.554688 6.492188 C 2.007812 6.058594 2.515625 5.628906 3.066406 5.222656 C 4.679688 4.046875 6.34375 3.332031 8 3.332031 C 9.65625 3.332031 11.320312 4.046875 12.933594 5.222656 C 13.484375 5.628906 13.992188 6.058594 14.445312 6.492188 C 14.71875 6.753906 14.917969 6.960938 15 7.058594 C 15.511719 7.574219 15.511719 8.414062 15.023438 8.917969 C 14.917969 9.039062 14.71875 9.246094 14.445312 9.507812 C 13.992188 9.941406 13.484375 10.371094 12.933594 10.777344 C 11.320312 11.953125 9.65625 12.667969 8 12.667969 Z M 8 11.332031 C 9.324219 11.332031 10.742188 10.726562 12.144531 9.699219 C 12.648438 9.332031 13.113281 8.9375 13.523438 8.542969 C 13.769531 8.308594 13.941406 8.128906 14.046875 8.011719 C 14.050781 8.007812 14.050781 7.992188 14.027344 7.96875 C 13.941406 7.871094 13.769531 7.691406 13.523438 7.457031 C 13.113281 7.0625 12.648438 6.667969 12.144531 6.300781 C 10.742188 5.273438 9.324219 4.667969 8 4.667969 C 6.675781 4.667969 5.257812 5.273438 3.855469 6.300781 C 3.351562 6.667969 2.886719 7.0625 2.476562 7.457031 C 2.230469 7.691406 2.058594 7.871094 1.953125 7.988281 C 1.949219 7.992188 1.949219 8.007812 1.972656 8.03125 C 2.058594 8.128906 2.230469 8.308594 2.476562 8.542969 C 2.886719 8.9375 3.351562 9.332031 3.855469 9.699219 C 5.257812 10.726562 6.675781 11.332031 8 11.332031 Z M 8 8.667969 C 8.367188 8.667969 8.667969 8.367188 8.667969 8 C 8.667969 7.632812 8.367188 7.332031 8 7.332031 C 7.632812 7.332031 7.332031 7.632812 7.332031 8 C 7.332031 8.367188 7.632812 8.667969 8 8.667969 Z M 8 10 C 6.894531 10 6 9.105469 6 8 C 6 6.894531 6.894531 6 8 6 C 9.105469 6 10 6.894531 10 8 C 10 9.105469 9.105469 10 8 10 Z M 8 10 "/>
+</g>
+</svg>
+<span
+						id="busuanzi_value_page_pv"></span>
+
+				</div>
+
+			</div>
+
+
+			<div id="fb-root"></div>
+			<script async defer crossorigin="anonymous"
+				src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0&appId=725315935966817&autoLogAppEvents=1"
+				nonce="aF40iZ15"></script>
+		</header>
+		
+	<figure class="post__thumbnail thumbnail">
+		
+		<img class="thumbnail__image" src="/img/thumbnail/024en.webp" alt="Designing and Implementing Dark Mode in Hugo">
+		
+	</figure>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#foreword">Foreword</a></li>
+        <li><a href="#principle">Principle</a></li>
+        <li><a href="#switch-mode-button">Switch Mode Button</a></li>
+        <li><a href="#css-variable">CSS variable</a></li>
+        <li><a href="#reduce-the-brightness-of-the-white-background">Reduce the brightness of the white background</a></li>
+        <li><a href="#button-monitoring-localstorage-store-user-preference-mode">Button monitoring, localStorage store user preference mode</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<p>Recording the hurdles encountered while adding dark mode functionality to a website, as well as frontend display tips and implementation on Hugo.</p>
+<h3 id="foreword">Foreword</h3>
+<p>The switch between dark and light modes is now a must-have feature for both webpages and apps. When using certain mobile apps without the option to switch, it&rsquo;s difficult for me not to wonder why the team didn&rsquo;t consider user-friendliness. Unfortunately, the built-in theme of my website didn&rsquo;t support this feature, so I had to create one myself. Initially, I thought it was simple, just add a dark mode-specific CSS and use class switching to modify the CSS used for the interface to achieve the goal of modifying it to a dark mode.<br>
+Although the interface successfully switched to dark mode, I encountered a problem where there was a brief white flash when navigating to other pages within the same website. After trying various solutions, I found that using <code>prefers-color-scheme: dark</code> resolved the issue.</p>
+<h3 id="principle">Principle</h3>
+<p>The main principle is to use CSS <code>prefers-color-scheme</code> media query and JavaScript to monitor the color mode settings of the operating system or browser and dynamically add or remove the <code>dark-mode</code> class on the page. This means that when navigating to other pages, the page will not immediately switch to the default light or dark mode, but instead will maintain the current color mode state, thus avoiding the brief white flash.</p>
+<h3 id="switch-mode-button">Switch Mode Button</h3>
+<p>First, need to create a button that can be clicked to switch between modes. You can choose your own style for the button, and here I chose to use Unicode symbols for the sun and moon to serve as the appearance of the button.
+The location of the code:<code>Root directory\themes\Mainroad\layouts\baseof.html</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-HTML" data-lang="HTML"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sun-btn&#34;</span>&gt;&amp;#x2600;&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;moon-btn&#34;</span>&gt;&amp;#x263D;&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span></code></pre></div><p>Next, you can add the style for the button and the dark mode in style.css.</p>
+<h3 id="css-variable">CSS variable</h3>
+<p>Since the configuration of different websites varies, you will still need to set up the corresponding dark mode color scheme in CSS. To have better control over CSS, you can use <code>CSS variables</code>, which are values defined and used in CSS that can be repeated throughout the document. They are named by prefixing a variable name with a double hyphen (&ndash;).</p>
+<p>Example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-CSS" data-lang="CSS"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>:<span style="color:#a6e22e">root</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>  --main-color: <span style="color:#ae81ff">#ff0000</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#f92672">h1</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>  <span style="color:#66d9ef">color</span>: <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span>main<span style="color:#f92672">-</span><span style="color:#66d9ef">color</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>}
+</span></span></code></pre></div><p>A CSS variable named <code>--main-color</code> is defined in the :root pseudo-class and set to red. Then, the var() function is used to reference this variable in the color property applied to the h1 element.</p>
+<p>One of the benefits of CSS variables is that they can be shared across different elements and selectors, and their values can be dynamically changed through JavaScript. This makes CSS variables a very powerful and flexible tool that can be used to achieve dynamic and maintainable style sheets.</p>
+<p>Here is the CSS used in my theme. To facilitate management and add styles for dark mode, I first define various CSS variables in the :root pseudo-class. Then, I replace all the CSS styles used in the css.style with these CSS variables, so that the effect of a unified transition can be achieved by simply modifying the variable values in the dark mode class.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-CSS" data-lang="CSS"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>:<span style="color:#a6e22e">root</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>	--bodyBG: <span style="color:#ae81ff">#f7f7f7</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>	--wrapperBG:<span style="color:#ae81ff">#ffffff</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>	--wrapperBG2:<span style="color:#ae81ff">#f5f5f5</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>	--text-color: <span style="color:#ae81ff">#000000</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>	--codeBG:<span style="color:#ae81ff">#f6f8fa</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>  }  
+</span></span></code></pre></div><p>Then customize the style of the light/dark mode toggle button.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-CSS" data-lang="CSS"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e">/* Light Mode */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>.<span style="color:#a6e22e">sun-btn</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>	<span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">block</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>	<span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">2</span><span style="color:#66d9ef">rem</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>	<span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#ffc533</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>  }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>  
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>.<span style="color:#a6e22e">moon-btn</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>	<span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">none</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>  }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#75715e">/* Dark Mode */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span> .<span style="color:#a6e22e">dark-mode</span> .<span style="color:#a6e22e">sun-btn</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>	<span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">none</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span> }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span> .<span style="color:#a6e22e">dark-mode</span> .<span style="color:#a6e22e">moon-btn</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>	 <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">block</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>	 <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">2</span><span style="color:#66d9ef">rem</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>	 <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#fff9be</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>   }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span> 
+</span></span></code></pre></div><p>Here is the CSS for the dark mode, and you can see that there are not many actual changes because most of them have been replaced with CSS variables.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-CSS" data-lang="CSS"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>  <span style="color:#75715e">/*dark-mode styles*/</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>.<span style="color:#a6e22e">dark-mode</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>	--bodyBG:<span style="color:#ae81ff">#2b2b2b</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>	--wrapperBG: <span style="color:#ae81ff">#212121</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>	--wrapperBG2: <span style="color:#ae81ff">#212121</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>	--text-color: <span style="color:#ae81ff">#C5C5C5</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>	--codeBG:<span style="color:#ae81ff">#424242</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>	<span style="color:#66d9ef">box-shadow</span>: <span style="color:#66d9ef">none</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>  } 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>.<span style="color:#a6e22e">dark-mode</span> <span style="color:#f92672">span</span>.<span style="color:#a6e22e">nav-indicator</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>	<span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#ACD6FF</span> <span style="color:#75715e">!important</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>  } 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>.<span style="color:#a6e22e">dark-mode</span> <span style="color:#f92672">li</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>	<span style="color:#66d9ef">color</span>: <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">text</span><span style="color:#f92672">-</span><span style="color:#66d9ef">color</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>  }
+</span></span></code></pre></div><h3 id="reduce-the-brightness-of-the-white-background">Reduce the brightness of the white background</h3>
+<p>If there are some media or images on the webpage, it may be too bright in dark mode if they have a white background. In this case, you can use the brightness CSS property to reduce the brightness in dark mode.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-CSS" data-lang="CSS"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>.<span style="color:#a6e22e">dark-mode</span> <span style="color:#f92672">iframe</span><span style="color:#f92672">,</span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>.<span style="color:#a6e22e">dark-mode</span> <span style="color:#f92672">img</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>.<span style="color:#a6e22e">dark-mode</span> <span style="color:#f92672">video</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>  <span style="color:#66d9ef">filter</span>: brightness(<span style="color:#ae81ff">0.9</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>}
+</span></span></code></pre></div><h3 id="button-monitoring-localstorage-store-user-preference-mode">Button monitoring, localStorage store user preference mode</h3>
+<p>Next, we will use JavaScript to implement the following functionalities. <br>
+The location of the code:<code>Root directory\themes\Mainroad\layouts\baseof.html</code></p>
+<ol>
+<li>When the page is loaded, check if the &ldquo;dark-mode&rdquo; setting exists in the localStorage. If it does, enable or disable the dark mode based on the setting.</li>
+<li>Listen for changes in the system settings for switching to dark mode (using window.matchMedia to create a MediaQueryList object).</li>
+<li>When the user clicks the &ldquo;sun&rdquo; or &ldquo;moon&rdquo; button, toggle the state of the dark mode and update the localStorage value accordingly.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">darkModeState</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#66d9ef">const</span> sun <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;.sun-btn&#39;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">moon</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;.moon-btn&#39;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span><span style="color:#75715e">// MediaQueryList object
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">useDark</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">matchMedia</span>(<span style="color:#e6db74">&#34;(prefers-color-scheme: dark)&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#75715e">// Toggles the &#34;dark-mode&#34; class
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">toggleDarkMode</span>(<span style="color:#a6e22e">state</span>) {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>  document.<span style="color:#a6e22e">documentElement</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">toggle</span>(<span style="color:#e6db74">&#34;dark-mode&#34;</span>, <span style="color:#a6e22e">state</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>  <span style="color:#a6e22e">darkModeState</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">state</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span><span style="color:#75715e">// Sets localStorage state
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setDarkModeLocalStorage</span>(<span style="color:#a6e22e">state</span>) {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>  <span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">setItem</span>(<span style="color:#e6db74">&#34;dark-mode&#34;</span>, <span style="color:#a6e22e">state</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span><span style="color:#75715e">// Initial setting
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span><span style="color:#75715e"></span><span style="color:#a6e22e">toggleDarkMode</span>(<span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">getItem</span>(<span style="color:#e6db74">&#34;dark-mode&#34;</span>) <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;true&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span><span style="color:#75715e">// Listen for changes in the OS settings.
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span><span style="color:#75715e">// useDark.addListener((evt) =&gt; toggleDarkMode(evt.matches));
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">useDark</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;change&#39;</span>, (<span style="color:#a6e22e">evt</span>) =&gt; {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>    <span style="color:#a6e22e">toggleDarkMode</span>(<span style="color:#a6e22e">evt</span>.<span style="color:#a6e22e">matches</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>  });
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span><span style="color:#75715e">// Toggles the &#34;dark-mode&#34; class on click and sets localStorage state
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span><span style="color:#75715e"></span>sun.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, () =&gt; {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span><span>  <span style="color:#a6e22e">darkModeState</span> <span style="color:#f92672">=</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">darkModeState</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34</span><span>  <span style="color:#a6e22e">toggleDarkMode</span>(<span style="color:#a6e22e">darkModeState</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35</span><span>  <span style="color:#a6e22e">setDarkModeLocalStorage</span>(<span style="color:#a6e22e">darkModeState</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36</span><span>});
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37</span><span><span style="color:#a6e22e">moon</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, () =&gt; {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38</span><span>  <span style="color:#a6e22e">darkModeState</span> <span style="color:#f92672">=</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">darkModeState</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40</span><span>  <span style="color:#a6e22e">toggleDarkMode</span>(<span style="color:#a6e22e">darkModeState</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41</span><span>  <span style="color:#a6e22e">setDarkModeLocalStorage</span>(<span style="color:#a6e22e">darkModeState</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42</span><span>});
+</span></span></code></pre></div><h3 id="conclusion">Conclusion</h3>
+<p>I actually think that this method is similar to the approach I was originally using, which was dynamically adding or removing the <code>dark-mode</code> class on the page using JavaScript. I&rsquo;m not sure why this method seems to solve the issue of a brief white flash on page transitions, and I would appreciate any input from frontend experts.</p>
+<div id="block1"></div>
+<script>
+    var myDiv = document.getElementById("block1");
+    for (var i = 0; i <  8 ; i++) {
+      var brTag = document.createElement("br");
+      myDiv.appendChild(brTag);
+    }
+</script>
+<blockquote>
+<p>Reference</p>
+</blockquote>
+<ul>
+<li><a href="https://www.ditdot.hr/en/dark-mode-website-tutorial" title="Dark Mode - The prefers-color-scheme Website Tutorial">Dark Mode - The prefers-color-scheme Website Tutorial</a></li>
+</ul>
+		</div>
+		<br>
+		<br>
+		
+		<br>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/hugo/" rel="tag">Hugo</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/web/" rel="tag">Web</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/css/" rel="tag">CSS</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/javascript/" rel="tag">JavaScript</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+		<hr>
+		<div id="type-effect">
+</div>
+<br>
+<br>
+<br>
+<br>
+<iframe class="LikeCoin" height="180" src="https://button.like.co/in/embed/sunnote/button?referrer=http%3a%2f%2fsunnote.xyz%2ftutorials%2fdark-mode-tips-hugo%2f" width="80%" frameborder=0></iframe>
+
+<style>
+	#type-effect {
+	  white-space: nowrap;
+	  overflow: hidden;
+	  font-size: 20px;
+	  font-family: monospace, sans-serif  ;
+	  border-right: 1px solid rgb(255, 255, 255);
+	   
+	  padding-right: 5px;
+	  white-space: pre-wrap;
+	  position: absolute;
+    
+	}
+  </style>
+  <script>
+  	var url = window.location.href;
+	var ln = "en";
+	if (url.indexOf("/zh-tw/") > -1) {
+  	ln = "zh";
+	}
+	if (ln === "zh") {
+	  var message = "如果這個文章對您有幫助或是有任何疑問，歡迎留言。👇"
+	  speed = 100
+	}
+	else {
+	  var message = "If this posts was helpful to you or if you have any questions, feel free to leave a comment and ask.👇"
+	  speed = 50
+	}
+  
+	const typeEffectDiv = document.getElementById("type-effect");
+  
+	function typeEffect(message, element) {
+	  let i = 0;
+	  const interval = setInterval(function () {
+		if (i === message.length) {
+		  clearInterval(interval);
+		  setTimeout(function () {
+			element.textContent = "";
+			typeEffect(message, element);
+		  }, 2000); 
+		} else {
+		  element.textContent += message[i];
+		  i++;
+		}
+	  }, speed); 
+
+	}
+	typeEffect(message, typeEffectDiv);
+  </script>
+
+	</article>
+</main>
+
+
+<hr>
+<div class="related-content">
+
+<h3>See Also</h3>
+
+<div class="owl-carousel owl-theme"> 
+	  
+	  
+	
+	 
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/tutorials/jwt-authentication-mechanism/">
+					<img src="https://sunnote.xyz/img/thumbnail/022en.png" alt="JWT Authentication Mechanism Principles and Implementation Examples (C#) "/>
+				</a>
+			
+
+			<h6><a href="/tutorials/jwt-authentication-mechanism/">JWT Authentication Mechanism Principles and Implementation Examples (C#) 
+				&ndash; 
+				<time datetime="2023-03-06T08:05:44&#43;0000">
+					Mar 6, 2023
+				</time></a></h6></div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/tutorials/hugo-related-posts-supports-carousel-display/">
+					<img src="https://sunnote.xyz/img/thumbnail/021en.png" alt="Implementing Recommended Posts and Carousel Display in Hugo"/>
+				</a>
+			
+
+			<h6><a href="/tutorials/hugo-related-posts-supports-carousel-display/">Implementing Recommended Posts and Carousel Display in Hugo
+				&ndash; 
+				<time datetime="2023-02-22T03:02:15&#43;0000">
+					Feb 22, 2023
+				</time></a></h6></div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/tutorials/hugo-multiple-comments/">
+					<img src="https://sunnote.xyz/img/thumbnail/020en.png" alt="Implementing Multiple Comment Sections in a Static Website Generated by Hugo"/>
+				</a>
+			
+
+			<h6><a href="/tutorials/hugo-multiple-comments/">Implementing Multiple Comment Sections in a Static Website Generated by Hugo
+				&ndash; 
+				<time datetime="2023-02-16T02:11:38&#43;0000">
+					Feb 16, 2023
+				</time></a></h6></div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/tutorials/sql-scopeidentity-identity-diff/">
+					<img src="https://sunnote.xyz/img/thumbnail/023en.png" alt="SQL SCOPE_IDENTITY() and @@IDENTITY Differences in Retrieving Auto-Increment Values"/>
+				</a>
+			
+
+			<h6><a href="/tutorials/sql-scopeidentity-identity-diff/">SQL SCOPE_IDENTITY() and @@IDENTITY Differences in Retrieving Auto-Increment Values
+				&ndash; 
+				<time datetime="2023-03-20T02:44:19&#43;0000">
+					Mar 20, 2023
+				</time></a></h6></div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/life/valentine-gift-marimo/">
+					<img src="https://sunnote.xyz/img/thumbnail/019mario.jpg" alt="Valentine&#39;s Day Gift Idea: Marimo Moss Ball (Basic Introduction, Care Instructions, and Symbolic Meaning)"/>
+				</a>
+			
+
+			<h6><a href="/life/valentine-gift-marimo/">Valentine&#39;s Day Gift Idea: Marimo Moss Ball (Basic Introduction, Care Instructions, and Symbolic Meaning)
+				&ndash; 
+				<time datetime="2023-02-14T02:11:38&#43;0000">
+					Feb 14, 2023
+				</time></a></h6></div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<h6><a href="/tutorials/sql-partition-by/">SQL-implement data partitioning (partition by)
+				&ndash; 
+				<time datetime="2023-02-07T00:00:00&#43;0000">
+					Feb 7, 2023
+				</time></a></h6>
+				<hr>
+				<small>Implement data partitioning using SQL partition by and compare the performance with LINQ.
+</small>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<h6><a href="/tutorials/csharp-multithreading/">C# Multi-threading principle, asynchronous usage and parameter with custom objects
+				&ndash; 
+				<time datetime="2023-01-19T03:49:15&#43;0000">
+					Jan 19, 2023
+				</time></a></h6>
+				<hr>
+				<small>The principle of C# multi-threading, asynchronous usage and parameter with custom objects records.
+None of the projects encountered so far have a hard requirement to use multi-threading. This article is to record my own understanding and learning process.
+</small>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<h6><a href="/tutorials/csharp-enum/">C# Enum Usage Record
+				&ndash; 
+				<time datetime="2023-01-15T00:49:07&#43;0000">
+					Jan 15, 2023
+				</time></a></h6>
+				<hr>
+				<small>C#-Enum (enumeration) uses and uses the extension method to obtain detailed description records.
+</small>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<h6><a href="/tutorials/sql-merge-into-statement/">SQL-merge into statement
+				&ndash; 
+				<time datetime="2022-12-22T02:44:38&#43;0000">
+					Dec 22, 2022
+				</time></a></h6>
+				<hr>
+				<small>I was assigned to implement the function of synchronizing from different databases.
+The company currently has an ERP system.
+All data sources are based on this standard, so that customers can create , update, write to ERP,
+and synchronize with ERP in their own systems…
+</small>
+
+		
+			
+		
+			
+	</div>
+  
+</div>
+</div>
+<br>
+<br>
+
+
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Alvin avatar" src="/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">
+			<a href="../../about/" target="_blank" style="text-decoration:none;">
+			About Alvin ☀️
+		    </a>
+		</span>
+	</div>
+	<div class="authorbox__description">
+		Life is about pursuing a sense of accomplishment while messing around.
+	</div>
+</div>
+
+
+<section class="comments">
+	
+	
+</section>
+
+<div>
+	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img
+			src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script> 
+<script>
+	var owl = $('.owl-carousel');
+	owl.owlCarousel({
+  loop: true, 
+  margin: 10, 
+  nav: true, 
+  responsive: {
+    0: {
+      items: 2 
+    },
+    600: {
+      items: 3 
+    },
+    1000: {
+      items: 4 
+    }
+  }
+});
+</script>
+
+
+
+
+
+<style>
+	.nav {
+		display: inline-flex;
+		position: relative;
+		overflow: hidden;
+		max-width: 100%;
+		background-color: var(--wrapperBG);
+		padding: 0 20px;
+		border-radius: 20px;
+		 
+		display: flex;
+		justify-content: center;
+
+	}
+
+	.nav-item {
+		color: #83818c;
+		padding: 20px;
+		text-decoration: none;
+		transition: .3s;
+		margin: 0 6px;
+		z-index: 1;
+		font-family: 'DM Sans', sans-serif;
+		font-weight: 500;
+		position: relative;
+
+		&:before {
+			content: "";
+			position: absolute;
+			bottom: -6px;
+			left: 0;
+			width: 100%;
+			height: 5px;
+			background-color: #dfe2ea;
+			border-radius: 8px 8px 0 0;
+			opacity: 0;
+			transition: .3s;
+		}
+	}
+
+	.nav-item:not(.is-active):hover:before {
+		opacity: 1;
+		bottom: 0;
+	}
+
+
+	.nav-item:not(.is-active):hover {
+		color: #333;
+	}
+
+	.nav-indicator {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		height: 4px;
+		transition: .5s;
+		height: 5px;
+		z-index: 1;
+		border-radius: 8px 8px 0 0;
+	}
+
+	.nav-item {
+		border: none;
+		outline: none;
+		background-color:  var(--wrapperBG);
+	}
+
+	@media (max-width: 580px) {
+		.nav {
+			overflow: auto;
+		}
+	}
+</style>
+<br>
+
+<nav class="nav">
+	<button id="fb-btn" class="nav-item" active-color="#ACD6FF">Facebook</button>
+	<button id="github-btn" class="nav-item is-active" active-color="#ACD6FF">Github</button>
+	<button id="disqus-btn" class="nav-item" active-color="#ACD6FF">Disqus</button>
+	<span class="nav-indicator"></span>
+</nav>
+
+<script>
+	const indicator = document.querySelector('.nav-indicator');
+	const items = document.querySelectorAll('.nav-item');
+
+	function handleIndicator(el) {
+		items.forEach(item => {
+			item.classList.remove('is-active');
+			item.removeAttribute('style');
+		});
+
+		indicator.style.width = `${el.offsetWidth}px`;
+		indicator.style.left = `${el.offsetLeft}px`;
+		indicator.style.backgroundColor = el.getAttribute('active-color');
+
+		el.classList.add('is-active');
+		el.style.color = el.getAttribute('active-color');
+	}
+
+
+	items.forEach((item, index) => {
+		item.addEventListener('click', (e) => { handleIndicator(e.target) });
+		item.classList.contains('is-active') && handleIndicator(item);
+	});
+
+
+</script>
+<br><br>
+
+
+<div id="disqus-comments" class="comments markdown" style="display: none;">
+	<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    
+    
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'sun';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+
+</div>
+
+
+
+<div id="utterances-comments" class="comments markdown" style="display: block;">
+	<script src="https://giscus.app/client.js"
+        data-repo="zhongyousun/giscus"
+        data-repo-id="R_kgDOJJwIkA"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOJJwIkM4CU4ky"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light_protanopia"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</div>
+
+
+
+<div id="facebook-comments" class="fb-comments" data-href="http://sunnote.xyz/tutorials/dark-mode-tips-hugo/" data-width="100%" data-numposts="5"
+	data-csp="true" data-order-by="reverse_time" style="display: none;"></div>
+<script>
+
+	
+	const githubBtn = document.getElementById("github-btn");
+	const disqusBtn = document.getElementById("disqus-btn");
+	const fbBtn = document.getElementById("fb-btn");
+
+	
+	const githubBoard = document.getElementById("utterances-comments");
+	const disqusBoard = document.getElementById("disqus-comments");
+	const fbBoard = document.getElementById("facebook-comments");
+
+	
+	githubBtn.addEventListener("click", function () {
+		githubBoard.style.display = "block";
+		disqusBoard.style.display = "none";
+		fbBoard.style.display = "none";
+	});
+	disqusBtn.addEventListener("click", function () {
+		githubBoard.style.display = "none";
+		disqusBoard.style.display = "block";
+		fbBoard.style.display = "none";
+	});
+	fbBtn.addEventListener("click", function () {
+		githubBoard.style.display = "none";
+		disqusBoard.style.display = "none";
+		fbBoard.style.display = "block";
+	});
+</script>
+
+
+
+
+
+
+
+			</div>
+			<aside class="sidebar">
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/tutorials/dark-mode-tips-hugo/">Designing and Implementing Dark Mode in Hugo</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/tutorials/sql-scopeidentity-identity-diff/">SQL SCOPE_IDENTITY() and @@IDENTITY Differences in Retrieving Auto-Increment Values</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/tutorials/jwt-authentication-mechanism/">JWT Authentication Mechanism Principles and Implementation Examples (C#) </a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/tutorials/hugo-related-posts-supports-carousel-display/">Implementing Recommended Posts and Carousel Display in Hugo</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/tutorials/hugo-multiple-comments/">Implementing Multiple Comment Sections in a Static Website Generated by Hugo</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/just-sharing/">Just Sharing</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">1</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/life-record/">Life Record</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">8</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/overseas-travel/">Overseas Travel</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">8</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/program/">Program</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">10</span></span>
+				
+				</li>
+		</ul>
+	</div>
+</div><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://cse.google.com/cse">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SITE SEARCH…" value="" name="q" aria-label="SITE SEARCH…">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="http://sunnote.xyz">
+		<input type="hidden" name="cx" value="51cfcdef3e098403d" />
+	</form>
+</div>
+
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/cebu/" title="Cebu">Cebu (<span class="count">8</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/csharp/" title="Csharp">Csharp (<span class="count">4</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/css/" title="CSS">CSS (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hugo/" title="Hugo">Hugo (<span class="count">3</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="JavaScript">JavaScript (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/language-school/" title="Language School">Language School (<span class="count">3</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/leetcode/" title="LeetCode">LeetCode (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/life/" title="Life">Life (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/philippines/" title="Philippines">Philippines (<span class="count">8</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/python/" title="Python">Python (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sql/" title="SQL">SQL (<span class="count">3</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/web/" title="Web">Web (<span class="count">2</span>)</a>
+	</div>
+</div>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+			<script>
+				$('.count').each(function () {
+				$(this).prop('Counter',0).animate({
+					Counter: $(this).text()
+				}, {
+					duration: 4000,
+					easing: 'swing',
+					step: function (now) {
+						$(this).text(Math.ceil(now));
+					}
+				});
+			});
+			</script><a href="https://info.flagcounter.com/8Z5p"><img src="https://s11.flagcounter.com/countxl/8Z5p/bg_FFFFFF/txt_000000/border_FFFFFF/columns_2/maxflags_12/viewers_3/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+<br>
+<br>
+<br>
+</aside>
+
+
+		</div>
+		
+<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy;  2022-2023 sunnote.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+
+		</div>
+
+	</div>
+	
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6706017277983363"
+     crossorigin="anonymous"></script>
+
+<script src="/js/copy-to-clipboard.js"></script>
+	</div>
+	<script async defer src="/js/menu.js"></script>
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+
+	<button id="toggle-sidebar"><img src="/svg/glasses_lightgray.svg"></button>
+
+
+
+
+
+</body>
+
+</html>
+
+
+</script>
+
+
+
+
+
+
+
+
+<script src="https://sunnote.xyz/js-pkg/BackToTopButton.js"></script>
+<script>addBackToTop({
+		diameter: 52,
+		backgroundColor: 'rgb(172, 214, 255)',
+		textColor: '#fff',
+		scrollDuration: 300,
+		showWhenScrollTopIs: 800
+	})</script>
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+
+<script>
+	const toggleButton = document.getElementById('toggle-sidebar');
+	const asideElement = document.querySelector("aside.sidebar");
+	toggleButton.addEventListener('click', function () {
+		if (asideElement.style.display === 'none') {
+			asideElement.style.display = 'block';
+			document.querySelector(".toc-side").className = "post__toc toc";
+		} else {
+			asideElement.style.display = 'none';
+			document.querySelector(".post__toc.toc").className = "toc-side";
+		}
+	});
+
+	
+	if (asideElement && window.innerWidth >= 992 ) {
+		document.getElementById("toggle-sidebar").style.display = "block";
+	} else {
+		document.getElementById("toggle-sidebar").style.display = "none";
+	}
+</script>

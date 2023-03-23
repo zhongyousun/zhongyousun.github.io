@@ -6,7 +6,43 @@
     <description>Recent content in Tags on Sun Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 20 Mar 2023 10:44:19 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Mar 2023 11:34:07 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CSS</title>
+      <link>http://sunnote.xyz/tags/css/</link>
+      <pubDate>Wed, 22 Mar 2023 11:34:07 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/tags/css/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>http://sunnote.xyz/tags/hugo/</link>
+      <pubDate>Wed, 22 Mar 2023 11:34:07 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JavaScript</title>
+      <link>http://sunnote.xyz/tags/javascript/</link>
+      <pubDate>Wed, 22 Mar 2023 11:34:07 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web</title>
+      <link>http://sunnote.xyz/tags/web/</link>
+      <pubDate>Wed, 22 Mar 2023 11:34:07 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/tags/web/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>SQL</title>
       <link>http://sunnote.xyz/tags/sql/</link>
@@ -22,24 +58,6 @@
       <pubDate>Mon, 06 Mar 2023 16:05:44 +0800</pubDate>
       
       <guid>http://sunnote.xyz/tags/csharp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Web</title>
-      <link>http://sunnote.xyz/tags/web/</link>
-      <pubDate>Mon, 06 Mar 2023 16:05:44 +0800</pubDate>
-      
-      <guid>http://sunnote.xyz/tags/web/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hugo</title>
-      <link>http://sunnote.xyz/tags/hugo/</link>
-      <pubDate>Wed, 22 Feb 2023 11:02:15 +0800</pubDate>
-      
-      <guid>http://sunnote.xyz/tags/hugo/</guid>
       <description></description>
     </item>
     
