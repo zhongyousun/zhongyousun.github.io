@@ -141,6 +141,13 @@ textarea {
 	font-size: 2rem;
 	color: #ffc533;
   }
+
+  .sun-btn:hover {
+	display: block;
+	font-size: 2.1rem;
+	color: #edb72e;
+	cursor: pointer;
+  }
   
   .moon-btn {
 	display: none;
@@ -172,6 +179,12 @@ textarea {
 	 font-size: 2rem;
 	 color: #fff9be;
    }
+   .dark-mode .moon-btn:hover {
+	display: block;
+	font-size: 2.1rem;
+	color: #f9f7e6;
+	cursor: pointer;
+  }
    .dark-mode #type-effect{
 	color: var(--text-color);
   }
@@ -210,6 +223,7 @@ textarea {
   }
 #toggle-sidebar:hover {
     transform: translateY(-0.1px);
+	cursor: pointer;
   }
 #toggle-sidebar:active {
     transform: translateY(-1px) scale(.98);
@@ -1509,6 +1523,7 @@ p {
     padding-right: 7px;
     background-color:var(--codeBG)!important;
 	border-style: none;
+	border-radius: .375rem;
 }
 
 .highlight-copy-btn {
@@ -1522,23 +1537,26 @@ p {
     line-height: 1.8;
     color: white;
     background-color:#cccbcb;
-    min-width: 55px;
+    min-width: 30px;
     text-align: center;
 }
 
 .highlight-copy-btn:hover {
-    background-color: #ACD6FF;
+    /* background-color: #ACD6FF; */
+	font-weight: bold;
+	font-size: 1em;
+	cursor: pointer;
 }
 /* copy btn */
 /* code type */
 code[data-lang]::before {
     content: attr(data-lang);
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0.2rem;
+    left: 0.2rem;
     background-color: #cccbcb;
     padding: 2px 4px;
-    border-radius: 2px;
+    border-radius: 4px;
     font-size: 12px;
     font-weight: bold;
     color: #fff;

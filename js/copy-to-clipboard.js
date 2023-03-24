@@ -8,8 +8,8 @@
 	function flashCopyMessage(el, msg) {
 	  el.textContent = msg;
 	  setTimeout(function() {
-		el.textContent = "Copy";
-	  }, 1000);
+		el.textContent = "📋";
+	  }, 3000);
 	}
   
 	function selectText(node) {
@@ -24,7 +24,7 @@
 	function addCopyButton(containerEl) {
 	  var copyBtn = document.createElement("button");
 	  copyBtn.className = "highlight-copy-btn";
-	  copyBtn.textContent = "Copy";
+	  copyBtn.textContent = "📋";
   
 	  var codeEl = containerEl.firstElementChild;
 	  copyBtn.addEventListener('click', function() {
@@ -33,7 +33,7 @@
 		  document.execCommand('copy');
 		  selection.removeAllRanges();
   
-		  flashCopyMessage(copyBtn, 'Copied!')
+		  flashCopyMessage(copyBtn, '✔')
 		} catch(e) {
 		  console && console.log(e);
 		  flashCopyMessage(copyBtn, 'Failed :\'(')
