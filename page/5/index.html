@@ -347,10 +347,21 @@ if (!doNotTrack) {
 	toggleButton.addEventListener('click', function () {
 		if (asideElement.style.display === 'none') {
 			asideElement.style.display = 'block';
+			setTimeout(function() {
+            document.querySelector(".primary").style = "flex: 0 0 65.83%;";
+        }, 100);
 			document.querySelector(".toc-side").className = "post__toc toc";
+			
+			
 		} else {
 			asideElement.style.display = 'none';
+			setTimeout(function() {
+			
+            document.querySelector(".primary").style = "flex: 1 0 100%;";
+			
+        }, 100);
 			document.querySelector(".post__toc.toc").className = "toc-side";
+
 		}
 	});
 
@@ -361,3 +372,4 @@ if (!doNotTrack) {
 		document.getElementById("toggle-sidebar").style.display = "none";
 	}
 </script>
+

@@ -86,11 +86,12 @@ body {
 }
 
 .primary {
-	-webkit-flex: 1 0 65.83%;
-	flex: 1 0 65.83%;
+	-webkit-flex: 0 0 65.83%;
+	flex: 0 0 65.83%;
 	-webkit-order: 1;
 	order: 1;
 	min-width: 0;
+	transition: all 0.5s;
 }
 
 .sidebar {
@@ -101,6 +102,9 @@ body {
 	min-width: 0;
 	margin: 0 0 0 2.5%;
 	display: block;
+	/* transition: all 10s;
+	position: relative; */
+	
 }
 
 .sidebar--left {
