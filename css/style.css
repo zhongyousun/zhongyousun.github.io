@@ -364,7 +364,7 @@ samp {
 
 pre,
 code {
-	background-color: var(--wrapperBG2);
+	background-color: var(--codeBG);
 	border: 0px solid #ebebeb;
 }
 
