@@ -6,7 +6,16 @@
     <description>Recent content in Program on Sun Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Wed, 22 Mar 2023 11:34:07 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/categories/program/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Mar 2023 09:38:14 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/categories/program/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Database Query Performance Optimization Tips : Statement Optimization, Adding Indexes</title>
+      <link>http://sunnote.xyz/tutorials/database-optimization-index-tips/</link>
+      <pubDate>Wed, 29 Mar 2023 09:38:14 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/tutorials/database-optimization-index-tips/</guid>
+      <description>&lt;p&gt;As the system data grows increasingly large, it&amp;rsquo;s common to encounter situations where database queries take too long. This article provides several methods for optimizing database query performance.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Designing and Implementing Dark Mode in Hugo</title>
       <link>http://sunnote.xyz/tutorials/dark-mode-tips-hugo/</link>

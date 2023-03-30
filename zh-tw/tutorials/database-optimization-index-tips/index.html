@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-tw">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<meta property="fb:app_id" content="725315935966817" />
+	<title>資料庫查詢性能優化技巧 : 語句優化、添加索引 - Sun 記事</title>
+	<script>(function (d, e) { d[e] = d[e].replace("no-js", "js"); })(document.documentElement, "className");</script>
+	<meta name="description"
+		content="">
+	<meta property="og:title" content="資料庫查詢性能優化技巧 : 語句優化、添加索引" />
+<meta property="og:description" content="當系統資料量日益龐大常會遇到資料庫查詢時間過久的情況，此篇提供資料庫查詢性能優化的幾個方法。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://sunnote.xyz/zh-tw/tutorials/database-optimization-index-tips/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-29T09:38:14+08:00" />
+<meta property="article:modified_time" content="2023-03-29T09:38:14+08:00" />
+<meta property="og:image" content="http://sunnote.xyz/img/thumbnail/025.webp" />
+		  	
+	<meta itemprop="name" content="資料庫查詢性能優化技巧 : 語句優化、添加索引">
+<meta itemprop="description" content="當系統資料量日益龐大常會遇到資料庫查詢時間過久的情況，此篇提供資料庫查詢性能優化的幾個方法。"><meta itemprop="datePublished" content="2023-03-29T09:38:14+08:00" />
+<meta itemprop="dateModified" content="2023-03-29T09:38:14+08:00" />
+<meta itemprop="wordCount" content="85">
+<meta itemprop="keywords" content="SQL," />
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="資料庫查詢性能優化技巧 : 語句優化、添加索引"/>
+<meta name="twitter:description" content="當系統資料量日益龐大常會遇到資料庫查詢時間過久的情況，此篇提供資料庫查詢性能優化的幾個方法。"/>
+
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" >
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MWPM4C5TJS"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-MWPM4C5TJS', { 'anonymize_ip': false });
+}
+</script>
+
+
+	
+</head>
+<span class="sun-btn">&#x2600;</span>
+<span class="moon-btn">&#x263D;</span>
+
+<script>
+	
+let darkModeState = false;
+
+const sun = document.querySelector('.sun-btn');
+const moon = document.querySelector('.moon-btn');
+
+
+const useDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+
+function toggleDarkMode(state) {
+  document.documentElement.classList.toggle("dark-mode", state);
+  darkModeState = state;
+}
+
+
+function setDarkModeLocalStorage(state) {
+  localStorage.setItem("dark-mode", state);
+}
+
+
+toggleDarkMode(localStorage.getItem("dark-mode") == "true");
+
+
+
+  useDark.addEventListener('change', (evt) => {
+    toggleDarkMode(evt.matches);
+  });
+
+
+
+sun.addEventListener("click", () => {
+  darkModeState = !darkModeState;
+
+  toggleDarkMode(darkModeState);
+  setDarkModeLocalStorage(darkModeState);
+});
+moon.addEventListener("click", () => {
+  darkModeState = !darkModeState;
+
+  toggleDarkMode(darkModeState);
+  setDarkModeLocalStorage(darkModeState);
+});
+</script>
+
+<body class="body">
+	
+	<script>
+		window.fbAsyncInit = function () {
+			FB.init({
+				appId: '725315935966817',
+				xfbml: true,
+				version: 'v16.0'
+			});
+			FB.AppEvents.logPageView();
+		};
+
+		(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) { return; }
+			js = d.createElement(s); js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
+
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/zh-tw" title="Sun Notes" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Sun Notes</div>
+					<div class="logo__tagline">Life is tough, but so are you.</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">☰選單</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/zh-tw/about" >
+				
+				<span class="menu__text">📃關於我</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/zh-tw/search" >
+				
+				<span class="menu__text">🔍站內查詢</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/zh-tw/archives" >
+				
+				<span class="menu__text">🗄️文章歸檔</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/" >
+				
+				<span class="menu__text">🌐</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-MWPM4C5TJS', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+		<div class="wrapper flex">
+			<div class="primary">
+				
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"></link>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"></link>
+<style>
+	.owl-theme .item {
+	  height: 15rem;
+	   
+	  background-color: rgba(245, 245, 245, 0.3);
+	  padding: 0.5rem;
+	  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1); 
+	  transform:scale(0.9,0.9);
+	  transition: all 0.3s ease-out;
+	}
+	.owl-theme .item:hover {
+		transform:scale(1.0,1.0);
+	}
+	
+	.owl-carousel .item h6{
+	  color: #000000;
+	  font-weight: 400;
+	  font-size: 1rem;
+	  margin-top: 0rem;
+	}
+	.owl-carousel .item img {
+	  width: 100%;
+	  height: 7rem;
+	  border-radius: 4px;
+	}
+</style>
+
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">資料庫查詢性能優化技巧 : 語句優化、添加索引</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-calendar"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 5.332031 L 2 12.667969 C 2 13.035156 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 5.332031 C 14 4.964844 13.703125 4.667969 13.335938 4.667969 L 2.664062 4.667969 C 2.296875 4.667969 2 4.964844 2 5.332031 Z M 0.667969 5.332031 C 0.667969 4.230469 1.558594 3.332031 2.664062 3.332031 L 13.335938 3.332031 C 14.441406 3.332031 15.332031 4.230469 15.332031 5.332031 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.769531 0.667969 12.667969 Z M 2 7.332031 L 2 6 L 14 6 L 14 7.332031 Z M 4 2 C 4 1.632812 4.296875 1.332031 4.667969 1.332031 C 5.035156 1.332031 5.332031 1.628906 5.332031 2 L 5.332031 3.332031 L 4 3.332031 Z M 10.667969 2 C 10.667969 1.632812 10.960938 1.332031 11.332031 1.332031 C 11.703125 1.332031 12 1.628906 12 2 L 12 3.332031 L 10.667969 3.332031 Z M 10.667969 2 "/>
+</g>
+</svg>
+<time class="meta__text" datetime="2023-03-29T09:38:14&#43;08:00">March 29, 2023</time></div><div class="meta__item-categories meta__item">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-folders"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 6 L 2 12.664062 C 2 13.03125 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 8 C 14 7.632812 13.703125 7.332031 13.335938 7.332031 L 9.808594 7.332031 L 8.03125 5.332031 L 2.667969 5.332031 C 2.300781 5.332031 2 5.632812 2 6 Z M 13.335938 6 C 14.4375 6 15.332031 6.894531 15.332031 8 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.761719 0.667969 12.664062 L 0.667969 6 C 0.667969 4.894531 1.5625 4 2.667969 4 L 8.632812 4 L 10.40625 6 Z M 4.425781 3.625 C 4.425781 3.625 4.425781 3.703125 4.425781 4.074219 C 4.425781 4.328125 5.15625 4.75 6 4.667969 C 6.777344 4.589844 8.453125 4.589844 8.796875 5.050781 C 10 6.667969 14.242188 7.15625 14.242188 6.667969 L 14.242188 5.25 C 14.242188 4.949219 14 4.707031 13.699219 4.707031 L 10.8125 4.707031 L 9.359375 3.082031 L 4.972656 3.082031 C 4.667969 3.082031 4.425781 3.328125 4.425781 3.625 Z M 13.699219 3.625 C 14.601562 3.625 15.332031 4.351562 15.332031 5.25 L 15.332031 8 C 15.332031 8.304688 14.667969 6.667969 10 6.667969 C 8.652344 6.160156 9.402344 5.636719 8 5.25 C 6.496094 4.832031 4.703125 5.296875 3.863281 5.285156 C 3.320312 5.273438 3.332031 4.855469 3.332031 4.667969 L 3.332031 3.625 C 3.332031 2.726562 4.066406 2 4.972656 2 L 9.851562 2 L 11.300781 3.625 Z M 13.699219 3.625 "/>
+</g>
+</svg>
+<span class="meta__text"><a class="meta__link" href="/zh-tw/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/" rel="category">程式語言</a>
+	</span>
+</div>
+
+				
+				
+				
+				<span>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-clock"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 8 12.667969 C 10.578125 12.667969 12.667969 10.578125 12.667969 8 C 12.667969 5.421875 10.578125 3.332031 8 3.332031 C 5.421875 3.332031 3.332031 5.421875 3.332031 8 C 3.332031 10.578125 5.421875 12.667969 8 12.667969 Z M 3.957031 12.433594 C 2.753906 11.335938 2 9.757812 2 8 C 2 4.6875 4.6875 2 8 2 C 11.3125 2 14 4.6875 14 8 C 14 9.757812 13.246094 11.335938 12.042969 12.433594 L 12.9375 13.328125 C 13.207031 13.597656 13.203125 14.015625 12.941406 14.277344 C 12.679688 14.539062 12.257812 14.535156 11.996094 14.273438 L 10.949219 13.226562 C 10.078125 13.71875 9.070312 14 8 14 C 6.929688 14 5.921875 13.71875 5.050781 13.226562 L 4.003906 14.273438 C 3.738281 14.539062 3.316406 14.535156 3.058594 14.277344 C 2.796875 14.015625 2.796875 13.589844 3.0625 13.328125 Z M 7.332031 5.335938 C 7.332031 4.964844 7.628906 4.667969 8 4.667969 C 8.367188 4.667969 8.667969 4.957031 8.667969 5.335938 L 8.667969 9.332031 L 7.332031 9.332031 Z M 5.332031 8.667969 C 5.332031 8.296875 5.628906 8 6 8 L 7.332031 8 L 7.332031 9.332031 L 6 9.332031 C 5.632812 9.332031 5.332031 9.039062 5.332031 8.667969 Z M 5.332031 8.667969 "/>
+</g>
+</svg>
+8 min read.　</span>
+				
+			
+				
+
+			</div>
+
+
+			<div id="fb-root"></div>
+			<script async defer crossorigin="anonymous"
+				src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0&appId=725315935966817&autoLogAppEvents=1"
+				nonce="aF40iZ15"></script>
+		</header>
+		
+	<figure class="post__thumbnail thumbnail">
+		
+		<img class="thumbnail__image" src="/img/thumbnail/025.webp" alt="資料庫查詢性能優化技巧 : 語句優化、添加索引">
+		
+	</figure>
+<div class="post__toc toc">
+	<div class="toc__title">目錄</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-優化查詢語句">1. 優化查詢語句</a></li>
+    <li><a href="#2-添加索引">2. 添加索引</a>
+      <ul>
+        <li><a href="#-建議加上索引的情況">● 建議加上索引的情況</a></li>
+        <li><a href="#-注意事項">● 注意事項</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-減少資料庫中的資料量">3. 減少資料庫中的資料量</a></li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<p>當系統資料量日益龐大常會遇到資料庫查詢時間過久的情況，此篇提供資料庫查詢性能優化的幾個方法。</p>
+<hr>
+<p>主要紀錄自己所使用過的幾個技巧包含優化查詢語句、優化索引、減少資料庫中的資料量。</p>
+<div id="block2"></div>
+<script>
+    var myDiv = document.getElementById("block2");
+    for (var i = 0; i <  5 ; i++) {
+      var brTag = document.createElement("br");
+      myDiv.appendChild(brTag);
+    }
+</script>
+<h2 id="1-優化查詢語句">1. 優化查詢語句</h2>
+<p>以下提供幾個平常在撰寫SQL就需注意的小技巧</p>
+<p><strong>select 查詢避免使用 <code>*</code></strong></p>
+<ul>
+<li>
+<p>效能：SELECT * 會查詢整個表格中的所有欄位，包括不需要的欄位。這會增加資料庫的工作負載，降低查詢效率。而只查詢需要的欄位可以減少查詢的資料量，提高查詢效率。</p>
+</li>
+<li>
+<p>可讀性：SELECT * 不清楚地表明查詢的欄位，這可能會使程式碼難以理解和維護。而明確指定需要的欄位可以使程式碼更加清晰和易於理解。</p>
+</li>
+<li>
+<p>衝突：如果表格中有相同名稱的欄位，使用 SELECT * 可能會導致衝突，例如使用 JOIN 時。而使用明確指定欄位名稱的方式可以避免此類問題的發生。</p>
+</li>
+</ul>
+<p><strong>避免在 where 子句中使用!=或&lt;&gt;</strong></p>
+<p>使用此語句等於是需要查詢整個資料表，導致效能下降。</p>
+<p><strong>避免在 where 子句中使用 or 連接</strong></p>
+<p>OR操作符也是需要搜尋整個資料表，以查找符合任一條件的資料導致效能下降。可以藉由<code>union all</code>先分別取得兩個條件的資料再組合。</p>
+<p><strong>避免在 where 子句中進行表達式與函數操作</strong></p>
+<p>Ex:</p>
+<pre tabindex="0"><code>select name from table where age-10 = 20
+</code></pre><p>基本上這種寫法，會先對整個table的age-10再去比對是否等於20，所以應該改為</p>
+<pre tabindex="0"><code>select name from table where age = 30
+</code></pre><p>當然這個例子比較極端一點，正常都不會這樣寫，主要重點就是，<strong>盡量避免在等號左側使用表達式或函數修改欄位資料，而是在右側修改。</strong></p>
+<h2 id="2-添加索引">2. 添加索引</h2>
+<p>索引（Index）是資料庫管理系統中用於加速數據查詢的一種數據結構。索引透過對欄位或欄位組進行排序，創建一個數據結構來加快查詢和排序的速度。在資料庫中，索引可視為一個指向實際數據的指針或地址。</p>
+<p>簡單來說若針對特定欄位添加索引(Ex: 此欄位有A、B、C、D&hellip;等資料)，可以在查詢欄位 = B的相關資料時，迅速找到B相關資料的區塊組再比對資料，而不用把A、B、C、D都全部查詢一遍，增加查詢速度。</p>
+<h3 id="-建議加上索引的情況">● 建議加上索引的情況</h3>
+<p>索引可以創建在單個欄位或多個欄位上，以下提供可以加上索引的情況：</p>
+<ul>
+<li>
+<p><code>主鍵和外鍵欄位</code>：主鍵和外鍵欄位是資料表中最重要的欄位之一，它們通常會被用作查詢和關聯表格時的連結條件。在這些欄位上建立索引，可以讓查詢和關聯操作更快速。</p>
+</li>
+<li>
+<p><code>經常被查詢的欄位</code>：如果某個欄位被頻繁地作為查詢條件使用，那麼建立索引可以大幅提升查詢效率。<br>
+<code>!!</code>需注意唯一性與分布的問題<br>
+Ex : 性別就不太適合當作索引，因為性別欄位只有兩個值，男和女，不具唯一性，因此無法作為唯一鍵或主鍵欄位，建立索引也無法加速查詢。而性別在欄位中的值分布也相對均勻，並不會造成大量資料集中在某個特定值上，因此不建立索引對查詢效率的影響較小。</p>
+</li>
+<li>
+<p><code>組合查詢條件欄位</code>：當多個欄位一起作為查詢條件使用時，可以建立複合索引。複合索引可以讓資料庫系統更快地定位符合多個條件的資料。</p>
+</li>
+<li>
+<p><code>用於排序的欄位</code>：如果某個欄位經常被用來進行排序，那麼建立索引可以大幅提升排序操作的效率。</p>
+</li>
+<li>
+<p><code>用於分組的欄位</code>：如果某個欄位經常被用來進行分組，那麼建立索引可以大幅提升分組操作的效率。</p>
+</li>
+</ul>
+<hr>
+<h3 id="-注意事項">● 注意事項</h3>
+<p>雖然看似很多情況都可以增加索引，但<strong>不是索引越多越好</strong>，<code>過多的索引反而會增加查詢的複雜度進而導致效率降低</code>，這裡也就只能藉由經驗去判斷實際該加上索引的情況了。</p>
+<p>索引雖然可以加快查詢速度，但實際上它是以空間換取時間。以上方欄位有A、B、C、D&hellip;等資料的例子，如果對於此欄位添加索引，等於是額外又會有A、B、C、D&hellip;等部分的資料表存放於資料庫以供加速查詢，所以本身的伺服器硬體環境是否能負荷也需要考量。</p>
+<h2 id="3-減少資料庫中的資料量">3. 減少資料庫中的資料量</h2>
+<p>目前經查詢減少資料量，主要做法就是正規化、壓縮資料庫、刪除資料。</p>
+<ul>
+<li>
+<p><code>正規化</code>:是指在資料庫設計中的一個過程，通過將資料分割成更小的、相關性更強的部分，來減少資料重複性，提高資料庫的效率和靈活性。</p>
+</li>
+<li>
+<p><code>壓縮資料庫</code>: 壓縮檔案也是一門學問，效能增加與否取決於壓縮方式和壓縮率。一般來說，如果壓縮率很高，則需要更長的時間來解壓縮數據，這可能會導致查詢變慢。如果壓縮率較低，則可以減少磁盤I/O操作，提高查詢性能。這部分得有請專業DBA協助~。</p>
+</li>
+<li>
+<p><code>刪除資料</code>:視情況刪除多餘或重複資料。</p>
+</li>
+</ul>
+<p>刪除資料這部分我則是覺得應該在初始就需要多注意的地方，一開始schema的設計與該存取怎樣的資料，都需先考慮清楚，而不是等資料量大起來後，才再考慮如何刪除資料。(當然若有系統合併的需求那就沒辦法)</p>
+<div id="block1"></div>
+<script>
+    var myDiv = document.getElementById("block1");
+    for (var i = 0; i <  5 ; i++) {
+      var brTag = document.createElement("br");
+      myDiv.appendChild(brTag);
+    }
+</script>
+<p>以上就是目前有實際操作過的技巧，其他的就等嘗試過了再補充。😎</p>
+		</div>
+		<br>
+		<br>
+		
+		<br>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/zh-tw/tags/sql/" rel="tag">SQL</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+		<hr>
+		<div id="type-effect">
+</div>
+<br>
+<br>
+<br>
+<br>
+<iframe class="LikeCoin" height="180" src="https://button.like.co/in/embed/sunnote/button?referrer=http%3a%2f%2fsunnote.xyz%2fzh-tw%2ftutorials%2fdatabase-optimization-index-tips%2f" width="80%" frameborder=0></iframe>
+
+<style>
+	#type-effect {
+	  white-space: nowrap;
+	  overflow: hidden;
+	  font-size: 20px;
+	  font-family: monospace, sans-serif  ;
+	  border-right: 1px solid rgb(255, 255, 255);
+	   
+	  padding-right: 5px;
+	  white-space: pre-wrap;
+	  position: absolute;
+    
+	}
+  </style>
+  <script>
+  	var url = window.location.href;
+	var ln = "en";
+	if (url.indexOf("/zh-tw/") > -1) {
+  	ln = "zh";
+	}
+	if (ln === "zh") {
+	  var message = "如果這個文章對您有幫助或是有任何疑問，歡迎留言。👇"
+	  speed = 100
+	}
+	else {
+	  var message = "If this posts was helpful to you or if you have any questions, feel free to leave a comment and ask.👇"
+	  speed = 50
+	}
+  
+	const typeEffectDiv = document.getElementById("type-effect");
+  
+	function typeEffect(message, element) {
+	  let i = 0;
+	  const interval = setInterval(function () {
+		if (i === message.length) {
+		  clearInterval(interval);
+		  setTimeout(function () {
+			element.textContent = "";
+			typeEffect(message, element);
+		  }, 2000); 
+		} else {
+		  element.textContent += message[i];
+		  i++;
+		}
+	  }, speed); 
+
+	}
+	typeEffect(message, typeEffectDiv);
+  </script>
+
+	</article>
+</main>
+
+
+<hr>
+<div class="related-content">
+
+<h3>也可以看看</h3>
+
+<div class="owl-carousel owl-theme"> 
+	  
+	  
+	
+	 
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/tutorials/sql-scopeidentity-identity-diff/">
+					<img src="https://sunnote.xyz/img/thumbnail/023.png" alt="SQL SCOPE_IDENTITY() 與 @@IDENTITY 取得自動增量值差異"/>
+				</a>
+			
+
+			<h6><a href="/zh-tw/tutorials/sql-scopeidentity-identity-diff/">SQL SCOPE_IDENTITY() 與 @@IDENTITY 取得自動增量值差異
+				&ndash; 
+				<time datetime="2023-03-20T02:44:19&#43;0000">
+					Mar 20, 2023
+				</time></a></h6></div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<h6><a href="/zh-tw/tutorials/sql-partition-by/">SQL-partition by 實現資料分組
+				&ndash; 
+				<time datetime="2023-02-07T00:00:00&#43;0000">
+					Feb 7, 2023
+				</time></a></h6>
+				<hr>
+				<a>使用SQL partition by 實現資料分割，比較LINQ與partition by效能。
+</a>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<h6><a href="/zh-tw/tutorials/sql-merge-into-statement/">SQL-merge into 語法紀錄
+				&ndash; 
+				<time datetime="2022-12-22T02:44:38&#43;0000">
+					Dec 22, 2022
+				</time></a></h6>
+				<hr>
+				<a>這次被指派實作不同資料庫同步的功能，公司現有一個ERP系統，
+資料來源一律以此為標準，讓客戶可在自家系統新增、編輯、寫入ERP、與ERP同步…
+</a>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/tutorials/dark-mode-tips-hugo/">
+					<img src="https://sunnote.xyz/img/thumbnail/024.webp" alt="黑暗模式(dark mode)設計與Hugo實作"/>
+				</a>
+			
+
+			<h6><a href="/zh-tw/tutorials/dark-mode-tips-hugo/">黑暗模式(dark mode)設計與Hugo實作
+				&ndash; 
+				<time datetime="2023-03-22T03:34:07&#43;0000">
+					Mar 22, 2023
+				</time></a></h6></div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/tutorials/jwt-authentication-mechanism/">
+					<img src="https://sunnote.xyz/img/thumbnail/022.png" alt="JWT 驗證機制原理與實作範例 (C#)"/>
+				</a>
+			
+
+			<h6><a href="/zh-tw/tutorials/jwt-authentication-mechanism/">JWT 驗證機制原理與實作範例 (C#)
+				&ndash; 
+				<time datetime="2023-03-06T08:05:44&#43;0000">
+					Mar 6, 2023
+				</time></a></h6></div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/tutorials/hugo-related-posts-supports-carousel-display/">
+					<img src="https://sunnote.xyz/img/thumbnail/021.png" alt="Hugo 實現推薦文章功能與輪播顯示"/>
+				</a>
+			
+
+			<h6><a href="/zh-tw/tutorials/hugo-related-posts-supports-carousel-display/">Hugo 實現推薦文章功能與輪播顯示
+				&ndash; 
+				<time datetime="2023-02-22T03:02:15&#43;0000">
+					Feb 22, 2023
+				</time></a></h6></div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/tutorials/hugo-multiple-comments/">
+					<img src="https://sunnote.xyz/img/thumbnail/020.png" alt="Hugo 實現提供多種留言版選擇"/>
+				</a>
+			
+
+			<h6><a href="/zh-tw/tutorials/hugo-multiple-comments/">Hugo 實現提供多種留言版選擇
+				&ndash; 
+				<time datetime="2023-02-16T02:11:38&#43;0000">
+					Feb 16, 2023
+				</time></a></h6></div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/life/valentine-gift-marimo/">
+					<img src="https://sunnote.xyz/img/thumbnail/019mario.jpg" alt="情人節就送這個當禮物:綠藻球Marimo (基本介紹、飼養方式、象徵意義)"/>
+				</a>
+			
+
+			<h6><a href="/zh-tw/life/valentine-gift-marimo/">情人節就送這個當禮物:綠藻球Marimo (基本介紹、飼養方式、象徵意義)
+				&ndash; 
+				<time datetime="2023-02-14T02:11:38&#43;0000">
+					Feb 14, 2023
+				</time></a></h6></div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<h6><a href="/zh-tw/tutorials/csharp-multithreading/">C# 多執行緒原理、非同步用法與帶入自定義物件
+				&ndash; 
+				<time datetime="2023-01-19T03:49:15&#43;0000">
+					Jan 19, 2023
+				</time></a></h6>
+				<hr>
+				<a>C# 多執行緒原理、非同步用法與帶入自定義物件學習過程紀錄。
+目前遇到的專案都沒有硬性需求使用到多執行緒，此篇為紀錄自己的理解與學習的過程。
+</a>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<h6><a href="/zh-tw/tutorials/csharp-enum/">C# Enum(枚舉) 用法紀錄
+				&ndash; 
+				<time datetime="2023-01-15T00:49:07&#43;0000">
+					Jan 15, 2023
+				</time></a></h6>
+				<hr>
+				<a>C#-Enum(枚舉)用途與使用擴充方法取得description詳細紀錄。
+</a>
+
+		
+			
+		
+			
+	</div>
+  
+</div>
+</div>
+<br>
+<br>
+
+
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Alvin avatar" src="/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">
+			<a href="../../about/" target="_blank" style="text-decoration:none;">
+			關於 Alvin ☀️
+		    </a>
+		</span>
+	</div>
+	<div class="authorbox__description">
+		不是一個很努力的人，生活就是在耍廢中順便追求點成就感。
+	</div>
+</div>
+
+
+<section class="comments">
+	
+	
+</section>
+
+<div>
+	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img
+			src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script> 
+<script>
+	var owl = $('.owl-carousel');
+	owl.owlCarousel({
+  loop: true, 
+  margin: 10, 
+  nav: true, 
+  responsive: {
+    0: {
+      items: 2 
+    },
+    600: {
+      items: 3 
+    },
+    1000: {
+      items: 3 
+    }
+  }
+});
+</script>
+
+
+
+
+
+<style>
+	.nav {
+		display: inline-flex;
+		position: relative;
+		overflow: hidden;
+		max-width: 100%;
+		background-color: var(--wrapperBG);
+		padding: 0 20px;
+		border-radius: 20px;
+		 
+		display: flex;
+		justify-content: center;
+
+	}
+
+	.nav-item {
+		color: #83818c;
+		padding: 20px;
+		text-decoration: none;
+		transition: .3s;
+		margin: 0 6px;
+		z-index: 1;
+		font-family: 'DM Sans', sans-serif;
+		font-weight: 500;
+		position: relative;
+
+		&:before {
+			content: "";
+			position: absolute;
+			bottom: -6px;
+			left: 0;
+			width: 100%;
+			height: 5px;
+			background-color: #dfe2ea;
+			border-radius: 8px 8px 0 0;
+			opacity: 0;
+			transition: .3s;
+		}
+	}
+
+	.nav-item:not(.is-active):hover:before {
+		opacity: 1;
+		bottom: 0;
+	}
+
+
+	.nav-item:not(.is-active):hover {
+		color: #333;
+	}
+
+	.nav-indicator {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		height: 4px;
+		transition: .5s;
+		height: 5px;
+		z-index: 1;
+		border-radius: 8px 8px 0 0;
+	}
+
+	.nav-item {
+		border: none;
+		outline: none;
+		background-color:  var(--wrapperBG);
+	}
+
+	@media (max-width: 580px) {
+		.nav {
+			overflow: auto;
+		}
+	}
+</style>
+<br>
+
+<nav class="nav">
+	<button id="fb-btn" class="nav-item" active-color="#ACD6FF">Facebook</button>
+	<button id="github-btn" class="nav-item is-active" active-color="#ACD6FF">Github</button>
+	<button id="disqus-btn" class="nav-item" active-color="#ACD6FF">Disqus</button>
+	<span class="nav-indicator"></span>
+</nav>
+
+<script>
+	const indicator = document.querySelector('.nav-indicator');
+	const items = document.querySelectorAll('.nav-item');
+
+	function handleIndicator(el) {
+		items.forEach(item => {
+			item.classList.remove('is-active');
+			item.removeAttribute('style');
+		});
+
+		indicator.style.width = `${el.offsetWidth}px`;
+		indicator.style.left = `${el.offsetLeft}px`;
+		indicator.style.backgroundColor = el.getAttribute('active-color');
+
+		el.classList.add('is-active');
+		el.style.color = el.getAttribute('active-color');
+	}
+
+
+	items.forEach((item, index) => {
+		item.addEventListener('click', (e) => { handleIndicator(e.target) });
+		item.classList.contains('is-active') && handleIndicator(item);
+	});
+
+
+</script>
+<br><br>
+
+
+<div id="disqus-comments" class="comments markdown" style="display: none;">
+	<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    
+    
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'sun';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+</div>
+
+
+
+<div id="utterances-comments" class="comments markdown" style="display: block;">
+	<script src="https://giscus.app/client.js"
+        data-repo="zhongyousun/giscus"
+        data-repo-id="R_kgDOJJwIkA"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOJJwIkM4CU4ky"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light_protanopia"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</div>
+
+
+
+<div id="facebook-comments" class="fb-comments" data-href="http://sunnote.xyz/zh-tw/tutorials/database-optimization-index-tips/" data-width="100%" data-numposts="5"
+	data-csp="true" data-order-by="reverse_time" style="display: none;"></div>
+<script>
+
+	
+	const githubBtn = document.getElementById("github-btn");
+	const disqusBtn = document.getElementById("disqus-btn");
+	const fbBtn = document.getElementById("fb-btn");
+
+	
+	const githubBoard = document.getElementById("utterances-comments");
+	const disqusBoard = document.getElementById("disqus-comments");
+	const fbBoard = document.getElementById("facebook-comments");
+
+	
+	githubBtn.addEventListener("click", function () {
+		githubBoard.style.display = "block";
+		disqusBoard.style.display = "none";
+		fbBoard.style.display = "none";
+	});
+	disqusBtn.addEventListener("click", function () {
+		githubBoard.style.display = "none";
+		disqusBoard.style.display = "block";
+		fbBoard.style.display = "none";
+	});
+	fbBtn.addEventListener("click", function () {
+		githubBoard.style.display = "none";
+		disqusBoard.style.display = "none";
+		fbBoard.style.display = "block";
+	});
+</script>
+
+
+
+
+
+
+
+			</div>
+			<aside class="sidebar">
+<div class="widget-recent widget">
+	<h4 class="widget__title">近期文章</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/database-optimization-index-tips/">資料庫查詢性能優化技巧 : 語句優化、添加索引</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/dark-mode-tips-hugo/">黑暗模式(dark mode)設計與Hugo實作</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/sql-scopeidentity-identity-diff/">SQL SCOPE_IDENTITY() 與 @@IDENTITY 取得自動增量值差異</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/jwt-authentication-mechanism/">JWT 驗證機制原理與實作範例 (C#)</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/hugo-related-posts-supports-carousel-display/">Hugo 實現推薦文章功能與輪播顯示</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">分類</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/zh-tw/categories/%E6%B5%B7%E5%A4%96%E6%97%85%E9%81%8A/">海外旅遊</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">9</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/zh-tw/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E9%8C%84/">生活紀錄</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">9</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/zh-tw/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/">程式語言</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">11</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/zh-tw/categories/%E7%B4%94%E7%B2%B9%E5%88%86%E4%BA%AB/">純粹分享</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">5</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/zh-tw/categories/%E8%8B%B1%E6%96%87%E5%AD%B8%E7%BF%92/">英文學習</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">4</span></span>
+				
+				</li>
+		</ul>
+	</div>
+</div><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://cse.google.com/cse">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="站內搜尋…" value="" name="q" aria-label="站內搜尋…">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="http://sunnote.xyz">
+		<input type="hidden" name="cx" value="51cfcdef3e098403d" />
+	</form>
+</div>
+
+<div class="widget-taglist widget">
+	<h4 class="widget__title">標籤</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/csharp/" title="Csharp">Csharp (<span class="count">4</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/css/" title="CSS">CSS (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/hugo/" title="Hugo">Hugo (<span class="count">3</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/javascript/" title="JavaScript">JavaScript (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/leetcode/" title="LeetCode">LeetCode (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/python/" title="Python">Python (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/sql/" title="SQL">SQL (<span class="count">4</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/web/" title="Web">Web (<span class="count">2</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E5%AE%BF%E9%9C%A7/" title="宿霧">宿霧 (<span class="count">12</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E7%94%9F%E6%B4%BB/" title="生活">生活 (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E8%8B%B1%E6%96%87/" title="英文">英文 (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E8%8F%B2%E5%BE%8B%E8%B3%93/" title="菲律賓">菲律賓 (<span class="count">12</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1/" title="語言學校">語言學校 (<span class="count">8</span>)</a>
+	</div>
+</div>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+			<script>
+				$('.count').each(function () {
+				$(this).prop('Counter',0).animate({
+					Counter: $(this).text()
+				}, {
+					duration: 4000,
+					easing: 'swing',
+					step: function (now) {
+						$(this).text(Math.ceil(now));
+					}
+				});
+			});
+			</script><a href="https://info.flagcounter.com/8Z5p"><img src="https://s11.flagcounter.com/countxl/8Z5p/bg_FFFFFF/txt_000000/border_FFFFFF/columns_2/maxflags_12/viewers_3/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+<br>
+<br>
+<br>
+</aside>
+
+
+		</div>
+		
+<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy;  2022-2023 sunnote.
+			<span class="footer__copyright-credits">使用 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 技術與 <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>主題</span>
+
+		</div>
+
+	</div>
+	
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6706017277983363"
+     crossorigin="anonymous"></script>
+
+<script src="/js/copy-to-clipboard.js"></script>
+	</div>
+	<script async defer src="/js/menu.js"></script>
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+
+	<button id="toggle-sidebar"><img src="/svg/glasses_lightgray.svg"></button>
+</body>
+
+</html>
+
+
+<script src="https://sunnote.xyz/js-pkg/BackToTopButton.js"></script>
+<script>addBackToTop({
+		diameter: 52,
+		backgroundColor: 'rgb(172, 214, 255)',
+		textColor: '#fff',
+		scrollDuration: 300,
+		showWhenScrollTopIs: 800
+	})</script>
+
+
+
+
+<script>
+	const toggleButton = document.getElementById('toggle-sidebar');
+	const asideElement = document.querySelector("aside.sidebar");
+	toggleButton.addEventListener('click', function () {
+		if (asideElement.style.display === 'none') {
+			asideElement.style.display = 'block';
+			setTimeout(function() {
+            document.querySelector(".primary").style = "flex: 0 0 65.83%;";
+        }, 100);
+			document.querySelector(".toc-side").className = "post__toc toc";
+			
+			
+		} else {
+			asideElement.style.display = 'none';
+			setTimeout(function() {
+			
+            document.querySelector(".primary").style = "flex: 1 0 100%;";
+			
+        }, 100);
+			document.querySelector(".post__toc.toc").className = "toc-side";
+
+		}
+	});
+
+	
+	if (asideElement && window.innerWidth >= 992 ) {
+		document.getElementById("toggle-sidebar").style.display = "block";
+	} else {
+		document.getElementById("toggle-sidebar").style.display = "none";
+	}
+</script>
+

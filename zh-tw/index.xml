@@ -6,7 +6,16 @@
     <description>Recent content on Sun 記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Wed, 22 Mar 2023 11:34:07 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Mar 2023 09:38:14 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>資料庫查詢性能優化技巧 : 語句優化、添加索引</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/database-optimization-index-tips/</link>
+      <pubDate>Wed, 29 Mar 2023 09:38:14 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/database-optimization-index-tips/</guid>
+      <description>&lt;p&gt;當系統資料量日益龐大常會遇到資料庫查詢時間過久的情況，此篇提供資料庫查詢性能優化的幾個方法。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>黑暗模式(dark mode)設計與Hugo實作</title>
       <link>http://sunnote.xyz/zh-tw/tutorials/dark-mode-tips-hugo/</link>

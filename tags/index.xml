@@ -6,7 +6,16 @@
     <description>Recent content in Tags on Sun Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Wed, 22 Mar 2023 11:34:07 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Mar 2023 09:38:14 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQL</title>
+      <link>http://sunnote.xyz/tags/sql/</link>
+      <pubDate>Wed, 29 Mar 2023 09:38:14 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/tags/sql/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>CSS</title>
       <link>http://sunnote.xyz/tags/css/</link>
@@ -40,15 +49,6 @@
       <pubDate>Wed, 22 Mar 2023 11:34:07 +0800</pubDate>
       
       <guid>http://sunnote.xyz/tags/web/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SQL</title>
-      <link>http://sunnote.xyz/tags/sql/</link>
-      <pubDate>Mon, 20 Mar 2023 10:44:19 +0800</pubDate>
-      
-      <guid>http://sunnote.xyz/tags/sql/</guid>
       <description></description>
     </item>
     
