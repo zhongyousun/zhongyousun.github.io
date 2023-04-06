@@ -135,39 +135,60 @@ moon.addEventListener("click", () => {
 	</div>
 		
 <nav class="menu">
-	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
-		<span class="menu__btn-title" tabindex="-1">☰選單</span>
-	</button>
-	<ul class="menu__list">
-		<li class="menu__item">
-			<a class="menu__link" href="/zh-tw/about" >
-				
-				<span class="menu__text">📃關於</span>
-				
-			</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/zh-tw/search" >
-				
-				<span class="menu__text">🔍站內查詢</span>
-				
-			</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/zh-tw/archives" >
-				
-				<span class="menu__text">🗄️文章歸檔</span>
-				
-			</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/" >
-				
-				<span class="menu__text">🌐</span>
-				
-			</a>
-		</li>
-	</ul>
+  <button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+    <span class="menu__btn-title" tabindex="-1">☰選單</span>
+  </button>
+  <ul class="menu__list">
+    <li class="menu__item">
+      <a class="menu__link" href="/zh-tw/about">
+        
+          <span class="menu__text">📃關於</span>
+        
+      </a>
+    </li>
+    <li class="menu__item">
+      <a class="menu__link" href="/zh-tw/search">
+        
+          <span class="menu__text">🔍站內查詢</span>
+        
+      </a>
+    </li>
+    <li class="menu__item">
+      <a class="menu__link" href="/zh-tw/archives">
+        
+          <span class="menu__text">🗄️文章歸檔</span>
+        
+      </a>
+    </li>
+    <li class="menu__item menu__dropdown">
+      <a class="menu__link" href="">
+        
+        <span class="menu__text">🌐</span>
+        <label class="drop-icon" for="🌐">▾</label>
+        
+      </a>
+      <input type="checkbox" id="🌐">
+      <ul class="submenu__list">
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/">
+            
+            <span class="menu__text">EN</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/zh-tw">
+            
+            <span class="menu__text">中文</span>
+            
+          </a>
+          </li>
+        
+      </ul>
+    </li>
+  </ul>
 </nav>
 
 	</div>
