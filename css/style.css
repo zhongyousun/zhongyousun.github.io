@@ -258,18 +258,18 @@ h6 {
 }
 
 h1 {
-	font-size: 32px;
+	font-size: 28px;
 	/* font-size: 2rem; */
 }
 
 h2 {
-	font-size: 24px;
+	font-size: 26px;
 	font-size: 1.5rem;
 }
 
 h3 {
 	font-size: 24px;
-	/* font-size: 1.25rem; */
+	font-size: 1.25rem;
 	padding-bottom: 30px;
 	padding-top: 30px;
 }
@@ -360,6 +360,7 @@ kbd,
 samp {
 	font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 	font-size: inherit;
+	border-radius: 0.375rem;
 }
 
 pre,
