@@ -17,7 +17,6 @@
 <meta property="og:url" content="http://sunnote.xyz/zh-tw/tutorials/sql-scopeidentity-identity-diff/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-03-20T10:44:19+08:00" />
 <meta property="article:modified_time" content="2023-03-20T10:44:19+08:00" />
-
 <meta property="og:image" content="http://sunnote.xyz/img/thumbnail/023.png" />
 		  	
 	<meta itemprop="name" content="SQL SCOPE_IDENTITY() 與 @@IDENTITY 取得自動增量值差異">
@@ -690,6 +689,30 @@ if (!doNotTrack) {
 <br>
 <br>
 
+<script>
+window.addEventListener('load', () => {
+  const highlightBlocks = document.querySelectorAll('.highlight');
+  highlightBlocks.forEach((highlightBlock) => {
+    const button = highlightBlock.querySelector('.highlight-copy-btn');
+	const code_type = highlightBlock.querySelector('code[data-lang]');
+    highlightBlock.addEventListener('mouseover', () => {
+      
+      if (button) {
+        button.style.display = 'block';
+      }
+    });
+	highlightBlock.addEventListener('mouseout', () => {
+      
+      if (button) {
+        button.style.display = 'none';
+      }
+    });
+  });
+});
+
+
+
+</script>
 
 
 <div class="authorbox clearfix">
@@ -928,10 +951,6 @@ if (!doNotTrack) {
 		fbBoard.style.display = "block";
 	});
 </script>
-
-
-
-
 
 
 

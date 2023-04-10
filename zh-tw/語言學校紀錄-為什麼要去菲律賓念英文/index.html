@@ -17,7 +17,6 @@
 <meta property="og:url" content="http://sunnote.xyz/zh-tw/%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E7%B4%80%E9%8C%84-%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E5%8E%BB%E8%8F%B2%E5%BE%8B%E8%B3%93%E5%BF%B5%E8%8B%B1%E6%96%87/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-11-28T13:34:52+08:00" />
 <meta property="article:modified_time" content="2022-11-28T13:34:52+08:00" />
-
 <meta property="og:image" content="http://sunnote.xyz/img/thumbnail/3.語言學校紀錄-為什麼要去菲律賓念英文.jpg" />
 		  	
 	<meta itemprop="name" content="語言學校紀錄-為什麼要去菲律賓念英文?">
@@ -633,6 +632,30 @@ if (!doNotTrack) {
 <br>
 <br>
 
+<script>
+window.addEventListener('load', () => {
+  const highlightBlocks = document.querySelectorAll('.highlight');
+  highlightBlocks.forEach((highlightBlock) => {
+    const button = highlightBlock.querySelector('.highlight-copy-btn');
+	const code_type = highlightBlock.querySelector('code[data-lang]');
+    highlightBlock.addEventListener('mouseover', () => {
+      
+      if (button) {
+        button.style.display = 'block';
+      }
+    });
+	highlightBlock.addEventListener('mouseout', () => {
+      
+      if (button) {
+        button.style.display = 'none';
+      }
+    });
+  });
+});
+
+
+
+</script>
 
 
 <div class="authorbox clearfix">
@@ -885,10 +908,6 @@ if (!doNotTrack) {
 		fbBoard.style.display = "block";
 	});
 </script>
-
-
-
-
 
 
 

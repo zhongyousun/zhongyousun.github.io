@@ -1782,6 +1782,7 @@ p {
     background-color:#cccbcb;
     min-width: 30px;
     text-align: center;
+	display: none;
 }
 
 .highlight-copy-btn:hover {

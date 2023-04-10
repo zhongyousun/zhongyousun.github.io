@@ -19,7 +19,6 @@
 <meta property="article:published_time" content="2022-12-04T19:44:38+08:00" />
 <meta property="article:modified_time" content="2022-12-04T19:44:38+08:00" />
 
-
 		  	<meta property="og:image" content="https://sunnote.xyz/TravelIsGoodForTheSoul.webp" />
 	<meta itemprop="name" content="Leetcode(Medium) 146. LRU Cache (Python)">
 <meta itemprop="description" content="LRU Cache算是我遇過覺得蠻有趣生活化的題目，感覺也是在很多底層系統會需要用到的觀念。
@@ -681,6 +680,30 @@ if (!doNotTrack) {
 <br>
 <br>
 
+<script>
+window.addEventListener('load', () => {
+  const highlightBlocks = document.querySelectorAll('.highlight');
+  highlightBlocks.forEach((highlightBlock) => {
+    const button = highlightBlock.querySelector('.highlight-copy-btn');
+	const code_type = highlightBlock.querySelector('code[data-lang]');
+    highlightBlock.addEventListener('mouseover', () => {
+      
+      if (button) {
+        button.style.display = 'block';
+      }
+    });
+	highlightBlock.addEventListener('mouseout', () => {
+      
+      if (button) {
+        button.style.display = 'none';
+      }
+    });
+  });
+});
+
+
+
+</script>
 
 
 <div class="authorbox clearfix">
@@ -914,10 +937,6 @@ if (!doNotTrack) {
 		fbBoard.style.display = "block";
 	});
 </script>
-
-
-
-
 
 
 

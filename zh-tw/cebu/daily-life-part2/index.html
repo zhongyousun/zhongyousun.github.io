@@ -18,7 +18,6 @@
 <meta property="og:url" content="http://sunnote.xyz/zh-tw/cebu/daily-life-part2/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-11-30T17:28:53+08:00" />
 <meta property="article:modified_time" content="2022-11-30T17:28:53+08:00" />
-
 <meta property="og:image" content="http://sunnote.xyz/img/thumbnail/010.IMG_1727.jpeg" />
 		  	
 	<meta itemprop="name" content="宿霧遊學-日常生活(二)">
@@ -723,6 +722,30 @@ if (!doNotTrack) {
 <br>
 <br>
 
+<script>
+window.addEventListener('load', () => {
+  const highlightBlocks = document.querySelectorAll('.highlight');
+  highlightBlocks.forEach((highlightBlock) => {
+    const button = highlightBlock.querySelector('.highlight-copy-btn');
+	const code_type = highlightBlock.querySelector('code[data-lang]');
+    highlightBlock.addEventListener('mouseover', () => {
+      
+      if (button) {
+        button.style.display = 'block';
+      }
+    });
+	highlightBlock.addEventListener('mouseout', () => {
+      
+      if (button) {
+        button.style.display = 'none';
+      }
+    });
+  });
+});
+
+
+
+</script>
 
 
 <div class="authorbox clearfix">
@@ -975,10 +998,6 @@ if (!doNotTrack) {
 		fbBoard.style.display = "block";
 	});
 </script>
-
-
-
-
 
 
 

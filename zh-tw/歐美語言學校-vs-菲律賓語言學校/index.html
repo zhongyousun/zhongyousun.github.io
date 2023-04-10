@@ -18,7 +18,6 @@
 <meta property="article:published_time" content="2022-11-28T15:35:05+08:00" />
 <meta property="article:modified_time" content="2022-11-28T15:35:05+08:00" />
 
-
 		  	<meta property="og:image" content="https://sunnote.xyz/TravelIsGoodForTheSoul.webp" />
 	<meta itemprop="name" content="歐美語言學校 vs 菲律賓語言學校">
 <meta itemprop="description" content=""><meta itemprop="datePublished" content="2022-11-28T15:35:05+08:00" />
@@ -669,6 +668,30 @@ if (!doNotTrack) {
 <br>
 <br>
 
+<script>
+window.addEventListener('load', () => {
+  const highlightBlocks = document.querySelectorAll('.highlight');
+  highlightBlocks.forEach((highlightBlock) => {
+    const button = highlightBlock.querySelector('.highlight-copy-btn');
+	const code_type = highlightBlock.querySelector('code[data-lang]');
+    highlightBlock.addEventListener('mouseover', () => {
+      
+      if (button) {
+        button.style.display = 'block';
+      }
+    });
+	highlightBlock.addEventListener('mouseout', () => {
+      
+      if (button) {
+        button.style.display = 'none';
+      }
+    });
+  });
+});
+
+
+
+</script>
 
 
 <div class="authorbox clearfix">
@@ -921,10 +944,6 @@ if (!doNotTrack) {
 		fbBoard.style.display = "block";
 	});
 </script>
-
-
-
-
 
 
 

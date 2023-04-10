@@ -17,7 +17,6 @@
 <meta property="og:url" content="http://sunnote.xyz/zh-tw/tutorials/hugo-related-posts-supports-carousel-display/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-02-22T11:02:15+08:00" />
 <meta property="article:modified_time" content="2023-02-22T11:02:15+08:00" />
-
 <meta property="og:image" content="http://sunnote.xyz/img/thumbnail/021.png" />
 		  	
 	<meta itemprop="name" content="Hugo 實現推薦文章功能與輪播顯示">
@@ -784,6 +783,30 @@ if (!doNotTrack) {
 <br>
 <br>
 
+<script>
+window.addEventListener('load', () => {
+  const highlightBlocks = document.querySelectorAll('.highlight');
+  highlightBlocks.forEach((highlightBlock) => {
+    const button = highlightBlock.querySelector('.highlight-copy-btn');
+	const code_type = highlightBlock.querySelector('code[data-lang]');
+    highlightBlock.addEventListener('mouseover', () => {
+      
+      if (button) {
+        button.style.display = 'block';
+      }
+    });
+	highlightBlock.addEventListener('mouseout', () => {
+      
+      if (button) {
+        button.style.display = 'none';
+      }
+    });
+  });
+});
+
+
+
+</script>
 
 
 <div class="authorbox clearfix">
@@ -1022,10 +1045,6 @@ if (!doNotTrack) {
 		fbBoard.style.display = "block";
 	});
 </script>
-
-
-
-
 
 
 
