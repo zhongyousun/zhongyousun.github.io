@@ -49,6 +49,7 @@ if (!doNotTrack) {
 
 	
 </head>
+
 <span class="sun-btn">&#x2600;</span>
 <span class="moon-btn">&#x263D;</span>
 
@@ -467,7 +468,7 @@ None of the projects encountered so far have a hard requirement to use multi-thr
 					}
 				});
 			});
-			</script><a href="https://info.flagcounter.com/8Z5p"><img src="https://s11.flagcounter.com/countxl/8Z5p/bg_FFFFFF/txt_000000/border_FFFFFF/columns_2/maxflags_12/viewers_3/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+			</script><a href="https://info.flagcounter.com/8Z5p"><img src="https://s11.flagcounter.com/countxl/8Z5p/bg_FFFFFF/txt_000000/border_FFFFFF/columns_3/maxflags_120/viewers_3/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
 <br>
 <br>
 <br>
@@ -515,35 +516,56 @@ None of the projects encountered so far have a hard requirement to use multi-thr
 
 
 
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+  const isSidebarVisible = localStorage.getItem('isSidebarVisible') !== 'false';
+  const asideElement = document.querySelector("aside.sidebar");
+  if (isSidebarVisible) {
+    asideElement.style.display = 'block';
+    document.querySelector(".primary").style = "flex: 0 0 65.83%;";
+    document.querySelector(".toc-side").className = "post__toc toc";
+  } else {
+    asideElement.style.display = 'none';
+    document.querySelector(".primary").style = "flex: 1 0 100%;";
+    document.querySelector(".post__toc.toc").className = "toc-side";
+  }
+});
+
+</script>
 <script>
 	const toggleButton = document.getElementById('toggle-sidebar');
 	const asideElement = document.querySelector("aside.sidebar");
+	
+	const isSidebarVisible = localStorage.getItem('isSidebarVisible') !== 'false';
+	
+	function setSidebarLocalStorage(state) {
+  		localStorage.setItem("isSidebarVisible", state);
+	}
+	
+
 	toggleButton.addEventListener('click', function () {
+		
+		
 		if (asideElement.style.display === 'none') {
 			asideElement.style.display = 'block';
+			setSidebarLocalStorage(true); 
 			setTimeout(function() {
             document.querySelector(".primary").style = "flex: 0 0 65.83%;";
         }, 100);
 			document.querySelector(".toc-side").className = "post__toc toc";
-			
-			
 		} else {
 			asideElement.style.display = 'none';
+			setSidebarLocalStorage(false); 
 			setTimeout(function() {
 			
             document.querySelector(".primary").style = "flex: 1 0 100%;";
 			
         }, 100);
 			document.querySelector(".post__toc.toc").className = "toc-side";
-
 		}
 	});
 
-	
-	if (asideElement && window.innerWidth >= 992 ) {
-		document.getElementById("toggle-sidebar").style.display = "block";
-	} else {
-		document.getElementById("toggle-sidebar").style.display = "none";
-	}
+
 </script>
 
