@@ -227,6 +227,7 @@ textarea {
 	width:30px;
 	height:30px;
 	z-index: 999;
+	background-color: var(--codeBG);
   }
 #toggle-sidebar:hover {
     transform: translateY(-0.1px);
@@ -1120,22 +1121,43 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 }
 .toc-side {
 	position: fixed;
-	top: 100px;
+	top: 88px;
 	right: 5px;
 	width: 200px;
-	background-color: white;
+	background-color: var(--codeBG);
 	/* padding: 20px; */
 	display: block;
 	border-radius: 15px;
 	z-index: 999;
 }
+.toc-button {
+	position: fixed;
+	top: 90px;
+	right: 5px;
+	width: 30px;
+	height: 30px;
+	background-color: var(--codeBG);
+	/* border-radius: 50%; */
+	border: 1px solid var(--text-color);
+	z-index: 999;
+	text-align: center;
+	line-height: 30px;
+	font-size: 24px;
+	font-weight: bold;
+	cursor: pointer;
+	display:none;
+  }
+  
+  .toc-button:hover {
+	background-color: #f0f0f0;
+  }
 
 @media screen and (max-width: 1300px) {
 	.toc-side {
 		display: none;
 	}
+	
 }
-
 .toc__title {
 	padding: 5px 10px;
 	color: rgb(147, 147, 147);

@@ -472,19 +472,21 @@ Unfortunately, I never encountered this problem on my job yet&hellip;</p>
 
 
 
-
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
   const isSidebarVisible = localStorage.getItem('isSidebarVisible') !== 'false';
   const asideElement = document.querySelector("aside.sidebar");
+  var button = document.querySelector('.toc-button');
   if (isSidebarVisible) {
     asideElement.style.display = 'block';
     document.querySelector(".primary").style = "flex: 0 0 65.83%;";
     document.querySelector(".toc-side").className = "post__toc toc";
+	button.style.display = 'none';
   } else {
     asideElement.style.display = 'none';
     document.querySelector(".primary").style = "flex: 1 0 100%;";
     document.querySelector(".post__toc.toc").className = "toc-side";
+	button.style.display = 'block';
   }
 });
 
@@ -492,6 +494,7 @@ Unfortunately, I never encountered this problem on my job yet&hellip;</p>
 <script>
 	const toggleButton = document.getElementById('toggle-sidebar');
 	const asideElement = document.querySelector("aside.sidebar");
+	var button = document.querySelector('.toc-button');
 	
 	const isSidebarVisible = localStorage.getItem('isSidebarVisible') !== 'false';
 	
@@ -510,6 +513,7 @@ Unfortunately, I never encountered this problem on my job yet&hellip;</p>
             document.querySelector(".primary").style = "flex: 0 0 65.83%;";
         }, 100);
 			document.querySelector(".toc-side").className = "post__toc toc";
+			button.style.display = 'none';
 		} else {
 			asideElement.style.display = 'none';
 			setSidebarLocalStorage(false); 
@@ -519,9 +523,10 @@ Unfortunately, I never encountered this problem on my job yet&hellip;</p>
 			
         }, 100);
 			document.querySelector(".post__toc.toc").className = "toc-side";
+			button.style.display = 'block';
 		}
 	});
 
-
 </script>
+
 

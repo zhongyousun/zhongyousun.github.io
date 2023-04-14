@@ -957,6 +957,31 @@ window.addEventListener('load', () => {
 </script>
 
 
+<div class="toc-button">
+	≡
+  </div>
+
+  <script>
+	var toc = document.querySelector('.post__toc.toc');
+	console.log(toc);
+	var button = document.querySelector('.toc-button');
+	
+
+	button.addEventListener('click', function() {
+		if(button.textContent =='≡'){
+			console.log(toc);
+			button.textContent = '✖';
+			toc.style.display = 'block';
+		}else{
+			console.log(toc);
+			button.textContent = '≡';
+			toc.style.display = 'none';
+		}
+		
+  
+});
+
+</script>  
 
 			</div>
 			<aside class="sidebar">
@@ -1101,19 +1126,21 @@ window.addEventListener('load', () => {
 
 
 
-
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
   const isSidebarVisible = localStorage.getItem('isSidebarVisible') !== 'false';
   const asideElement = document.querySelector("aside.sidebar");
+  var button = document.querySelector('.toc-button');
   if (isSidebarVisible) {
     asideElement.style.display = 'block';
     document.querySelector(".primary").style = "flex: 0 0 65.83%;";
     document.querySelector(".toc-side").className = "post__toc toc";
+	button.style.display = 'none';
   } else {
     asideElement.style.display = 'none';
     document.querySelector(".primary").style = "flex: 1 0 100%;";
     document.querySelector(".post__toc.toc").className = "toc-side";
+	button.style.display = 'block';
   }
 });
 
@@ -1121,6 +1148,7 @@ window.addEventListener('load', () => {
 <script>
 	const toggleButton = document.getElementById('toggle-sidebar');
 	const asideElement = document.querySelector("aside.sidebar");
+	var button = document.querySelector('.toc-button');
 	
 	const isSidebarVisible = localStorage.getItem('isSidebarVisible') !== 'false';
 	
@@ -1139,6 +1167,7 @@ window.addEventListener('load', () => {
             document.querySelector(".primary").style = "flex: 0 0 65.83%;";
         }, 100);
 			document.querySelector(".toc-side").className = "post__toc toc";
+			button.style.display = 'none';
 		} else {
 			asideElement.style.display = 'none';
 			setSidebarLocalStorage(false); 
@@ -1148,9 +1177,10 @@ window.addEventListener('load', () => {
 			
         }, 100);
 			document.querySelector(".post__toc.toc").className = "toc-side";
+			button.style.display = 'block';
 		}
 	});
 
-
 </script>
+
 

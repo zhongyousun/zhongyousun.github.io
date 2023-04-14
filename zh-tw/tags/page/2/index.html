@@ -521,19 +521,21 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 
-
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
   const isSidebarVisible = localStorage.getItem('isSidebarVisible') !== 'false';
   const asideElement = document.querySelector("aside.sidebar");
+  var button = document.querySelector('.toc-button');
   if (isSidebarVisible) {
     asideElement.style.display = 'block';
     document.querySelector(".primary").style = "flex: 0 0 65.83%;";
     document.querySelector(".toc-side").className = "post__toc toc";
+	button.style.display = 'none';
   } else {
     asideElement.style.display = 'none';
     document.querySelector(".primary").style = "flex: 1 0 100%;";
     document.querySelector(".post__toc.toc").className = "toc-side";
+	button.style.display = 'block';
   }
 });
 
@@ -541,6 +543,7 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <script>
 	const toggleButton = document.getElementById('toggle-sidebar');
 	const asideElement = document.querySelector("aside.sidebar");
+	var button = document.querySelector('.toc-button');
 	
 	const isSidebarVisible = localStorage.getItem('isSidebarVisible') !== 'false';
 	
@@ -559,6 +562,7 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
             document.querySelector(".primary").style = "flex: 0 0 65.83%;";
         }, 100);
 			document.querySelector(".toc-side").className = "post__toc toc";
+			button.style.display = 'none';
 		} else {
 			asideElement.style.display = 'none';
 			setSidebarLocalStorage(false); 
@@ -568,9 +572,10 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 			
         }, 100);
 			document.querySelector(".post__toc.toc").className = "toc-side";
+			button.style.display = 'block';
 		}
 	});
 
-
 </script>
+
 
