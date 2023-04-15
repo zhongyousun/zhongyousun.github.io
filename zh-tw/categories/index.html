@@ -16,6 +16,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://sunnote.xyz/zh-tw/categories/" />
 
+
 		  	<meta property="og:image" content="https://sunnote.xyz/TravelIsGoodForTheSoul.webp" />
 	<meta itemprop="name" content="Categories">
 <meta itemprop="description" content="Life is tough, but so are you.">
@@ -26,6 +27,63 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+	<style>
+		@media screen and (max-width: 850px) {
+		.main-button {
+			display: none;
+			}
+		}
+		.floating-menu {
+		  position: fixed;
+		  top: 10%;
+		  right: 0;
+		  transform: translateY(-50%);
+		}
+  
+		.main-button {
+		  border: none;
+		  border-radius: 5px;
+		  background-color: #ACD6FF;
+		  color: #fff;
+		  font-size: 14px;
+		  cursor: pointer;
+		  height: 38px;
+		  width: 38px;
+		}
+  
+		.main-button:hover {
+		  background-color: #9accff;
+		  color: #333;
+		}
+  
+		.sub-buttons {
+		  display: none;
+		  position: absolute;
+		  top: calc(100% + 10px);
+		  right: 0;
+		  background-color: #fff;
+		  border: 1px solid #ddd;
+		  border-radius: 5px;
+		  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+		}
+		.sub-button {
+		  display: block;
+		  width: 100%;
+		  padding: 10px;
+		  border: none;
+		  background-color: transparent;
+		  color: #333;
+		  font-size: 14px;
+		  cursor: pointer;
+		}
+  
+		.sub-button:hover {
+		  background-color: #f2f2f2;
+		  color: #ACD6FF;
+		}
+	  </style>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" >
 
 	<link rel="stylesheet" href="/css/style.css">
@@ -469,11 +527,129 @@ if (!doNotTrack) {
 	</div>
 	<script async defer src="/js/menu.js"></script>
 	
-	<button id="toggle-sidebar"><img src="/svg/glasses_lightgray.svg"></button>
+	<div class="floating-menu">
+		<button class="main-button"><i class="fas fa-bars"></i></button>
+		<div class="sub-buttons">
+		  <button class="sub-button" id="read-mode" title="Read mode"><i class="fas fa-book-open"></i></button>
+		  <button class="sub-button" id="toc" title="Toggle ToC"><i class="fa-solid fa-list-ol"></i></button>
+		  
+		  
+		</div>
+	  </div>
 </body>
 
 </html>
 
+<script>
+	const mainButton = document.querySelector('.main-button');
+	const iconElement = document.querySelector('.main-button i');
+	const subButtons = document.querySelector('.sub-buttons');
+
+	const readModeButton = document.getElementById('read-mode');
+	const icon_readmode = document.querySelector('#read-mode i');
+
+	const tocButton = document.getElementById('toc');
+	const icon_toc = document.querySelector('#toc i');
+
+	const icon_theme = document.querySelector('#theme i');
+	
+	const asideElement = document.querySelector("aside.sidebar");
+	
+	const isSidebarVisible = localStorage.getItem('isSidebarVisible') !== 'false';
+	
+	function setSidebarLocalStorage(state) {
+  		localStorage.setItem("isSidebarVisible", state);
+	}
+
+	
+	const isTOCStatus = localStorage.getItem('isTOCStatus') !== 'false';
+	
+	function setTOCLocalStorage(state) {
+  		localStorage.setItem("isTOCStatus", state);
+	}
+
+	mainButton.addEventListener('click', () => {
+	  if (subButtons.style.display === 'block') {
+		  iconElement.classList.replace('fa-xmark', 'fa-bars');
+		  subButtons.style.display = 'none';
+	  } else {
+		  iconElement.classList.replace('fa-bars', 'fa-xmark');
+		  subButtons.style.display = 'block';
+	  }
+	});
+
+	readModeButton.addEventListener('click', () => {
+	  if (icon_readmode.classList.contains('fa-book-open')) {
+			setSidebarLocalStorage(false); 
+			setTOCLocalStorage(false);
+			asideElement.style.display = 'none';
+		  icon_readmode.classList.replace('fa-book-open', 'fa-angle-left');
+		  setTimeout(function() {
+			
+            document.querySelector(".primary").style = "flex: 1 0 100%;";
+			
+        }, 100);
+			document.querySelector(".post__toc.toc").className = "toc-side";
+	  } else {
+			setSidebarLocalStorage(true); 
+			setTOCLocalStorage(true);
+			asideElement.style.display = 'block';
+		  icon_readmode.classList.replace('fa-angle-left', 'fa-book-open');
+		  setTimeout(function() {
+            document.querySelector(".primary").style = "flex: 0 0 65.83%;";
+        }, 100);
+			document.querySelector(".toc-side").className = "post__toc toc";
+	  }
+	});
+	tocButton.addEventListener('click', () => {
+	  if (icon_toc.classList.contains('fa-list-ol')) {
+		  icon_toc.classList.replace('fa-list-ol', 'fa-xmark');
+		  document.querySelector(".post__toc.toc").className = "toc-side";
+		  setTOCLocalStorage(false);
+	  } else {
+		  icon_toc.classList.replace('fa-xmark', 'fa-list-ol');
+		  document.querySelector(".toc-side").className = "post__toc toc";
+		  setTOCLocalStorage(true);
+	  }
+	});
+
+	icon_theme.addEventListener('click', () => {
+	  if (icon_theme.classList.contains('fa-sun')) {
+		  icon_theme.classList.replace('fa-sun', 'fa-moon');
+	  } else {
+		  icon_theme.classList.replace('fa-moon', 'fa-sun');
+	  }
+	});
+  </script>
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+  const isSidebarVisible = localStorage.getItem('isSidebarVisible') !== 'false';
+  const isTOCStatus = localStorage.getItem('isTOCStatus') !== 'false';
+  const asideElement = document.querySelector("aside.sidebar");
+  if (isSidebarVisible) {
+    asideElement.style.display = 'block';
+    document.querySelector(".primary").style = "flex: 0 0 65.83%;";
+    
+	icon_readmode.classList.remove('fa-angle-left');
+    icon_readmode.classList.add('fa-book-open');
+  } else {
+    asideElement.style.display = 'none';
+    document.querySelector(".primary").style = "flex: 1 0 100%;";
+    
+	icon_readmode.classList.remove('fa-book-open');
+    icon_readmode.classList.add('fa-angle-left');
+  }
+  if (isTOCStatus) {
+    document.querySelector(".toc-side").className = "post__toc toc";
+	icon_toc.classList.remove('fa-xmark');
+    icon_toc.classList.add('fa-list-ol');
+  } else {
+    document.querySelector(".post__toc.toc").className = "toc-side";
+	icon_toc.classList.remove('fa-list-ol');
+    icon_toc.classList.add('fa-xmark');
+  }
+});
+</script>
 
 <script src="https://sunnote.xyz/js-pkg/BackToTopButton.js"></script>
 <script>addBackToTop({
@@ -484,64 +660,5 @@ if (!doNotTrack) {
 		showWhenScrollTopIs: 800
 	})</script>
 
-
-
-
-<script>
-	document.addEventListener('DOMContentLoaded', function() {
-  const isSidebarVisible = localStorage.getItem('isSidebarVisible') !== 'false';
-  const asideElement = document.querySelector("aside.sidebar");
-  var button = document.querySelector('.toc-button');
-  if (isSidebarVisible) {
-    asideElement.style.display = 'block';
-    document.querySelector(".primary").style = "flex: 0 0 65.83%;";
-    document.querySelector(".toc-side").className = "post__toc toc";
-	button.style.display = 'none';
-  } else {
-    asideElement.style.display = 'none';
-    document.querySelector(".primary").style = "flex: 1 0 100%;";
-    document.querySelector(".post__toc.toc").className = "toc-side";
-	button.style.display = 'block';
-  }
-});
-
-</script>
-<script>
-	const toggleButton = document.getElementById('toggle-sidebar');
-	const asideElement = document.querySelector("aside.sidebar");
-	var button = document.querySelector('.toc-button');
-	
-	const isSidebarVisible = localStorage.getItem('isSidebarVisible') !== 'false';
-	
-	function setSidebarLocalStorage(state) {
-  		localStorage.setItem("isSidebarVisible", state);
-	}
-	
-
-	toggleButton.addEventListener('click', function () {
-		
-		
-		if (asideElement.style.display === 'none') {
-			asideElement.style.display = 'block';
-			setSidebarLocalStorage(true); 
-			setTimeout(function() {
-            document.querySelector(".primary").style = "flex: 0 0 65.83%;";
-        }, 100);
-			document.querySelector(".toc-side").className = "post__toc toc";
-			button.style.display = 'none';
-		} else {
-			asideElement.style.display = 'none';
-			setSidebarLocalStorage(false); 
-			setTimeout(function() {
-			
-            document.querySelector(".primary").style = "flex: 1 0 100%;";
-			
-        }, 100);
-			document.querySelector(".post__toc.toc").className = "toc-side";
-			button.style.display = 'block';
-		}
-	});
-
-</script>
 
 

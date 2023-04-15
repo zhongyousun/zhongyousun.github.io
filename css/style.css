@@ -1121,8 +1121,8 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 }
 .toc-side {
 	position: fixed;
-	top: 88px;
-	right: 5px;
+	top: 110px;
+	right: 40px;
 	width: 200px;
 	background-color: var(--codeBG);
 	/* padding: 20px; */
