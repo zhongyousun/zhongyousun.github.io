@@ -8,7 +8,9 @@
 	function flashCopyMessage(el, msg) {
 	  el.textContent = msg;
 	  setTimeout(function() {
-		el.textContent = "📋";
+		el.innerHTML = '<i class="fas fa-copy"></i>';
+		el.appendChild(el);
+		// el.textContent = "📋";
 	  }, 3000);
 	}
   
@@ -24,7 +26,10 @@
 	function addCopyButton(containerEl) {
 	  var copyBtn = document.createElement("button");
 	  copyBtn.className = "highlight-copy-btn";
-	  copyBtn.textContent = "📋";
+	  copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
+  		containerEl.appendChild(copyBtn);
+	//   copyBtn.textContent = "📋";
+	
   
 	  var codeEl = containerEl.firstElementChild;
 	  copyBtn.addEventListener('click', function() {

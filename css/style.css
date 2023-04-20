@@ -1805,33 +1805,36 @@ p {
     border: 0;
     border-radius: 4px;
     padding: 1px;
-    font-size: 0.8em;
-    line-height: 1.8;
-    color: white;
+    font-size: 14px;
+    /* line-height: 1.8; */
+    color: var(--codeBG);
     background-color:#cccbcb;
     min-width: 30px;
     text-align: center;
 	display: none;
+	height: 30px;
+	width: 30px;
 }
 
 .highlight-copy-btn:hover {
     /* background-color: #ACD6FF; */
 	font-weight: bold;
-	font-size: 1em;
+	/* font-size: 1em; */
 	cursor: pointer;
+	background-color:#a6a5a5;
 }
 /* copy btn */
 /* code type */
 code[data-lang]::before {
-    content: attr(data-lang);
+    content: " "attr( data-lang )" ";
     position: absolute;
-    top: 0.2rem;
-    left: 0.2rem;
-    background-color: #cccbcb;
+    top: -0.9rem;
+    left: 1rem;
+    background-color: var(--codeBG);
     padding: 2px 4px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: bold;
-    color: #fff;
+    border-radius: .375rem;
+    font-size: 18px;
+    /* font-weight: bold; */
+    color: var(--text-color);
 }
 /* code type */
