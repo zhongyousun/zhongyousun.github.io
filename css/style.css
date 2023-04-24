@@ -1132,32 +1132,29 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 }
 .toc-button {
 	position: fixed;
-	top: 90px;
-	right: 5px;
-	width: 30px;
-	height: 30px;
+	top: 110px;
+	right: 45px;
 	background-color: var(--codeBG);
 	/* border-radius: 50%; */
-	border: 1px solid var(--text-color);
+	border: 0px solid var(--text-color);
 	z-index: 999;
-	text-align: center;
-	line-height: 30px;
-	font-size: 24px;
-	font-weight: bold;
-	cursor: pointer;
+	font-size: 18px;
+	color: var(--text-color);
 	display:none;
   }
   
   .toc-button:hover {
-	background-color: #f0f0f0;
+	background-color: var(--wrapperBG);
+	font-size: 21px;
+	text-align: center;
   }
 
-@media screen and (max-width: 1300px) {
+/* @media screen and (max-width: 1300px) {
 	.toc-side {
 		display: none;
 	}
 	
-}
+} */
 .toc__title {
 	padding: 5px 10px;
 	color: rgb(147, 147, 147);

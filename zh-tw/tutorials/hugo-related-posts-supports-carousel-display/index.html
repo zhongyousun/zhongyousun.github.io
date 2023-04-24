@@ -1294,10 +1294,12 @@ window.addEventListener('load', () => {
 		  
 		  
 		</div>
-	  </div>
+	</div>
+	<button class="toc-button" id ="toc-button"><i class="fa-solid fa-xmark"></i></button>
 </body>
 
 </html>
+
 
 <script>
 	const mainButton = document.querySelector('.main-button');
@@ -1309,6 +1311,8 @@ window.addEventListener('load', () => {
 
 	const tocButton = document.getElementById('toc');
 	const icon_toc = document.querySelector('#toc i');
+
+	const tocButton1 = document.getElementById('toc-button');
 
 	const icon_theme = document.querySelector('#theme i');
 	
@@ -1339,6 +1343,7 @@ window.addEventListener('load', () => {
 
 	readModeButton.addEventListener('click', () => {
 	  if (icon_readmode.classList.contains('fa-book-open')) {
+		showTOCButton();
 			setSidebarLocalStorage(false); 
 			setTOCLocalStorage(false);
 			asideElement.style.display = 'none';
@@ -1349,6 +1354,7 @@ window.addEventListener('load', () => {
 			
         }, 100);
 			document.querySelector(".post__toc.toc").className = "toc-side";
+			tocButton1.style.display='block';
 	  } else {
 			setSidebarLocalStorage(true); 
 			setTOCLocalStorage(true);
@@ -1358,18 +1364,28 @@ window.addEventListener('load', () => {
             document.querySelector(".primary").style = "flex: 0 0 65.83%;";
         }, 100);
 			document.querySelector(".toc-side").className = "post__toc toc";
+			tocButton1.style.display='none';
+
 	  }
 	});
 	tocButton.addEventListener('click', () => {
 	  if (icon_toc.classList.contains('fa-list-ol')) {
 		  icon_toc.classList.replace('fa-list-ol', 'fa-xmark');
 		  document.querySelector(".post__toc.toc").className = "toc-side";
+		  tocButton1.style.display='block';
 		  setTOCLocalStorage(false);
 	  } else {
 		  icon_toc.classList.replace('fa-xmark', 'fa-list-ol');
 		  document.querySelector(".toc-side").className = "post__toc toc";
+		  tocButton1.style.display='none';
 		  setTOCLocalStorage(true);
 	  }
+	});
+	tocButton1.addEventListener('click', () => {
+		  icon_toc.classList.replace('fa-xmark', 'fa-list-ol');
+		  document.querySelector(".toc-side").className = "post__toc toc";
+		  tocButton1.style.display='none';
+		  setTOCLocalStorage(true);
 	});
 
 	icon_theme.addEventListener('click', () => {
@@ -1409,7 +1425,22 @@ window.addEventListener('load', () => {
   }
 });
 </script>
-
+<script>
+	function showTOCButton() {
+	
+	document.addEventListener('DOMContentLoaded', function() {
+ 		const tocSide = document.querySelector('.toc-side');
+  		const tocSideBTN = document.getElementById('toc-button');
+  	
+  	if(tocSide){
+		tocSideBTN.style.display='block';
+	}else{
+		tocSideBTN.style.display='none';
+	}
+});
+	}
+	showTOCButton();
+</script>
 <script src="https://sunnote.xyz/js-pkg/BackToTopButton.js"></script>
 <script>addBackToTop({
 		diameter: 52,
