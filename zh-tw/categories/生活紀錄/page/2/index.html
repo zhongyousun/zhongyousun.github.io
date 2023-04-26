@@ -36,7 +36,7 @@
 		}
 		.floating-menu {
 		  position: fixed;
-		  top: 10%;
+		  top: 80%;
 		  right: 0;
 		  transform: translateY(-50%);
 		}
@@ -60,7 +60,7 @@
 		.sub-buttons {
 		  display: none;
 		  position: absolute;
-		  top: calc(100% + 10px);
+		  top: calc(100% - 130px);
 		  right: 0;
 		  background-color: var(--wrapperBG);
 		  border: 1px solid #ddd;
@@ -219,7 +219,8 @@ moon.addEventListener("click", () => {
       </a>
     </li>
     <li class="menu__item menu__dropdown">
-      <a class="menu__link" href="">
+      
+        <a class="menu__link">
         <i class='fas fa-globe'></i>
         <span class="menu__text"> </span>
         <label class="drop-icon" for=" ">▾</label>
@@ -517,6 +518,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 		<ul class="widget__list">
 			
 			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/mongodb-atlas-compass-tips/">MongoDB Atlas 資料庫基礎觀念、操作流程與使用 Compass 連線</a></li>
+			
+			
 			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/database-optimization-index-tips/">資料庫查詢性能優化技巧 : 語句優化、添加索引</a></li>
 			
 			
@@ -527,9 +531,6 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 			
 			
 			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/jwt-authentication-mechanism/">JWT 驗證機制原理與實作範例 (C#)</a></li>
-			
-			
-			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/hugo-related-posts-supports-carousel-display/">Hugo 實現推薦文章功能與輪播顯示</a></li>
 		</ul>
 	</div>
 </div>
@@ -537,6 +538,11 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 	<h4 class="widget__title">分類</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/zh-tw/categories/program/">Program</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">1</span></span>
+				
+				</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/zh-tw/categories/%E6%B5%B7%E5%A4%96%E6%97%85%E9%81%8A/">海外旅遊</a>&nbsp;
 				<span class="widget__counter widget__counter--bubble"><span class="count">9</span></span>
@@ -583,6 +589,7 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/hugo/" title="Hugo">Hugo (<span class="count">3</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/javascript/" title="JavaScript">JavaScript (<span class="count">1</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/leetcode/" title="LeetCode">LeetCode (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/nosql/" title="NoSQL">NoSQL (<span class="count">1</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/python/" title="Python">Python (<span class="count">1</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/sql/" title="SQL">SQL (<span class="count">4</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/web/" title="Web">Web (<span class="count">2</span>)</a>

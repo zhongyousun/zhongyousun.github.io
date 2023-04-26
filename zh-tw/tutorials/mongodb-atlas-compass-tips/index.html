@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-tw">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<meta property="fb:app_id" content="725315935966817" />
+	<title>MongoDB Atlas 資料庫基礎觀念、操作流程與使用 Compass 連線 - Sun 記事</title>
+	<script>(function (d, e) { d[e] = d[e].replace("no-js", "js"); })(document.documentElement, "className");</script>
+	<meta name="description"
+		content="">
+	<meta property="og:title" content="MongoDB Atlas 資料庫基礎觀念、操作流程與使用 Compass 連線" />
+<meta property="og:description" content="紀錄學習MongoDB Atlas過程幾個重點觀念與詳細連線操作教學。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://sunnote.xyz/zh-tw/tutorials/mongodb-atlas-compass-tips/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-24T15:33:44+08:00" />
+<meta property="article:modified_time" content="2023-04-24T15:33:44+08:00" />
+<meta property="og:image" content="http://sunnote.xyz/img/thumbnail/026.webp" />
+		  	
+	<meta itemprop="name" content="MongoDB Atlas 資料庫基礎觀念、操作流程與使用 Compass 連線">
+<meta itemprop="description" content="紀錄學習MongoDB Atlas過程幾個重點觀念與詳細連線操作教學。"><meta itemprop="datePublished" content="2023-04-24T15:33:44+08:00" />
+<meta itemprop="dateModified" content="2023-04-24T15:33:44+08:00" />
+<meta itemprop="wordCount" content="124">
+<meta itemprop="keywords" content="NoSQL," />
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MongoDB Atlas 資料庫基礎觀念、操作流程與使用 Compass 連線"/>
+<meta name="twitter:description" content="紀錄學習MongoDB Atlas過程幾個重點觀念與詳細連線操作教學。"/>
+
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+	<style>
+		@media screen and (max-width: 850px) {
+		.main-button {
+			display: none;
+			}
+		}
+		.floating-menu {
+		  position: fixed;
+		  top: 80%;
+		  right: 0;
+		  transform: translateY(-50%);
+		}
+  
+		.main-button {
+		  border: none;
+		  border-radius: 5px;
+		  background-color: #ACD6FF;
+		  color: #fff;
+		  font-size: 14px;
+		  cursor: pointer;
+		  height: 38px;
+		  width: 38px;
+		}
+  
+		.main-button:hover {
+		  background-color: #9accff;
+		  color: #333;
+		}
+  
+		.sub-buttons {
+		  display: none;
+		  position: absolute;
+		  top: calc(100% - 130px);
+		  right: 0;
+		  background-color: var(--wrapperBG);
+		  border: 1px solid #ddd;
+		  border-radius: 5px;
+		  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+		  width: 100%;
+		}
+		.sub-button {
+		  display: block;
+		  width: 100%;
+		  padding: 10px;
+		  border: none;
+		  background-color: transparent;
+		  color: var(--text-color);
+		  font-size: 14px;
+		  cursor: pointer;
+		}
+  
+		.sub-button:hover {
+		  background-color:var(--wrapperBG2);
+		  color: #ACD6FF;
+		}
+	  </style>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" >
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MWPM4C5TJS"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-MWPM4C5TJS', { 'anonymize_ip': false });
+}
+</script>
+
+
+	
+</head>
+
+<span class="sun-btn">&#x2600;</span>
+<span class="moon-btn">&#x263D;</span>
+
+<script>
+	
+let darkModeState = false;
+
+const sun = document.querySelector('.sun-btn');
+const moon = document.querySelector('.moon-btn');
+
+
+const useDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+
+function toggleDarkMode(state) {
+  document.documentElement.classList.toggle("dark-mode", state);
+  darkModeState = state;
+}
+
+
+function setDarkModeLocalStorage(state) {
+  localStorage.setItem("dark-mode", state);
+}
+
+
+toggleDarkMode(localStorage.getItem("dark-mode") == "true");
+
+
+
+  useDark.addEventListener('change', (evt) => {
+    toggleDarkMode(evt.matches);
+  });
+
+
+
+sun.addEventListener("click", () => {
+  darkModeState = !darkModeState;
+
+  toggleDarkMode(darkModeState);
+  setDarkModeLocalStorage(darkModeState);
+});
+moon.addEventListener("click", () => {
+  darkModeState = !darkModeState;
+
+  toggleDarkMode(darkModeState);
+  setDarkModeLocalStorage(darkModeState);
+});
+</script>
+
+<body class="body">
+	
+	<script>
+		window.fbAsyncInit = function () {
+			FB.init({
+				appId: '725315935966817',
+				xfbml: true,
+				version: 'v16.0'
+			});
+			FB.AppEvents.logPageView();
+		};
+
+		(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) { return; }
+			js = d.createElement(s); js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
+
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/zh-tw" title="Sun Notes" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Sun Notes</div>
+					<div class="logo__tagline">Life is tough, but so are you.</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+  <button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+    <span class="menu__btn-title" tabindex="-1">☰選單</span>
+  </button>
+  <ul class="menu__list">
+    <li class="menu__item">
+      <a class="menu__link" href="/zh-tw/about">
+        <i class='fas fa-face-smile-wink'></i>
+          <span class="menu__text">關於</span>
+        
+      </a>
+    </li>
+    <li class="menu__item">
+      <a class="menu__link" href="/zh-tw/search">
+        <i class='fas fa-magnifying-glass'></i>
+          <span class="menu__text">站內查詢</span>
+        
+      </a>
+    </li>
+    <li class="menu__item">
+      <a class="menu__link" href="/zh-tw/archives">
+        <i class='fas fa-box-archive'></i>
+          <span class="menu__text">文章歸檔</span>
+        
+      </a>
+    </li>
+    <li class="menu__item menu__dropdown">
+      
+        <a class="menu__link">
+        <i class='fas fa-globe'></i>
+        <span class="menu__text"> </span>
+        <label class="drop-icon" for=" ">▾</label>
+        
+      </a>
+      <input type="checkbox" id=" ">
+      <ul class="submenu__list">
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/">
+            
+            <span class="menu__text">EN</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/zh-tw">
+            
+            <span class="menu__text">Zh</span>
+            
+          </a>
+          </li>
+        
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+	</div>
+</header>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-MWPM4C5TJS', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+		<div class="wrapper flex">
+			<div class="primary">
+				
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"></link>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"></link>
+<style>
+	.owl-theme .item {
+	  height: 15rem;
+	   
+	  background-color: var(--wrapperBG);
+	  padding: 0.5rem;
+	  box-shadow: 0 0 20px 0 var(--shadow); 
+	  transform:scale(0.9,0.9);
+	  transition: all 0.3s ease-out;
+	}
+	.owl-theme .item:hover {
+		margin-top: -10px;
+		 
+	}
+	
+	.owl-carousel .item h6 {
+	  color: #000000;
+	  font-weight: 400;
+	  font-size: 1rem;
+	  margin-top: 0rem;
+
+	  position: relative;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 5;  
+	text-overflow: ellipsis;
+	overflow: hidden;
+	}
+	.owl-carousel .item img {
+	  width: 100%;
+	  height: 7.5rem;
+	  border-radius: 4px;
+	}
+</style>
+
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">MongoDB Atlas 資料庫基礎觀念、操作流程與使用 Compass 連線</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-calendar"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 5.332031 L 2 12.667969 C 2 13.035156 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 5.332031 C 14 4.964844 13.703125 4.667969 13.335938 4.667969 L 2.664062 4.667969 C 2.296875 4.667969 2 4.964844 2 5.332031 Z M 0.667969 5.332031 C 0.667969 4.230469 1.558594 3.332031 2.664062 3.332031 L 13.335938 3.332031 C 14.441406 3.332031 15.332031 4.230469 15.332031 5.332031 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.769531 0.667969 12.667969 Z M 2 7.332031 L 2 6 L 14 6 L 14 7.332031 Z M 4 2 C 4 1.632812 4.296875 1.332031 4.667969 1.332031 C 5.035156 1.332031 5.332031 1.628906 5.332031 2 L 5.332031 3.332031 L 4 3.332031 Z M 10.667969 2 C 10.667969 1.632812 10.960938 1.332031 11.332031 1.332031 C 11.703125 1.332031 12 1.628906 12 2 L 12 3.332031 L 10.667969 3.332031 Z M 10.667969 2 "/>
+</g>
+</svg>
+<time class="meta__text" datetime="2023-04-24T15:33:44&#43;08:00">April 24, 2023</time></div><div class="meta__item-categories meta__item">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-folders"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 6 L 2 12.664062 C 2 13.03125 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 8 C 14 7.632812 13.703125 7.332031 13.335938 7.332031 L 9.808594 7.332031 L 8.03125 5.332031 L 2.667969 5.332031 C 2.300781 5.332031 2 5.632812 2 6 Z M 13.335938 6 C 14.4375 6 15.332031 6.894531 15.332031 8 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.761719 0.667969 12.664062 L 0.667969 6 C 0.667969 4.894531 1.5625 4 2.667969 4 L 8.632812 4 L 10.40625 6 Z M 4.425781 3.625 C 4.425781 3.625 4.425781 3.703125 4.425781 4.074219 C 4.425781 4.328125 5.15625 4.75 6 4.667969 C 6.777344 4.589844 8.453125 4.589844 8.796875 5.050781 C 10 6.667969 14.242188 7.15625 14.242188 6.667969 L 14.242188 5.25 C 14.242188 4.949219 14 4.707031 13.699219 4.707031 L 10.8125 4.707031 L 9.359375 3.082031 L 4.972656 3.082031 C 4.667969 3.082031 4.425781 3.328125 4.425781 3.625 Z M 13.699219 3.625 C 14.601562 3.625 15.332031 4.351562 15.332031 5.25 L 15.332031 8 C 15.332031 8.304688 14.667969 6.667969 10 6.667969 C 8.652344 6.160156 9.402344 5.636719 8 5.25 C 6.496094 4.832031 4.703125 5.296875 3.863281 5.285156 C 3.320312 5.273438 3.332031 4.855469 3.332031 4.667969 L 3.332031 3.625 C 3.332031 2.726562 4.066406 2 4.972656 2 L 9.851562 2 L 11.300781 3.625 Z M 13.699219 3.625 "/>
+</g>
+</svg>
+<span class="meta__text"><a class="meta__link" href="/zh-tw/categories/program/" rel="category">Program</a>
+	</span>
+</div>
+<div class="meta__item-translations meta__item"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+class="meta__icon icon icon-author"
+width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 5.121094 L 2 13.109375 C 2 13.484375 2.25 13.617188 2.554688 13.410156 L 5.445312 11.488281 C 5.75 11.28125 6.25 11.28125 6.554688 11.488281 L 9.445312 13.410156 C 9.75 13.617188 10.25 13.617188 10.554688 13.410156 L 13.445312 11.488281 C 13.75 11.28125 14 10.816406 14 10.445312 L 14 2.453125 C 14 2.082031 13.75 1.949219 13.445312 2.152344 L 10.554688 4.078125 C 10.25 4.28125 9.75 4.28125 9.445312 4.078125 L 6.554688 2.152344 C 6.25 1.949219 5.75 1.949219 5.445312 2.152344 L 2.554688 4.078125 C 2.25 4.28125 2 4.75 2 5.121094 Z M 0.667969 5.121094 C 0.667969 4.304688 1.140625 3.421875 1.816406 2.96875 L 4.703125 1.042969 C 5.460938 0.539062 6.542969 0.542969 7.296875 1.042969 L 10.183594 2.96875 C 10.042969 2.875 9.957031 2.875 9.816406 2.96875 L 12.703125 1.042969 C 13.898438 0.246094 15.332031 1.019531 15.332031 2.453125 L 15.332031 10.445312 C 15.332031 11.261719 14.859375 12.144531 14.183594 12.597656 L 11.296875 14.519531 C 10.539062 15.023438 9.457031 15.023438 8.703125 14.519531 L 5.816406 12.597656 C 5.957031 12.691406 6.042969 12.691406 6.183594 12.597656 L 3.296875 14.519531 C 2.101562 15.316406 0.667969 14.542969 0.667969 13.109375 Z M 5.332031 1.78125 L 6.667969 1.78125 L 6.667969 11.78125 L 5.332031 11.78125 Z M 9.332031 3.78125 L 10.667969 3.78125 L 10.667969 13.78125 L 9.332031 13.78125 Z M 9.332031 3.78125 "/>
+</g>
+</svg>
+<span class="meta__text"><a class="meta__link" href="/tutorials/mongodb-atlas-compass-tips/">EN</a>　
+	</span>
+</div>
+
+				
+				
+				
+				<span>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-clock"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 8 12.667969 C 10.578125 12.667969 12.667969 10.578125 12.667969 8 C 12.667969 5.421875 10.578125 3.332031 8 3.332031 C 5.421875 3.332031 3.332031 5.421875 3.332031 8 C 3.332031 10.578125 5.421875 12.667969 8 12.667969 Z M 3.957031 12.433594 C 2.753906 11.335938 2 9.757812 2 8 C 2 4.6875 4.6875 2 8 2 C 11.3125 2 14 4.6875 14 8 C 14 9.757812 13.246094 11.335938 12.042969 12.433594 L 12.9375 13.328125 C 13.207031 13.597656 13.203125 14.015625 12.941406 14.277344 C 12.679688 14.539062 12.257812 14.535156 11.996094 14.273438 L 10.949219 13.226562 C 10.078125 13.71875 9.070312 14 8 14 C 6.929688 14 5.921875 13.71875 5.050781 13.226562 L 4.003906 14.273438 C 3.738281 14.539062 3.316406 14.535156 3.058594 14.277344 C 2.796875 14.015625 2.796875 13.589844 3.0625 13.328125 Z M 7.332031 5.335938 C 7.332031 4.964844 7.628906 4.667969 8 4.667969 C 8.367188 4.667969 8.667969 4.957031 8.667969 5.335938 L 8.667969 9.332031 L 7.332031 9.332031 Z M 5.332031 8.667969 C 5.332031 8.296875 5.628906 8 6 8 L 7.332031 8 L 7.332031 9.332031 L 6 9.332031 C 5.632812 9.332031 5.332031 9.039062 5.332031 8.667969 Z M 5.332031 8.667969 "/>
+</g>
+</svg>
+9 min read.　</span>
+				
+			
+				
+
+			</div>
+
+
+			<div id="fb-root"></div>
+			<script async defer crossorigin="anonymous"
+				src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0&appId=725315935966817&autoLogAppEvents=1"
+				nonce="aF40iZ15"></script>
+		</header>
+		
+	<figure class="post__thumbnail thumbnail">
+		
+		<img class="thumbnail__image" src="/img/thumbnail/026.webp" alt="MongoDB Atlas 資料庫基礎觀念、操作流程與使用 Compass 連線">
+		
+	</figure>
+<div class="post__toc toc">
+	<div class="toc__title">目錄</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-前言">1. 前言</a></li>
+        <li><a href="#2-nosql-使用時機">2. NoSQL 使用時機</a></li>
+        <li><a href="#3-atlas-註冊">3. Atlas 註冊</a></li>
+        <li><a href="#4-權限管理">4. 權限管理</a></li>
+        <li><a href="#5-資料庫操作">5. 資料庫操作</a></li>
+        <li><a href="#6-資料庫結構">6. 資料庫結構</a></li>
+        <li><a href="#7-結語">7. 結語</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<p>紀錄學習MongoDB Atlas過程幾個重點觀念與詳細連線操作教學。</p>
+<h3 id="1-前言">1. 前言</h3>
+<p>平常使用慣了RDBMS(關聯式資料庫)，但因為在做個人專案時，若要部署上線資料庫的花費總是不小，偶然發現了MongoDB的雲端服務Atlas竟然有提供免費的學習版，所以來學習使用一下這種屬於document database，NoSQL（Not Only SQL）的資料庫 MongoDB。</p>
+<p>以下是官方介紹</p>
+<blockquote>
+<p>MongoDB Atlas 是 MongoDB 官方提供的全托管雲資料庫服務，它提供了一個簡單、安全和可靠的方式來運行 MongoDB，無需進行任何基礎架構的配置和管理。MongoDB Atlas 運行在 AWS、Azure 和 Google Cloud 等雲平台上，讓用戶可以輕鬆地在全球範圍內運行、擴展和管理 MongoDB。它提供了自動化的部署和管理，包括備份和恢復、監控、性能優化、安全性等。使用 MongoDB Atlas，您可以輕鬆地配置、部署和管理 MongoDB 集群，並使用它提供的各種工具和服務來簡化 MongoDB 開發和運營。例如，它提供了一個簡單易用的管理控制台，讓您可以輕鬆地管理您的 MongoDB 集群、用戶和權限。此外，MongoDB Atlas 還提供了一些高級功能，例如全文搜索、圖形搜索、視圖、聚合管道等。這些功能可以幫助您更輕鬆地處理海量數據和複雜查詢。</p>
+</blockquote>
+<h3 id="2-nosql-使用時機">2. NoSQL 使用時機</h3>
+<p>MongoDB設計目的是處理大量非結構化數據，上網找到了一些適合使用MongoDB的情況。</p>
+<ol>
+<li>非結構化數據：如果今天需要儲存的資料格式有著不確定性，就可以選擇，例如日誌、多媒體、網頁內容、社交媒體數據等。</li>
+<li>可擴展性：MongoDB可以輕鬆擴展，通過添加新的節點或分片，以處理更多的數據。</li>
+<li>高性能：MongoDB是一個高性能的資料庫，它可以處理高速的讀寫操作，通常比關聯式資料庫更快。</li>
+<li>靈活的數據模型：MongoDB的文檔數據模型非常靈活，可以根據應用程序的需要進行更改，而不需要改變整個資料庫的結構。</li>
+</ol>
+<p>目前所理解的，如果在資料上不確定資料結構，或是想保留擴充性，之後預期不太會需要使用join各種表，且需要較快的讀寫操作，就可以考慮使用NoSQL類型的資料庫。</p>
+<h3 id="3-atlas-註冊">3. Atlas 註冊</h3>
+<p>因為是直接使用雲服務的資料庫，過程很簡單，從官網 <a href="https://www.mongodb.com/" title="MongoDB">MongoDB</a>，直接註冊帳號後，在產品的地方選擇Atlas，照著步驟建立基本資料、連線權限就能直接使用。</p>
+<h3 id="4-權限管理">4. 權限管理</h3>
+<p>在 MongoDB Atlas 中，可以建立多個組織（Organization），每個組織下可以建立多個專案（Project），每個專案下可以建立多個集群（Cluster）。以下是它們之間的差異：</p>
+<ol>
+<li>
+<p>組織（Organization）：組織是 MongoDB Atlas 中的最高級別。您可以使用一個電子郵件地址註冊並建立一個組織，並在該組織中邀請其他使用者加入。您可以將不同的專案分配給不同的團隊或使用者，管理組織中的所有資源和設定。</p>
+</li>
+<li>
+<p>專案（Project）：專案是一個或多個 MongoDB 集群的集合。在專案中，您可以設定相關的安全性、監控和自動化功能，也可以設定存取權限和通知規則等。一個專案可以被一個團隊或一個使用者所擁有和管理。</p>
+</li>
+<li>
+<p>集群（Cluster）：集群是 MongoDB 的實例，它是由一組 MongoDB 伺服器組成的分佈式系統。每個集群都有自己的存儲空間、計算資源和設定，並由 MongoDB Atlas 提供管理和監控。您可以在每個集群中設定各種選項，例如可用區域、資料庫版本、存儲引擎和安全設定等。</p>
+</li>
+</ol>
+<p>簡單來說，就是由這三個層級，由上到下去管理規範每個資料庫的使用權限。</p>
+<h3 id="5-資料庫操作">5. 資料庫操作</h3>
+<p>我的話習慣使用GUI來操作資料庫，MongoDB也有提供GUI供使用者操作資料庫，可以去 <a href="https://www.mongodb.com/try/download/compass" title="MongoDB Compass Download (GUI)">MongoDB Compass Download (GUI)</a> 在Tools的地方，選擇下載MongoDB Compass。
+安裝好後，執行會出現提示要求你輸入用於連線資料庫的字串。連線字串可以在Atlas的Cluster管理畫面上右側有個connect，點選就能找到各種的連線方式。<br>
+<figure><img src="pics/connect.webp" width="80%"/>
+</figure>
+</p>
+<p>因為是使用Compass 連線，所以就點選Compass，畫面就會出現對於Compass的連線字串。</p>
+<pre tabindex="0"><code>mongodb+srv://&lt;user&gt;:&lt;password&gt;@cluster0.swvkd15.mongodb.net/test
+</code></pre><p><code>&lt;user&gt;</code> <code>&lt;password&gt;</code>就是當初建立Cluster時建立的帳號與密碼。</p>
+<p>再複製連線字串並修改<code>&lt;user&gt;</code> <code>&lt;password&gt;</code>後，<strong>記得要在Network Access的地方設定可以連線的IP位置</strong>，
+<figure><img src="pics/Network%20Access.webp" height="10%"/>
+</figure>
+</p>
+<p>設定好後，在 MongoDB Compass 貼上連線字串後就能連線成功了。</p>
+<h3 id="6-資料庫結構">6. 資料庫結構</h3>
+<p>在 MongoDB 中，資料是以文件（document）的形式儲存的。一個集合（collection）則是一個文件的集合。換句話說，一個 MongoDB 資料庫可以包含多個集合，而每個集合裡面包含多個文件。</p>
+<p>與關聯式資料庫比較，我覺得是這種感覺 :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">MySQL</th>
+<th style="text-align:center">MongoDB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">database</td>
+<td style="text-align:center">database</td>
+</tr>
+<tr>
+<td style="text-align:center">table</td>
+<td style="text-align:center">collection</td>
+</tr>
+<tr>
+<td style="text-align:center">per row</td>
+<td style="text-align:center">document</td>
+</tr>
+</tbody>
+</table>
+<p>每一行資料就是一個文件。和關聯式資料庫不同的是，MongoDB 的文件可以包含非常彈性的結構和內容，而且不需要先定義欄位。</p>
+<p>簡單來說，集合是存儲文件的地方，而文件則是實際存儲資料的容器。如果把 MongoDB 視為一個文件數據庫系統，那麼集合就是這個系統中的表格，而文件就是這個表格中的行。</p>
+<h3 id="7-結語">7. 結語</h3>
+<p>大致瞭解了 MongoDB 的數據結構，與如何連線至 Atlas 的雲資料庫，接下來要學習如何使用node.js進行 MongoDB 的讀寫操作。</p>
+		</div>
+		<br>
+		<br>
+		
+		<br>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/zh-tw/tags/nosql/" rel="tag">NoSQL</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+		<hr>
+		<div id="type-effect">
+</div>
+<br>
+<br>
+<br>
+<br>
+<iframe class="LikeCoin" height="180" src="https://button.like.co/in/embed/sunnote/button?referrer=http%3a%2f%2fsunnote.xyz%2fzh-tw%2ftutorials%2fmongodb-atlas-compass-tips%2f" width="80%" frameborder=0></iframe>
+
+<style>
+	#type-effect {
+	  white-space: nowrap;
+	  overflow: hidden;
+	  font-size: 20px;
+	  font-family: monospace, sans-serif  ;
+	  border-right: 1px solid rgb(255, 255, 255);
+	   
+	  padding-right: 5px;
+	  white-space: pre-wrap;
+	  position: absolute;
+    
+	}
+  </style>
+  <script>
+  	var url = window.location.href;
+	var ln = "en";
+	if (url.indexOf("/zh-tw/") > -1) {
+  	ln = "zh";
+	}
+	if (ln === "zh") {
+	  var message = "如果這個文章對您有幫助或是有任何疑問，歡迎留言。👇"
+	  speed = 100
+	}
+	else {
+	  var message = "If this posts was helpful to you or if you have any questions, feel free to leave a comment and ask.👇"
+	  speed = 50
+	}
+  
+	const typeEffectDiv = document.getElementById("type-effect");
+  
+	function typeEffect(message, element) {
+	  let i = 0;
+	  const interval = setInterval(function () {
+		if (i === message.length) {
+		  clearInterval(interval);
+		  setTimeout(function () {
+			element.textContent = "";
+			typeEffect(message, element);
+		  }, 2000); 
+		} else {
+		  element.textContent += message[i];
+		  i++;
+		}
+	  }, speed); 
+
+	}
+	typeEffect(message, typeEffectDiv);
+  </script>
+
+	</article>
+</main>
+
+
+<hr>
+<div class="related-content">
+
+<h3>也可以看看</h3>
+
+<div class="owl-carousel owl-theme"> 
+	  
+	  
+	
+	 
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/tutorials/database-optimization-index-tips/">
+					<img src="https://sunnote.xyz/img/thumbnail/025.webp" alt="資料庫查詢性能優化技巧 : 語句優化、添加索引"/>
+					
+				</a>
+			
+
+			<h6><a href="/zh-tw/tutorials/database-optimization-index-tips/">資料庫查詢性能優化技巧 : 語句優化、添加索引
+				
+				<br>
+				<time datetime="2023-03-29T01:38:14&#43;0000">
+					March 29, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/tutorials/dark-mode-tips-hugo/">
+					<img src="https://sunnote.xyz/img/thumbnail/024.webp" alt="黑暗模式(dark mode)設計與Hugo實作"/>
+					
+				</a>
+			
+
+			<h6><a href="/zh-tw/tutorials/dark-mode-tips-hugo/">黑暗模式(dark mode)設計與Hugo實作
+				
+				<br>
+				<time datetime="2023-03-22T03:34:07&#43;0000">
+					March 22, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/tutorials/sql-scopeidentity-identity-diff/">
+					<img src="https://sunnote.xyz/img/thumbnail/023.png" alt="SQL SCOPE_IDENTITY() 與 @@IDENTITY 取得自動增量值差異"/>
+					
+				</a>
+			
+
+			<h6><a href="/zh-tw/tutorials/sql-scopeidentity-identity-diff/">SQL SCOPE_IDENTITY() 與 @@IDENTITY 取得自動增量值差異
+				
+				<br>
+				<time datetime="2023-03-20T02:44:19&#43;0000">
+					March 20, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/tutorials/jwt-authentication-mechanism/">
+					<img src="https://sunnote.xyz/img/thumbnail/022.png" alt="JWT 驗證機制原理與實作範例 (C#)"/>
+					
+				</a>
+			
+
+			<h6><a href="/zh-tw/tutorials/jwt-authentication-mechanism/">JWT 驗證機制原理與實作範例 (C#)
+				
+				<br>
+				<time datetime="2023-03-06T08:05:44&#43;0000">
+					March 6, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/tutorials/hugo-related-posts-supports-carousel-display/">
+					<img src="https://sunnote.xyz/img/thumbnail/021.png" alt="Hugo 實現推薦文章功能與輪播顯示"/>
+					
+				</a>
+			
+
+			<h6><a href="/zh-tw/tutorials/hugo-related-posts-supports-carousel-display/">Hugo 實現推薦文章功能與輪播顯示
+				
+				<br>
+				<time datetime="2023-02-22T03:02:15&#43;0000">
+					February 22, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/tutorials/hugo-multiple-comments/">
+					<img src="https://sunnote.xyz/img/thumbnail/020.png" alt="Hugo 實現提供多種留言版選擇"/>
+					
+				</a>
+			
+
+			<h6><a href="/zh-tw/tutorials/hugo-multiple-comments/">Hugo 實現提供多種留言版選擇
+				
+				<br>
+				<time datetime="2023-02-16T02:11:38&#43;0000">
+					February 16, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/life/valentine-gift-marimo/">
+					<img src="https://sunnote.xyz/img/thumbnail/019mario.jpg" alt="情人節就送這個當禮物:綠藻球Marimo (基本介紹、飼養方式、象徵意義)"/>
+					
+				</a>
+			
+
+			<h6><a href="/zh-tw/life/valentine-gift-marimo/">情人節就送這個當禮物:綠藻球Marimo (基本介紹、飼養方式、象徵意義)
+				
+				<br>
+				<time datetime="2023-02-14T02:11:38&#43;0000">
+					February 14, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<h6><a href="/zh-tw/tutorials/sql-partition-by/">SQL-partition by 實現資料分組
+				&ndash; 
+				<time datetime="2023-02-07T00:00:00&#43;0000">
+					February 7, 2023
+				</time></a></h6>
+				<hr>
+				<h6><a>使用SQL partition by 實現資料分割，比較LINQ與partition by效能。
+</a></h6>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<h6><a href="/zh-tw/tutorials/csharp-multithreading/">C# 多執行緒原理、非同步用法與帶入自定義物件
+				&ndash; 
+				<time datetime="2023-01-19T03:49:15&#43;0000">
+					January 19, 2023
+				</time></a></h6>
+				<hr>
+				<h6><a>C# 多執行緒原理、非同步用法與帶入自定義物件學習過程紀錄。
+目前遇到的專案都沒有硬性需求使用到多執行緒，此篇為紀錄自己的理解與學習的過程。
+</a></h6>
+
+		
+			
+		
+			
+	</div>
+  
+</div>
+</div>
+<br>
+<br>
+
+
+<script>
+window.addEventListener('load', () => {
+  const highlightBlocks = document.querySelectorAll('.highlight');
+  highlightBlocks.forEach((highlightBlock) => {
+    const button = highlightBlock.querySelector('.highlight-copy-btn');
+	const code_type = highlightBlock.querySelector('code[data-lang]');
+    highlightBlock.addEventListener('mouseover', () => {
+      
+      if (button) {
+        button.style.display = 'block';
+      }
+    });
+	highlightBlock.addEventListener('mouseout', () => {
+      
+      if (button) {
+        button.style.display = 'none';
+      }
+    });
+  });
+});
+
+
+
+</script>
+
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Alvin avatar" src="/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">
+			<a href="../../about/" target="_blank" style="text-decoration:none;">
+			關於 Alvin ☀️
+		    </a>
+		</span>
+	</div>
+	<div class="authorbox__description">
+		不是一個很努力的人，生活就是在耍廢中順便追求點成就感。
+	</div>
+</div>
+
+
+<section class="comments">
+	
+	
+</section>
+
+<div>
+	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img
+			src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script> 
+<script>
+	var owl = $('.owl-carousel');
+	owl.owlCarousel({
+  loop: true, 
+  margin: 10, 
+  nav: true, 
+  responsive: {
+    0: {
+      items: 2 
+    },
+    600: {
+      items: 3 
+    },
+    1000: {
+      items: 3 
+    }
+  }
+});
+</script>
+
+
+
+
+
+<style>
+	.nav {
+		display: inline-flex;
+		position: relative;
+		overflow: hidden;
+		max-width: 100%;
+		background-color: var(--wrapperBG);
+		padding: 0 20px;
+		border-radius: 20px;
+		 
+		display: flex;
+		justify-content: center;
+
+	}
+
+	.nav-item {
+		color: #83818c;
+		padding: 20px;
+		text-decoration: none;
+		transition: .3s;
+		margin: 0 6px;
+		z-index: 1;
+		font-family: 'DM Sans', sans-serif;
+		font-weight: 500;
+		position: relative;
+
+		&:before {
+			content: "";
+			position: absolute;
+			bottom: -6px;
+			left: 0;
+			width: 100%;
+			height: 5px;
+			background-color: #dfe2ea;
+			border-radius: 8px 8px 0 0;
+			opacity: 0;
+			transition: .3s;
+		}
+	}
+
+	.nav-item:not(.is-active):hover:before {
+		opacity: 1;
+		bottom: 0;
+	}
+
+
+	.nav-item:not(.is-active):hover {
+		color: #333;
+	}
+
+	.nav-indicator {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		height: 4px;
+		transition: .5s;
+		height: 5px;
+		z-index: 1;
+		border-radius: 8px 8px 0 0;
+	}
+
+	.nav-item {
+		border: none;
+		outline: none;
+		background-color:  var(--wrapperBG);
+	}
+
+	@media (max-width: 580px) {
+		.nav {
+			overflow: auto;
+		}
+	}
+</style>
+<br>
+
+<nav class="nav">
+	<button id="fb-btn" class="nav-item" active-color="#ACD6FF">Facebook</button>
+	<button id="github-btn" class="nav-item is-active" active-color="#ACD6FF">Github</button>
+	<button id="disqus-btn" class="nav-item" active-color="#ACD6FF">Disqus</button>
+	<span class="nav-indicator"></span>
+</nav>
+
+<script>
+	const indicator = document.querySelector('.nav-indicator');
+	const items = document.querySelectorAll('.nav-item');
+
+	function handleIndicator(el) {
+		items.forEach(item => {
+			item.classList.remove('is-active');
+			item.removeAttribute('style');
+		});
+
+		indicator.style.width = `${el.offsetWidth}px`;
+		indicator.style.left = `${el.offsetLeft}px`;
+		indicator.style.backgroundColor = el.getAttribute('active-color');
+
+		el.classList.add('is-active');
+		el.style.color = el.getAttribute('active-color');
+	}
+
+
+	items.forEach((item, index) => {
+		item.addEventListener('click', (e) => { handleIndicator(e.target) });
+		item.classList.contains('is-active') && handleIndicator(item);
+	});
+
+
+</script>
+<br><br>
+
+
+<div id="disqus-comments" class="comments markdown" style="display: none;">
+	<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    
+    
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'sun';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+</div>
+
+
+
+<div id="utterances-comments" class="comments markdown" style="display: block;">
+	<script src="https://giscus.app/client.js"
+        data-repo="zhongyousun/giscus"
+        data-repo-id="R_kgDOJJwIkA"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOJJwIkM4CU4ky"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light_protanopia"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</div>
+
+
+
+<div id="facebook-comments" class="fb-comments" data-href="http://sunnote.xyz/zh-tw/tutorials/mongodb-atlas-compass-tips/" data-width="100%" data-numposts="5"
+	data-csp="true" data-order-by="reverse_time" style="display: none;"></div>
+<script>
+
+	
+	const githubBtn = document.getElementById("github-btn");
+	const disqusBtn = document.getElementById("disqus-btn");
+	const fbBtn = document.getElementById("fb-btn");
+
+	
+	const githubBoard = document.getElementById("utterances-comments");
+	const disqusBoard = document.getElementById("disqus-comments");
+	const fbBoard = document.getElementById("facebook-comments");
+
+	
+	githubBtn.addEventListener("click", function () {
+		githubBoard.style.display = "block";
+		disqusBoard.style.display = "none";
+		fbBoard.style.display = "none";
+	});
+	disqusBtn.addEventListener("click", function () {
+		githubBoard.style.display = "none";
+		disqusBoard.style.display = "block";
+		fbBoard.style.display = "none";
+	});
+	fbBtn.addEventListener("click", function () {
+		githubBoard.style.display = "none";
+		disqusBoard.style.display = "none";
+		fbBoard.style.display = "block";
+	});
+</script>
+
+
+			</div>
+			<aside class="sidebar">
+<div class="widget-recent widget">
+	<h4 class="widget__title">近期文章</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/mongodb-atlas-compass-tips/">MongoDB Atlas 資料庫基礎觀念、操作流程與使用 Compass 連線</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/database-optimization-index-tips/">資料庫查詢性能優化技巧 : 語句優化、添加索引</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/dark-mode-tips-hugo/">黑暗模式(dark mode)設計與Hugo實作</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/sql-scopeidentity-identity-diff/">SQL SCOPE_IDENTITY() 與 @@IDENTITY 取得自動增量值差異</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/jwt-authentication-mechanism/">JWT 驗證機制原理與實作範例 (C#)</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">分類</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/zh-tw/categories/program/">Program</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">1</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/zh-tw/categories/%E6%B5%B7%E5%A4%96%E6%97%85%E9%81%8A/">海外旅遊</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">9</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/zh-tw/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E9%8C%84/">生活紀錄</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">9</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/zh-tw/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/">程式語言</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">11</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/zh-tw/categories/%E7%B4%94%E7%B2%B9%E5%88%86%E4%BA%AB/">純粹分享</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">5</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/zh-tw/categories/%E8%8B%B1%E6%96%87%E5%AD%B8%E7%BF%92/">英文學習</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">4</span></span>
+				
+				</li>
+		</ul>
+	</div>
+</div><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://cse.google.com/cse">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="站內搜尋…" value="" name="q" aria-label="站內搜尋…">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="http://sunnote.xyz">
+		<input type="hidden" name="cx" value="51cfcdef3e098403d" />
+	</form>
+</div>
+
+<div class="widget-taglist widget">
+	<h4 class="widget__title">標籤</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/csharp/" title="Csharp">Csharp (<span class="count">4</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/css/" title="CSS">CSS (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/hugo/" title="Hugo">Hugo (<span class="count">3</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/javascript/" title="JavaScript">JavaScript (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/leetcode/" title="LeetCode">LeetCode (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/nosql/" title="NoSQL">NoSQL (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/python/" title="Python">Python (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/sql/" title="SQL">SQL (<span class="count">4</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/web/" title="Web">Web (<span class="count">2</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E5%AE%BF%E9%9C%A7/" title="宿霧">宿霧 (<span class="count">12</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E7%94%9F%E6%B4%BB/" title="生活">生活 (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E8%8B%B1%E6%96%87/" title="英文">英文 (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E8%8F%B2%E5%BE%8B%E8%B3%93/" title="菲律賓">菲律賓 (<span class="count">12</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1/" title="語言學校">語言學校 (<span class="count">8</span>)</a>
+	</div>
+</div>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+			<script>
+				$('.count').each(function () {
+				$(this).prop('Counter',0).animate({
+					Counter: $(this).text()
+				}, {
+					duration: 4000,
+					easing: 'swing',
+					step: function (now) {
+						$(this).text(Math.ceil(now));
+					}
+				});
+			});
+			</script><a href="https://info.flagcounter.com/8Z5p"><img src="https://s11.flagcounter.com/countxl/8Z5p/bg_FFFFFF/txt_000000/border_FFFFFF/columns_3/maxflags_30/viewers_3/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+<br>
+<br>
+<br>
+<iframe class="LikeCoin" height="180" src="https://button.like.co/in/embed/sunnote/button?referrer=http%3a%2f%2fsunnote.xyz%2fzh-tw%2ftutorials%2fmongodb-atlas-compass-tips%2f" width="80%" frameborder=0></iframe>
+
+</aside>
+
+
+		</div>
+		
+<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy;  2022-2023 sunnote.
+			<span class="footer__copyright-credits">使用 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 技術與 <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>主題</span>
+
+		</div>
+
+	</div>
+	
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6706017277983363"
+     crossorigin="anonymous"></script>
+
+<script src="/js/copy-to-clipboard.js"></script>
+	</div>
+	<script async defer src="/js/menu.js"></script>
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+
+	<div class="floating-menu">
+		<button class="main-button"><i class="fas fa-bars"></i></button>
+		<div class="sub-buttons">
+		  <button class="sub-button" id="read-mode" title="Read mode"><i class="fas fa-book-open"></i></button>
+		  <button class="sub-button" id="toc" title="Toggle ToC"><i class="fa-solid fa-list-ol"></i></button>
+		  
+		  
+		</div>
+	</div>
+	<button class="toc-button" id ="toc-button"><i class="fa-solid fa-xmark"></i></button>
+</body>
+
+</html>
+
+
+<script>
+	const mainButton = document.querySelector('.main-button');
+	const iconElement = document.querySelector('.main-button i');
+	const subButtons = document.querySelector('.sub-buttons');
+
+	const readModeButton = document.getElementById('read-mode');
+	const icon_readmode = document.querySelector('#read-mode i');
+
+	const tocButton = document.getElementById('toc');
+	const icon_toc = document.querySelector('#toc i');
+
+	const tocButton1 = document.getElementById('toc-button');
+
+	const icon_theme = document.querySelector('#theme i');
+	
+	const asideElement = document.querySelector("aside.sidebar");
+	
+	const isSidebarVisible = localStorage.getItem('isSidebarVisible') !== 'false';
+	
+	function setSidebarLocalStorage(state) {
+  		localStorage.setItem("isSidebarVisible", state);
+	}
+
+	
+	const isTOCStatus = localStorage.getItem('isTOCStatus') !== 'false';
+	
+	function setTOCLocalStorage(state) {
+  		localStorage.setItem("isTOCStatus", state);
+	}
+
+	mainButton.addEventListener('click', () => {
+	  if (subButtons.style.display === 'block') {
+		  iconElement.classList.replace('fa-xmark', 'fa-bars');
+		  subButtons.style.display = 'none';
+	  } else {
+		  iconElement.classList.replace('fa-bars', 'fa-xmark');
+		  subButtons.style.display = 'block';
+	  }
+	});
+
+	readModeButton.addEventListener('click', () => {
+	  if (icon_readmode.classList.contains('fa-book-open')) {
+		showTOCButton();
+			setSidebarLocalStorage(false); 
+			setTOCLocalStorage(false);
+			asideElement.style.display = 'none';
+		  icon_readmode.classList.replace('fa-book-open', 'fa-angle-left');
+		  setTimeout(function() {
+			
+            document.querySelector(".primary").style = "flex: 1 0 100%;";
+			
+        }, 100);
+			document.querySelector(".post__toc.toc").className = "toc-side";
+			tocButton1.style.display='block';
+	  } else {
+			setSidebarLocalStorage(true); 
+			setTOCLocalStorage(true);
+			asideElement.style.display = 'block';
+		  icon_readmode.classList.replace('fa-angle-left', 'fa-book-open');
+		  setTimeout(function() {
+            document.querySelector(".primary").style = "flex: 0 0 65.83%;";
+        }, 100);
+			document.querySelector(".toc-side").className = "post__toc toc";
+			tocButton1.style.display='none';
+
+	  }
+	});
+	tocButton.addEventListener('click', () => {
+	  if (icon_toc.classList.contains('fa-list-ol')) {
+		  icon_toc.classList.replace('fa-list-ol', 'fa-xmark');
+		  document.querySelector(".post__toc.toc").className = "toc-side";
+		  tocButton1.style.display='block';
+		  setTOCLocalStorage(false);
+	  } else {
+		  icon_toc.classList.replace('fa-xmark', 'fa-list-ol');
+		  document.querySelector(".toc-side").className = "post__toc toc";
+		  tocButton1.style.display='none';
+		  setTOCLocalStorage(true);
+	  }
+	});
+	tocButton1.addEventListener('click', () => {
+		  icon_toc.classList.replace('fa-xmark', 'fa-list-ol');
+		  document.querySelector(".toc-side").className = "post__toc toc";
+		  tocButton1.style.display='none';
+		  setTOCLocalStorage(true);
+	});
+
+	icon_theme.addEventListener('click', () => {
+	  if (icon_theme.classList.contains('fa-sun')) {
+		  icon_theme.classList.replace('fa-sun', 'fa-moon');
+	  } else {
+		  icon_theme.classList.replace('fa-moon', 'fa-sun');
+	  }
+	});
+  </script>
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+  const isSidebarVisible = localStorage.getItem('isSidebarVisible') !== 'false';
+  const isTOCStatus = localStorage.getItem('isTOCStatus') !== 'false';
+  const asideElement = document.querySelector("aside.sidebar");
+  if (isSidebarVisible) {
+    asideElement.style.display = 'block';
+    document.querySelector(".primary").style = "flex: 0 0 65.83%;";
+    
+	icon_readmode.classList.remove('fa-angle-left');
+    icon_readmode.classList.add('fa-book-open');
+  } else {
+    asideElement.style.display = 'none';
+    document.querySelector(".primary").style = "flex: 1 0 100%;";
+    
+	icon_readmode.classList.remove('fa-book-open');
+    icon_readmode.classList.add('fa-angle-left');
+  }
+  if (isTOCStatus) {
+    document.querySelector(".toc-side").className = "post__toc toc";
+	icon_toc.classList.remove('fa-xmark');
+    icon_toc.classList.add('fa-list-ol');
+  } else {
+    document.querySelector(".post__toc.toc").className = "toc-side";
+	icon_toc.classList.remove('fa-list-ol');
+    icon_toc.classList.add('fa-xmark');
+  }
+});
+</script>
+<script>
+	function showTOCButton() {
+	
+	document.addEventListener('DOMContentLoaded', function() {
+ 		const tocSide = document.querySelector('.toc-side');
+  		const tocSideBTN = document.getElementById('toc-button');
+  	
+  	if(tocSide){
+		tocSideBTN.style.display='block';
+	}else{
+		tocSideBTN.style.display='none';
+	}
+});
+	}
+	showTOCButton();
+</script>
+<script src="https://sunnote.xyz/js-pkg/BackToTopButton.js"></script>
+<script>addBackToTop({
+		diameter: 52,
+		backgroundColor: 'rgb(172, 214, 255)',
+		textColor: '#fff',
+		scrollDuration: 300,
+		showWhenScrollTopIs: 800
+	})</script>
+
+
+
