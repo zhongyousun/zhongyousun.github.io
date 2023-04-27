@@ -199,7 +199,7 @@ moon.addEventListener("click", () => {
   <ul class="menu__list">
     <li class="menu__item">
       <a class="menu__link" href="/about">
-        <i class='fas fa-face-smile-wink'></i>
+        <i class='fas fa-house'></i>
           <span class="menu__text">About</span>
         
       </a>
@@ -217,6 +217,35 @@ moon.addEventListener("click", () => {
           <span class="menu__text">Archives</span>
         
       </a>
+    </li>
+    <li class="menu__item menu__dropdown">
+      
+        <a class="menu__link">
+        <i class='fas fa-plane'></i>
+        <span class="menu__text">Travel</span>
+        <label class="drop-icon" for="Travel">▾</label>
+        
+      </a>
+      <input type="checkbox" id="Travel">
+      <ul class="submenu__list">
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/tags/philippines/">
+            
+            <span class="menu__text">Philippines</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/tags/cebu/">
+            
+            <span class="menu__text">Cebu</span>
+            
+          </a>
+          </li>
+        
+      </ul>
     </li>
     <li class="menu__item menu__dropdown">
       
@@ -814,7 +843,7 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 </script>
 <script src="https://sunnote.xyz/js-pkg/BackToTopButton.js"></script>
 <script>addBackToTop({
-		diameter: 52,
+		diameter: 40,
 		backgroundColor: 'rgb(172, 214, 255)',
 		textColor: '#fff',
 		scrollDuration: 300,

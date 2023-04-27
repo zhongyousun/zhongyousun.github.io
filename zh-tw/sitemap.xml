@@ -62,21 +62,6 @@
                 href="http://sunnote.xyz/zh-tw/posts/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/zh-tw/categories/program/</loc>
-    <lastmod>2023-04-24T15:33:44+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/categories/program/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/categories/program/"
-                />
-  </url><url>
     <loc>http://sunnote.xyz/zh-tw/</loc>
     <lastmod>2023-04-24T15:33:44+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -107,6 +92,11 @@
                 href="http://sunnote.xyz/zh-tw/tags/"
                 />
   </url><url>
+    <loc>http://sunnote.xyz/zh-tw/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/</loc>
+    <lastmod>2023-04-24T15:33:44+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>http://sunnote.xyz/zh-tw/tags/sql/</loc>
     <lastmod>2023-03-29T09:38:14+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -121,11 +111,6 @@
                 hreflang="zh-tw"
                 href="http://sunnote.xyz/zh-tw/tags/sql/"
                 />
-  </url><url>
-    <loc>http://sunnote.xyz/zh-tw/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/</loc>
-    <lastmod>2023-03-29T09:38:14+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/tutorials/database-optimization-index-tips/</loc>
     <lastmod>2023-03-29T09:38:14+08:00</lastmod>

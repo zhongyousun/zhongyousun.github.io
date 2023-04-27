@@ -6,7 +6,16 @@
     <description>Recent content in 程式語言 on Sun 記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Wed, 29 Mar 2023 09:38:14 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Apr 2023 15:33:44 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MongoDB Atlas 資料庫基礎觀念、操作流程與使用 Compass 連線</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/mongodb-atlas-compass-tips/</link>
+      <pubDate>Mon, 24 Apr 2023 15:33:44 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/mongodb-atlas-compass-tips/</guid>
+      <description>&lt;p&gt;紀錄學習MongoDB Atlas過程幾個重點觀念與詳細連線操作教學。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>資料庫查詢性能優化技巧 : 語句優化、添加索引</title>
       <link>http://sunnote.xyz/zh-tw/tutorials/database-optimization-index-tips/</link>
