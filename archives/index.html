@@ -225,11 +225,11 @@ moon.addEventListener("click", () => {
       
         <a class="menu__link">
         <i class='fas fa-plane'></i>
-        <span class="menu__text">Travel</span>
-        <label class="drop-icon" for="Travel">▾</label>
+        <span class="menu__text">Life</span>
+        <label class="drop-icon" for="Life">▾</label>
         
       </a>
-      <input type="checkbox" id="Travel">
+      <input type="checkbox" id="Life">
       <ul class="submenu__list">
         
           <li class="menu__item">
@@ -305,7 +305,9 @@ if (!doNotTrack) {
 		<div class="wrapper flex">
 			<div class="primary">
 				
-
+<style>
+  #more {display: none;}
+  </style>
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
@@ -319,8 +321,10 @@ if (!doNotTrack) {
 		<div class="content post__content clearfix">
 
 			
+      
+  
 		    <h4>2023</h4><hr>
-
+        
         <ul class="archive-list" style = "list-style-type: none;">
 				
         
@@ -401,11 +405,15 @@ if (!doNotTrack) {
             </li>
 		      
         
-		
     	</ul>
       
+      
+  
+  <span id="dots"></span>
+  <span id="more">
+      
 		    <h4>2022</h4><hr>
-
+        
         <ul class="archive-list" style = "list-style-type: none;">
 				
         
@@ -485,14 +493,31 @@ if (!doNotTrack) {
         
 		      
         
-		
     	</ul>
       
 		</div>
+
+  </span>
+  <button onclick="myFunction()" id="myBtn">Read more</button>
 	</article>
 </main>
-
-
+<script>
+  function myFunction() {
+    var dots = document.getElementById("dots");
+    var moreText = document.getElementById("more");
+    var btnText = document.getElementById("myBtn");
+  
+    if (dots.style.display === "none") {
+      dots.style.display = "inline";
+      btnText.innerHTML = "Read more"; 
+      moreText.style.display = "none";
+    } else {
+      dots.style.display = "none";
+      btnText.innerHTML = "Read less"; 
+      moreText.style.display = "inline";
+    }
+  }
+  </script>
   
 
 
@@ -792,6 +817,5 @@ if (!doNotTrack) {
 		scrollDuration: 300,
 		showWhenScrollTopIs: 800
 	})</script>
-
 
 
