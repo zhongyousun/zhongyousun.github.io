@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Sun 記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 24 Apr 2023 15:33:44 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 30 Apr 2023 08:56:07 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>台灣</title>
+      <link>http://sunnote.xyz/zh-tw/tags/%E5%8F%B0%E7%81%A3/</link>
+      <pubDate>Sun, 30 Apr 2023 08:56:07 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tags/%E5%8F%B0%E7%81%A3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>生活</title>
+      <link>http://sunnote.xyz/zh-tw/tags/%E7%94%9F%E6%B4%BB/</link>
+      <pubDate>Sun, 30 Apr 2023 08:56:07 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tags/%E7%94%9F%E6%B4%BB/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>墾丁</title>
+      <link>http://sunnote.xyz/zh-tw/tags/%E5%A2%BE%E4%B8%81/</link>
+      <pubDate>Sun, 30 Apr 2023 08:56:07 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tags/%E5%A2%BE%E4%B8%81/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>NoSQL</title>
       <link>http://sunnote.xyz/zh-tw/tags/nosql/</link>
@@ -67,15 +94,6 @@
       <pubDate>Mon, 06 Mar 2023 16:05:44 +0800</pubDate>
       
       <guid>http://sunnote.xyz/zh-tw/tags/csharp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>生活</title>
-      <link>http://sunnote.xyz/zh-tw/tags/%E7%94%9F%E6%B4%BB/</link>
-      <pubDate>Tue, 14 Feb 2023 10:11:38 +0800</pubDate>
-      
-      <guid>http://sunnote.xyz/zh-tw/tags/%E7%94%9F%E6%B4%BB/</guid>
       <description></description>
     </item>
     

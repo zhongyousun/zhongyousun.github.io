@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Sun Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 24 Apr 2023 15:33:44 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 30 Apr 2023 08:56:07 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kenting</title>
+      <link>http://sunnote.xyz/tags/kenting/</link>
+      <pubDate>Sun, 30 Apr 2023 08:56:07 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/tags/kenting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Life</title>
+      <link>http://sunnote.xyz/tags/life/</link>
+      <pubDate>Sun, 30 Apr 2023 08:56:07 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/tags/life/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Taiwan</title>
+      <link>http://sunnote.xyz/tags/taiwan/</link>
+      <pubDate>Sun, 30 Apr 2023 08:56:07 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/tags/taiwan/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>NoSQL</title>
       <link>http://sunnote.xyz/tags/nosql/</link>
@@ -67,15 +94,6 @@
       <pubDate>Mon, 06 Mar 2023 16:05:44 +0800</pubDate>
       
       <guid>http://sunnote.xyz/tags/csharp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Life</title>
-      <link>http://sunnote.xyz/tags/life/</link>
-      <pubDate>Tue, 14 Feb 2023 10:11:38 +0800</pubDate>
-      
-      <guid>http://sunnote.xyz/tags/life/</guid>
       <description></description>
     </item>
     
