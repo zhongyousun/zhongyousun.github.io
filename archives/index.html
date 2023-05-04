@@ -315,7 +315,52 @@ if (!doNotTrack) {
 				
 <style>
   #more {display: none;}
-  </style>
+  #myBtn{
+  margin: 0 auto;  
+  border-radius: 10px;
+  border: none;
+  transition: 0.5s;
+  }
+  #myBtn:hover {
+    animation: jump 1s;
+    animation-iteration-count: infinite;  
+    cursor: pointer;  
+}
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+#more {
+  display: none;
+  animation-name: fadein;
+  animation-duration: 1s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+</style>
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
@@ -329,7 +374,10 @@ if (!doNotTrack) {
 		<div class="content post__content clearfix">
 
 			
-      
+
+  
+   
+  
   
 		    <h4>2023</h4><hr>
         
@@ -422,7 +470,10 @@ if (!doNotTrack) {
         
     	</ul>
       
-      
+
+  
+   
+  
   
   <span id="dots"></span>
   <span id="more">
@@ -513,7 +564,8 @@ if (!doNotTrack) {
 		</div>
 
   </span>
-  <button onclick="myFunction()" id="myBtn">Read more</button>
+  <hr>
+  <button class="tags__link btn" onclick="myFunction()" id="myBtn">Show more...</button>
 	</article>
 </main>
 <script>
@@ -524,12 +576,14 @@ if (!doNotTrack) {
   
     if (dots.style.display === "none") {
       dots.style.display = "inline";
-      btnText.innerHTML = "Read more"; 
+      btnText.innerHTML = "Show more"; 
       moreText.style.display = "none";
+      moreText.style.animation = "fadeout 1s"; 
     } else {
       dots.style.display = "none";
-      btnText.innerHTML = "Read less"; 
+      btnText.innerHTML = "Show less"; 
       moreText.style.display = "inline";
+      moreText.style.animation = "fadein 2s"; 
     }
   }
   </script>
