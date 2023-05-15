@@ -17,22 +17,22 @@
                 href="http://sunnote.xyz/categories/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/categories/just-sharing/</loc>
-    <lastmod>2023-04-30T08:56:07+08:00</lastmod>
+    <loc>http://sunnote.xyz/tags/hokkaido/</loc>
+    <lastmod>2023-05-06T19:02:59+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://sunnote.xyz/tags/kenting/</loc>
-    <lastmod>2023-04-30T08:56:07+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://sunnote.xyz/tags/life/</loc>
-    <lastmod>2023-04-30T08:56:07+08:00</lastmod>
+    <loc>http://sunnote.xyz/tags/japan/</loc>
+    <lastmod>2023-05-06T19:02:59+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/categories/life-record/</loc>
+    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/categories/overseas-travel/</loc>
     <lastmod>2023-12-30T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -50,6 +50,21 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://sunnote.xyz/posts/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/hokkaido/noboribetsu-jigokudani/</loc>
+    <lastmod>2023-05-06T19:02:59+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/hokkaido/noboribetsu-jigokudani/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/hokkaido/noboribetsu-jigokudani/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/</loc>
@@ -81,6 +96,21 @@
                 hreflang="en"
                 href="http://sunnote.xyz/tags/"
                 />
+  </url><url>
+    <loc>http://sunnote.xyz/categories/just-sharing/</loc>
+    <lastmod>2023-04-30T08:56:07+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/tags/kenting/</loc>
+    <lastmod>2023-04-30T08:56:07+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/tags/life/</loc>
+    <lastmod>2023-04-30T08:56:07+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/tags/taiwan/</loc>
     <lastmod>2023-04-30T08:56:07+08:00</lastmod>
@@ -456,11 +486,6 @@
                 hreflang="en"
                 href="http://sunnote.xyz/cebu/residential_area/"
                 />
-  </url><url>
-    <loc>http://sunnote.xyz/categories/overseas-travel/</loc>
-    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/tags/philippines/</loc>
     <lastmod>2023-12-30T00:00:00+00:00</lastmod>
