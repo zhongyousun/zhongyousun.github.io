@@ -1,0 +1,8 @@
+<div id="block{{ .Get 1 }}"></div>
+<script>
+    var myDiv = document.getElementById("block{{ .Get 1 }}");
+    for (var i = 0; i < {{ .Get 0 }}; i++) {
+      var brTag = document.createElement("br");
+      myDiv.appendChild(brTag);
+    }
+</script>

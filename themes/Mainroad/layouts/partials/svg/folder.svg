@@ -1,0 +1,6 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="{{ with .class }}{{ . }} {{ end }}icon icon-folder" width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style="fill:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(41.960784%,42.352941%,43.137255%);stroke-opacity:1;stroke-miterlimit:4;" d="M 27.90625 10 L 18.703125 1 L 3.90625 1 C 2.296875 1 1 2.296875 1 3.90625 L 1 42 C 1 43.59375 2.296875 44.90625 3.90625 44.90625 L 59.5 44.90625 C 62.703125 44.90625 63 43.5 63 41.90625 L 63 8.90625 C 63 7.203125 62.703125 5.90625 59.5 5.90625 L 23.90625 5.90625 " transform="matrix(0.25,0,0,0.25,0,2.25)"/>
+</g>
+</svg>

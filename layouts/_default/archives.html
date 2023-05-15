@@ -1,0 +1,132 @@
+{{ define "main" }}
+<style>
+  #more {display: none;}
+  #myBtn{
+  margin: 0 auto; /* 自動計算左右 margin */
+  border-radius: 10px;
+  border: none;
+  transition: 0.5s;
+  }
+  #myBtn:hover {
+    animation: jump 1s;
+    animation-iteration-count: infinite; /* 重複次數 */
+    cursor: pointer; /* 在滑鼠移過按鈕時將光標設置為手套 */
+}
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+#more {
+  display: none;
+  animation-name: fadein;
+  animation-duration: 1s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+</style>
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">{{- partial "svg/category.svg" (dict "class" "tags__badge") -}}{{ .Title }}</h1>
+			{{ $pageCount := len .Site.RegularPages }}
+			<br>
+			<h6>{{ T "total_article" }}<span class="count" style="color: #ACD6FF; font-size: 25px; font-family: 'Courier New', Courier, monospace;">{{ $pageCount }}</span></h6>
+			{{- with .Params.lead }}
+			<p class="post__lead">{{ . }}</p>
+			{{- end }}
+			{{ with partial "post_meta.html" . -}}
+			{{- end }}
+		</header>
+		
+		{{ partial "post_thumbnail.html" (dict "class" "post" "page" .) }}
+		{{- partial "post_toc.html" . -}}
+    
+		<div class="content post__content clearfix">
+
+			{{ range (.Site.RegularPages.GroupByDate "2006") }}
+
+  <!-- 取今年 與.Key轉int 做比較 -->
+  {{ $thisYear := now.Year }} 
+  {{ $keyInt := int .Key }}
+  {{ if ne $thisYear  $keyInt}}
+  <span id="dots"></span>
+  <span id="more">
+      {{ end }}
+		    <h4>{{ .Key }}</h4><hr>
+        
+        <ul class="archive-list" style = "list-style-type: none;">
+				
+        {{ range (where .Pages "Type" "posts") }}
+		      {{ if not .Params.hidden }}	
+            <li class >
+				  {{ partial "svg/category.svg" (dict "class" "meta__icon") -}}
+            {{ .PublishDate.Format "2006-01-02" }}   -
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </li>
+		      {{ end }}
+        {{ end }}
+    	</ul>
+      {{ end }}
+		</div>
+
+  </span>
+  <hr>
+  <button class="tags__link btn" onclick="myFunction()" id="myBtn">Show more...</button>
+
+
+		{{- if .Params.tags }}
+		<footer class="post__footer">
+			{{ partial "post_tags.html" . }}
+		</footer>
+		{{- end }}
+	</article>
+</main>
+<script>
+  function myFunction() {
+    var dots = document.getElementById("dots");
+    var moreText = document.getElementById("more");
+    var btnText = document.getElementById("myBtn");
+  
+    if (dots.style.display === "none") {
+      dots.style.display = "inline";
+      btnText.innerHTML = "Show more"; 
+      moreText.style.display = "none";
+      moreText.style.animation = "fadeout 1s"; //新增動畫效果
+    } else {
+      dots.style.display = "none";
+      btnText.innerHTML = "Show less"; 
+      moreText.style.display = "inline";
+      moreText.style.animation = "fadein 2s"; //新增動畫效果
+    }
+  }
+  </script>
+  
+{{ partial "authorbox.html" . }}
+{{ partial "pager.html" . }}
+{{ partial "comments.html" . }}
+{{ end }}
+
+

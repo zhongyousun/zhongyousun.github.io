@@ -1,0 +1,46 @@
+{{ define "main" }}
+	<main class="main list" role="main">
+		{{- with .Title }}
+		<header class="main__header">
+			<h1 class="main__title">{{- partial "svg/category.svg" (dict "class" "tags__badge") -}}{{ . }}</h1>
+			
+		</header>
+		{{- end }}
+
+
+		{{ $tags := slice }}
+	{{ range .Pages }}
+		{{ $tags = union $tags .Params.tags }}
+	{{ end }}
+	{{ if gt (len $tags) 0 }}
+		{{ $tags := sort $tags }}
+	
+	<div class="post__tags tags clearfix">
+		{{ partial "svg/tag.svg" (dict "class" "tags__badge") }}
+		<ul class="tags__list">
+			{{ range $index, $tag := $tags }}
+			<li class="tags__item">
+				<a class="tags__link btn" href="{{ "tags/" | relLangURL }}{{ . | urlize }}/" rel="tag">
+					{{- . -}}
+				</a>
+			</li>
+			{{- end }}
+		</ul>
+	</div>
+	<hr>
+	{{ end }}
+
+		{{- with .Content }}
+		<div class="content main__content clearfix">
+			{{ . }}
+		</div>
+		{{- end }}
+		{{- range .Paginator.Pages }}
+			{{- .Render "summary" }}
+		{{- end }}
+	</main>
+
+	{{ partial "pagination.html" . }}
+{{ end }}
+
+

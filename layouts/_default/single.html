@@ -1,0 +1,399 @@
+{{ define "main" }}
+{{ $wordCount := len (split .Content " ") }}
+{{ $readTime := mul (div (countwords .Content) 220.0) 60 }}
+{{ $url := .Permalink }}
+{{ $readingTime := .ReadingTime }}
+
+
+<!-- owl.carousel -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"></link>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"></link>
+<style>
+	.owl-theme .item {
+	  height: 15rem;
+	  /* background: #f5f5f5; */
+	  background-color: var(--wrapperBG);
+	  padding: 0.5rem;
+	  box-shadow: 0 0 20px 0 var(--shadow); 
+	  transform:scale(0.9,0.9);
+	  transition: all 0.3s ease-out;
+	}
+	.owl-theme .item:hover {
+		margin-top: -10px;
+		/* transform:scale(1.0,1.0); */
+	}
+	
+	.owl-carousel .item h6 {
+	  color: #000000;
+	  font-weight: 400;
+	  font-size: 1rem;
+	  margin-top: 0rem;
+
+	  position: relative;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 5; /* 指定顯示的行數 */
+	text-overflow: ellipsis;
+	overflow: hidden;
+	}
+	.owl-carousel .item img {
+	  width: 100%;
+	  height: 7.5rem;
+	  border-radius: 4px;
+	}
+</style>
+
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">{{ .Title }}</h1>
+			{{- with .Params.lead }}
+			<p class="post__lead">{{ . }}</p>
+			{{- end }}
+			{{ with partial "post_meta.html" . -}}
+			<div class="post__meta meta">{{ . }}
+
+				<!-- 只在英文網站顯示文章字數 -->
+				
+				{{ if strings.Contains $url "/zh-tw/" }}
+				<span>{{ partial "svg/clock.svg" (dict "class" "meta__icon") -}}{{ math.Floor (div $readTime 60) }} min read.　</span>
+				{{ else }}
+				<span>{{ partial "svg/clock.svg" (dict "class" "meta__icon") -}}{{ $wordCount }} words</span>
+				<span>| {{ $readingTime }} min read.　</span>
+				{{ end }}
+			
+				<!-- <div id="busuanzi_container_page_pv">
+					{{ partial "svg/eye.svg" (dict "class" "meta__icon") -}}<span
+						id="busuanzi_value_page_pv">number will be auto injected here by busuanzi</span>
+
+				</div> -->
+
+			</div>
+
+			{{- end }}
+
+
+			<div id="fb-root"></div>
+			<script async defer crossorigin="anonymous"
+				src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0&appId=725315935966817&autoLogAppEvents=1"
+				nonce="aF40iZ15"></script>
+		</header>
+		{{ partial "post_thumbnail.html" (dict "class" "post" "page" .) }}
+		{{- partial "post_toc.html" . -}}
+		<div class="content post__content clearfix">
+			{{ .Content }}
+		</div>
+		<br>
+		<br>
+		<!-- <div id="type-effect">
+		</div> -->
+		<br>
+		{{- if .Params.tags }}
+		<footer class="post__footer">
+			{{ partial "post_tags.html" . }}
+		</footer>
+		{{- end }}
+		<hr>
+		{{ partial "likecoin.html" . }}
+	</article>
+</main>
+
+<!-- Related Posts Owl Carousel-->
+<hr>
+{{- range first 1 (where (where .Site.Pages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) -}}
+	{{- $.Scratch.Set "has_related" true -}}
+{{- else -}}
+	{{- $.Scratch.Set "has_related" true -}}	
+{{- end -}}
+
+{{ if $.Scratch.Get "has_related" }}
+<div class="related-content">
+{{ if strings.Contains $url "/zh-tw/" }}
+<h3>也可以看看</h3>
+{{ else }}
+<h3>See Also</h3>
+{{ end }}
+<div class="owl-carousel owl-theme">
+	{{- $num_to_show := .Site.Params.related_content_limit | default 10 -}}
+	{{ $related := (where (where .Site.Pages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }} 
+	{{ $all_posts :=  .Site.RegularPages | first $num_to_show }}  
+	{{ $all_posts :=  (where $all_posts "Permalink" "!=" .Permalink) }}  
+	{{ $related := union $related $all_posts }}
+	{{ range first $num_to_show $related }} 
+	<div class="item">
+		{{ if .Params.Thumbnail }}
+			<div class="related-post__image">
+				<a href="{{ .RelPermalink }}">
+					<img src="{{ replace (absURL .Params.Thumbnail) "http://" "https://" }}" alt="{{ .Title }}"/>
+					<!-- <img src="{{ .Params.Thumbnail }}" alt="{{ .Title }}"/> -->
+				</a>
+			
+
+			<h6><a href="{{ .RelPermalink }}">{{ .Title }}
+				<!-- &ndash;  -->
+				<br>
+				<time datetime="{{ .Date.UTC.Format "2006-01-02T15:04:05-0700" }}">
+					{{ .Date.Format "January 2, 2006" }}
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		{{ else }}
+			<h6><a href="{{ .RelPermalink }}">{{ .Title }}
+				&ndash; 
+				<time datetime="{{ .Date.UTC.Format "2006-01-02T15:04:05-0700" }}">
+					{{ .Date.Format "January 2, 2006" }}
+				</time></a></h6>
+				<hr>
+				<h6><a>{{ .Summary | plainify | htmlUnescape }}</a></h6>
+
+		{{ end }}
+			
+		
+			
+	</div>
+  {{ end }}
+</div>
+</div>
+<br>
+<br>
+
+<!-- display a copy button only when the mouse hovers over it -->
+<script>
+window.addEventListener('load', () => {
+  const highlightBlocks = document.querySelectorAll('.highlight');
+  highlightBlocks.forEach((highlightBlock) => {
+    const button = highlightBlock.querySelector('.highlight-copy-btn');
+	const code_type = highlightBlock.querySelector('code[data-lang]');
+    highlightBlock.addEventListener('mouseover', () => {
+      
+      if (button) {
+        button.style.display = 'block';
+      }
+    });
+	highlightBlock.addEventListener('mouseout', () => {
+      
+      if (button) {
+        button.style.display = 'none';
+      }
+    });
+  });
+});
+
+
+
+</script>
+{{ end }}
+{{ partial "authorbox.html" . }}
+{{ partial "pager.html" . }}
+{{ partial "comments.html" . }}
+<div>
+	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img
+			src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+</div>
+
+<!-- Related Posts Owl Carousel-->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script> 
+<script>
+	var owl = $('.owl-carousel');
+	owl.owlCarousel({
+  loop: true, // 循環播放
+  margin: 10, // 外距 10px
+  nav: true, // 顯示點點
+  responsive: {
+    0: {
+      items: 2 // 螢幕大小為 0~600 顯示 1 個項目
+    },
+    600: {
+      items: 3 // 螢幕大小為 600~1000 顯示 3 個項目
+    },
+    1000: {
+      items: 3 // 螢幕大小為 1000 以上 顯示 5 個項目
+    }
+  }
+});
+</script>
+
+<!-- Related Posts Owl Carousel-->
+
+
+<!-- 多種留言板 -->
+<style>
+	.nav {
+		display: inline-flex;
+		position: relative;
+		overflow: hidden;
+		max-width: 100%;
+		background-color: var(--wrapperBG);
+		padding: 0 20px;
+		border-radius: 20px;
+		/* box-shadow: 0 10px 40px rgba(255, 255, 255, 0.8); */
+		display: flex;
+		justify-content: center;
+
+	}
+
+	.nav-item {
+		color: #83818c;
+		padding: 20px;
+		text-decoration: none;
+		transition: .3s;
+		margin: 0 6px;
+		z-index: 1;
+		font-family: 'DM Sans', sans-serif;
+		font-weight: 500;
+		position: relative;
+
+		&:before {
+			content: "";
+			position: absolute;
+			bottom: -6px;
+			left: 0;
+			width: 100%;
+			height: 5px;
+			background-color: #dfe2ea;
+			border-radius: 8px 8px 0 0;
+			opacity: 0;
+			transition: .3s;
+		}
+	}
+
+	.nav-item:not(.is-active):hover:before {
+		opacity: 1;
+		bottom: 0;
+	}
+
+
+	.nav-item:not(.is-active):hover {
+		color: #333;
+	}
+
+	.nav-indicator {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		height: 4px;
+		transition: .5s;
+		height: 5px;
+		z-index: 1;
+		border-radius: 8px 8px 0 0;
+	}
+
+	.nav-item {
+		border: none;
+		outline: none;
+		background-color:  var(--wrapperBG);
+	}
+
+	@media (max-width: 580px) {
+		.nav {
+			overflow: auto;
+		}
+	}
+</style>
+<br>
+<!-- 留言板 html-->
+<nav class="nav">
+	<button id="fb-btn" class="nav-item" active-color="#ACD6FF">Facebook</button>
+	<button id="github-btn" class="nav-item is-active" active-color="#ACD6FF">Github</button>
+	<button id="disqus-btn" class="nav-item" active-color="#ACD6FF">Disqus</button>
+	<span class="nav-indicator"></span>
+</nav>
+<!-- 留言板 js-->
+<script>
+	const indicator = document.querySelector('.nav-indicator');
+	const items = document.querySelectorAll('.nav-item');
+
+	function handleIndicator(el) {
+		items.forEach(item => {
+			item.classList.remove('is-active');
+			item.removeAttribute('style');
+		});
+
+		indicator.style.width = `${el.offsetWidth}px`;
+		indicator.style.left = `${el.offsetLeft}px`;
+		indicator.style.backgroundColor = el.getAttribute('active-color');
+
+		el.classList.add('is-active');
+		el.style.color = el.getAttribute('active-color');
+	}
+
+
+	items.forEach((item, index) => {
+		item.addEventListener('click', (e) => { handleIndicator(e.target) });
+		item.classList.contains('is-active') && handleIndicator(item);
+	});
+
+
+</script>
+<br><br>
+
+<!-- 留言板 擴充-->
+<div id="disqus-comments" class="comments markdown" style="display: none;">
+	{{ partial "disqus.html" . }}
+</div>
+
+<!-- <div id="utterances-comments" class="comments markdown" style="display: none;">
+	<script src="https://utteranc.es/client.js" repo="zhongyousun/messageboard" issue-term="pathname"
+		theme="github-light" crossorigin="anonymous" async>
+		</script>
+</div> -->
+
+<div id="utterances-comments" class="comments markdown" style="display: block;">
+	<script src="https://giscus.app/client.js"
+        data-repo="zhongyousun/giscus"
+        data-repo-id="R_kgDOJJwIkA"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOJJwIkM4CU4ky"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light_protanopia"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</div>
+
+
+
+<div id="facebook-comments" class="fb-comments" data-href="{{ $url }}" data-width="100%" data-numposts="5"
+	data-csp="true" data-order-by="reverse_time" style="display: none;"></div>
+<script>
+
+	// 獲取按鈕元素
+	const githubBtn = document.getElementById("github-btn");
+	const disqusBtn = document.getElementById("disqus-btn");
+	const fbBtn = document.getElementById("fb-btn");
+
+	// 獲取留言板元素
+	const githubBoard = document.getElementById("utterances-comments");
+	const disqusBoard = document.getElementById("disqus-comments");
+	const fbBoard = document.getElementById("facebook-comments");
+
+	// 為每個按鈕添加點擊事件監聽器
+	githubBtn.addEventListener("click", function () {
+		githubBoard.style.display = "block";
+		disqusBoard.style.display = "none";
+		fbBoard.style.display = "none";
+	});
+	disqusBtn.addEventListener("click", function () {
+		githubBoard.style.display = "none";
+		disqusBoard.style.display = "block";
+		fbBoard.style.display = "none";
+	});
+	fbBtn.addEventListener("click", function () {
+		githubBoard.style.display = "none";
+		disqusBoard.style.display = "none";
+		fbBoard.style.display = "block";
+	});
+</script>
+<!-- 多種留言板 -->
+{{ end }}
+
+

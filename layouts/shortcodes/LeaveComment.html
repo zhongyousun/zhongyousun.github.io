@@ -1,0 +1,53 @@
+{{ $myString := .Get "ln" | safeHTML }}
+
+<div id="type-effect">
+</div>
+<br>
+
+<style>
+  #type-effect {
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 16px;
+    font-family: monospace;
+    border-right: 1px solid black;
+    /* 這個屬性實現了打字機光標效果 */
+    padding-right: 5px;
+    white-space: pre-wrap;
+  }
+</style>
+<script>
+
+  var ln = {{ $myString }};
+  if (ln === "zh") {
+    var message = "如果這個文章對您有幫助或是有任何疑問，歡迎留言。🙏"
+    speed = 100
+  }
+  else {
+    var message = "If this posts was helpful to you or if you have any questions, feel free to leave a comment and ask.🙏"
+    speed = 50
+  }
+
+  const typeEffectDiv = document.getElementById("type-effect");
+
+  function typeEffect(message, element) {
+    let i = 0;
+    const interval = setInterval(function () {
+      if (i === message.length) {
+        clearInterval(interval);
+        setTimeout(function () {
+          element.textContent = "";
+          typeEffect(message, element);
+        }, 2000); // 停頓一秒後重新開始
+      } else {
+        element.textContent += message[i];
+        i++;
+      }
+    }, speed); // 打字速度為每 50 毫秒一個字
+  }
+
+
+  typeEffect(message, typeEffectDiv);
+
+
+</script>

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Sun 記事</title>
+    <link>http://sunnote.xyz/zh-tw/posts/</link>
+    <description>Recent content in Posts on Sun 記事</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sun, 30 Apr 2023 08:56:07 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>墾丁凱薩大飯店住宿體驗-墾丁大街、景點、酒吧</title>
+      <link>http://sunnote.xyz/zh-tw/taiwan/kenting-caesarpark/</link>
+      <pubDate>Sun, 30 Apr 2023 08:56:07 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/taiwan/kenting-caesarpark/</guid>
+      <description>&lt;p&gt;墾丁大街、知名景點、酒吧，一趟旅程放鬆身心靈，體驗豪華住宿的心得感想。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>MongoDB Atlas 資料庫基礎觀念、操作流程與使用 Compass 連線</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/mongodb-atlas-compass-tips/</link>
+      <pubDate>Mon, 24 Apr 2023 15:33:44 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/mongodb-atlas-compass-tips/</guid>
+      <description>&lt;p&gt;紀錄學習MongoDB Atlas過程幾個重點觀念與詳細連線操作教學。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>資料庫查詢性能優化技巧 : 語句優化、添加索引</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/database-optimization-index-tips/</link>
+      <pubDate>Wed, 29 Mar 2023 09:38:14 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/database-optimization-index-tips/</guid>
+      <description>&lt;p&gt;當系統資料量日益龐大常會遇到資料庫查詢時間過久的情況，此篇提供資料庫查詢性能優化的幾個方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>黑暗模式(dark mode)設計與Hugo實作</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/dark-mode-tips-hugo/</link>
+      <pubDate>Wed, 22 Mar 2023 11:34:07 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/dark-mode-tips-hugo/</guid>
+      <description>&lt;p&gt;紀錄一下網站增加黑暗模式功能踩到的一些坑、一些前端顯示的細節還有在Hugo上實作。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SQL SCOPE_IDENTITY() 與 @@IDENTITY 取得自動增量值差異</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/sql-scopeidentity-identity-diff/</link>
+      <pubDate>Mon, 20 Mar 2023 10:44:19 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/sql-scopeidentity-identity-diff/</guid>
+      <description>&lt;p&gt;SQL Server使用 SCOPE_IDENTITY() 取得最近新增一筆的資料，並比較 SCOPE_IDENTITY() 與 @@IDENTITY 取值差異。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JWT 驗證機制原理與實作範例 (C#)</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/jwt-authentication-mechanism/</link>
+      <pubDate>Mon, 06 Mar 2023 16:05:44 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/jwt-authentication-mechanism/</guid>
+      <description>&lt;p&gt;JWT（JSON Web Token）是一種開放標準，用於在各方之間安全地傳遞資訊。JWT使用JSON物件表示要傳遞的訊息，並使用數字簽名或加密來保護這些訊息。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hugo 實現推薦文章功能與輪播顯示</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/hugo-related-posts-supports-carousel-display/</link>
+      <pubDate>Wed, 22 Feb 2023 11:02:15 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/hugo-related-posts-supports-carousel-display/</guid>
+      <description>&lt;p&gt;簡單實現以輪播方式顯示推薦文章列表。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hugo 實現提供多種留言版選擇</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/hugo-multiple-comments/</link>
+      <pubDate>Thu, 16 Feb 2023 10:11:38 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/hugo-multiple-comments/</guid>
+      <description>&lt;p&gt;簡單實現增加多種留言板功能，並提供選單讓使用者可以自己選擇喜愛的留言方式。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>情人節就送這個當禮物:綠藻球Marimo (基本介紹、飼養方式、象徵意義)</title>
+      <link>http://sunnote.xyz/zh-tw/life/valentine-gift-marimo/</link>
+      <pubDate>Tue, 14 Feb 2023 10:11:38 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/life/valentine-gift-marimo/</guid>
+      <description>&lt;p&gt;綠藻球真的是懶人專屬，好飼養超級療癒又有象徵性。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SQL-partition by 實現資料分組</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/sql-partition-by/</link>
+      <pubDate>Tue, 07 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/sql-partition-by/</guid>
+      <description>&lt;p&gt;使用SQL partition by 實現資料分割，比較LINQ與partition by效能。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C# 多執行緒原理、非同步用法與帶入自定義物件</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/csharp-multithreading/</link>
+      <pubDate>Thu, 19 Jan 2023 11:49:15 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/csharp-multithreading/</guid>
+      <description>&lt;p&gt;C# 多執行緒原理、非同步用法與帶入自定義物件學習過程紀錄。&lt;br&gt;
+目前遇到的專案都沒有硬性需求使用到多執行緒，此篇為紀錄自己的理解與學習的過程。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C# Enum(枚舉) 用法紀錄</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/csharp-enum/</link>
+      <pubDate>Sun, 15 Jan 2023 08:49:07 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/csharp-enum/</guid>
+      <description>&lt;p&gt;C#-Enum(枚舉)用途與使用擴充方法取得description詳細紀錄。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SQL-merge into 語法紀錄</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/sql-merge-into-statement/</link>
+      <pubDate>Thu, 22 Dec 2022 10:44:38 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/sql-merge-into-statement/</guid>
+      <description>&lt;p&gt;這次被指派實作不同資料庫同步的功能，公司現有一個ERP系統，&lt;/p&gt;
+&lt;p&gt;資料來源一律以此為標準，讓客戶可在自家系統新增、編輯、寫入ERP、與ERP同步&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode(Medium) 146. LRU Cache (Python)</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/leetcode-lru-cache-medium-python/</link>
+      <pubDate>Sun, 04 Dec 2022 19:44:38 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/leetcode-lru-cache-medium-python/</guid>
+      <description>&lt;p&gt;LRU Cache算是我遇過覺得蠻有趣生活化的題目，感覺也是在很多底層系統會需要用到的觀念。&lt;br&gt;
+可惜的是目前工作還沒使用到&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>深入宿霧住宅區</title>
+      <link>http://sunnote.xyz/zh-tw/cebu/residential_area/</link>
+      <pubDate>Sun, 04 Dec 2022 16:28:53 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/cebu/residential_area/</guid>
+      <description>&lt;p&gt;紀錄偶然的進入了平常不太敢進入的當地住宅區(Cabantan Street)。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>宿霧-薄荷島一日遊(眼鏡猴 &#43; 巧克力山)</title>
+      <link>http://sunnote.xyz/zh-tw/cebu/bohol-island-day-tour-tarsier-chocolate-hills/</link>
+      <pubDate>Sat, 03 Dec 2022 16:28:53 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/cebu/bohol-island-day-tour-tarsier-chocolate-hills/</guid>
+      <description>&lt;p&gt;來宿霧唸英文起初並沒有要到其他島嶼旅行的計畫，但中途為了準備考試而想購買一些考試用書，在當地很難購買到考試用書的情況下，選擇直接在網路平台訂書再由家人從台灣帶來順便體驗一下宿霧旅遊。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>菲律賓吉普尼體驗&#43;宿霧主題樂園一日遊</title>
+      <link>http://sunnote.xyz/zh-tw/cebu/jeepney-anjo-world-theme-park-day-trip/</link>
+      <pubDate>Fri, 02 Dec 2022 16:28:53 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/cebu/jeepney-anjo-world-theme-park-day-trip/</guid>
+      <description>&lt;p&gt;體驗了期待已久的宿霧平民交通工具吉普尼還有宿霧最大最新的主題樂園 Anjo World Theme Park。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>宿霧-希瑪拉教堂(Simala Church)一日遊</title>
+      <link>http://sunnote.xyz/zh-tw/cebu/simala-church-day-trip/</link>
+      <pubDate>Thu, 01 Dec 2022 16:28:53 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/cebu/simala-church-day-trip/</guid>
+      <description>&lt;p&gt;有幸造訪宿霧最大的教堂希瑪拉教堂，此文主要紀錄當時的行程規劃、偶然的參與彌撒與雄偉的建築。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>在宿霧的聖誕氣氛</title>
+      <link>http://sunnote.xyz/zh-tw/cebu/christmas-in-cebu/</link>
+      <pubDate>Wed, 30 Nov 2022 19:28:53 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/cebu/christmas-in-cebu/</guid>
+      <description>&lt;p&gt;12月之後語言學校的新學生普遍減少，因為大部分學生都會想回家鄉跨年，或是等到農曆新年結束後才來，很開心能在這段時間體驗當地的過節氣氛，雖然在海外過節還是會覺得有點感傷啦。😂&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>宿霧遊學-日常生活(二)</title>
+      <link>http://sunnote.xyz/zh-tw/cebu/daily-life-part2/</link>
+      <pubDate>Wed, 30 Nov 2022 17:28:53 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/cebu/daily-life-part2/</guid>
+      <description>&lt;p&gt;主要想紀錄待在宿霧時，語言學校與宿霧市區各種生活日常，因為當時目標為考試取向，&lt;br&gt;
+所以並沒有跳島或是夜生活等行程。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>宿霧遊學-日常生活(一)</title>
+      <link>http://sunnote.xyz/zh-tw/cebu/daily-life-part1/</link>
+      <pubDate>Wed, 30 Nov 2022 16:28:53 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/cebu/daily-life-part1/</guid>
+      <description>&lt;p&gt;主要想紀錄待在宿霧時，語言學校與宿霧市區各種生活日常，因為當時目標為考試取向，&lt;br&gt;
+所以並沒有跳島或是夜生活等行程。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>宿霧遊學-行前心情紀錄</title>
+      <link>http://sunnote.xyz/zh-tw/cebu/pre-departure-mood-record/</link>
+      <pubDate>Tue, 29 Nov 2022 16:28:53 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/cebu/pre-departure-mood-record/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>英文很爛能去念語言學校嗎(效益評估)</title>
+      <link>http://sunnote.xyz/zh-tw/%E8%8B%B1%E6%96%87%E5%BE%88%E7%88%9B%E8%83%BD%E5%8E%BB%E5%BF%B5%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E5%97%8E%E6%95%88%E7%9B%8A%E8%A9%95%E4%BC%B0/</link>
+      <pubDate>Tue, 29 Nov 2022 14:58:22 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/%E8%8B%B1%E6%96%87%E5%BE%88%E7%88%9B%E8%83%BD%E5%8E%BB%E5%BF%B5%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E5%97%8E%E6%95%88%E7%9B%8A%E8%A9%95%E4%BC%B0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>語言學校紀錄-該選哪間語言學校呢</title>
+      <link>http://sunnote.xyz/zh-tw/%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E7%B4%80%E9%8C%84-%E8%A9%B2%E9%81%B8%E5%93%AA%E9%96%93%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E5%91%A2/</link>
+      <pubDate>Tue, 29 Nov 2022 13:57:21 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E7%B4%80%E9%8C%84-%E8%A9%B2%E9%81%B8%E5%93%AA%E9%96%93%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E5%91%A2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>歐美語言學校 vs 菲律賓語言學校</title>
+      <link>http://sunnote.xyz/zh-tw/%E6%AD%90%E7%BE%8E%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1-vs-%E8%8F%B2%E5%BE%8B%E8%B3%93%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1/</link>
+      <pubDate>Mon, 28 Nov 2022 15:35:05 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/%E6%AD%90%E7%BE%8E%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1-vs-%E8%8F%B2%E5%BE%8B%E8%B3%93%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>語言學校紀錄-為什麼要去菲律賓念英文?</title>
+      <link>http://sunnote.xyz/zh-tw/%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E7%B4%80%E9%8C%84-%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E5%8E%BB%E8%8F%B2%E5%BE%8B%E8%B3%93%E5%BF%B5%E8%8B%B1%E6%96%87/</link>
+      <pubDate>Mon, 28 Nov 2022 13:34:52 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E7%B4%80%E9%8C%84-%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E5%8E%BB%E8%8F%B2%E5%BE%8B%E8%B3%93%E5%BF%B5%E8%8B%B1%E6%96%87/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>多益350~690經驗分享</title>
+      <link>http://sunnote.xyz/zh-tw/%E5%A4%9A%E7%9B%8A350~690%E7%B6%93%E9%A9%97%E5%88%86%E4%BA%AB/</link>
+      <pubDate>Thu, 24 Nov 2022 19:44:38 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/%E5%A4%9A%E7%9B%8A350~690%E7%B6%93%E9%A9%97%E5%88%86%E4%BA%AB/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>文章歸檔</title>
+      <link>http://sunnote.xyz/zh-tw/archives/</link>
+      <pubDate>Sun, 20 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/archives/</guid>
+      <description>歷史文章按照年月歸檔</description>
+    </item>
+    
+    <item>
+      <title>站內查詢</title>
+      <link>http://sunnote.xyz/zh-tw/search/</link>
+      <pubDate>Sun, 20 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/search/</guid>
+      <description>search</description>
+    </item>
+    
+    <item>
+      <title>關於</title>
+      <link>http://sunnote.xyz/zh-tw/about/</link>
+      <pubDate>Sun, 20 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/about/</guid>
+      <description>關於</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SQL on Sun 記事</title>
+    <link>http://sunnote.xyz/zh-tw/tags/sql/</link>
+    <description>Recent content in SQL on Sun 記事</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Wed, 29 Mar 2023 09:38:14 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/tags/sql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>資料庫查詢性能優化技巧 : 語句優化、添加索引</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/database-optimization-index-tips/</link>
+      <pubDate>Wed, 29 Mar 2023 09:38:14 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/database-optimization-index-tips/</guid>
+      <description>&lt;p&gt;當系統資料量日益龐大常會遇到資料庫查詢時間過久的情況，此篇提供資料庫查詢性能優化的幾個方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SQL SCOPE_IDENTITY() 與 @@IDENTITY 取得自動增量值差異</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/sql-scopeidentity-identity-diff/</link>
+      <pubDate>Mon, 20 Mar 2023 10:44:19 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/sql-scopeidentity-identity-diff/</guid>
+      <description>&lt;p&gt;SQL Server使用 SCOPE_IDENTITY() 取得最近新增一筆的資料，並比較 SCOPE_IDENTITY() 與 @@IDENTITY 取值差異。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SQL-partition by 實現資料分組</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/sql-partition-by/</link>
+      <pubDate>Tue, 07 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/sql-partition-by/</guid>
+      <description>&lt;p&gt;使用SQL partition by 實現資料分割，比較LINQ與partition by效能。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SQL-merge into 語法紀錄</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/sql-merge-into-statement/</link>
+      <pubDate>Thu, 22 Dec 2022 10:44:38 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/sql-merge-into-statement/</guid>
+      <description>&lt;p&gt;這次被指派實作不同資料庫同步的功能，公司現有一個ERP系統，&lt;/p&gt;
+&lt;p&gt;資料來源一律以此為標準，讓客戶可在自家系統新增、編輯、寫入ERP、與ERP同步&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

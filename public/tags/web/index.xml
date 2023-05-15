@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web on Sun Notes</title>
+    <link>http://sunnote.xyz/tags/web/</link>
+    <description>Recent content in Web on Sun Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Wed, 22 Mar 2023 11:34:07 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Designing and Implementing Dark Mode in Hugo</title>
+      <link>http://sunnote.xyz/tutorials/dark-mode-tips-hugo/</link>
+      <pubDate>Wed, 22 Mar 2023 11:34:07 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/tutorials/dark-mode-tips-hugo/</guid>
+      <description>&lt;p&gt;Recording the hurdles encountered while adding dark mode functionality to a website, as well as frontend display tips and implementation on Hugo.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JWT Authentication Mechanism Principles and Implementation Examples (C#) </title>
+      <link>http://sunnote.xyz/tutorials/jwt-authentication-mechanism/</link>
+      <pubDate>Mon, 06 Mar 2023 16:05:44 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/tutorials/jwt-authentication-mechanism/</guid>
+      <description>&lt;p&gt;JWT (JSON Web Token) is an open standard used for securely transmitting information between parties. JWT uses JSON objects to represent the messages to be transmitted and uses digital signatures or encryption to protect these messages.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

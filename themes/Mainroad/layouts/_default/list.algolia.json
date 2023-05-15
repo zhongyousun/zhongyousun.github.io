@@ -1,0 +1,17 @@
+[
+	{{- range $index, $entry := .Site.RegularPages }}
+	{{- if $index }}, {{ end }}
+	{
+	
+		
+	  "url": {{ .Permalink | jsonify }},
+	  "title": {{ .Title | jsonify }},
+	  "summary": {{ .Summary | jsonify }},
+	  "content": {{ .Plain | jsonify }},
+	  "pubDate": {{ .PublishDate | jsonify }},
+	  "cover": "{{ replace (absURL .Params.Thumbnail) "http://" "https://" }}"
+
+	}
+	{{- end }}
+  ]
+  

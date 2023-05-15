@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-tw">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<meta property="fb:app_id" content="725315935966817" />
+	<title>Posts - Sun 記事</title>
+	<script>(function (d, e) { d[e] = d[e].replace("no-js", "js"); })(document.documentElement, "className");</script>
+	<meta name="description"
+		content="">
+	<meta property="og:title" content="Posts" />
+<meta property="og:description" content="Life is tough, but so are you." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://sunnote.xyz/zh-tw/posts/" />
+
+
+		  	<meta property="og:image" content="https://sunnote.xyz/TravelIsGoodForTheSoul.webp" />
+	<meta itemprop="name" content="Posts">
+<meta itemprop="description" content="Life is tough, but so are you.">
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:description" content="Life is tough, but so are you."/>
+
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+	<style>
+		
+		@media screen and (max-width: 850px) {
+		.main-button {
+			display: none;
+			}
+		}
+		.floating-menu {
+		  position: fixed;
+		  top: 80%;
+		  right: 10px;
+		  transform: translateY(-50%);
+		}
+  
+		.main-button {
+		  border: none;
+		  border-radius: 5px;
+		  background-color: #ACD6FF;
+		  color: #fff;
+		  font-size: 14px;
+		  cursor: pointer;
+		  height: 38px;
+		  width: 38px;
+		}
+  
+		.main-button:hover {
+		  background-color: #9accff;
+		  color: #333;
+		}
+  
+		.sub-buttons {
+		  display: none;
+		  position: absolute;
+		  top: calc(100% - 130px);
+		  right: 0;
+		  background-color: var(--wrapperBG);
+		  border: 1px solid #ddd;
+		  border-radius: 5px;
+		  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+		  width: 100%;
+		}
+		.sub-button {
+		  display: block;
+		  width: 100%;
+		  padding: 10px;
+		  border: none;
+		  background-color: transparent;
+		  color: var(--text-color);
+		  font-size: 14px;
+		  cursor: pointer;
+		}
+  
+		.sub-button:hover {
+		  background-color:var(--wrapperBG2);
+		  color: #ACD6FF;
+		}
+	  </style>
+	  
+	  
+	  <style>
+		@import 'https://fonts.googleapis.com/css?family=Montserrat:400,700';
+.aa-input-container {
+  display: inline-block;
+  position: relative;
+  width: 70%;
+}
+.aa-input-container span,.aa-input-container input {
+    width: inherit;
+}
+.aa-input-search {
+  width: 300px;
+  padding: 12px 28px 12px 12px;
+  border: 2px solid #e4e4e4;
+  border-radius: 4px;
+  -webkit-transition: .2s;
+  transition: .2s;
+  font-family: "Montserrat", sans-serif;
+  box-shadow: 4px 4px 0 rgba(241, 241, 241, 0.35);
+  font-size: 11px;
+  box-sizing: border-box;
+  color: #333;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.aa-input-search::-webkit-search-decoration, .aa-input-search::-webkit-search-cancel-button, .aa-input-search::-webkit-search-results-button, .aa-input-search::-webkit-search-results-decoration {
+    display: none;
+}
+.aa-input-search:focus {
+    outline: 0;
+    border-color: #3a96cf;
+    box-shadow: 4px 4px 0 rgba(58, 150, 207, 0.1);
+}
+.aa-input-icon {
+  height: 16px;
+  width: 16px;
+  position: absolute;
+  top: 25px;
+  right: 330px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  fill: #e4e4e4;
+}
+.aa-hint {
+  color: #e4e4e4;
+}
+.aa-dropdown-menu {
+  background-color: #fff;
+  border: 2px solid rgba(228, 228, 228, 0.6);
+  border-top-width: 1px;
+  font-family: "Montserrat", sans-serif;
+  width: 300px;
+  margin-top: 10px;
+  box-shadow: 4px 4px 0 rgba(241, 241, 241, 0.35);
+  font-size: 11px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.aa-suggestion {
+  padding: 12px;
+  border-top: 1px solid rgba(228, 228, 228, 0.6);
+  cursor: pointer;
+  -webkit-transition: .2s;
+  transition: .2s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.aa-suggestion:hover, .aa-suggestion.aa-cursor {
+    background-color: rgba(241, 241, 241, 0.35);
+}
+.aa-suggestion > span:first-child {
+    color: #333;
+}
+.aa-suggestion > span:last-child {
+    text-transform: uppercase;
+    color: #a9a9a9;
+}
+.aa-suggestion > span:first-child em, .aa-suggestion > span:last-child em {
+  font-weight: 700;
+  font-style: normal;
+  background-color: rgba(58, 150, 207, 0.1);
+  padding: 2px 0 2px 2px;
+}
+
+ 
+.aa-suggestion {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+
+.aa-suggestion img {
+  max-width: 64px;
+  max-height: 64px;
+  margin-right: 16px;
+}
+
+.aa-suggestion .aa-suggestion-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.aa-suggestion .aa-suggestion-summary {
+  font-size: 14px;
+  color: #666;
+}
+
+.modal-body{
+	position: relative;
+	left: 100px;
+	top: 100px;
+	z-index:999;
+	display: none;
+}
+	  </style>
+	  <style>
+		#back-to-top {
+			right: 10px;
+  			border-radius: 5px;
+  			height: 38px;
+		  	width: 38px;
+			border: none;
+			top: 85%;
+			box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.3);
+			text-align: xxx;
+		}
+
+	  </style>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" >
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MWPM4C5TJS"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-MWPM4C5TJS', { 'anonymize_ip': false });
+}
+</script>
+
+
+	
+</head>
+
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog" >
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  
+		</div>
+		<div class="modal-body">
+		  <div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="Search for titles or URIs..."
+      name="search" autocomplete="off" />
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+      <path
+        d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+  </div>
+  <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/algoliasearch.min.js"></script>
+  <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/autocomplete.min.js"></script>
+  <script>
+    var client = algoliasearch("6CA8UYGMKF","0b6aa5d5a7d49848cea785697d9a99ba");
+    var index = client.initIndex('sunnote');
+    autocomplete('#aa-search-input',
+      { hint: false }, {
+      source: autocomplete.sources.hits(index, { hitsPerPage: 20 }),
+      displayKey: 'name',
+      templates: {
+          suggestion: function (suggestion) {
+              return '<div class="suggestion">' +
+      '<div class="suggestion-image">' +
+      '<img src="' + suggestion.cover + '" alt="' + suggestion.title + '" />' +
+      '</div>' +
+      '<div class="suggestion-content">' +
+      '<a href="' + suggestion.url + '">' + suggestion.title + '</a>' +
+      '<br>' +
+      '<small>' + suggestion.summary + '</small>' +
+      '</div>' +
+      '</div>';
+        }
+      }
+    });
+  
+    $('#searchGlyph').click(function() {
+      setTimeout(function(){
+        $('#aa-search-input').focus();
+      },300);
+    });
+  </script>
+		</div>
+	  </div>
+	</div>
+  </div>
+<span class="sun-btn">&#x2600;</span>
+<span class="moon-btn">&#x263D;</span>
+
+<script>
+	
+let darkModeState = false;
+
+const sun = document.querySelector('.sun-btn');
+const moon = document.querySelector('.moon-btn');
+
+
+const useDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+
+function toggleDarkMode(state) {
+  document.documentElement.classList.toggle("dark-mode", state);
+  darkModeState = state;
+}
+
+
+function setDarkModeLocalStorage(state) {
+  localStorage.setItem("dark-mode", state);
+}
+
+
+toggleDarkMode(localStorage.getItem("dark-mode") == "true");
+
+
+
+  useDark.addEventListener('change', (evt) => {
+    toggleDarkMode(evt.matches);
+  });
+
+
+
+sun.addEventListener("click", () => {
+  darkModeState = !darkModeState;
+
+  toggleDarkMode(darkModeState);
+  setDarkModeLocalStorage(darkModeState);
+});
+moon.addEventListener("click", () => {
+  darkModeState = !darkModeState;
+
+  toggleDarkMode(darkModeState);
+  setDarkModeLocalStorage(darkModeState);
+});
+</script>
+
+<body class="body">
+	
+	<script>
+		window.fbAsyncInit = function () {
+			FB.init({
+				appId: '725315935966817',
+				xfbml: true,
+				version: 'v16.0'
+			});
+			FB.AppEvents.logPageView();
+		};
+
+		(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) { return; }
+			js = d.createElement(s); js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
+
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/zh-tw" title="Sun Notes" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Sun Notes</div>
+					<div class="logo__tagline">Life is tough, but so are you.</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+  <button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+    <span class="menu__btn-title" tabindex="-1">☰選單</span>
+  </button>
+  <ul class="menu__list">
+    <li class="menu__item">
+      <a class="menu__link" href="/zh-tw/about">
+        <i class='fas fa-house'></i>
+          <span class="menu__text">關於</span>
+        
+      </a>
+    </li>
+    <li class="menu__item">
+      <a class="menu__link" href="/zh-tw/search">
+        <i class='fas fa-magnifying-glass'></i>
+          <span class="menu__text">站內查詢</span>
+        
+      </a>
+    </li>
+    <li class="menu__item">
+      <a class="menu__link" href="/zh-tw/archives">
+        <i class='fas fa-box-archive'></i>
+          <span class="menu__text">文章歸檔</span>
+        
+      </a>
+    </li>
+    <li class="menu__item menu__dropdown">
+      
+        <a class="menu__link">
+        <i class='fas fa-plane'></i>
+        <span class="menu__text">生活</span>
+        <label class="drop-icon" for="生活">▾</label>
+        
+      </a>
+      <input type="checkbox" id="生活">
+      <ul class="submenu__list">
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/zh-tw/tags/%E8%8F%B2%E5%BE%8B%E8%B3%93/">
+            
+            <span class="menu__text">菲律賓</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/zh-tw/tags/%E5%AE%BF%E9%9C%A7/">
+            
+            <span class="menu__text">宿霧</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/zh-tw/tags/%E5%8F%B0%E7%81%A3/">
+            
+            <span class="menu__text">台灣</span>
+            
+          </a>
+          </li>
+        
+      </ul>
+    </li>
+    <li class="menu__item menu__dropdown">
+      
+        <a class="menu__link">
+        <i class='fas fa-globe'></i>
+        <span class="menu__text"> </span>
+        <label class="drop-icon" for=" ">▾</label>
+        
+      </a>
+      <input type="checkbox" id=" ">
+      <ul class="submenu__list">
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/">
+            
+            <span class="menu__text">EN</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/zh-tw">
+            
+            <span class="menu__text">Zh</span>
+            
+          </a>
+          </li>
+        
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+	</div>
+</header>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-MWPM4C5TJS', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+		<div class="wrapper flex">
+			<div class="primary">
+				
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">Posts</h1>
+	</header>
+<article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			
+			<a href="/zh-tw/%E6%AD%90%E7%BE%8E%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1-vs-%E8%8F%B2%E5%BE%8B%E8%B3%93%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1/" rel="bookmark">
+			歐美語言學校 vs 菲律賓語言學校
+			</a>
+		</h2>
+		<p class="list__lead post__lead">沒什麼好比的，要念書就選菲律賓啦</p>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-calendar"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 5.332031 L 2 12.667969 C 2 13.035156 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 5.332031 C 14 4.964844 13.703125 4.667969 13.335938 4.667969 L 2.664062 4.667969 C 2.296875 4.667969 2 4.964844 2 5.332031 Z M 0.667969 5.332031 C 0.667969 4.230469 1.558594 3.332031 2.664062 3.332031 L 13.335938 3.332031 C 14.441406 3.332031 15.332031 4.230469 15.332031 5.332031 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.769531 0.667969 12.667969 Z M 2 7.332031 L 2 6 L 14 6 L 14 7.332031 Z M 4 2 C 4 1.632812 4.296875 1.332031 4.667969 1.332031 C 5.035156 1.332031 5.332031 1.628906 5.332031 2 L 5.332031 3.332031 L 4 3.332031 Z M 10.667969 2 C 10.667969 1.632812 10.960938 1.332031 11.332031 1.332031 C 11.703125 1.332031 12 1.628906 12 2 L 12 3.332031 L 10.667969 3.332031 Z M 10.667969 2 "/>
+</g>
+</svg>
+<time class="meta__text" datetime="2022-11-28T15:35:05&#43;08:00">November 28, 2022</time></div><div class="meta__item-categories meta__item">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-folders"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 6 L 2 12.664062 C 2 13.03125 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 8 C 14 7.632812 13.703125 7.332031 13.335938 7.332031 L 9.808594 7.332031 L 8.03125 5.332031 L 2.667969 5.332031 C 2.300781 5.332031 2 5.632812 2 6 Z M 13.335938 6 C 14.4375 6 15.332031 6.894531 15.332031 8 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.761719 0.667969 12.664062 L 0.667969 6 C 0.667969 4.894531 1.5625 4 2.667969 4 L 8.632812 4 L 10.40625 6 Z M 4.425781 3.625 C 4.425781 3.625 4.425781 3.703125 4.425781 4.074219 C 4.425781 4.328125 5.15625 4.75 6 4.667969 C 6.777344 4.589844 8.453125 4.589844 8.796875 5.050781 C 10 6.667969 14.242188 7.15625 14.242188 6.667969 L 14.242188 5.25 C 14.242188 4.949219 14 4.707031 13.699219 4.707031 L 10.8125 4.707031 L 9.359375 3.082031 L 4.972656 3.082031 C 4.667969 3.082031 4.425781 3.328125 4.425781 3.625 Z M 13.699219 3.625 C 14.601562 3.625 15.332031 4.351562 15.332031 5.25 L 15.332031 8 C 15.332031 8.304688 14.667969 6.667969 10 6.667969 C 8.652344 6.160156 9.402344 5.636719 8 5.25 C 6.496094 4.832031 4.703125 5.296875 3.863281 5.285156 C 3.320312 5.273438 3.332031 4.855469 3.332031 4.667969 L 3.332031 3.625 C 3.332031 2.726562 4.066406 2 4.972656 2 L 9.851562 2 L 11.300781 3.625 Z M 13.699219 3.625 "/>
+</g>
+</svg>
+<span class="meta__text"><a class="meta__link" href="/zh-tw/categories/%E7%B4%94%E7%B2%B9%E5%88%86%E4%BA%AB/" rel="category">純粹分享</a>, <a class="meta__link" href="/zh-tw/categories/%E8%8B%B1%E6%96%87%E5%AD%B8%E7%BF%92/" rel="category">英文學習</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/zh-tw/%E6%AD%90%E7%BE%8E%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1-vs-%E8%8F%B2%E5%BE%8B%E8%B3%93%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1/">閱讀全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	
+	<figure class="list__thumbnail thumbnail">
+		<a class="thumbnail__link" href="/zh-tw/%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E7%B4%80%E9%8C%84-%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E5%8E%BB%E8%8F%B2%E5%BE%8B%E8%B3%93%E5%BF%B5%E8%8B%B1%E6%96%87/">
+		<img class="thumbnail__image" src="/img/thumbnail/3.%e8%aa%9e%e8%a8%80%e5%ad%b8%e6%a0%a1%e7%b4%80%e9%8c%84-%e7%82%ba%e4%bb%80%e9%ba%bc%e8%a6%81%e5%8e%bb%e8%8f%b2%e5%be%8b%e8%b3%93%e5%bf%b5%e8%8b%b1%e6%96%87.jpg" alt="語言學校紀錄-為什麼要去菲律賓念英文?">
+		</a>
+	</figure>
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			
+			<a href="/zh-tw/%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E7%B4%80%E9%8C%84-%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E5%8E%BB%E8%8F%B2%E5%BE%8B%E8%B3%93%E5%BF%B5%E8%8B%B1%E6%96%87/" rel="bookmark">
+			語言學校紀錄-為什麼要去菲律賓念英文?
+			</a>
+		</h2>
+		<p class="list__lead post__lead">人生真的充滿意外...</p>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-calendar"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 5.332031 L 2 12.667969 C 2 13.035156 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 5.332031 C 14 4.964844 13.703125 4.667969 13.335938 4.667969 L 2.664062 4.667969 C 2.296875 4.667969 2 4.964844 2 5.332031 Z M 0.667969 5.332031 C 0.667969 4.230469 1.558594 3.332031 2.664062 3.332031 L 13.335938 3.332031 C 14.441406 3.332031 15.332031 4.230469 15.332031 5.332031 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.769531 0.667969 12.667969 Z M 2 7.332031 L 2 6 L 14 6 L 14 7.332031 Z M 4 2 C 4 1.632812 4.296875 1.332031 4.667969 1.332031 C 5.035156 1.332031 5.332031 1.628906 5.332031 2 L 5.332031 3.332031 L 4 3.332031 Z M 10.667969 2 C 10.667969 1.632812 10.960938 1.332031 11.332031 1.332031 C 11.703125 1.332031 12 1.628906 12 2 L 12 3.332031 L 10.667969 3.332031 Z M 10.667969 2 "/>
+</g>
+</svg>
+<time class="meta__text" datetime="2022-11-28T13:34:52&#43;08:00">November 28, 2022</time></div><div class="meta__item-categories meta__item">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-folders"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 6 L 2 12.664062 C 2 13.03125 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 8 C 14 7.632812 13.703125 7.332031 13.335938 7.332031 L 9.808594 7.332031 L 8.03125 5.332031 L 2.667969 5.332031 C 2.300781 5.332031 2 5.632812 2 6 Z M 13.335938 6 C 14.4375 6 15.332031 6.894531 15.332031 8 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.761719 0.667969 12.664062 L 0.667969 6 C 0.667969 4.894531 1.5625 4 2.667969 4 L 8.632812 4 L 10.40625 6 Z M 4.425781 3.625 C 4.425781 3.625 4.425781 3.703125 4.425781 4.074219 C 4.425781 4.328125 5.15625 4.75 6 4.667969 C 6.777344 4.589844 8.453125 4.589844 8.796875 5.050781 C 10 6.667969 14.242188 7.15625 14.242188 6.667969 L 14.242188 5.25 C 14.242188 4.949219 14 4.707031 13.699219 4.707031 L 10.8125 4.707031 L 9.359375 3.082031 L 4.972656 3.082031 C 4.667969 3.082031 4.425781 3.328125 4.425781 3.625 Z M 13.699219 3.625 C 14.601562 3.625 15.332031 4.351562 15.332031 5.25 L 15.332031 8 C 15.332031 8.304688 14.667969 6.667969 10 6.667969 C 8.652344 6.160156 9.402344 5.636719 8 5.25 C 6.496094 4.832031 4.703125 5.296875 3.863281 5.285156 C 3.320312 5.273438 3.332031 4.855469 3.332031 4.667969 L 3.332031 3.625 C 3.332031 2.726562 4.066406 2 4.972656 2 L 9.851562 2 L 11.300781 3.625 Z M 13.699219 3.625 "/>
+</g>
+</svg>
+<span class="meta__text"><a class="meta__link" href="/zh-tw/categories/%E6%B5%B7%E5%A4%96%E6%97%85%E9%81%8A/" rel="category">海外旅遊</a>, <a class="meta__link" href="/zh-tw/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E9%8C%84/" rel="category">生活紀錄</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/zh-tw/%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E7%B4%80%E9%8C%84-%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E5%8E%BB%E8%8F%B2%E5%BE%8B%E8%B3%93%E5%BF%B5%E8%8B%B1%E6%96%87/">閱讀全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	
+	<figure class="list__thumbnail thumbnail">
+		<a class="thumbnail__link" href="/zh-tw/%E5%A4%9A%E7%9B%8A350~690%E7%B6%93%E9%A9%97%E5%88%86%E4%BA%AB/">
+		<img class="thumbnail__image" src="https://janstockcoin.com/wp-content/uploads/2021/06/pexels-photo-747964-2048x1293.jpeg" alt="多益350~690經驗分享">
+		</a>
+	</figure>
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			
+			<a href="/zh-tw/%E5%A4%9A%E7%9B%8A350~690%E7%B6%93%E9%A9%97%E5%88%86%E4%BA%AB/" rel="bookmark">
+			多益350~690經驗分享
+			</a>
+		</h2>
+		<p class="list__lead post__lead">沒什麼套路就只是花多點時間</p>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-calendar"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 5.332031 L 2 12.667969 C 2 13.035156 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 5.332031 C 14 4.964844 13.703125 4.667969 13.335938 4.667969 L 2.664062 4.667969 C 2.296875 4.667969 2 4.964844 2 5.332031 Z M 0.667969 5.332031 C 0.667969 4.230469 1.558594 3.332031 2.664062 3.332031 L 13.335938 3.332031 C 14.441406 3.332031 15.332031 4.230469 15.332031 5.332031 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.769531 0.667969 12.667969 Z M 2 7.332031 L 2 6 L 14 6 L 14 7.332031 Z M 4 2 C 4 1.632812 4.296875 1.332031 4.667969 1.332031 C 5.035156 1.332031 5.332031 1.628906 5.332031 2 L 5.332031 3.332031 L 4 3.332031 Z M 10.667969 2 C 10.667969 1.632812 10.960938 1.332031 11.332031 1.332031 C 11.703125 1.332031 12 1.628906 12 2 L 12 3.332031 L 10.667969 3.332031 Z M 10.667969 2 "/>
+</g>
+</svg>
+<time class="meta__text" datetime="2022-11-24T19:44:38&#43;08:00">November 24, 2022</time>
+	<time class="meta__text" datetime="2022-11-25T19:44:38&#43;08:00">(最後修改: November 25, 2022)</time></div><div class="meta__item-categories meta__item">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-folders"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 6 L 2 12.664062 C 2 13.03125 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 8 C 14 7.632812 13.703125 7.332031 13.335938 7.332031 L 9.808594 7.332031 L 8.03125 5.332031 L 2.667969 5.332031 C 2.300781 5.332031 2 5.632812 2 6 Z M 13.335938 6 C 14.4375 6 15.332031 6.894531 15.332031 8 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.761719 0.667969 12.664062 L 0.667969 6 C 0.667969 4.894531 1.5625 4 2.667969 4 L 8.632812 4 L 10.40625 6 Z M 4.425781 3.625 C 4.425781 3.625 4.425781 3.703125 4.425781 4.074219 C 4.425781 4.328125 5.15625 4.75 6 4.667969 C 6.777344 4.589844 8.453125 4.589844 8.796875 5.050781 C 10 6.667969 14.242188 7.15625 14.242188 6.667969 L 14.242188 5.25 C 14.242188 4.949219 14 4.707031 13.699219 4.707031 L 10.8125 4.707031 L 9.359375 3.082031 L 4.972656 3.082031 C 4.667969 3.082031 4.425781 3.328125 4.425781 3.625 Z M 13.699219 3.625 C 14.601562 3.625 15.332031 4.351562 15.332031 5.25 L 15.332031 8 C 15.332031 8.304688 14.667969 6.667969 10 6.667969 C 8.652344 6.160156 9.402344 5.636719 8 5.25 C 6.496094 4.832031 4.703125 5.296875 3.863281 5.285156 C 3.320312 5.273438 3.332031 4.855469 3.332031 4.667969 L 3.332031 3.625 C 3.332031 2.726562 4.066406 2 4.972656 2 L 9.851562 2 L 11.300781 3.625 Z M 13.699219 3.625 "/>
+</g>
+</svg>
+<span class="meta__text"><a class="meta__link" href="/zh-tw/categories/%E8%8B%B1%E6%96%87%E5%AD%B8%E7%BF%92/" rel="category">英文學習</a>, <a class="meta__link" href="/zh-tw/categories/%E7%B4%94%E7%B2%B9%E5%88%86%E4%BA%AB/" rel="category">純粹分享</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/zh-tw/%E5%A4%9A%E7%9B%8A350~690%E7%B6%93%E9%A9%97%E5%88%86%E4%BA%AB/">閱讀全文…</a>
+	</div>
+</article>
+</main>
+
+<div class="pagination">
+	<a class="pagination__item pagination__item--prev btn" href="/zh-tw/posts/page/5/">«</a>
+	<span class="pagination__item pagination__item--current">6/7</span>
+	<a class="pagination__item pagination__item--next btn" href="/zh-tw/posts/page/7/">»</a>
+</div>
+
+			</div>
+			
+<aside class="sidebar">
+<div class="widget-recent widget">
+	<h4 class="widget__title">近期文章</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/hokkaido/noboribetsu-jigokudani/">北海道自駕景點推薦 : 登別地獄谷、泉源公園、湯澤神社、閻魔堂</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/taiwan/kenting-caesarpark/">墾丁凱薩大飯店住宿體驗-墾丁大街、景點、酒吧</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/mongodb-atlas-compass-tips/">MongoDB Atlas 資料庫基礎觀念、操作流程與使用 Compass 連線</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/database-optimization-index-tips/">資料庫查詢性能優化技巧 : 語句優化、添加索引</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/dark-mode-tips-hugo/">黑暗模式(dark mode)設計與Hugo實作</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">分類</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/zh-tw/categories/%E6%B5%B7%E5%A4%96%E6%97%85%E9%81%8A/">海外旅遊</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">10</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/zh-tw/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E9%8C%84/">生活紀錄</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">11</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/zh-tw/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/">程式語言</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">12</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/zh-tw/categories/%E7%B4%94%E7%B2%B9%E5%88%86%E4%BA%AB/">純粹分享</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">6</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/zh-tw/categories/%E8%8B%B1%E6%96%87%E5%AD%B8%E7%BF%92/">英文學習</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">4</span></span>
+				
+				</li>
+		</ul>
+	</div>
+</div><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://cse.google.com/cse">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="站內搜尋…" value="" name="q" aria-label="站內搜尋…">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="http://sunnote.xyz">
+		<input type="hidden" name="cx" value="51cfcdef3e098403d" />
+	</form>
+</div>
+
+<div class="widget-taglist widget">
+	<h4 class="widget__title">標籤</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/csharp/" title="Csharp">Csharp (<span class="count">4</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/css/" title="CSS">CSS (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/hugo/" title="Hugo">Hugo (<span class="count">3</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/javascript/" title="JavaScript">JavaScript (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/leetcode/" title="LeetCode">LeetCode (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/nosql/" title="NoSQL">NoSQL (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/python/" title="Python">Python (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/sql/" title="SQL">SQL (<span class="count">4</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/web/" title="Web">Web (<span class="count">2</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E5%8C%97%E6%B5%B7%E9%81%93/" title="北海道">北海道 (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E5%8F%B0%E7%81%A3/" title="台灣">台灣 (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E5%A2%BE%E4%B8%81/" title="墾丁">墾丁 (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E5%AE%BF%E9%9C%A7/" title="宿霧">宿霧 (<span class="count">12</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E6%97%A5%E6%9C%AC/" title="日本">日本 (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E7%94%9F%E6%B4%BB/" title="生活">生活 (<span class="count">2</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E8%8B%B1%E6%96%87/" title="英文">英文 (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E8%8F%B2%E5%BE%8B%E8%B3%93/" title="菲律賓">菲律賓 (<span class="count">12</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1/" title="語言學校">語言學校 (<span class="count">8</span>)</a>
+	</div>
+</div>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+			<script>
+				$('.count').each(function () {
+				$(this).prop('Counter',0).animate({
+					Counter: $(this).text()
+				}, {
+					duration: 4000,
+					easing: 'swing',
+					step: function (now) {
+						$(this).text(Math.ceil(now));
+					}
+				});
+			});
+			</script><a href="https://info.flagcounter.com/8Z5p"><img src="https://s11.flagcounter.com/countxl/8Z5p/bg_FFFFFF/txt_000000/border_FFFFFF/columns_3/maxflags_30/viewers_3/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+<br>
+<br>
+<br>
+<iframe class="LikeCoin" height="180" src="https://button.like.co/in/embed/sunnote/button?referrer=http%3a%2f%2fsunnote.xyz%2fzh-tw%2fposts%2f" width="80%" frameborder=0></iframe>
+
+</aside>
+
+
+		</div>
+		
+<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy;  2022-2023 sunnote.
+			<span class="footer__copyright-credits">使用 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 技術與 <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>主題</span>
+
+		</div>
+
+	</div>
+	
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6706017277983363"
+     crossorigin="anonymous"></script>
+
+<script src="/js/copy-to-clipboard.js"></script>
+	</div>
+	<script async defer src="/js/menu.js"></script>
+	
+	<div class="floating-menu">
+		<button class="main-button"><i class="fas fa-bars"></i></button>
+		<div class="sub-buttons">
+		  <button class="sub-button" id="read-mode" title="Read mode"><i class="fas fa-book-open"></i></button>
+		  <button class="sub-button" id="toc" title="Toggle ToC"><i class="fa-solid fa-list-ol"></i></button>
+		  
+		  
+		</div>
+	</div>
+	<button class="toc-button" id ="toc-button"><i class="fa-solid fa-xmark"></i></button>
+</body>
+
+</html>
+
+
+<script>
+	const mainButton = document.querySelector('.main-button');
+	const iconElement = document.querySelector('.main-button i');
+	const subButtons = document.querySelector('.sub-buttons');
+
+	const readModeButton = document.getElementById('read-mode');
+	const icon_readmode = document.querySelector('#read-mode i');
+
+	const tocButton = document.getElementById('toc');
+	const icon_toc = document.querySelector('#toc i');
+
+	const tocButton1 = document.getElementById('toc-button');
+
+	const icon_theme = document.querySelector('#theme i');
+	
+	const asideElement = document.querySelector("aside.sidebar");
+	
+	const isSidebarVisible = localStorage.getItem('isSidebarVisible') !== 'false';
+	
+	function setSidebarLocalStorage(state) {
+  		localStorage.setItem("isSidebarVisible", state);
+	}
+
+	
+	const isTOCStatus = localStorage.getItem('isTOCStatus') !== 'false';
+	
+	function setTOCLocalStorage(state) {
+  		localStorage.setItem("isTOCStatus", state);
+	}
+
+	mainButton.addEventListener('click', () => {
+	  if (subButtons.style.display === 'block') {
+		  iconElement.classList.replace('fa-xmark', 'fa-bars');
+		  subButtons.style.display = 'none';
+	  } else {
+		  iconElement.classList.replace('fa-bars', 'fa-xmark');
+		  subButtons.style.display = 'block';
+	  }
+	});
+
+	readModeButton.addEventListener('click', () => {
+	  if (icon_readmode.classList.contains('fa-book-open')) {
+		showTOCButton();
+			setSidebarLocalStorage(false); 
+			setTOCLocalStorage(false);
+			asideElement.style.display = 'none';
+		  icon_readmode.classList.replace('fa-book-open', 'fa-angle-left');
+		  setTimeout(function() {
+			
+            document.querySelector(".primary").style = "flex: 1 0 100%;";
+			
+        }, 100);
+			document.querySelector(".post__toc.toc").className = "toc-side";
+			tocButton1.style.display='block';
+	  } else {
+			setSidebarLocalStorage(true); 
+			setTOCLocalStorage(true);
+			asideElement.style.display = 'block';
+		  icon_readmode.classList.replace('fa-angle-left', 'fa-book-open');
+		  setTimeout(function() {
+            document.querySelector(".primary").style = "flex: 0 0 65.83%;";
+        }, 100);
+			document.querySelector(".toc-side").className = "post__toc toc";
+			tocButton1.style.display='none';
+
+	  }
+	});
+	tocButton.addEventListener('click', () => {
+	  if (icon_toc.classList.contains('fa-list-ol')) {
+		  icon_toc.classList.replace('fa-list-ol', 'fa-xmark');
+		  document.querySelector(".post__toc.toc").className = "toc-side";
+		  tocButton1.style.display='block';
+		  setTOCLocalStorage(false);
+	  } else {
+		  icon_toc.classList.replace('fa-xmark', 'fa-list-ol');
+		  document.querySelector(".toc-side").className = "post__toc toc";
+		  tocButton1.style.display='none';
+		  setTOCLocalStorage(true);
+	  }
+	});
+	tocButton1.addEventListener('click', () => {
+		  icon_toc.classList.replace('fa-xmark', 'fa-list-ol');
+		  document.querySelector(".toc-side").className = "post__toc toc";
+		  tocButton1.style.display='none';
+		  setTOCLocalStorage(true);
+	});
+
+	icon_theme.addEventListener('click', () => {
+	  if (icon_theme.classList.contains('fa-sun')) {
+		  icon_theme.classList.replace('fa-sun', 'fa-moon');
+	  } else {
+		  icon_theme.classList.replace('fa-moon', 'fa-sun');
+	  }
+	});
+  </script>
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+  const isSidebarVisible = localStorage.getItem('isSidebarVisible') !== 'false';
+  const isTOCStatus = localStorage.getItem('isTOCStatus') !== 'false';
+  const asideElement = document.querySelector("aside.sidebar");
+  if (isSidebarVisible) {
+    asideElement.style.display = 'block';
+    document.querySelector(".primary").style = "flex: 0 0 65.83%;";
+    
+	icon_readmode.classList.remove('fa-angle-left');
+    icon_readmode.classList.add('fa-book-open');
+  } else {
+    asideElement.style.display = 'none';
+    document.querySelector(".primary").style = "flex: 1 0 100%;";
+    
+	icon_readmode.classList.remove('fa-book-open');
+    icon_readmode.classList.add('fa-angle-left');
+  }
+  if (isTOCStatus) {
+    document.querySelector(".toc-side").className = "post__toc toc";
+	icon_toc.classList.remove('fa-xmark');
+    icon_toc.classList.add('fa-list-ol');
+  } else {
+    document.querySelector(".post__toc.toc").className = "toc-side";
+	icon_toc.classList.remove('fa-list-ol');
+    icon_toc.classList.add('fa-xmark');
+  }
+});
+</script>
+<script>
+	function showTOCButton() {
+	
+	document.addEventListener('DOMContentLoaded', function() {
+ 		const tocSide = document.querySelector('.toc-side');
+  		const tocSideBTN = document.getElementById('toc-button');
+  	
+  	if(tocSide){
+		tocSideBTN.style.display='block';
+	}else{
+		tocSideBTN.style.display='none';
+	}
+});
+	}
+	showTOCButton();
+</script>
+<script src="https://sunnote.xyz/js-pkg/BackToTopButton.js"></script>
+<script>addBackToTop({
+		diameter: 40,
+		backgroundColor: 'rgb(172, 214, 255)',
+		textColor: '#fff',
+		scrollDuration: 300,
+		showWhenScrollTopIs: 800
+	})</script>
+
+
+
