@@ -16,7 +16,6 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://sunnote.xyz/zh-tw/tags/%E8%8B%B1%E6%96%87/" />
 
-
 		  	<meta property="og:image" content="https://sunnote.xyz/TravelIsGoodForTheSoul.webp" />
 	<meta itemprop="name" content="英文">
 <meta itemprop="description" content="Life is tough, but so are you.">
@@ -62,7 +61,7 @@
 		.sub-buttons {
 		  display: none;
 		  position: absolute;
-		  top: calc(100% - 130px);
+		  top: calc(100% - 170px);
 		  right: 0;
 		  background-color: var(--wrapperBG);
 		  border: 1px solid #ddd;
@@ -92,8 +91,14 @@
 		@import 'https://fonts.googleapis.com/css?family=Montserrat:400,700';
 .aa-input-container {
   display: inline-block;
-  position: relative;
-  width: 70%;
+  width: 90%;
+  left: 15%;
+  top: 10%;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  display: none;
 }
 .aa-input-container span,.aa-input-container input {
     width: inherit;
@@ -162,6 +167,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+
 }
 .aa-suggestion:hover, .aa-suggestion.aa-cursor {
     background-color: rgba(241, 241, 241, 0.35);
@@ -204,13 +210,6 @@
   color: #666;
 }
 
-.modal-body{
-	position: relative;
-	left: 100px;
-	top: 100px;
-	z-index:999;
-	display: none;
-}
 	  </style>
 	  <style>
 		#back-to-top {
@@ -221,7 +220,6 @@
 			border: none;
 			top: 85%;
 			box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.3);
-			text-align: xxx;
 		}
 
 	  </style>
@@ -282,9 +280,9 @@ if (!doNotTrack) {
       '<img src="' + suggestion.cover + '" alt="' + suggestion.title + '" />' +
       '</div>' +
       '<div class="suggestion-content">' +
-      '<a href="' + suggestion.url + '">' + suggestion.title + '</a>' +
+      '<h4><a href="' + suggestion.url + '">' + suggestion.title + '</a></h4>' +
       '<br>' +
-      '<small>' + suggestion.summary + '</small>' +
+      '<small>' + '<a href="' + suggestion.url + '">'+suggestion.summary+ '</a>' + '</small>' +
       '</div>' +
       '</div>';
         }
@@ -442,6 +440,22 @@ moon.addEventListener("click", () => {
           <a class="menu__link" href="/zh-tw/tags/%E5%8F%B0%E7%81%A3/">
             
             <span class="menu__text">台灣</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/zh-tw/tags/%E6%97%A5%E6%9C%AC/">
+            
+            <span class="menu__text">日本</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/zh-tw/tags/%E5%8C%97%E6%B5%B7%E9%81%93/">
+            
+            <span class="menu__text">北海道</span>
             
           </a>
           </li>
@@ -696,6 +710,8 @@ if (!doNotTrack) {
 		<div class="sub-buttons">
 		  <button class="sub-button" id="read-mode" title="Read mode"><i class="fas fa-book-open"></i></button>
 		  <button class="sub-button" id="toc" title="Toggle ToC"><i class="fa-solid fa-list-ol"></i></button>
+		  <button class="sub-button" id="search-algolia" title="Algolia Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+		  
 		  
 		  
 		</div>
@@ -720,6 +736,10 @@ if (!doNotTrack) {
 	const tocButton1 = document.getElementById('toc-button');
 
 	const icon_theme = document.querySelector('#theme i');
+
+	const searchButton = document.getElementById('search-algolia');
+	const icon_search = document.querySelector('#search-algolia i');
+	const algolia = document.querySelector('.aa-input-container');
 	
 	const asideElement = document.querySelector("aside.sidebar");
 	
@@ -793,11 +813,22 @@ if (!doNotTrack) {
 		  setTOCLocalStorage(true);
 	});
 
-	icon_theme.addEventListener('click', () => {
-	  if (icon_theme.classList.contains('fa-sun')) {
-		  icon_theme.classList.replace('fa-sun', 'fa-moon');
+	
+	
+	
+	
+	
+	
+	
+
+
+	searchButton.addEventListener('click', () => {
+		if (icon_search.classList.contains('fa-magnifying-glass')) {
+			algolia.style.display = 'block';
+			icon_search.classList.replace('fa-magnifying-glass', 'fa-xmark');
 	  } else {
-		  icon_theme.classList.replace('fa-moon', 'fa-sun');
+		algolia.style.display = 'none';
+		icon_search.classList.replace('fa-xmark', 'fa-magnifying-glass');
 	  }
 	});
   </script>
