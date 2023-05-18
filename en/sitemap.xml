@@ -18,12 +18,12 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/hokkaido/</loc>
-    <lastmod>2023-05-06T19:02:59+08:00</lastmod>
+    <lastmod>2023-05-07T08:29:57+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/tags/japan/</loc>
-    <lastmod>2023-05-06T19:02:59+08:00</lastmod>
+    <lastmod>2023-05-07T08:29:57+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -52,19 +52,19 @@
                 href="http://sunnote.xyz/posts/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/hokkaido/noboribetsu-jigokudani/</loc>
-    <lastmod>2023-05-06T19:02:59+08:00</lastmod>
+    <loc>http://sunnote.xyz/hokkaido/hakodate-attractions-lodging/</loc>
+    <lastmod>2023-05-07T08:29:57+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/hokkaido/noboribetsu-jigokudani/"
+                href="http://sunnote.xyz/zh-tw/hokkaido/hakodate-attractions-lodging/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://sunnote.xyz/hokkaido/noboribetsu-jigokudani/"
+                href="http://sunnote.xyz/hokkaido/hakodate-attractions-lodging/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/</loc>
@@ -95,6 +95,21 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://sunnote.xyz/tags/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/hokkaido/noboribetsu-jigokudani/</loc>
+    <lastmod>2023-05-06T19:02:59+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/hokkaido/noboribetsu-jigokudani/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/hokkaido/noboribetsu-jigokudani/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/categories/just-sharing/</loc>
