@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://sunnote.xyz/zh-tw/categories/</loc>
-    <lastmod>2023-05-07T08:29:57+08:00</lastmod>
+    <lastmod>2023-05-10T08:29:57+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -18,7 +18,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/posts/</loc>
-    <lastmod>2023-05-07T08:29:57+08:00</lastmod>
+    <lastmod>2023-05-10T08:29:57+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -33,7 +33,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/</loc>
-    <lastmod>2023-05-07T08:29:57+08:00</lastmod>
+    <lastmod>2023-05-10T08:29:57+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -48,7 +48,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/tags/</loc>
-    <lastmod>2023-05-07T08:29:57+08:00</lastmod>
+    <lastmod>2023-05-10T08:29:57+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -63,12 +63,37 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/tags/%E6%97%A5%E6%9C%AC/</loc>
-    <lastmod>2023-05-07T08:29:57+08:00</lastmod>
+    <lastmod>2023-05-10T08:29:57+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/tags/%E5%8C%97%E6%B5%B7%E9%81%93/</loc>
-    <lastmod>2023-05-07T08:29:57+08:00</lastmod>
+    <lastmod>2023-05-10T08:29:57+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/zh-tw/hokkaido/sapporo-dormyinn-kanihonke/</loc>
+    <lastmod>2023-05-10T08:29:57+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/hokkaido/sapporo-dormyinn-kanihonke/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/hokkaido/sapporo-dormyinn-kanihonke/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/zh-tw/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E9%8C%84/</loc>
+    <lastmod>2023-05-10T08:29:57+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/zh-tw/categories/%E6%B5%B7%E5%A4%96%E6%97%85%E9%81%8A/</loc>
+    <lastmod>2023-05-10T08:29:57+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -86,16 +111,6 @@
                 hreflang="zh-tw"
                 href="http://sunnote.xyz/zh-tw/hokkaido/hakodate-attractions-lodging/"
                 />
-  </url><url>
-    <loc>http://sunnote.xyz/zh-tw/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E9%8C%84/</loc>
-    <lastmod>2023-05-07T08:29:57+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://sunnote.xyz/zh-tw/categories/%E6%B5%B7%E5%A4%96%E6%97%85%E9%81%8A/</loc>
-    <lastmod>2023-05-07T08:29:57+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/hokkaido/noboribetsu-jigokudani/</loc>
     <lastmod>2023-05-06T19:02:59+08:00</lastmod>
