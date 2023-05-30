@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://sunnote.xyz/zh-tw/categories/</loc>
-    <lastmod>2023-05-10T08:29:57+08:00</lastmod>
+    <lastmod>2023-05-29T14:17:01+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -18,7 +18,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/posts/</loc>
-    <lastmod>2023-05-10T08:29:57+08:00</lastmod>
+    <lastmod>2023-05-29T14:17:01+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -33,7 +33,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/</loc>
-    <lastmod>2023-05-10T08:29:57+08:00</lastmod>
+    <lastmod>2023-05-29T14:17:01+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -48,7 +48,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/tags/</loc>
-    <lastmod>2023-05-10T08:29:57+08:00</lastmod>
+    <lastmod>2023-05-29T14:17:01+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -60,6 +60,36 @@
                 rel="alternate"
                 hreflang="zh-tw"
                 href="http://sunnote.xyz/zh-tw/tags/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/zh-tw/tags/%E6%8A%95%E8%B3%87%E7%90%86%E8%B2%A1/</loc>
+    <lastmod>2023-05-29T14:17:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/zh-tw/categories/%E7%B4%94%E7%B2%B9%E5%88%86%E4%BA%AB/</loc>
+    <lastmod>2023-05-29T14:17:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/zh-tw/tags/%E8%99%9B%E6%93%AC%E8%B2%A8%E5%B9%A3/</loc>
+    <lastmod>2023-05-29T14:17:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/zh-tw/cryptocurrency/exchange-recommendations-value-investing-insights/</loc>
+    <lastmod>2023-05-29T14:17:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/cryptocurrency/exchange-recommendations-value-investing-insights/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/cryptocurrency/exchange-recommendations-value-investing-insights/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/tags/%E6%97%A5%E6%9C%AC/</loc>
@@ -133,11 +163,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/tags/%E7%94%9F%E6%B4%BB/</loc>
-    <lastmod>2023-04-30T08:56:07+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://sunnote.xyz/zh-tw/categories/%E7%B4%94%E7%B2%B9%E5%88%86%E4%BA%AB/</loc>
     <lastmod>2023-04-30T08:56:07+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>

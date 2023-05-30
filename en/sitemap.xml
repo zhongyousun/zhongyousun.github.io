@@ -17,38 +17,33 @@
                 href="http://sunnote.xyz/categories/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/tags/hokkaido/</loc>
-    <lastmod>2023-05-10T08:29:57+08:00</lastmod>
+    <loc>http://sunnote.xyz/tags/cryptocurrency/</loc>
+    <lastmod>2023-05-29T14:17:01+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://sunnote.xyz/hokkaido/sapporo-dormyinn-kanihonke/</loc>
-    <lastmod>2023-05-10T08:29:57+08:00</lastmod>
+    <loc>http://sunnote.xyz/cryptocurrency/exchange-recommendations-value-investing-insights/</loc>
+    <lastmod>2023-05-29T14:17:01+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/hokkaido/sapporo-dormyinn-kanihonke/"
+                href="http://sunnote.xyz/zh-tw/cryptocurrency/exchange-recommendations-value-investing-insights/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://sunnote.xyz/hokkaido/sapporo-dormyinn-kanihonke/"
+                href="http://sunnote.xyz/cryptocurrency/exchange-recommendations-value-investing-insights/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/tags/japan/</loc>
-    <lastmod>2023-05-10T08:29:57+08:00</lastmod>
+    <loc>http://sunnote.xyz/tags/investing/</loc>
+    <lastmod>2023-05-29T14:17:01+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://sunnote.xyz/categories/life-record/</loc>
-    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://sunnote.xyz/categories/overseas-travel/</loc>
-    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
+    <loc>http://sunnote.xyz/categories/just-sharing/</loc>
+    <lastmod>2023-05-29T14:17:01+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -97,6 +92,41 @@
                 href="http://sunnote.xyz/tags/"
                 />
   </url><url>
+    <loc>http://sunnote.xyz/tags/hokkaido/</loc>
+    <lastmod>2023-05-10T08:29:57+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/hokkaido/sapporo-dormyinn-kanihonke/</loc>
+    <lastmod>2023-05-10T08:29:57+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/hokkaido/sapporo-dormyinn-kanihonke/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/hokkaido/sapporo-dormyinn-kanihonke/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tags/japan/</loc>
+    <lastmod>2023-05-10T08:29:57+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/categories/life-record/</loc>
+    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/categories/overseas-travel/</loc>
+    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>http://sunnote.xyz/hokkaido/hakodate-attractions-lodging/</loc>
     <lastmod>2023-05-07T08:29:57+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -126,11 +156,6 @@
                 hreflang="en"
                 href="http://sunnote.xyz/hokkaido/noboribetsu-jigokudani/"
                 />
-  </url><url>
-    <loc>http://sunnote.xyz/categories/just-sharing/</loc>
-    <lastmod>2023-04-30T08:56:07+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/tags/kenting/</loc>
     <lastmod>2023-04-30T08:56:07+08:00</lastmod>
