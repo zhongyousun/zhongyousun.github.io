@@ -17,35 +17,20 @@
                 href="http://sunnote.xyz/categories/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/tags/cryptocurrency/</loc>
-    <lastmod>2023-05-29T14:17:01+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://sunnote.xyz/cryptocurrency/exchange-recommendations-value-investing-insights/</loc>
-    <lastmod>2023-05-29T14:17:01+08:00</lastmod>
+    <loc>http://sunnote.xyz/tutorials/database-optimization-clustered-index-nonclustered-index/</loc>
+    <lastmod>2023-06-13T13:21:06+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/cryptocurrency/exchange-recommendations-value-investing-insights/"
+                href="http://sunnote.xyz/zh-tw/tutorials/database-optimization-clustered-index-nonclustered-index/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://sunnote.xyz/cryptocurrency/exchange-recommendations-value-investing-insights/"
+                href="http://sunnote.xyz/tutorials/database-optimization-clustered-index-nonclustered-index/"
                 />
-  </url><url>
-    <loc>http://sunnote.xyz/tags/investing/</loc>
-    <lastmod>2023-05-29T14:17:01+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://sunnote.xyz/categories/just-sharing/</loc>
-    <lastmod>2023-05-29T14:17:01+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/posts/</loc>
     <lastmod>2023-12-30T00:00:00+00:00</lastmod>
@@ -60,6 +45,26 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://sunnote.xyz/posts/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/categories/program/</loc>
+    <lastmod>2023-06-13T13:21:06+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/tags/sql/</loc>
+    <lastmod>2023-06-13T13:21:06+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/sql/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/sql/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/</loc>
@@ -91,6 +96,36 @@
                 hreflang="en"
                 href="http://sunnote.xyz/tags/"
                 />
+  </url><url>
+    <loc>http://sunnote.xyz/tags/cryptocurrency/</loc>
+    <lastmod>2023-05-29T14:17:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/cryptocurrency/exchange-recommendations-value-investing-insights/</loc>
+    <lastmod>2023-05-29T14:17:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/cryptocurrency/exchange-recommendations-value-investing-insights/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/cryptocurrency/exchange-recommendations-value-investing-insights/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tags/investing/</loc>
+    <lastmod>2023-05-29T14:17:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/categories/just-sharing/</loc>
+    <lastmod>2023-05-29T14:17:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/tags/hokkaido/</loc>
     <lastmod>2023-05-10T08:29:57+08:00</lastmod>
@@ -217,11 +252,6 @@
                 href="http://sunnote.xyz/tags/nosql/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/categories/program/</loc>
-    <lastmod>2023-04-24T15:33:44+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>http://sunnote.xyz/tutorials/database-optimization-index-tips/</loc>
     <lastmod>2023-03-29T09:38:14+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -235,21 +265,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://sunnote.xyz/tutorials/database-optimization-index-tips/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/tags/sql/</loc>
-    <lastmod>2023-03-29T09:38:14+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/sql/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/sql/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/css/</loc>

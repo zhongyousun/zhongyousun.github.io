@@ -6,7 +6,16 @@
     <description>Recent content on Sun Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 29 May 2023 14:17:01 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 13 Jun 2023 13:21:06 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Database Query Performance Optimization Tips : Index Concepts, Clustered, Non-Clustered</title>
+      <link>http://sunnote.xyz/tutorials/database-optimization-clustered-index-nonclustered-index/</link>
+      <pubDate>Tue, 13 Jun 2023 13:21:06 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/tutorials/database-optimization-clustered-index-nonclustered-index/</guid>
+      <description>&lt;p&gt;Recording tips for optimizing query performance through indexing, differences between clustered and non-clustered indexes.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Cryptocurrency Exchanges : User Experience, Value Investing, Diversification of Risk Perspective</title>
       <link>http://sunnote.xyz/cryptocurrency/exchange-recommendations-value-investing-insights/</link>

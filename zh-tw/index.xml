@@ -6,7 +6,16 @@
     <description>Recent content on Sun 記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 29 May 2023 14:17:01 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 13 Jun 2023 13:21:06 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>資料庫查詢性能優化技巧:索引概念、叢集、非叢集</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/database-optimization-clustered-index-nonclustered-index/</link>
+      <pubDate>Tue, 13 Jun 2023 13:21:06 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/database-optimization-clustered-index-nonclustered-index/</guid>
+      <description>&lt;p&gt;紀錄藉由索引優化查詢性能技巧方式，叢集與非叢集索引差異。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>虛擬貨幣 交易所推薦 : 分享使用體驗、價值投資、分散風險觀念</title>
       <link>http://sunnote.xyz/zh-tw/cryptocurrency/exchange-recommendations-value-investing-insights/</link>
