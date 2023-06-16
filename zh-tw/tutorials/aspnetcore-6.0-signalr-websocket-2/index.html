@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-tw">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<meta property="fb:app_id" content="725315935966817" />
+	<title>.NET 6 Web API 使用SignalR實作WebSocket技術實現即時通訊-2 - Sun 記事</title>
+	<script>(function (d, e) { d[e] = d[e].replace("no-js", "js"); })(document.documentElement, "className");</script>
+	<meta name="description"
+		content="">
+	<meta property="og:title" content=".NET 6 Web API 使用SignalR實作WebSocket技術實現即時通訊-2" />
+<meta property="og:description" content="使用.NET 6 Web API 建立 WebSocket 通訊，本篇紀錄模擬將使用者對應至連線ID並儲存與發送訊息功能的測試過程。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://sunnote.xyz/zh-tw/tutorials/aspnetcore-6.0-signalr-websocket-2/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-06-16T11:05:34+08:00" />
+<meta property="article:modified_time" content="2023-06-16T11:05:34+08:00" />
+<meta property="og:image" content="http://sunnote.xyz/img/thumbnail/034.webp" />
+		  	
+	<meta itemprop="name" content=".NET 6 Web API 使用SignalR實作WebSocket技術實現即時通訊-2">
+<meta itemprop="description" content="使用.NET 6 Web API 建立 WebSocket 通訊，本篇紀錄模擬將使用者對應至連線ID並儲存與發送訊息功能的測試過程。"><meta itemprop="datePublished" content="2023-06-16T11:05:34+08:00" />
+<meta itemprop="dateModified" content="2023-06-16T11:05:34+08:00" />
+<meta itemprop="wordCount" content="722">
+<meta itemprop="keywords" content="Web,Csharp,JavaScript," />
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=".NET 6 Web API 使用SignalR實作WebSocket技術實現即時通訊-2"/>
+<meta name="twitter:description" content="使用.NET 6 Web API 建立 WebSocket 通訊，本篇紀錄模擬將使用者對應至連線ID並儲存與發送訊息功能的測試過程。"/>
+
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+	<style>
+		
+		@media screen and (max-width: 850px) {
+		.main-button {
+			display: none;
+			}
+		}
+		.floating-menu {
+		  position: fixed;
+		  top: 80%;
+		  right: 10px;
+		  transform: translateY(-50%);
+		}
+  
+		.main-button {
+		  border: none;
+		  border-radius: 5px;
+		  background-color: #ACD6FF;
+		  color: #fff;
+		  font-size: 14px;
+		  cursor: pointer;
+		  height: 38px;
+		  width: 38px;
+		}
+  
+		.main-button:hover {
+		  background-color: #9accff;
+		  color: #333;
+		}
+  
+		.sub-buttons {
+		  display: none;
+		  position: absolute;
+		  top: calc(100% - 170px);
+		  right: 0;
+		  background-color: var(--wrapperBG);
+		  border: 1px solid #ddd;
+		  border-radius: 5px;
+		  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+		  width: 100%;
+		}
+		.sub-button {
+		  display: block;
+		  width: 100%;
+		  padding: 10px;
+		  border: none;
+		  background-color: transparent;
+		  color: var(--text-color);
+		  font-size: 14px;
+		  cursor: pointer;
+		}
+  
+		.sub-button:hover {
+		  background-color:var(--wrapperBG2);
+		  color: #ACD6FF;
+		}
+	  </style>
+	  
+	  
+	  <style>
+		@import 'https://fonts.googleapis.com/css?family=Montserrat:400,700';
+.aa-input-container {
+  display: inline-block;
+  width: 90%;
+  left: 15%;
+  top: 10%;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  display: none;
+}
+.aa-input-container span,.aa-input-container input {
+    width: inherit;
+}
+.aa-input-search {
+  width: 300px;
+  padding: 12px 28px 12px 12px;
+  border: 2px solid #e4e4e4;
+  border-radius: 4px;
+  -webkit-transition: .2s;
+  transition: .2s;
+  font-family: "Montserrat", sans-serif;
+  box-shadow: 4px 4px 0 rgba(241, 241, 241, 0.35);
+  font-size: 11px;
+  box-sizing: border-box;
+  color: #333;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.aa-input-search::-webkit-search-decoration, .aa-input-search::-webkit-search-cancel-button, .aa-input-search::-webkit-search-results-button, .aa-input-search::-webkit-search-results-decoration {
+    display: none;
+}
+.aa-input-search:focus {
+    outline: 0;
+    border-color: #3a96cf;
+    box-shadow: 4px 4px 0 rgba(58, 150, 207, 0.1);
+}
+.aa-input-icon {
+  height: 16px;
+  width: 16px;
+  position: absolute;
+  top: 25px;
+  right: 330px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  fill: #e4e4e4;
+}
+.aa-hint {
+  color: #e4e4e4;
+}
+.aa-dropdown-menu {
+  background-color: #fff;
+  border: 2px solid rgba(228, 228, 228, 0.6);
+  border-top-width: 1px;
+  font-family: "Montserrat", sans-serif;
+  width: 300px;
+  margin-top: 10px;
+  box-shadow: 4px 4px 0 rgba(241, 241, 241, 0.35);
+  font-size: 11px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.aa-suggestion {
+  padding: 12px;
+  border-top: 1px solid rgba(228, 228, 228, 0.6);
+  cursor: pointer;
+  -webkit-transition: .2s;
+  transition: .2s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+
+}
+.aa-suggestion:hover, .aa-suggestion.aa-cursor {
+    background-color: rgba(241, 241, 241, 0.35);
+}
+.aa-suggestion > span:first-child {
+    color: #333;
+}
+.aa-suggestion > span:last-child {
+    text-transform: uppercase;
+    color: #a9a9a9;
+}
+.aa-suggestion > span:first-child em, .aa-suggestion > span:last-child em {
+  font-weight: 700;
+  font-style: normal;
+  background-color: rgba(58, 150, 207, 0.1);
+  padding: 2px 0 2px 2px;
+}
+
+ 
+.aa-suggestion {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+
+.aa-suggestion img {
+  max-width: 64px;
+  max-height: 64px;
+  margin-right: 16px;
+}
+
+.aa-suggestion .aa-suggestion-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.aa-suggestion .aa-suggestion-summary {
+  font-size: 14px;
+  color: #666;
+}
+
+	  </style>
+	  <style>
+		#back-to-top {
+			right: 10px;
+  			border-radius: 5px;
+  			height: 38px;
+		  	width: 38px;
+			border: none;
+			top: 85%;
+			box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.3);
+		}
+
+	  </style>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" >
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MWPM4C5TJS"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-MWPM4C5TJS', { 'anonymize_ip': false });
+}
+</script>
+
+
+	
+</head>
+
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog" >
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  
+		</div>
+		<div class="modal-body">
+		  <div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="Search for titles or URIs..."
+      name="search" autocomplete="off" />
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+      <path
+        d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+  </div>
+  <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/algoliasearch.min.js"></script>
+  <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/autocomplete.min.js"></script>
+  <script>
+    var client = algoliasearch("6CA8UYGMKF","0b6aa5d5a7d49848cea785697d9a99ba");
+    var index = client.initIndex('sunnote');
+    autocomplete('#aa-search-input',
+      { hint: false }, {
+      source: autocomplete.sources.hits(index, { hitsPerPage: 20 }),
+      displayKey: 'name',
+      templates: {
+          suggestion: function (suggestion) {
+              return '<div class="suggestion">' +
+      '<div class="suggestion-image">' +
+      '<img src="' + suggestion.cover + '" alt="' + suggestion.title + '" />' +
+      '</div>' +
+      '<div class="suggestion-content">' +
+      '<h4><a href="' + suggestion.url + '">' + suggestion.title + '</a></h4>' +
+      '<br>' +
+      '<small>' + '<a href="' + suggestion.url + '">'+suggestion.summary+ '</a>' + '</small>' +
+      '</div>' +
+      '</div>';
+        }
+      }
+    });
+  
+    $('#searchGlyph').click(function() {
+      setTimeout(function(){
+        $('#aa-search-input').focus();
+      },300);
+    });
+  </script>
+		</div>
+	  </div>
+	</div>
+  </div>
+<span class="sun-btn">&#x2600;</span>
+<span class="moon-btn">&#x263D;</span>
+
+<script>
+	
+let darkModeState = false;
+
+const sun = document.querySelector('.sun-btn');
+const moon = document.querySelector('.moon-btn');
+
+
+const useDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+
+function toggleDarkMode(state) {
+  document.documentElement.classList.toggle("dark-mode", state);
+  darkModeState = state;
+}
+
+
+function setDarkModeLocalStorage(state) {
+  localStorage.setItem("dark-mode", state);
+}
+
+
+toggleDarkMode(localStorage.getItem("dark-mode") == "true");
+
+
+
+  useDark.addEventListener('change', (evt) => {
+    toggleDarkMode(evt.matches);
+  });
+
+
+
+sun.addEventListener("click", () => {
+  darkModeState = !darkModeState;
+
+  toggleDarkMode(darkModeState);
+  setDarkModeLocalStorage(darkModeState);
+});
+moon.addEventListener("click", () => {
+  darkModeState = !darkModeState;
+
+  toggleDarkMode(darkModeState);
+  setDarkModeLocalStorage(darkModeState);
+});
+</script>
+
+<body class="body">
+	
+	<script>
+		window.fbAsyncInit = function () {
+			FB.init({
+				appId: '725315935966817',
+				xfbml: true,
+				version: 'v16.0'
+			});
+			FB.AppEvents.logPageView();
+		};
+
+		(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) { return; }
+			js = d.createElement(s); js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
+
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/zh-tw" title="Sun Notes" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Sun Notes</div>
+					<div class="logo__tagline">Program , Life , Investment , Travel , Insights</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+  <button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+    <span class="menu__btn-title" tabindex="-1">☰選單</span>
+  </button>
+  <ul class="menu__list">
+    <li class="menu__item">
+      <a class="menu__link" href="/zh-tw/about">
+        <i class='fas fa-house'></i>
+          <span class="menu__text">關於</span>
+        
+      </a>
+    </li>
+    <li class="menu__item">
+      <a class="menu__link" href="/zh-tw/search">
+        <i class='fas fa-magnifying-glass'></i>
+          <span class="menu__text">站內查詢</span>
+        
+      </a>
+    </li>
+    <li class="menu__item">
+      <a class="menu__link" href="/zh-tw/archives">
+        <i class='fas fa-box-archive'></i>
+          <span class="menu__text">文章歸檔</span>
+        
+      </a>
+    </li>
+    <li class="menu__item menu__dropdown">
+      
+        <a class="menu__link">
+        <i class='fas fa-plane'></i>
+        <span class="menu__text">生活</span>
+        <label class="drop-icon" for="生活">▾</label>
+        
+      </a>
+      <input type="checkbox" id="生活">
+      <ul class="submenu__list">
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/zh-tw/tags/%E8%8F%B2%E5%BE%8B%E8%B3%93/">
+            
+            <span class="menu__text">菲律賓</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/zh-tw/tags/%E5%AE%BF%E9%9C%A7/">
+            
+            <span class="menu__text">宿霧</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/zh-tw/tags/%E5%8F%B0%E7%81%A3/">
+            
+            <span class="menu__text">台灣</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/zh-tw/tags/%E6%97%A5%E6%9C%AC/">
+            
+            <span class="menu__text">日本</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/zh-tw/tags/%E5%8C%97%E6%B5%B7%E9%81%93/">
+            
+            <span class="menu__text">北海道</span>
+            
+          </a>
+          </li>
+        
+      </ul>
+    </li>
+    <li class="menu__item menu__dropdown">
+      
+        <a class="menu__link">
+        <i class='fas fa-globe'></i>
+        <span class="menu__text"> </span>
+        <label class="drop-icon" for=" ">▾</label>
+        
+      </a>
+      <input type="checkbox" id=" ">
+      <ul class="submenu__list">
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/">
+            
+            <span class="menu__text">EN</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/zh-tw">
+            
+            <span class="menu__text">Zh</span>
+            
+          </a>
+          </li>
+        
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+	</div>
+</header>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-MWPM4C5TJS', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+		<div class="wrapper flex">
+			<div class="primary">
+				
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"></link>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"></link>
+<style>
+	.owl-theme .item {
+	  height: 15rem;
+	   
+	  background-color: var(--wrapperBG);
+	  padding: 0.5rem;
+	  box-shadow: 0 0 20px 0 var(--shadow); 
+	  transform:scale(0.9,0.9);
+	  transition: all 0.3s ease-out;
+	}
+	.owl-theme .item:hover {
+		margin-top: -10px;
+		 
+	}
+	
+	.owl-carousel .item h6 {
+	  color: #000000;
+	  font-weight: 400;
+	  font-size: 1rem;
+	  margin-top: 0rem;
+
+	  position: relative;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 5;  
+	text-overflow: ellipsis;
+	overflow: hidden;
+	}
+	.owl-carousel .item img {
+	  width: 100%;
+	  height: 7.5rem;
+	  border-radius: 4px;
+	}
+</style>
+
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">.NET 6 Web API 使用SignalR實作WebSocket技術實現即時通訊-2</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-calendar"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 5.332031 L 2 12.667969 C 2 13.035156 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 5.332031 C 14 4.964844 13.703125 4.667969 13.335938 4.667969 L 2.664062 4.667969 C 2.296875 4.667969 2 4.964844 2 5.332031 Z M 0.667969 5.332031 C 0.667969 4.230469 1.558594 3.332031 2.664062 3.332031 L 13.335938 3.332031 C 14.441406 3.332031 15.332031 4.230469 15.332031 5.332031 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.769531 0.667969 12.667969 Z M 2 7.332031 L 2 6 L 14 6 L 14 7.332031 Z M 4 2 C 4 1.632812 4.296875 1.332031 4.667969 1.332031 C 5.035156 1.332031 5.332031 1.628906 5.332031 2 L 5.332031 3.332031 L 4 3.332031 Z M 10.667969 2 C 10.667969 1.632812 10.960938 1.332031 11.332031 1.332031 C 11.703125 1.332031 12 1.628906 12 2 L 12 3.332031 L 10.667969 3.332031 Z M 10.667969 2 "/>
+</g>
+</svg>
+<time class="meta__text" datetime="2023-06-16T11:05:34&#43;08:00">June 16, 2023</time></div><div class="meta__item-categories meta__item">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-folders"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 6 L 2 12.664062 C 2 13.03125 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 8 C 14 7.632812 13.703125 7.332031 13.335938 7.332031 L 9.808594 7.332031 L 8.03125 5.332031 L 2.667969 5.332031 C 2.300781 5.332031 2 5.632812 2 6 Z M 13.335938 6 C 14.4375 6 15.332031 6.894531 15.332031 8 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.761719 0.667969 12.664062 L 0.667969 6 C 0.667969 4.894531 1.5625 4 2.667969 4 L 8.632812 4 L 10.40625 6 Z M 4.425781 3.625 C 4.425781 3.625 4.425781 3.703125 4.425781 4.074219 C 4.425781 4.328125 5.15625 4.75 6 4.667969 C 6.777344 4.589844 8.453125 4.589844 8.796875 5.050781 C 10 6.667969 14.242188 7.15625 14.242188 6.667969 L 14.242188 5.25 C 14.242188 4.949219 14 4.707031 13.699219 4.707031 L 10.8125 4.707031 L 9.359375 3.082031 L 4.972656 3.082031 C 4.667969 3.082031 4.425781 3.328125 4.425781 3.625 Z M 13.699219 3.625 C 14.601562 3.625 15.332031 4.351562 15.332031 5.25 L 15.332031 8 C 15.332031 8.304688 14.667969 6.667969 10 6.667969 C 8.652344 6.160156 9.402344 5.636719 8 5.25 C 6.496094 4.832031 4.703125 5.296875 3.863281 5.285156 C 3.320312 5.273438 3.332031 4.855469 3.332031 4.667969 L 3.332031 3.625 C 3.332031 2.726562 4.066406 2 4.972656 2 L 9.851562 2 L 11.300781 3.625 Z M 13.699219 3.625 "/>
+</g>
+</svg>
+<span class="meta__text"><a class="meta__link" href="/zh-tw/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/" rel="category">程式語言</a>
+	</span>
+</div>
+<div class="meta__item-translations meta__item"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+class="meta__icon icon icon-author"
+width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 5.121094 L 2 13.109375 C 2 13.484375 2.25 13.617188 2.554688 13.410156 L 5.445312 11.488281 C 5.75 11.28125 6.25 11.28125 6.554688 11.488281 L 9.445312 13.410156 C 9.75 13.617188 10.25 13.617188 10.554688 13.410156 L 13.445312 11.488281 C 13.75 11.28125 14 10.816406 14 10.445312 L 14 2.453125 C 14 2.082031 13.75 1.949219 13.445312 2.152344 L 10.554688 4.078125 C 10.25 4.28125 9.75 4.28125 9.445312 4.078125 L 6.554688 2.152344 C 6.25 1.949219 5.75 1.949219 5.445312 2.152344 L 2.554688 4.078125 C 2.25 4.28125 2 4.75 2 5.121094 Z M 0.667969 5.121094 C 0.667969 4.304688 1.140625 3.421875 1.816406 2.96875 L 4.703125 1.042969 C 5.460938 0.539062 6.542969 0.542969 7.296875 1.042969 L 10.183594 2.96875 C 10.042969 2.875 9.957031 2.875 9.816406 2.96875 L 12.703125 1.042969 C 13.898438 0.246094 15.332031 1.019531 15.332031 2.453125 L 15.332031 10.445312 C 15.332031 11.261719 14.859375 12.144531 14.183594 12.597656 L 11.296875 14.519531 C 10.539062 15.023438 9.457031 15.023438 8.703125 14.519531 L 5.816406 12.597656 C 5.957031 12.691406 6.042969 12.691406 6.183594 12.597656 L 3.296875 14.519531 C 2.101562 15.316406 0.667969 14.542969 0.667969 13.109375 Z M 5.332031 1.78125 L 6.667969 1.78125 L 6.667969 11.78125 L 5.332031 11.78125 Z M 9.332031 3.78125 L 10.667969 3.78125 L 10.667969 13.78125 L 9.332031 13.78125 Z M 9.332031 3.78125 "/>
+</g>
+</svg>
+<span class="meta__text"><a class="meta__link" href="/tutorials/aspnetcore-6.0-signalr-websocket-2/">EN</a>　
+	</span>
+</div>
+
+				
+				
+				
+				<span>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-clock"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 8 12.667969 C 10.578125 12.667969 12.667969 10.578125 12.667969 8 C 12.667969 5.421875 10.578125 3.332031 8 3.332031 C 5.421875 3.332031 3.332031 5.421875 3.332031 8 C 3.332031 10.578125 5.421875 12.667969 8 12.667969 Z M 3.957031 12.433594 C 2.753906 11.335938 2 9.757812 2 8 C 2 4.6875 4.6875 2 8 2 C 11.3125 2 14 4.6875 14 8 C 14 9.757812 13.246094 11.335938 12.042969 12.433594 L 12.9375 13.328125 C 13.207031 13.597656 13.203125 14.015625 12.941406 14.277344 C 12.679688 14.539062 12.257812 14.535156 11.996094 14.273438 L 10.949219 13.226562 C 10.078125 13.71875 9.070312 14 8 14 C 6.929688 14 5.921875 13.71875 5.050781 13.226562 L 4.003906 14.273438 C 3.738281 14.539062 3.316406 14.535156 3.058594 14.277344 C 2.796875 14.015625 2.796875 13.589844 3.0625 13.328125 Z M 7.332031 5.335938 C 7.332031 4.964844 7.628906 4.667969 8 4.667969 C 8.367188 4.667969 8.667969 4.957031 8.667969 5.335938 L 8.667969 9.332031 L 7.332031 9.332031 Z M 5.332031 8.667969 C 5.332031 8.296875 5.628906 8 6 8 L 7.332031 8 L 7.332031 9.332031 L 6 9.332031 C 5.632812 9.332031 5.332031 9.039062 5.332031 8.667969 Z M 5.332031 8.667969 "/>
+</g>
+</svg>
+9 min read.　</span>
+				
+			
+				
+
+			</div>
+
+
+			<div id="fb-root"></div>
+			<script async defer crossorigin="anonymous"
+				src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0&appId=725315935966817&autoLogAppEvents=1"
+				nonce="aF40iZ15"></script>
+		</header>
+		
+	<figure class="post__thumbnail thumbnail">
+		
+		<img class="thumbnail__image" src="/img/thumbnail/034.webp" alt=".NET 6 Web API 使用SignalR實作WebSocket技術實現即時通訊-2">
+		
+	</figure>
+<div class="post__toc toc">
+	<div class="toc__title">目錄</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#前言foreword">前言Foreword</a></li>
+        <li><a href="#原理principle">原理Principle</a></li>
+        <li><a href="#將使用者綁定至連線id">將使用者綁定至連線ID</a></li>
+        <li><a href="#實作">實作</a></li>
+        <li><a href="#前端程式碼">前端程式碼</a></li>
+        <li><a href="#測試結果">測試結果</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<p>使用.NET 6 Web API 建立 WebSocket 通訊，本篇紀錄模擬將使用者對應至連線ID並儲存與發送訊息功能的測試過程。</p>
+<h3 id="前言foreword">前言Foreword</h3>
+<p>上一篇已經介紹了全推播的使用方法，只要有連線上的使用者都能接收到訊息，接下來要模擬對特定使用者進行推播的功能。</p>
+<h3 id="原理principle">原理Principle</h3>
+<p>WebSocket 通訊，只要使用者連線就會自動生成一個連線ID，若程式邏輯是使用者執行某項操作時，就對其推播訊息，是非常容易的，只要針對當下的連線ID發送推播即可。但實際上邏輯可能更複雜，通常會是使用者A執行某項操作，或是想直接對另一使用者B發送推播，這時就必須針對特定的使用者ID與連線ID進行綁定，這樣在進行推播時，才能藉由已知的使用者ID取得連線ID並推播。</p>
+<h3 id="將使用者綁定至連線id">將使用者綁定至連線ID</h3>
+<p>通常在使用者連線時即需同時儲存使用者ID與連線ID，在實際要推播時才能查詢使用者對應的連線ID，方法主要分為<code>儲存至記憶體與資料庫</code>，儲存在記憶體的優點是效能較好，但若伺服器重啟相關資訊則會遺失;儲存在資料庫則可以永久儲存資料，缺點則是效能會較差一點。至於要選擇使用哪一種則需要考慮實際的應用情況。</p>
+<p>詳細資訊可以查閱教程: <a href="https://learn.microsoft.com/en-us/aspnet/signalr/overview/guide-to-the-api/mapping-users-to-connections" title="Mapping SignalR Users to Connections" target="_blank" rel="noopener">Mapping SignalR Users to Connections</a></p>
+<h3 id="實作">實作</h3>
+<p>預設使用者連線時需輸入使用者名稱，在按下登入時，會將使用者名稱傳給後端，後端立即將使用者名稱綁定此連線ID。後續若要傳遞給特定使用者，只要從儲存的數據中查詢使用者對應的連線ID，再傳送資訊即可。</p>
+<p>過程大致如下:</p>
+<hr>
+<p><code>輸入使用者名稱 ➜ 綁定使用者名稱與連線ID並儲存</code></p>
+<p><code>使用者B傳遞訊息給A ➜ 搜尋已儲存的使用者名稱A ➜ 取得連線ID並傳送</code></p>
+<p><code>使用者離線 ➜ 刪除已儲存的連線ID</code></p>
+<hr>
+<p>在 Hub/IMessageHub.cs 新增兩個介面:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">namespace</span> SignalR_Example.Hub
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IMessageHub</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>        Task sendToAllConnections(List&lt;<span style="color:#66d9ef">string</span>&gt; message);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>        Task JsonDataTransfer(<span style="color:#66d9ef">dynamic</span> message);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>        Task StringDataTransfer(<span style="color:#66d9ef">string</span> message);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span>}
+</span></span></code></pre></div><p><code>JsonDataTransfer</code> 用來傳遞 JSON 物件</p>
+<p><code>StringDataTransfer</code> 用來傳遞字串</p>
+<hr>
+<p>在 Hub/MessageHub.cs 新增幾個功能如下:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> Dictionary&lt;<span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">string</span>&gt; userInfoDict = <span style="color:#66d9ef">new</span> Dictionary&lt;<span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">string</span>&gt;();
+</span></span></code></pre></div><p>因為只是模擬，資料的儲存僅使用記憶體儲存。</p>
+<p>userInfoDict 的 key 為使用者名稱，value 為 連線ID。</p>
+<div id="block1"></div>
+<script>
+    var myDiv = document.getElementById("block1");
+    for (var i = 0; i <  3 ; i++) {
+      var brTag = document.createElement("br");
+      myDiv.appendChild(brTag);
+    }
+</script>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task LoadUserInfo(<span style="color:#66d9ef">dynamic</span> message)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">dynamic</span> dynParam = JsonConvert.DeserializeObject(Convert.ToString(message));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> userID = dynParam.userId;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> ID = Context.ConnectionId;
+</span></span><span style="display:flex;"><span>    userInfoDict[userID] = ID;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> Clients.Client(ID).StringDataTransfer(<span style="color:#e6db74">&#34;Login successfully.&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>模擬前端在使用者登入時，傳送Json物件給後端，儲存在userInfoDict後，會呼叫<code>StringDataTransfer</code>傳遞<code>登入成功</code>給前端。</p>
+<p><code>Context.ConnectionId</code> 是 SignalR 套件中的一個屬性，用於取得目前連線的 Connection ID。</p>
+<div id="block2"></div>
+<script>
+    var myDiv = document.getElementById("block2");
+    for (var i = 0; i <  3 ; i++) {
+      var brTag = document.createElement("br");
+      myDiv.appendChild(brTag);
+    }
+</script>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task SendToConnection(<span style="color:#66d9ef">string</span> userID, <span style="color:#66d9ef">string</span> message)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (userInfoDict.ContainsKey(userID))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> Clients.Client(userInfoDict[userID]).StringDataTransfer(message);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>模擬前端使用者傳訊息給另一使用者，藉由 userID，查詢<code>userInfoDict</code>是否有連線ID，若有則藉由<code>StringDataTransfer</code>傳遞字串。</p>
+<div id="block3"></div>
+<script>
+    var myDiv = document.getElementById("block3");
+    for (var i = 0; i <  3 ; i++) {
+      var brTag = document.createElement("br");
+      myDiv.appendChild(brTag);
+    }
+</script>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// Automatically obtaining the connection ID</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> Task OnConnectedAsync()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//string userId = Context.User.Identity.Name;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> connectionId = Context.ConnectionId;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">base</span>.OnConnectedAsync();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>此為SignalR內建的方法，若使用者連線，即可進入此方法。因模擬為使用者需先輸入userID，所以並沒有在這部分測試。</p>
+<div id="block4"></div>
+<script>
+    var myDiv = document.getElementById("block4");
+    for (var i = 0; i <  3 ; i++) {
+      var brTag = document.createElement("br");
+      myDiv.appendChild(brTag);
+    }
+</script>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// Disconnecting and automatically removing the connection ID</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;param name=&#34;exception&#34;&gt;&lt;/param&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> Task OnDisconnectedAsync(Exception exception)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> ID = Context.ConnectionId;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> userID = <span style="color:#66d9ef">string</span>.Empty;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (userInfoDict.ContainsValue(ID))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">string</span> key = userInfoDict.FirstOrDefault(x =&gt; x.Value == ID).Key;
+</span></span><span style="display:flex;"><span>        userInfoDict.Remove(key);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">base</span>.OnDisconnectedAsync(exception);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>此為SignalR內建的方法，若使用者離線，即可進入此方法，模擬使用者離線，即移除儲存在<code>userInfoDict</code>的連線資料。</p>
+<p>以上兩種內建方法，可以自行下中斷點測試。</p>
+<p>Hub/MessageHub.cs 完整程式碼:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">namespace</span> SignalR_Example.Hub
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MessageHub</span>: Hub&lt;IMessageHub&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task sendToAllConnections(List&lt;<span style="color:#66d9ef">string</span>&gt; message)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>        {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>            <span style="color:#66d9ef">await</span> Clients.All.sendToAllConnections(message);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>        }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> Dictionary&lt;<span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">string</span>&gt; userInfoDict = <span style="color:#66d9ef">new</span> Dictionary&lt;<span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">string</span>&gt;();
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task LoadUserInfo(<span style="color:#66d9ef">dynamic</span> message)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>        {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>            <span style="color:#66d9ef">dynamic</span> dynParam = JsonConvert.DeserializeObject(Convert.ToString(message));
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>            <span style="color:#66d9ef">string</span> userID = dynParam.userId;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>            <span style="color:#66d9ef">var</span> ID = Context.ConnectionId;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>            userInfoDict[userID] = ID;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>            <span style="color:#66d9ef">await</span> Clients.Client(ID).StringDataTransfer(<span style="color:#e6db74">&#34;Login successfully.&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>        }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task SendToConnection(<span style="color:#66d9ef">string</span> userID, <span style="color:#66d9ef">string</span> message)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>        {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>            <span style="color:#66d9ef">if</span> (userInfoDict.ContainsKey(userID))
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>            {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>                <span style="color:#66d9ef">await</span> Clients.Client(userInfoDict[userID]).StringDataTransfer(message);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>            }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>        }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>        <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>        <span style="color:#75715e">/// Automatically obtaining the connection ID</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span>        <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span>        <span style="color:#75715e">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> Task OnConnectedAsync()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span><span>        {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span><span>            <span style="color:#75715e">//string userId = Context.User.Identity.Name;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34</span><span>            <span style="color:#66d9ef">string</span> connectionId = Context.ConnectionId;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35</span><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">base</span>.OnConnectedAsync();
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36</span><span>        }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38</span><span>        <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39</span><span>        <span style="color:#75715e">/// Disconnecting and automatically removing the connection ID</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40</span><span>        <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41</span><span>        <span style="color:#75715e">/// &lt;param name=&#34;exception&#34;&gt;&lt;/param&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42</span><span>        <span style="color:#75715e">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43</span><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> Task OnDisconnectedAsync(Exception exception)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44</span><span>        {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45</span><span>            <span style="color:#66d9ef">string</span> ID = Context.ConnectionId;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46</span><span>            <span style="color:#66d9ef">string</span> userID = <span style="color:#66d9ef">string</span>.Empty;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47</span><span>            <span style="color:#66d9ef">if</span> (userInfoDict.ContainsValue(ID))
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48</span><span>            {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49</span><span>                <span style="color:#66d9ef">string</span> key = userInfoDict.FirstOrDefault(x =&gt; x.Value == ID).Key;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50</span><span>                userInfoDict.Remove(key);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51</span><span>            }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52</span><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">base</span>.OnDisconnectedAsync(exception);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53</span><span>        }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55</span><span>}
+</span></span></code></pre></div><hr>
+<p>在Controllers/MsgController.cs 新增一個對特定使用者傳資訊的API，模擬藉由API啟動即時通訊。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#a6e22e">[HttpPost]</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#a6e22e">[Route(&#34;toUser&#34;)]</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> toUser([FromBody] JsonElement jobj)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>    <span style="color:#66d9ef">var</span> userID = jobj.GetProperty(<span style="color:#e6db74">&#34;userID&#34;</span>).GetString();
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    <span style="color:#66d9ef">var</span> Msg = jobj.GetProperty(<span style="color:#e6db74">&#34;msg&#34;</span>).GetString();
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    <span style="color:#66d9ef">if</span> (MessageHub.userInfoDict.ContainsKey(userID))
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>        messageHub.Clients.Client(MessageHub.userInfoDict[userID]).StringDataTransfer(Msg);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Msg sent successfully to user!&#34;</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Msg sent failed to user!&#34;</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>}
+</span></span></code></pre></div><h3 id="前端程式碼">前端程式碼</h3>
+<p>接下來，就是前端的畫面顯示，因為主要是測試連線的功能，前端所收到的訊息為了方便都會顯示在console上。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-HTML" data-lang="HTML"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>    &lt;<span style="color:#f92672">title</span>&gt;SignalR TEST &lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/@microsoft/signalr@5.0.7/dist/browser/signalr.min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    &lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>        <span style="color:#75715e">// 建立 SignalR Hub 連線
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">hubConnection</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">signalR</span>.<span style="color:#a6e22e">HubConnectionBuilder</span>()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>            .<span style="color:#a6e22e">withUrl</span>(<span style="color:#e6db74">&#34;https://localhost:7013/messageHub/&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>            .<span style="color:#a6e22e">build</span>();
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>        <span style="color:#a6e22e">hubConnection</span>.<span style="color:#a6e22e">start</span>()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>            .<span style="color:#a6e22e">then</span>(() =&gt; {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>                <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Connection started&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>            });
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>        
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>        <span style="color:#75715e">// 使用者點擊Login按鈕時的處理函式
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">onLoginClick</span>() {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>            <span style="color:#75715e">// 取得使用者輸入的使用者ID
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">userId</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;userIdInput&#34;</span>).<span style="color:#a6e22e">value</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>            <span style="color:#75715e">// 將使用者ID包成 JSON 格式
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">jsonData</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>                <span style="color:#e6db74">&#34;userId&#34;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">userId</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>            };
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span>            
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span>            <span style="color:#75715e">// 使用 SignalR Hub 的 LoadUserInfo 方法，將 JSON 資料傳送至後端
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">hubConnection</span>.<span style="color:#a6e22e">invoke</span>(<span style="color:#e6db74">&#34;LoadUserInfo&#34;</span>, <span style="color:#a6e22e">jsonData</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span><span>                .<span style="color:#a6e22e">then</span>(() =&gt; {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span><span>                    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Data sent successfully!&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34</span><span>                })
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35</span><span>                .<span style="color:#66d9ef">catch</span>((<span style="color:#a6e22e">error</span>) =&gt; {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36</span><span>                    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37</span><span>                });
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38</span><span>        }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41</span><span>        <span style="color:#75715e">// 使用者點擊Send按鈕時的處理函式
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42</span><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">onSendClick</span>() {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43</span><span>            <span style="color:#75715e">// 取得使用者輸入的使用者ID
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44</span><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">userId</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;msgUserIdInput&#34;</span>).<span style="color:#a6e22e">value</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45</span><span>            <span style="color:#75715e">// 取得使用者輸入的訊息
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46</span><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">msg</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;msgInput&#34;</span>).<span style="color:#a6e22e">value</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48</span><span>            <span style="color:#75715e">// 使用 SignalR Hub 的 SendToConnection 方法，將資料傳送至另一使用者
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49</span><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">hubConnection</span>.<span style="color:#a6e22e">invoke</span>(<span style="color:#e6db74">&#34;SendToConnection&#34;</span>, <span style="color:#a6e22e">userId</span>, <span style="color:#a6e22e">msg</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50</span><span>                .<span style="color:#a6e22e">then</span>(() =&gt; {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51</span><span>                    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Msg sent successfully!&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52</span><span>                })
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53</span><span>                .<span style="color:#66d9ef">catch</span>((<span style="color:#a6e22e">error</span>) =&gt; {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54</span><span>                    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55</span><span>                });
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56</span><span>        }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58</span><span>        <span style="color:#75715e">// 註冊 MessageHub 的事件
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59</span><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">hubConnection</span>.<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#34;sendToAllConnections&#34;</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">msgs</span>) {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60</span><span>            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;To All Connections:&#34;</span>, <span style="color:#a6e22e">msgs</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61</span><span>        });
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63</span><span>        <span style="color:#a6e22e">hubConnection</span>.<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#34;StringDataTransfer&#34;</span>, (<span style="color:#a6e22e">response</span>) =&gt; {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64</span><span>            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Received Msg:&#34;</span>, <span style="color:#a6e22e">response</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65</span><span>        });
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66</span><span>        
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68</span><span>    &lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69</span><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">70</span><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">71</span><span>    SignalR TEST
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">72</span><span>    &lt;<span style="color:#f92672">hr</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">73</span><span>    &lt;<span style="color:#f92672">label</span> <span style="color:#a6e22e">for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;userIdInput&#34;</span>&gt;Please enter user ID：&lt;/<span style="color:#f92672">label</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">74</span><span>    &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;userIdInput&#34;</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">75</span><span>    &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;onLoginClick()&#34;</span>&gt;Login&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">76</span><span>    &lt;<span style="color:#f92672">hr</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">77</span><span>    &lt;<span style="color:#f92672">label</span> <span style="color:#a6e22e">for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;msgUserIdInput&#34;</span>&gt;User ID：&lt;/<span style="color:#f92672">label</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">78</span><span>    &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;msgUserIdInput&#34;</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">79</span><span>    &lt;<span style="color:#f92672">label</span> <span style="color:#a6e22e">for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;msgInput&#34;</span>&gt;msg:&lt;/<span style="color:#f92672">label</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">80</span><span>    &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;msgInput&#34;</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">81</span><span>    &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;onSendClick()&#34;</span>&gt;Send&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">82</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">83</span><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">84</span><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><h3 id="測試結果">測試結果</h3>
+<p>測試時，可以開啟多個網頁，在登入時使用不同的userID，過程中可以開啟中段點，查看執行的過程。</p>
+<p><figure><img src="pics/B.png" width="80%"/><figcaption>
+            <h4>使用者 B 登入，並傳訊息給使用者 A</h4>
+        </figcaption>
+</figure>
+<br>
+<figure><img src="pics/A.png" width="80%"/><figcaption>
+            <h4>使用者 A 的介面，確認收到訊息</h4>
+        </figcaption>
+</figure>
+</p>
+<p>以上為使用 Web API 簡單的實踐即時通訊功能方式。過程包含綁定使用者、連線ID 並儲存，且提供對特定使用者即時通訊的API。雖然前端畫面有點簡陋，但主要是為了解其中原理，我想應該是任何功能都可以實現了吧。</p>
+<p>專案已上傳至
+<a href="https://github.com/zhongyousun/SignalR-example" title="Github" target="_blank" rel="noopener">Github</a>。</p>
+		</div>
+		<br>
+		<br>
+		
+		<br>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/zh-tw/tags/web/" rel="tag">Web</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/zh-tw/tags/csharp/" rel="tag">Csharp</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/zh-tw/tags/javascript/" rel="tag">JavaScript</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+		<hr>
+		<div id="type-effect">
+</div>
+<br>
+<br>
+<br>
+<br>
+<iframe class="LikeCoin" height="180" src="https://button.like.co/in/embed/sunnote/button?referrer=http%3a%2f%2fsunnote.xyz%2fzh-tw%2ftutorials%2faspnetcore-6.0-signalr-websocket-2%2f" width="80%" frameborder=0></iframe>
+
+<style>
+	#type-effect {
+	  white-space: nowrap;
+	  overflow: hidden;
+	  font-size: 20px;
+	  font-family: monospace, sans-serif  ;
+	  border-right: 1px solid rgb(255, 255, 255);
+	   
+	  padding-right: 5px;
+	  white-space: pre-wrap;
+	  position: absolute;
+    
+	}
+  </style>
+  <script>
+  	var url = window.location.href;
+	var ln = "en";
+	if (url.indexOf("/zh-tw/") > -1) {
+  	ln = "zh";
+	}
+	if (ln === "zh") {
+	  var message = "如果這個文章對您有幫助或是有任何疑問，歡迎留言。👇"
+	  speed = 100
+	}
+	else {
+	  var message = "If this posts was helpful to you or if you have any questions, feel free to leave a comment and ask.👇"
+	  speed = 50
+	}
+  
+	const typeEffectDiv = document.getElementById("type-effect");
+  
+	function typeEffect(message, element) {
+	  let i = 0;
+	  const interval = setInterval(function () {
+		if (i === message.length) {
+		  clearInterval(interval);
+		  setTimeout(function () {
+			element.textContent = "";
+			typeEffect(message, element);
+		  }, 2000); 
+		} else {
+		  element.textContent += message[i];
+		  i++;
+		}
+	  }, speed); 
+
+	}
+	typeEffect(message, typeEffectDiv);
+  </script>
+
+	</article>
+</main>
+
+
+<hr>
+<div class="related-content">
+
+<h3>也可以看看</h3>
+
+<div class="owl-carousel owl-theme"> 
+	  
+	  
+	
+	 
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/tutorials/aspnetcore-6.0-signalr-websocket-1/">
+					<img src="https://sunnote.xyz/img/thumbnail/029.webp" alt=".NET 6 Web API 使用SignalR實作WebSocket技術實現即時通訊-1"/>
+					
+				</a>
+			
+
+			<h6><a href="/zh-tw/tutorials/aspnetcore-6.0-signalr-websocket-1/">.NET 6 Web API 使用SignalR實作WebSocket技術實現即時通訊-1
+				
+				<br>
+				<time datetime="2023-06-15T08:08:13&#43;0000">
+					June 15, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/tutorials/dark-mode-tips-hugo/">
+					<img src="https://sunnote.xyz/img/thumbnail/024.webp" alt="黑暗模式(dark mode)設計與Hugo實作"/>
+					
+				</a>
+			
+
+			<h6><a href="/zh-tw/tutorials/dark-mode-tips-hugo/">黑暗模式(dark mode)設計與Hugo實作
+				
+				<br>
+				<time datetime="2023-03-22T03:34:07&#43;0000">
+					March 22, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/tutorials/jwt-authentication-mechanism/">
+					<img src="https://sunnote.xyz/img/thumbnail/022.png" alt="JWT 驗證機制原理與實作範例 (C#)"/>
+					
+				</a>
+			
+
+			<h6><a href="/zh-tw/tutorials/jwt-authentication-mechanism/">JWT 驗證機制原理與實作範例 (C#)
+				
+				<br>
+				<time datetime="2023-03-06T08:05:44&#43;0000">
+					March 6, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<h6><a href="/zh-tw/tutorials/sql-partition-by/">SQL-partition by 實現資料分組
+				&ndash; 
+				<time datetime="2023-02-07T00:00:00&#43;0000">
+					February 7, 2023
+				</time></a></h6>
+				<hr>
+				<h6><a>使用SQL partition by 實現資料分割，比較LINQ與partition by效能。
+</a></h6>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<h6><a href="/zh-tw/tutorials/csharp-multithreading/">C# 多執行緒原理、非同步用法與帶入自定義物件
+				&ndash; 
+				<time datetime="2023-01-19T03:49:15&#43;0000">
+					January 19, 2023
+				</time></a></h6>
+				<hr>
+				<h6><a>C# 多執行緒原理、非同步用法與帶入自定義物件學習過程紀錄。
+目前遇到的專案都沒有硬性需求使用到多執行緒，此篇為紀錄自己的理解與學習的過程。
+</a></h6>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<h6><a href="/zh-tw/tutorials/csharp-enum/">C# Enum(枚舉) 用法紀錄
+				&ndash; 
+				<time datetime="2023-01-15T00:49:07&#43;0000">
+					January 15, 2023
+				</time></a></h6>
+				<hr>
+				<h6><a>C#-Enum(枚舉)用途與使用擴充方法取得description詳細紀錄。
+</a></h6>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/tutorials/database-optimization-clustered-index-nonclustered-index/">
+					<img src="https://sunnote.xyz/img/thumbnail/036.png" alt="資料庫查詢性能優化技巧:索引概念、叢集、非叢集"/>
+					
+				</a>
+			
+
+			<h6><a href="/zh-tw/tutorials/database-optimization-clustered-index-nonclustered-index/">資料庫查詢性能優化技巧:索引概念、叢集、非叢集
+				
+				<br>
+				<time datetime="2023-06-13T05:21:06&#43;0000">
+					June 13, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/cryptocurrency/exchange-recommendations-value-investing-insights/">
+					<img src="https://sunnote.xyz/img/thumbnail/033.webp" alt="虛擬貨幣 交易所推薦 : 分享使用體驗、價值投資、分散風險觀念"/>
+					
+				</a>
+			
+
+			<h6><a href="/zh-tw/cryptocurrency/exchange-recommendations-value-investing-insights/">虛擬貨幣 交易所推薦 : 分享使用體驗、價值投資、分散風險觀念
+				
+				<br>
+				<time datetime="2023-05-29T06:17:01&#43;0000">
+					May 29, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/hokkaido/sapporo-dormyinn-kanihonke/">
+					<img src="https://sunnote.xyz/img/thumbnail/032.webp" alt="北海道-札幌遊記 Dormy Inn 住宿與螃蟹本家體驗"/>
+					
+				</a>
+			
+
+			<h6><a href="/zh-tw/hokkaido/sapporo-dormyinn-kanihonke/">北海道-札幌遊記 Dormy Inn 住宿與螃蟹本家體驗
+				
+				<br>
+				<time datetime="2023-05-10T00:29:57&#43;0000">
+					May 10, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/hokkaido/hakodate-attractions-lodging/">
+					<img src="https://sunnote.xyz/img/thumbnail/031.webp" alt="北海道-函館景點推薦與萬總飯店(Hakodate Hotel Banso)評價"/>
+					
+				</a>
+			
+
+			<h6><a href="/zh-tw/hokkaido/hakodate-attractions-lodging/">北海道-函館景點推薦與萬總飯店(Hakodate Hotel Banso)評價
+				
+				<br>
+				<time datetime="2023-05-07T00:29:57&#43;0000">
+					May 7, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+  
+</div>
+</div>
+<br>
+<br>
+
+
+<script>
+window.addEventListener('load', () => {
+  const highlightBlocks = document.querySelectorAll('.highlight');
+  highlightBlocks.forEach((highlightBlock) => {
+    const button = highlightBlock.querySelector('.highlight-copy-btn');
+	const code_type = highlightBlock.querySelector('code[data-lang]');
+    highlightBlock.addEventListener('mouseover', () => {
+      
+      if (button) {
+        button.style.display = 'block';
+      }
+    });
+	highlightBlock.addEventListener('mouseout', () => {
+      
+      if (button) {
+        button.style.display = 'none';
+      }
+    });
+  });
+});
+
+
+
+</script>
+
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Alvin avatar" src="/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">
+			<a href="../../about/" target="_blank" style="text-decoration:none;">
+			關於 Alvin ☀️
+		    </a>
+		</span>
+	</div>
+	<div class="authorbox__description">
+		不是一個很努力的人，生活就是在耍廢中順便追求點成就感。
+	</div>
+</div>
+
+
+<section class="comments">
+	
+	
+</section>
+
+<div>
+	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img
+			src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script> 
+<script>
+	var owl = $('.owl-carousel');
+	owl.owlCarousel({
+  loop: true, 
+  margin: 10, 
+  nav: true, 
+  responsive: {
+    0: {
+      items: 2 
+    },
+    600: {
+      items: 3 
+    },
+    1000: {
+      items: 3 
+    }
+  }
+});
+</script>
+
+
+
+
+
+<style>
+	.nav {
+		display: inline-flex;
+		position: relative;
+		overflow: hidden;
+		max-width: 100%;
+		background-color: var(--wrapperBG);
+		padding: 0 20px;
+		border-radius: 20px;
+		 
+		display: flex;
+		justify-content: center;
+
+	}
+
+	.nav-item {
+		color: #83818c;
+		padding: 20px;
+		text-decoration: none;
+		transition: .3s;
+		margin: 0 6px;
+		z-index: 1;
+		font-family: 'DM Sans', sans-serif;
+		font-weight: 500;
+		position: relative;
+
+		&:before {
+			content: "";
+			position: absolute;
+			bottom: -6px;
+			left: 0;
+			width: 100%;
+			height: 5px;
+			background-color: #dfe2ea;
+			border-radius: 8px 8px 0 0;
+			opacity: 0;
+			transition: .3s;
+		}
+	}
+
+	.nav-item:not(.is-active):hover:before {
+		opacity: 1;
+		bottom: 0;
+	}
+
+
+	.nav-item:not(.is-active):hover {
+		color: #333;
+	}
+
+	.nav-indicator {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		height: 4px;
+		transition: .5s;
+		height: 5px;
+		z-index: 1;
+		border-radius: 8px 8px 0 0;
+	}
+
+	.nav-item {
+		border: none;
+		outline: none;
+		background-color:  var(--wrapperBG);
+	}
+
+	@media (max-width: 580px) {
+		.nav {
+			overflow: auto;
+		}
+	}
+</style>
+<br>
+
+<nav class="nav">
+	<button id="fb-btn" class="nav-item" active-color="#ACD6FF">Facebook</button>
+	<button id="github-btn" class="nav-item is-active" active-color="#ACD6FF">Github</button>
+	<button id="disqus-btn" class="nav-item" active-color="#ACD6FF">Disqus</button>
+	<span class="nav-indicator"></span>
+</nav>
+
+<script>
+	const indicator = document.querySelector('.nav-indicator');
+	const items = document.querySelectorAll('.nav-item');
+
+	function handleIndicator(el) {
+		items.forEach(item => {
+			item.classList.remove('is-active');
+			item.removeAttribute('style');
+		});
+
+		indicator.style.width = `${el.offsetWidth}px`;
+		indicator.style.left = `${el.offsetLeft}px`;
+		indicator.style.backgroundColor = el.getAttribute('active-color');
+
+		el.classList.add('is-active');
+		el.style.color = el.getAttribute('active-color');
+	}
+
+
+	items.forEach((item, index) => {
+		item.addEventListener('click', (e) => { handleIndicator(e.target) });
+		item.classList.contains('is-active') && handleIndicator(item);
+	});
+
+
+</script>
+<br><br>
+
+
+<div id="disqus-comments" class="comments markdown" style="display: none;">
+	<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    
+    
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'sun';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+</div>
+
+
+
+<div id="utterances-comments" class="comments markdown" style="display: block;">
+	<script src="https://giscus.app/client.js"
+        data-repo="zhongyousun/giscus"
+        data-repo-id="R_kgDOJJwIkA"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOJJwIkM4CU4ky"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light_protanopia"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</div>
+
+
+
+<div id="facebook-comments" class="fb-comments" data-href="http://sunnote.xyz/zh-tw/tutorials/aspnetcore-6.0-signalr-websocket-2/" data-width="100%" data-numposts="5"
+	data-csp="true" data-order-by="reverse_time" style="display: none;"></div>
+<script>
+
+	
+	const githubBtn = document.getElementById("github-btn");
+	const disqusBtn = document.getElementById("disqus-btn");
+	const fbBtn = document.getElementById("fb-btn");
+
+	
+	const githubBoard = document.getElementById("utterances-comments");
+	const disqusBoard = document.getElementById("disqus-comments");
+	const fbBoard = document.getElementById("facebook-comments");
+
+	
+	githubBtn.addEventListener("click", function () {
+		githubBoard.style.display = "block";
+		disqusBoard.style.display = "none";
+		fbBoard.style.display = "none";
+	});
+	disqusBtn.addEventListener("click", function () {
+		githubBoard.style.display = "none";
+		disqusBoard.style.display = "block";
+		fbBoard.style.display = "none";
+	});
+	fbBtn.addEventListener("click", function () {
+		githubBoard.style.display = "none";
+		disqusBoard.style.display = "none";
+		fbBoard.style.display = "block";
+	});
+</script>
+
+
+			</div>
+			<aside class="sidebar">
+<div class="widget-recent widget">
+	<h4 class="widget__title">近期文章</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/aspnetcore-6.0-signalr-websocket-2/">.NET 6 Web API 使用SignalR實作WebSocket技術實現即時通訊-2</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/aspnetcore-6.0-signalr-websocket-1/">.NET 6 Web API 使用SignalR實作WebSocket技術實現即時通訊-1</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/database-optimization-clustered-index-nonclustered-index/">資料庫查詢性能優化技巧:索引概念、叢集、非叢集</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/cryptocurrency/exchange-recommendations-value-investing-insights/">虛擬貨幣 交易所推薦 : 分享使用體驗、價值投資、分散風險觀念</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/hokkaido/sapporo-dormyinn-kanihonke/">北海道-札幌遊記 Dormy Inn 住宿與螃蟹本家體驗</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">分類</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/zh-tw/categories/%E6%B5%B7%E5%A4%96%E6%97%85%E9%81%8A/">海外旅遊</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">12</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/zh-tw/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E9%8C%84/">生活紀錄</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">13</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/zh-tw/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/">程式語言</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">15</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/zh-tw/categories/%E7%B4%94%E7%B2%B9%E5%88%86%E4%BA%AB/">純粹分享</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">7</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/zh-tw/categories/%E8%8B%B1%E6%96%87%E5%AD%B8%E7%BF%92/">英文學習</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">4</span></span>
+				
+				</li>
+		</ul>
+	</div>
+</div><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://cse.google.com/cse">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="站內搜尋…" value="" name="q" aria-label="站內搜尋…">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="http://sunnote.xyz">
+		<input type="hidden" name="cx" value="51cfcdef3e098403d" />
+	</form>
+</div>
+
+<div class="widget-taglist widget">
+	<h4 class="widget__title">標籤</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/csharp/" title="Csharp">Csharp (<span class="count">6</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/css/" title="CSS">CSS (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/hugo/" title="Hugo">Hugo (<span class="count">3</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/javascript/" title="JavaScript">JavaScript (<span class="count">3</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/leetcode/" title="LeetCode">LeetCode (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/nosql/" title="NoSQL">NoSQL (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/python/" title="Python">Python (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/sql/" title="SQL">SQL (<span class="count">5</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/web/" title="Web">Web (<span class="count">4</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E5%8C%97%E6%B5%B7%E9%81%93/" title="北海道">北海道 (<span class="count">3</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E5%8F%B0%E7%81%A3/" title="台灣">台灣 (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E5%A2%BE%E4%B8%81/" title="墾丁">墾丁 (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E5%AE%BF%E9%9C%A7/" title="宿霧">宿霧 (<span class="count">12</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E6%8A%95%E8%B3%87%E7%90%86%E8%B2%A1/" title="投資理財">投資理財 (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E6%97%A5%E6%9C%AC/" title="日本">日本 (<span class="count">3</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E7%94%9F%E6%B4%BB/" title="生活">生活 (<span class="count">2</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E8%8B%B1%E6%96%87/" title="英文">英文 (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E8%8F%B2%E5%BE%8B%E8%B3%93/" title="菲律賓">菲律賓 (<span class="count">12</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E8%99%9B%E6%93%AC%E8%B2%A8%E5%B9%A3/" title="虛擬貨幣">虛擬貨幣 (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1/" title="語言學校">語言學校 (<span class="count">8</span>)</a>
+	</div>
+</div>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+			<script>
+				$('.count').each(function () {
+				$(this).prop('Counter',0).animate({
+					Counter: $(this).text()
+				}, {
+					duration: 4000,
+					easing: 'swing',
+					step: function (now) {
+						$(this).text(Math.ceil(now));
+					}
+				});
+			});
+			</script><a href="https://info.flagcounter.com/8Z5p"><img src="https://s11.flagcounter.com/countxl/8Z5p/bg_FFFFFF/txt_000000/border_FFFFFF/columns_3/maxflags_30/viewers_3/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+<br>
+<br>
+<br>
+<iframe class="LikeCoin" height="180" src="https://button.like.co/in/embed/sunnote/button?referrer=http%3a%2f%2fsunnote.xyz%2fzh-tw%2ftutorials%2faspnetcore-6.0-signalr-websocket-2%2f" width="80%" frameborder=0></iframe>
+
+</aside>
+
+
+		</div>
+		
+<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy;  2022-2023 sunnote.
+			<span class="footer__copyright-credits">使用 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 技術與 <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>主題</span>
+
+		</div>
+
+	</div>
+	
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6706017277983363"
+     crossorigin="anonymous"></script>
+
+<script src="/js/copy-to-clipboard.js"></script>
+	</div>
+	<script async defer src="/js/menu.js"></script>
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+
+	<div class="floating-menu">
+		<button class="main-button"><i class="fas fa-bars"></i></button>
+		<div class="sub-buttons">
+		  <button class="sub-button" id="read-mode" title="Read mode"><i class="fas fa-book-open"></i></button>
+		  <button class="sub-button" id="toc" title="Toggle ToC"><i class="fa-solid fa-list-ol"></i></button>
+		  <button class="sub-button" id="search-algolia" title="Algolia Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+		  
+		  
+		  
+		</div>
+	</div>
+	<button class="toc-button" id ="toc-button"><i class="fa-solid fa-xmark"></i></button>
+</body>
+
+</html>
+
+
+<script>
+	const mainButton = document.querySelector('.main-button');
+	const iconElement = document.querySelector('.main-button i');
+	const subButtons = document.querySelector('.sub-buttons');
+
+	const readModeButton = document.getElementById('read-mode');
+	const icon_readmode = document.querySelector('#read-mode i');
+
+	const tocButton = document.getElementById('toc');
+	const icon_toc = document.querySelector('#toc i');
+
+	const tocButton1 = document.getElementById('toc-button');
+
+	const icon_theme = document.querySelector('#theme i');
+
+	const searchButton = document.getElementById('search-algolia');
+	const icon_search = document.querySelector('#search-algolia i');
+	const algolia = document.querySelector('.aa-input-container');
+	
+	const asideElement = document.querySelector("aside.sidebar");
+	
+	const isSidebarVisible = localStorage.getItem('isSidebarVisible') !== 'false';
+	
+	function setSidebarLocalStorage(state) {
+  		localStorage.setItem("isSidebarVisible", state);
+	}
+
+	
+	const isTOCStatus = localStorage.getItem('isTOCStatus') !== 'false';
+	
+	function setTOCLocalStorage(state) {
+  		localStorage.setItem("isTOCStatus", state);
+	}
+
+	mainButton.addEventListener('click', () => {
+	  if (subButtons.style.display === 'block') {
+		  iconElement.classList.replace('fa-xmark', 'fa-bars');
+		  subButtons.style.display = 'none';
+	  } else {
+		  iconElement.classList.replace('fa-bars', 'fa-xmark');
+		  subButtons.style.display = 'block';
+	  }
+	});
+
+	readModeButton.addEventListener('click', () => {
+	  if (icon_readmode.classList.contains('fa-book-open')) {
+		showTOCButton();
+			setSidebarLocalStorage(false); 
+			setTOCLocalStorage(false);
+			asideElement.style.display = 'none';
+		  icon_readmode.classList.replace('fa-book-open', 'fa-angle-left');
+		  setTimeout(function() {
+			
+            document.querySelector(".primary").style = "flex: 1 0 100%;";
+			
+        }, 100);
+			document.querySelector(".post__toc.toc").className = "toc-side";
+			tocButton1.style.display='block';
+	  } else {
+			setSidebarLocalStorage(true); 
+			setTOCLocalStorage(true);
+			asideElement.style.display = 'block';
+		  icon_readmode.classList.replace('fa-angle-left', 'fa-book-open');
+		  setTimeout(function() {
+            document.querySelector(".primary").style = "flex: 0 0 65.83%;";
+        }, 100);
+			document.querySelector(".toc-side").className = "post__toc toc";
+			tocButton1.style.display='none';
+
+	  }
+	});
+	tocButton.addEventListener('click', () => {
+	  if (icon_toc.classList.contains('fa-list-ol')) {
+		  icon_toc.classList.replace('fa-list-ol', 'fa-xmark');
+		  document.querySelector(".post__toc.toc").className = "toc-side";
+		  tocButton1.style.display='block';
+		  setTOCLocalStorage(false);
+	  } else {
+		  icon_toc.classList.replace('fa-xmark', 'fa-list-ol');
+		  document.querySelector(".toc-side").className = "post__toc toc";
+		  tocButton1.style.display='none';
+		  setTOCLocalStorage(true);
+	  }
+	});
+	tocButton1.addEventListener('click', () => {
+		  icon_toc.classList.replace('fa-xmark', 'fa-list-ol');
+		  document.querySelector(".toc-side").className = "post__toc toc";
+		  tocButton1.style.display='none';
+		  setTOCLocalStorage(true);
+	});
+
+	
+	
+	
+	
+	
+	
+	
+
+
+	searchButton.addEventListener('click', () => {
+		if (icon_search.classList.contains('fa-magnifying-glass')) {
+			algolia.style.display = 'block';
+			icon_search.classList.replace('fa-magnifying-glass', 'fa-xmark');
+	  } else {
+		algolia.style.display = 'none';
+		icon_search.classList.replace('fa-xmark', 'fa-magnifying-glass');
+	  }
+	});
+  </script>
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+  const isSidebarVisible = localStorage.getItem('isSidebarVisible') !== 'false';
+  const isTOCStatus = localStorage.getItem('isTOCStatus') !== 'false';
+  const asideElement = document.querySelector("aside.sidebar");
+  if (isSidebarVisible) {
+    asideElement.style.display = 'block';
+    document.querySelector(".primary").style = "flex: 0 0 65.83%;";
+    
+	icon_readmode.classList.remove('fa-angle-left');
+    icon_readmode.classList.add('fa-book-open');
+  } else {
+    asideElement.style.display = 'none';
+    document.querySelector(".primary").style = "flex: 1 0 100%;";
+    
+	icon_readmode.classList.remove('fa-book-open');
+    icon_readmode.classList.add('fa-angle-left');
+  }
+  if (isTOCStatus) {
+    document.querySelector(".toc-side").className = "post__toc toc";
+	icon_toc.classList.remove('fa-xmark');
+    icon_toc.classList.add('fa-list-ol');
+  } else {
+    document.querySelector(".post__toc.toc").className = "toc-side";
+	icon_toc.classList.remove('fa-list-ol');
+    icon_toc.classList.add('fa-xmark');
+  }
+});
+</script>
+<script>
+	function showTOCButton() {
+	
+	document.addEventListener('DOMContentLoaded', function() {
+ 		const tocSide = document.querySelector('.toc-side');
+  		const tocSideBTN = document.getElementById('toc-button');
+  	
+  	if(tocSide){
+		tocSideBTN.style.display='block';
+	}else{
+		tocSideBTN.style.display='none';
+	}
+});
+	}
+	showTOCButton();
+</script>
+<script src="https://sunnote.xyz/js-pkg/BackToTopButton.js"></script>
+<script>addBackToTop({
+		diameter: 40,
+		backgroundColor: 'rgb(172, 214, 255)',
+		textColor: '#fff',
+		scrollDuration: 300,
+		showWhenScrollTopIs: 800
+	})</script>
+
+
+

@@ -17,19 +17,49 @@
                 href="http://sunnote.xyz/categories/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/tutorials/database-optimization-clustered-index-nonclustered-index/</loc>
-    <lastmod>2023-06-13T13:21:06+08:00</lastmod>
+    <loc>http://sunnote.xyz/tags/csharp/</loc>
+    <lastmod>2023-06-16T11:05:34+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tutorials/database-optimization-clustered-index-nonclustered-index/"
+                href="http://sunnote.xyz/zh-tw/tags/csharp/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://sunnote.xyz/tutorials/database-optimization-clustered-index-nonclustered-index/"
+                href="http://sunnote.xyz/tags/csharp/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tutorials/aspnetcore-6.0-signalr-websocket-2/</loc>
+    <lastmod>2023-06-16T11:05:34+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tutorials/aspnetcore-6.0-signalr-websocket-2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tutorials/aspnetcore-6.0-signalr-websocket-2/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tags/javascript/</loc>
+    <lastmod>2023-06-16T11:05:34+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/javascript/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/javascript/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/posts/</loc>
@@ -48,24 +78,9 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/categories/program/</loc>
-    <lastmod>2023-06-13T13:21:06+08:00</lastmod>
+    <lastmod>2023-06-16T11:05:34+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
-  </url><url>
-    <loc>http://sunnote.xyz/tags/sql/</loc>
-    <lastmod>2023-06-13T13:21:06+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/sql/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/sql/"
-                />
   </url><url>
     <loc>http://sunnote.xyz/</loc>
     <lastmod>2023-12-30T00:00:00+00:00</lastmod>
@@ -95,6 +110,66 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://sunnote.xyz/tags/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tags/web/</loc>
+    <lastmod>2023-06-16T11:05:34+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/web/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/web/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tutorials/aspnetcore-6.0-signalr-websocket-1/</loc>
+    <lastmod>2023-06-15T16:08:13+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tutorials/aspnetcore-6.0-signalr-websocket-1/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tutorials/aspnetcore-6.0-signalr-websocket-1/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tutorials/database-optimization-clustered-index-nonclustered-index/</loc>
+    <lastmod>2023-06-13T13:21:06+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tutorials/database-optimization-clustered-index-nonclustered-index/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tutorials/database-optimization-clustered-index-nonclustered-index/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tags/sql/</loc>
+    <lastmod>2023-06-13T13:21:06+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/sql/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/sql/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/cryptocurrency/</loc>
@@ -312,36 +387,6 @@
                 href="http://sunnote.xyz/tags/hugo/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/tags/javascript/</loc>
-    <lastmod>2023-03-22T11:34:07+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/javascript/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/javascript/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/tags/web/</loc>
-    <lastmod>2023-03-22T11:34:07+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/web/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/web/"
-                />
-  </url><url>
     <loc>http://sunnote.xyz/tutorials/sql-scopeidentity-identity-diff/</loc>
     <lastmod>2023-03-20T10:44:19+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -355,21 +400,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://sunnote.xyz/tutorials/sql-scopeidentity-identity-diff/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/tags/csharp/</loc>
-    <lastmod>2023-03-06T16:05:44+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/csharp/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/csharp/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/jwt-authentication-mechanism/</loc>

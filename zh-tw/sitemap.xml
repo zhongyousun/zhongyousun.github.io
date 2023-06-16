@@ -2,8 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://sunnote.xyz/zh-tw/tutorials/aspnetcore-6.0-signalr-websocket-2/</loc>
+    <lastmod>2023-06-16T11:05:34+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tutorials/aspnetcore-6.0-signalr-websocket-2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tutorials/aspnetcore-6.0-signalr-websocket-2/"
+                />
+  </url><url>
     <loc>http://sunnote.xyz/zh-tw/categories/</loc>
-    <lastmod>2023-06-13T13:21:06+08:00</lastmod>
+    <lastmod>2023-06-16T11:05:34+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -17,8 +32,38 @@
                 href="http://sunnote.xyz/zh-tw/categories/"
                 />
   </url><url>
+    <loc>http://sunnote.xyz/zh-tw/tags/csharp/</loc>
+    <lastmod>2023-06-16T11:05:34+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/csharp/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/csharp/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/zh-tw/tags/javascript/</loc>
+    <lastmod>2023-06-16T11:05:34+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/javascript/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/javascript/"
+                />
+  </url><url>
     <loc>http://sunnote.xyz/zh-tw/posts/</loc>
-    <lastmod>2023-06-13T13:21:06+08:00</lastmod>
+    <lastmod>2023-06-16T11:05:34+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -30,6 +75,71 @@
                 rel="alternate"
                 hreflang="zh-tw"
                 href="http://sunnote.xyz/zh-tw/posts/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/zh-tw/</loc>
+    <lastmod>2023-06-16T11:05:34+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/zh-tw/tags/</loc>
+    <lastmod>2023-06-16T11:05:34+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/zh-tw/tags/web/</loc>
+    <lastmod>2023-06-16T11:05:34+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/web/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/web/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/zh-tw/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/</loc>
+    <lastmod>2023-06-16T11:05:34+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/zh-tw/tutorials/aspnetcore-6.0-signalr-websocket-1/</loc>
+    <lastmod>2023-06-15T16:08:13+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tutorials/aspnetcore-6.0-signalr-websocket-1/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tutorials/aspnetcore-6.0-signalr-websocket-1/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/tags/sql/</loc>
@@ -46,41 +156,6 @@
                 hreflang="zh-tw"
                 href="http://sunnote.xyz/zh-tw/tags/sql/"
                 />
-  </url><url>
-    <loc>http://sunnote.xyz/zh-tw/</loc>
-    <lastmod>2023-06-13T13:21:06+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/zh-tw/tags/</loc>
-    <lastmod>2023-06-13T13:21:06+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/zh-tw/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/</loc>
-    <lastmod>2023-06-13T13:21:06+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/tutorials/database-optimization-clustered-index-nonclustered-index/</loc>
     <lastmod>2023-06-13T13:21:06+08:00</lastmod>
@@ -297,36 +372,6 @@
                 href="http://sunnote.xyz/zh-tw/tags/hugo/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/zh-tw/tags/javascript/</loc>
-    <lastmod>2023-03-22T11:34:07+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/javascript/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/javascript/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/zh-tw/tags/web/</loc>
-    <lastmod>2023-03-22T11:34:07+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/web/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/web/"
-                />
-  </url><url>
     <loc>http://sunnote.xyz/zh-tw/tutorials/dark-mode-tips-hugo/</loc>
     <lastmod>2023-03-22T11:34:07+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -355,21 +400,6 @@
                 rel="alternate"
                 hreflang="zh-tw"
                 href="http://sunnote.xyz/zh-tw/tutorials/sql-scopeidentity-identity-diff/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/zh-tw/tags/csharp/</loc>
-    <lastmod>2023-03-06T16:05:44+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/csharp/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/csharp/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/tutorials/jwt-authentication-mechanism/</loc>

@@ -6,7 +6,25 @@
     <description>Recent content on Sun 記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 13 Jun 2023 13:21:06 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Jun 2023 11:05:34 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>.NET 6 Web API 使用SignalR實作WebSocket技術實現即時通訊-2</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/aspnetcore-6.0-signalr-websocket-2/</link>
+      <pubDate>Fri, 16 Jun 2023 11:05:34 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/aspnetcore-6.0-signalr-websocket-2/</guid>
+      <description>&lt;p&gt;使用.NET 6 Web API 建立 WebSocket 通訊，本篇紀錄模擬將使用者對應至連線ID並儲存與發送訊息功能的測試過程。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>.NET 6 Web API 使用SignalR實作WebSocket技術實現即時通訊-1</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/aspnetcore-6.0-signalr-websocket-1/</link>
+      <pubDate>Thu, 15 Jun 2023 16:08:13 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/aspnetcore-6.0-signalr-websocket-1/</guid>
+      <description>&lt;p&gt;使用.NET 6 Web API 建立 WebSocket 通訊，本篇紀錄藉由簡易前端模擬全推播、群組推播、單一推播範例。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>資料庫查詢性能優化技巧:索引概念、叢集、非叢集</title>
       <link>http://sunnote.xyz/zh-tw/tutorials/database-optimization-clustered-index-nonclustered-index/</link>
