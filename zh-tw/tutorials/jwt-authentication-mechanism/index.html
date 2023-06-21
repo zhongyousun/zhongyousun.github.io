@@ -16,13 +16,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://sunnote.xyz/zh-tw/tutorials/jwt-authentication-mechanism/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-03-06T16:05:44+08:00" />
-<meta property="article:modified_time" content="2023-03-06T16:05:44+08:00" />
+<meta property="article:modified_time" content="2023-06-21T19:44:38+08:00" />
 <meta property="og:image" content="http://sunnote.xyz/img/thumbnail/022.png" />
 		  	
 	<meta itemprop="name" content="JWT 驗證機制原理與實作範例 (C#)">
 <meta itemprop="description" content="JWT（JSON Web Token）是一種開放標準，用於在各方之間安全地傳遞資訊。JWT使用JSON物件表示要傳遞的訊息，並使用數字簽名或加密來保護這些訊息。"><meta itemprop="datePublished" content="2023-03-06T16:05:44+08:00" />
-<meta itemprop="dateModified" content="2023-03-06T16:05:44+08:00" />
-<meta itemprop="wordCount" content="381">
+<meta itemprop="dateModified" content="2023-06-21T19:44:38+08:00" />
+<meta itemprop="wordCount" content="786">
 <meta itemprop="keywords" content="Csharp,Web," />
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="JWT 驗證機制原理與實作範例 (C#)"/>
@@ -578,7 +578,8 @@ if (!doNotTrack) {
 <path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 5.332031 L 2 12.667969 C 2 13.035156 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 5.332031 C 14 4.964844 13.703125 4.667969 13.335938 4.667969 L 2.664062 4.667969 C 2.296875 4.667969 2 4.964844 2 5.332031 Z M 0.667969 5.332031 C 0.667969 4.230469 1.558594 3.332031 2.664062 3.332031 L 13.335938 3.332031 C 14.441406 3.332031 15.332031 4.230469 15.332031 5.332031 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.769531 0.667969 12.667969 Z M 2 7.332031 L 2 6 L 14 6 L 14 7.332031 Z M 4 2 C 4 1.632812 4.296875 1.332031 4.667969 1.332031 C 5.035156 1.332031 5.332031 1.628906 5.332031 2 L 5.332031 3.332031 L 4 3.332031 Z M 10.667969 2 C 10.667969 1.632812 10.960938 1.332031 11.332031 1.332031 C 11.703125 1.332031 12 1.628906 12 2 L 12 3.332031 L 10.667969 3.332031 Z M 10.667969 2 "/>
 </g>
 </svg>
-<time class="meta__text" datetime="2023-03-06T16:05:44&#43;08:00">March 6, 2023</time></div><div class="meta__item-categories meta__item">
+<time class="meta__text" datetime="2023-03-06T16:05:44&#43;08:00">March 6, 2023</time>
+	<time class="meta__text" datetime="2023-06-21T19:44:38&#43;08:00">(最後修改: June 21, 2023)</time></div><div class="meta__item-categories meta__item">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-folders"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <g id="surface1">
 <path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 6 L 2 12.664062 C 2 13.03125 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 8 C 14 7.632812 13.703125 7.332031 13.335938 7.332031 L 9.808594 7.332031 L 8.03125 5.332031 L 2.667969 5.332031 C 2.300781 5.332031 2 5.632812 2 6 Z M 13.335938 6 C 14.4375 6 15.332031 6.894531 15.332031 8 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.761719 0.667969 12.664062 L 0.667969 6 C 0.667969 4.894531 1.5625 4 2.667969 4 L 8.632812 4 L 10.40625 6 Z M 4.425781 3.625 C 4.425781 3.625 4.425781 3.703125 4.425781 4.074219 C 4.425781 4.328125 5.15625 4.75 6 4.667969 C 6.777344 4.589844 8.453125 4.589844 8.796875 5.050781 C 10 6.667969 14.242188 7.15625 14.242188 6.667969 L 14.242188 5.25 C 14.242188 4.949219 14 4.707031 13.699219 4.707031 L 10.8125 4.707031 L 9.359375 3.082031 L 4.972656 3.082031 C 4.667969 3.082031 4.425781 3.328125 4.425781 3.625 Z M 13.699219 3.625 C 14.601562 3.625 15.332031 4.351562 15.332031 5.25 L 15.332031 8 C 15.332031 8.304688 14.667969 6.667969 10 6.667969 C 8.652344 6.160156 9.402344 5.636719 8 5.25 C 6.496094 4.832031 4.703125 5.296875 3.863281 5.285156 C 3.320312 5.273438 3.332031 4.855469 3.332031 4.667969 L 3.332031 3.625 C 3.332031 2.726562 4.066406 2 4.972656 2 L 9.851562 2 L 11.300781 3.625 Z M 13.699219 3.625 "/>
@@ -607,7 +608,7 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 8 12.667969 C 10.578125 12.667969 12.667969 10.578125 12.667969 8 C 12.667969 5.421875 10.578125 3.332031 8 3.332031 C 5.421875 3.332031 3.332031 5.421875 3.332031 8 C 3.332031 10.578125 5.421875 12.667969 8 12.667969 Z M 3.957031 12.433594 C 2.753906 11.335938 2 9.757812 2 8 C 2 4.6875 4.6875 2 8 2 C 11.3125 2 14 4.6875 14 8 C 14 9.757812 13.246094 11.335938 12.042969 12.433594 L 12.9375 13.328125 C 13.207031 13.597656 13.203125 14.015625 12.941406 14.277344 C 12.679688 14.539062 12.257812 14.535156 11.996094 14.273438 L 10.949219 13.226562 C 10.078125 13.71875 9.070312 14 8 14 C 6.929688 14 5.921875 13.71875 5.050781 13.226562 L 4.003906 14.273438 C 3.738281 14.539062 3.316406 14.535156 3.058594 14.277344 C 2.796875 14.015625 2.796875 13.589844 3.0625 13.328125 Z M 7.332031 5.335938 C 7.332031 4.964844 7.628906 4.667969 8 4.667969 C 8.367188 4.667969 8.667969 4.957031 8.667969 5.335938 L 8.667969 9.332031 L 7.332031 9.332031 Z M 5.332031 8.667969 C 5.332031 8.296875 5.628906 8 6 8 L 7.332031 8 L 7.332031 9.332031 L 6 9.332031 C 5.632812 9.332031 5.332031 9.039062 5.332031 8.667969 Z M 5.332031 8.667969 "/>
 </g>
 </svg>
-7 min read.　</span>
+12 min read.　</span>
 				
 			
 				
@@ -635,8 +636,12 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
       <ul>
         <li><a href="#介紹">介紹</a></li>
         <li><a href="#原理">原理</a></li>
-        <li><a href="#建立jwt-token-範例-net-6">建立JWT TOKEN 範例 (.NET 6)</a></li>
-        <li><a href="#驗證jwt-token-範例-net-6">驗證JWT TOKEN 範例 (.NET 6)</a></li>
+        <li><a href="#建立jwt-範例-net-6">建立JWT 範例 (.NET 6)</a></li>
+        <li><a href="#驗證jwt-範例-net-6">驗證JWT 範例 (.NET 6)</a></li>
+        <li><a href="#自己動手寫一個">自己動手寫一個</a></li>
+        <li><a href="#生成-jwt">生成 JWT</a></li>
+        <li><a href="#hmacsha256-加密">HMACSHA256 加密</a></li>
+        <li><a href="#驗證-jwt">驗證 JWT</a></li>
         <li><a href="#總結">總結</a></li>
       </ul>
     </li>
@@ -685,7 +690,7 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <blockquote>
 <p>Payload 部分包含了要傳輸的信息。</p>
 </blockquote>
-<p>Payload一般也是一個JSON物件，可以包含自定義的屬性。客戶資訊帳密等&hellip;就是放在Payload的部分。</p>
+<p>Payload也是一個JSON物件，可以包含自定義的屬性。為了方便查詢而夾帶的一些客戶基本資料等&hellip;就是放在Payload的部分。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JSON" data-lang="JSON"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;sub&#34;</span>: <span style="color:#e6db74">&#34;1234567890&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;John Doe&#34;</span>,
@@ -693,13 +698,13 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Payload 中可以包含的標準屬性包括：</p>
 <ul>
-<li>iss：JWT的發行者，表示 JWT token 是由誰發行的。</li>
-<li>sub：JWT的主題，表示 JWT token 所代表的實體（通常是使用者）。</li>
-<li>aud：JWT的接收者，表示 JWT token 可以被誰使用。</li>
-<li>exp：JWT的過期時間，表示 JWT token 何時過期，過期的 JWT token 不能再使用。</li>
-<li>nbf：JWT的生效時間，表示 JWT token 何時生效。</li>
-<li>iat：JWT的發行時間，表示 JWT token 何時被發行。</li>
-<li>jti：JWT的唯一標識符，用於防止 JWT token 被重複使用。</li>
+<li>iss：JWT的發行者，表示 JWT 是由誰發行的。</li>
+<li>sub：JWT的主題，表示 JWT 所代表的實體（通常是使用者）。</li>
+<li>aud：JWT的接收者，表示 JWT 可以被誰使用。</li>
+<li>exp：JWT的過期時間，表示 JWT 何時過期，過期的 JWT 不能再使用。</li>
+<li>nbf：JWT的生效時間，表示 JWT 何時生效。</li>
+<li>iat：JWT的發行時間，表示 JWT 何時被發行。</li>
+<li>jti：JWT的唯一標識符，用於防止 JWT 被重複使用。</li>
 </ul>
 <p>以上列出的屬性是 JWT 規格中定義的一些標準，當然也可以自定義一些名稱，用於表示應用中的特定資訊。<br>
 <div id="block3"></div>
@@ -718,7 +723,8 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
   base64UrlEncode(payload),
 &#39;your-256-bit-secret&#39;
 )
-</code></pre><p>簽名可以保證JWT沒有被篡改。簽名的計算方式根據不同的加密算法而不同，常見的算法包括HMAC和RSA。
+</code></pre><p>header 跟 payload 中間用<code>.</code>來串接，<code>your-256-bit-secret</code>是存放在伺服器端的自定義字串(私鑰)，最後將這三個部分串接在一起後的字串進行加密演算法進行加密簽名。</p>
+<p>簽名可以保證JWT沒有被篡改。簽名的計算方式根據不同的加密算法而不同，常見的算法包括HMAC和RSA。
 <div id="block4"></div>
 <script>
     var myDiv = document.getElementById("block4");
@@ -738,7 +744,7 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
       myDiv.appendChild(brTag);
     }
 </script></p>
-<h3 id="建立jwt-token-範例-net-6">建立JWT TOKEN 範例 (.NET 6)</h3>
+<h3 id="建立jwt-範例-net-6">建立JWT 範例 (.NET 6)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">using</span> System.IdentityModel.Tokens.Jwt;
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#66d9ef">using</span> System.Security.Claims;
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#66d9ef">using</span> System.Text;
@@ -757,7 +763,7 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span><span style="color:#75715e">// 設定 JWT 的有效期限為 1 小時</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span><span style="color:#66d9ef">var</span> expires = DateTime.UtcNow.AddHours(<span style="color:#ae81ff">1</span>);
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span><span style="color:#75715e">// 建立 JWT token 物件</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span><span style="color:#75715e">// 建立 JWT 物件</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span><span style="color:#66d9ef">var</span> token = <span style="color:#66d9ef">new</span> JwtSecurityToken(
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>    issuer: <span style="color:#e6db74">&#34;MyApp&#34;</span>,
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>    audience: <span style="color:#e6db74">&#34;MyClient&#34;</span>,
@@ -778,8 +784,8 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
       myDiv.appendChild(brTag);
     }
 </script>
-<h3 id="驗證jwt-token-範例-net-6">驗證JWT TOKEN 範例 (.NET 6)</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e">// 取得從前端攜帶的 JWT token </span>
+<h3 id="驗證jwt-範例-net-6">驗證JWT 範例 (.NET 6)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e">// 取得從前端攜帶的 JWT </span>
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#66d9ef">string</span> tokenString = <span style="color:#e6db74">&#34;{insert JWT token string here}&#34;</span>;
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#75715e">// 設定 JWT 的驗證參數</span>
@@ -797,7 +803,7 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span><span style="color:#66d9ef">try</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>    <span style="color:#75715e">// 驗證 JWT token</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>    <span style="color:#75715e">// 驗證 JWT</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>    <span style="color:#66d9ef">var</span> jwtHandler = <span style="color:#66d9ef">new</span> JwtSecurityTokenHandler();
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>    <span style="color:#66d9ef">var</span> principal = jwtHandler.ValidateToken(tokenString, validationParameters, <span style="color:#66d9ef">out</span> <span style="color:#66d9ef">var</span> validatedToken);
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>    <span style="color:#66d9ef">var</span> jwtToken = validatedToken <span style="color:#66d9ef">as</span> JwtSecurityToken;
@@ -817,14 +823,14 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36</span><span>    Console.WriteLine(<span style="color:#e6db74">$&#34;Token validation failed: {e.Message}&#34;</span>);
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37</span><span>}
 </span></span></code></pre></div><blockquote>
-<p>JWT token 的發行者和接收者</p>
+<p>JWT 的發行者和接收者</p>
 </blockquote>
 <ul>
 <li>
-<p>發行者（issuer）：用於表示 JWT token 是由誰發行的，通常是一個識別 JWT token 的組織或應用程式的名稱或網域。當我們驗證 JWT token 的時候，可以檢查 JWT token 的發行者是否符合預期的值，以確保 JWT token 是由正確的組織或應用程式發行的。</p>
+<p>發行者（issuer）：用於表示 JWT 是由誰發行的，通常是一個識別 JWT 的組織或應用程式的名稱或網域。當我們驗證 JWT 的時候，可以檢查 JWT 的發行者是否符合預期的值，以確保 JWT 是由正確的組織或應用程式發行的。</p>
 </li>
 <li>
-<p>接收者（audience）：用於表示 JWT token 可以被誰使用，通常是一個識別 JWT token 使用者的應用程式或 API 的名稱或網域。當我們驗證 JWT token 的時候，可以檢查 JWT token 的接收者是否符合預期的值，以確保 JWT token 可以被正確的應用程式或 API 使用。
+<p>接收者（audience）：用於表示 JWT 可以被誰使用，通常是一個識別 JWT 使用者的應用程式或 API 的名稱或網域。當我們驗證 JWT 的時候，可以檢查 JWT 的接收者是否符合預期的值，以確保 JWT 可以被正確的應用程式或 API 使用。
 <div id="block7"></div>
 <script>
     var myDiv = document.getElementById("block7");
@@ -835,8 +841,103 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 </script></p>
 </li>
 </ul>
+<hr>
+<h3 id="自己動手寫一個">自己動手寫一個</h3>
+<p>以上是直接使用.NET Core的庫來實作 JWT 相關功能，最近接到一個需求為，需要生成一次性的檔案下載網址來防止檔案網址外流，思考後打算用 JWT 來實作。</p>
+<p>思考邏輯為，若需要產生一次性網址，為了不產生資料庫負擔，那就產生一個有時效性的 JWT，而在提供檔案下載的 API 中再去額外加上 JWT 驗證，若時效已過則不提供下載，以達成一次性下載網址。</p>
+<p>此功能的流程即是: <code>使用檔案的ID(GUID)產生 JWT ➜ 生成包含 JWT 的一次性網址 ➜ 透過網址下載時需驗證 JWT 時效性 ➜ 判斷是否給予下載</code></p>
+<p>先建立 Header 與 Payload 的物件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">oJWT_Header</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> alg { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> typ { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">oJWT_Payload</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">long</span> exp { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">long</span> iat { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> Guid id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>Payload的部分，我主要需要 JWT 的過期時間(exp) 與檔案的唯一值ID(id)。</p>
+<h3 id="生成-jwt">生成 JWT</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> JWT_Encoder(Guid fileID)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>        oJWT_Header header = <span style="color:#66d9ef">new</span> oJWT_Header();
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>        header.alg = <span style="color:#e6db74">&#34;HS256&#34;</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>        header.typ = <span style="color:#e6db74">&#34;JWT&#34;</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>        oJWT_Payload payload = <span style="color:#66d9ef">new</span> oJWT_Payload();
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>        DateTimeOffset now = DateTimeOffset.UtcNow;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>        <span style="color:#66d9ef">long</span> unixTimestamp = now.ToUnixTimeSeconds();
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>        <span style="color:#66d9ef">long</span> unixTimestamp_exp = now.AddSeconds(<span style="color:#ae81ff">20</span>).ToUnixTimeSeconds();
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>        payload.iat = unixTimestamp;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>        payload.exp = unixTimestamp_exp;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>        payload.id = fileID;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>        <span style="color:#66d9ef">string</span> json_header = JsonConvert.SerializeObject(header);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>        <span style="color:#66d9ef">byte</span>[] b_header = System.Text.UTF8Encoding.UTF8.GetBytes(json_header);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>        <span style="color:#66d9ef">string</span> b64_header = Convert.ToBase64String(b_header);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>        <span style="color:#66d9ef">string</span> json_payload = JsonConvert.SerializeObject(payload);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>        <span style="color:#66d9ef">byte</span>[] b_pl = System.Text.UTF8Encoding.UTF8.GetBytes(json_payload);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>        <span style="color:#66d9ef">string</span> b64_payload = Convert.ToBase64String(b_pl);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>        <span style="color:#66d9ef">string</span> encryptSignature = ComputeHMACSHA256(b64_header + b64_payload, b64_payload + payload.id);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>        <span style="color:#66d9ef">string</span> token = b64_header + <span style="color:#e6db74">&#34;.&#34;</span> + b64_payload + <span style="color:#e6db74">&#34;.&#34;</span> + encryptSignature;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>        
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>        <span style="color:#66d9ef">return</span> token;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>    }
+</span></span></code></pre></div><p>Header 物件代入分別代表使用的演算法與token形式 (alg、typ)。</p>
+<p>Payload 物件需要代入 JWT 的發行時間(iat)、有效時間(exp)與檔案ID(id)，時間都是以UTC時間轉換為Unix time。而有效時間為當下的時間再加20秒。</p>
+<p>接下來就是對 Header 與 Payload 分別進行 Base64 的編碼。</p>
+<p>再把編碼後的 Header 與 Payload 進行 HMACSHA256 加密，而私鑰我選擇使用 <code>編碼後的 Payload + fileID</code>，這樣可以確保每組網址的私鑰都是不同的也不用寫死在server端。</p>
+<h3 id="hmacsha256-加密">HMACSHA256 加密</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> ComputeHMACSHA256(<span style="color:#66d9ef">string</span> data, <span style="color:#66d9ef">string</span> key)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>        <span style="color:#66d9ef">var</span> keyBytes = Encoding.UTF8.GetBytes(key);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>        <span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> hmacSHA = <span style="color:#66d9ef">new</span> HMACSHA256(keyBytes))
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>        {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>            <span style="color:#66d9ef">var</span> dataBytes = Encoding.UTF8.GetBytes(data);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>            <span style="color:#66d9ef">var</span> hash = hmacSHA.ComputeHash(dataBytes, <span style="color:#ae81ff">0</span>, dataBytes.Length);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>            <span style="color:#66d9ef">return</span> BitConverter.ToString(hash).Replace(<span style="color:#e6db74">&#34;-&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>).ToUpper();
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>        }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>    }
+</span></span></code></pre></div><p>HMACSHA256 加密的部分此篇不多作說明，而取得加密簽章後，JWT 即等於 : <strong><code>編碼後的header.編碼後的payload.加密簽章</code></strong></p>
+<h3 id="驗證-jwt">驗證 JWT</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">bool</span> JWT_Decoder(<span style="color:#66d9ef">string</span> JWT)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>        <span style="color:#66d9ef">string</span>[] ary = JWT.Split(<span style="color:#e6db74">&#39;.&#39;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>        <span style="color:#66d9ef">if</span> (ary.Length != <span style="color:#ae81ff">3</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>        <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>        {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>            <span style="color:#66d9ef">string</span> b64_header = ary[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>            <span style="color:#66d9ef">string</span> b64_payload = ary[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>            <span style="color:#66d9ef">string</span> Signature = ary[<span style="color:#ae81ff">2</span>];
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>            Byte[] ary_header = Convert.FromBase64String(b64_header);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>            <span style="color:#66d9ef">string</span> json_header = System.Text.UTF8Encoding.UTF8.GetString(ary_header);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>            oJWT_Header header = JsonConvert.DeserializeObject&lt;oJWT_Header&gt;(json_header);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>            Byte[] ary_payload = Convert.FromBase64String(b64_payload);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>            <span style="color:#66d9ef">string</span> json_pl = System.Text.UTF8Encoding.UTF8.GetString(ary_payload);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>            oJWT_Payload payload = JsonConvert.DeserializeObject&lt;oJWT_Payload&gt;(json_pl);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>            <span style="color:#66d9ef">string</span> encryptSignature = ComputeHMACSHA256(b64_header + b64_payload, b64_payload + payload.id);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>            <span style="color:#66d9ef">if</span> (!Signature.Equals(encryptSignature)) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>            <span style="color:#66d9ef">long</span> exp = payload.exp;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>            <span style="color:#66d9ef">long</span> now = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>            <span style="color:#66d9ef">if</span> (now &gt; exp) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>        }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>    }
+</span></span></code></pre></div><p>驗證的部分很簡單，一開始因為 JWT 格式就是以<code>.</code>分割，所以我先以<code>.</code>劃分，若字符串數組長度不等於3，那不符合格式回傳 false。</p>
+<p>接下來數組可以分為 b64_header、 b64_payload 與 Signature，分別對經過 Base64 編碼後的 Header 與 Payload 解碼，取得相關資訊後，就可以驗證 Signature 是否符合。若不符合代表JWT有被串改過即回傳 false。</p>
+<p>最後一步，就是驗證時效性，因為當初設定時效為產生 JWT 之後20秒內，所以只要取 Payload 的 exp 來比較當下的時戳，若已超出即返回 false。</p>
+<p>以上完成了使用 JWT 產生一次性網址的功能，實際使用 Payload 還能代入其他參數方便 下載檔案的 API 查詢檔案路徑。</p>
 <h3 id="總結">總結</h3>
-<p>目前開發上只用在輕型網站的登入系統驗證機制，但其實JWT還有其他的用途像是資源權限授權、單點登錄(SSO)、時效性服務、應用程序間通訊等。藉由派發有時效性的JWT並在每次存取資源時驗證可以使其應用更廣泛。</p>
+<p>目前開發上只用在輕型網站的登入系統驗證機制，但其實JWT還有其他的用途像是資源權限授權、單點登錄(SSO)、時效性服務、應用程序間通訊等。藉由派發有時效性的 JWT 並在每次存取資源時驗證可以使其應用更廣泛。</p>
 		</div>
 		<br>
 		<br>
