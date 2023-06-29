@@ -666,11 +666,11 @@ WebSocket 則可以在<strong>建立連接後一直保持通訊狀態</strong>�
 
 
 
+
 <figure>
     <img src="" data-src="pics/Project-Structure.webp" width="50%" alt="" class="lazy">
     <figcaption></figcaption>
-</figure>
-</p>
+</figure></p>
 <pre tabindex="0"><code>SignalR-Example/
 ├── Connected Services/
 ├── Dependencies/
@@ -690,11 +690,11 @@ WebSocket 則可以在<strong>建立連接後一直保持通訊狀態</strong>�
 
 
 
+
 <figure>
     <img src="" data-src="pics/Visual-studio-SignalR.webp" width="80%" alt="" class="lazy">
     <figcaption></figcaption>
-</figure>
-</p>
+</figure></p>
 <h3 id="建立-signalr-hub">建立 SignalR Hub</h3>
 <p>新增 Hub 資料夾 &gt; 在 Hub 底下新增 IMessageHub.cs 介面 &gt; 新增一個 sendToAllConnections 方法 用於傳送訊息給所有已經連線的使用者</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">namespace</span> SignalR_Example.Hub
@@ -820,13 +820,14 @@ WebSocket 則可以在<strong>建立連接後一直保持通訊狀態</strong>�
 
 
 
+
 <figure>
     <img src="" data-src="pics/Project-Structure1.webp" width="50%" alt="" class="lazy">
     <figcaption>最終專案結構</figcaption>
 </figure>
-
 <h3 id="結果">結果</h3>
 <p>啟動專案，開啟 swagger 與 <code>https://localhost:7013/htmlpage.html</code>，用來確認呼叫API時，前端是否有收到訊息。</p>
+
 
 
 
@@ -856,7 +857,6 @@ WebSocket 則可以在<strong>建立連接後一直保持通訊狀態</strong>�
     <img src="" data-src="pics/console1.webp" width="80%" alt="" class="lazy">
     <figcaption>呼叫 toALL 後，就會顯示訊息，可以打開多個畫面確認都會收到訊息</figcaption>
 </figure>
-
 <p>以上實作了對所有連線使用者傳遞訊息的功能。</p>
 <blockquote>
 <p>Reference</p>
