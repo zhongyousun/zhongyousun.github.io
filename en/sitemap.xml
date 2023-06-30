@@ -746,5 +746,20 @@
                 hreflang="en"
                 href="http://sunnote.xyz/search/"
                 />
+  </url><url>
+    <loc>http://sunnote.xyz/timeline/</loc>
+    <lastmod>2022-11-20T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/timeline/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/timeline/"
+                />
   </url>
 </urlset>
