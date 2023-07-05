@@ -529,10 +529,11 @@ if (!doNotTrack) {
   border-radius: 10px;
   border: none;
   transition: 0.5s;
+  animation: jump 1s;
+  animation-iteration-count: infinite;  
   }
   #myBtn:hover {
     animation: jump 1s;
-    animation-iteration-count: infinite;  
     cursor: pointer;  
 }
 @keyframes jump {
@@ -576,7 +577,7 @@ if (!doNotTrack) {
 			<h1 class="post__title"><svg class="tags__badge icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>文章歸檔</h1>
 			
 			<br>
-			<h6>總文章數 : <span class="count" style="color: #ACD6FF; font-size: 25px; font-family: 'Courier New', Courier, monospace;">38</span></h6>
+			<h6>總文章數 : <span class="count" style="color: #ACD6FF; font-size: 25px; font-family: 'Courier New', Courier, monospace;">39</span></h6>
 			
 		</header>
 		
@@ -854,13 +855,15 @@ if (!doNotTrack) {
         
 		      
         
+		      
+        
     	</ul>
       
 		</div>
 
   </span>
   <hr>
-  <button class="tags__link btn" onclick="myFunction()" id="myBtn">Show more...</button>
+  <button class="tags__link btn" onclick="myFunction()" id="myBtn">Show more . . .</button>
 	</article>
 </main>
 <script>

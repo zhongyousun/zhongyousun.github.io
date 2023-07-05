@@ -752,6 +752,11 @@
                 href="http://sunnote.xyz/zh-tw/archives/"
                 />
   </url><url>
+    <loc>http://sunnote.xyz/zh-tw/footprint/</loc>
+    <lastmod>2022-11-20T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>http://sunnote.xyz/zh-tw/timeline/</loc>
     <lastmod>2022-11-20T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
