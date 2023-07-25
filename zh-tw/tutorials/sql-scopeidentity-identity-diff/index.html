@@ -22,7 +22,7 @@
 	<meta itemprop="name" content="SQL SCOPE_IDENTITY() 與 @@IDENTITY 取得自動增量值差異">
 <meta itemprop="description" content="SQL取得最近新增一筆的資料"><meta itemprop="datePublished" content="2023-03-20T10:44:19+08:00" />
 <meta itemprop="dateModified" content="2023-03-20T10:44:19+08:00" />
-<meta itemprop="wordCount" content="113">
+<meta itemprop="wordCount" content="112">
 <meta itemprop="keywords" content="SQL," />
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="SQL SCOPE_IDENTITY() 與 @@IDENTITY 取得自動增量值差異"/>
@@ -717,7 +717,7 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 </tbody>
 </table>
 <p><code>SELECT SCOPE_IDENTITY()</code> 結果為 1<br>
-<code>SELECT SELECT @@IDENTITY</code>  結果為 2</p>
+<code>SELECT @@IDENTITY</code>  結果為 2</p>
 <p>可以很明顯看出，SCOPE_IDENTITY()就是取得當下 insert 的ID，而 @@IDENTITY 則是會取得觸發器新增資料的ID。
 <div id="block4"></div>
 <script>
