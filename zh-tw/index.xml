@@ -6,7 +6,16 @@
     <description>Recent content on Sun 記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Fri, 16 Jun 2023 11:05:34 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 25 Jul 2023 14:00:18 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用CTE（Common Table Expression）實現延遲加載(Lazy loading)與查詢無限層資料結構</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/cte-lazy-loading-infinite-data-structure/</link>
+      <pubDate>Tue, 25 Jul 2023 14:00:18 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/cte-lazy-loading-infinite-data-structure/</guid>
+      <description>&lt;p&gt;紀錄後端如何實現 Lazy loading 查詢無限層結構的資料。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>.NET 6 Web API 使用SignalR實作WebSocket技術實現即時通訊-2</title>
       <link>http://sunnote.xyz/zh-tw/tutorials/aspnetcore-6.0-signalr-websocket-2/</link>

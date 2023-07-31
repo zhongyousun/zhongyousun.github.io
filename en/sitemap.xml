@@ -17,6 +17,86 @@
                 href="http://sunnote.xyz/categories/"
                 />
   </url><url>
+    <loc>http://sunnote.xyz/posts/</loc>
+    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/posts/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/categories/program/</loc>
+    <lastmod>2023-07-25T14:00:18+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/tags/sql/</loc>
+    <lastmod>2023-07-25T14:00:18+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/sql/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/sql/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/</loc>
+    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tags/</loc>
+    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tutorials/cte-lazy-loading-infinite-data-structure/</loc>
+    <lastmod>2023-07-25T14:00:18+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tutorials/cte-lazy-loading-infinite-data-structure/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tutorials/cte-lazy-loading-infinite-data-structure/"
+                />
+  </url><url>
     <loc>http://sunnote.xyz/tags/csharp/</loc>
     <lastmod>2023-06-21T19:44:38+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -62,56 +142,6 @@
                 href="http://sunnote.xyz/tags/javascript/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/posts/</loc>
-    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/posts/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/categories/program/</loc>
-    <lastmod>2023-06-21T19:44:38+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://sunnote.xyz/</loc>
-    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/tags/</loc>
-    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/"
-                />
-  </url><url>
     <loc>http://sunnote.xyz/tags/web/</loc>
     <lastmod>2023-06-21T19:44:38+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -155,21 +185,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://sunnote.xyz/tutorials/database-optimization-clustered-index-nonclustered-index/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/tags/sql/</loc>
-    <lastmod>2023-06-13T13:21:06+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/sql/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/sql/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/cryptocurrency/</loc>

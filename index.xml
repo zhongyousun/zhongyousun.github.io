@@ -6,7 +6,16 @@
     <description>Recent content on Sun Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Fri, 16 Jun 2023 11:05:34 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 25 Jul 2023 14:00:18 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using CTE (Common Table Expression) to achieve lazy loading and querying infinite hierarchical data structure</title>
+      <link>http://sunnote.xyz/tutorials/cte-lazy-loading-infinite-data-structure/</link>
+      <pubDate>Tue, 25 Jul 2023 14:00:18 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/tutorials/cte-lazy-loading-infinite-data-structure/</guid>
+      <description>&lt;p&gt;Recording the backend implementation of Lazy loading querying infinite hierarchical data structure.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Implementing Real-Time Communication with WebSocket using SignalR and .NET 6 Web API - Part 2</title>
       <link>http://sunnote.xyz/tutorials/aspnetcore-6.0-signalr-websocket-2/</link>

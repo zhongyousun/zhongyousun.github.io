@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<meta property="fb:app_id" content="725315935966817" />
+	<title>Using CTE (Common Table Expression) to achieve lazy loading and querying infinite hierarchical data structure - Sun Notes</title>
+	<script>(function (d, e) { d[e] = d[e].replace("no-js", "js"); })(document.documentElement, "className");</script>
+	<meta name="description"
+		content="">
+	<meta property="og:title" content="Using CTE (Common Table Expression) to achieve lazy loading and querying infinite hierarchical data structure" />
+<meta property="og:description" content="Recording the backend implementation of Lazy loading querying infinite hierarchical data structure." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://sunnote.xyz/tutorials/cte-lazy-loading-infinite-data-structure/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-07-25T14:00:18+08:00" />
+<meta property="article:modified_time" content="2023-07-25T14:00:18+08:00" /><meta property="og:site_name" content="Sun Notes" />
+<meta property="og:image" content="http://sunnote.xyz/img/thumbnail/037en.webp" />
+		  	
+	<meta itemprop="name" content="Using CTE (Common Table Expression) to achieve lazy loading and querying infinite hierarchical data structure">
+<meta itemprop="description" content="Recording the backend implementation of Lazy loading querying infinite hierarchical data structure."><meta itemprop="datePublished" content="2023-07-25T14:00:18+08:00" />
+<meta itemprop="dateModified" content="2023-07-25T14:00:18+08:00" />
+<meta itemprop="wordCount" content="801">
+<meta itemprop="keywords" content="SQL," />
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Using CTE (Common Table Expression) to achieve lazy loading and querying infinite hierarchical data structure"/>
+<meta name="twitter:description" content="Recording the backend implementation of Lazy loading querying infinite hierarchical data structure."/>
+
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+	<style>
+		
+		@media screen and (max-width: 850px) {
+		.floating-menu {
+			display: none;
+			}
+		}
+		.floating-menu {
+		  position: fixed;
+		  top: 80%;
+		  right: 10px;
+		  transform: translateY(-50%);
+		}
+  
+		.main-button {
+		  border: none;
+		  border-radius: 5px;
+		  background-color: #ACD6FF;
+		  color: #fff;
+		  font-size: 14px;
+		  cursor: pointer;
+		  height: 38px;
+		  width: 38px;
+		}
+  
+		.main-button:hover {
+		  background-color: #9accff;
+		  color: #333;
+		}
+  
+		.sub-buttons {
+		  display: none;
+		  position: absolute;
+		  top: calc(100% - 170px);
+		  right: 0;
+		  background-color: var(--wrapperBG);
+		  border: 1px solid #ddd;
+		  border-radius: 5px;
+		  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+		  width: 100%;
+		}
+		.sub-button {
+		  display: block;
+		  width: 100%;
+		  padding: 10px;
+		  border: none;
+		  background-color: transparent;
+		  color: var(--text-color);
+		  font-size: 14px;
+		  cursor: pointer;
+		}
+  
+		.sub-button:hover {
+		  background-color:var(--wrapperBG2);
+		  color: #ACD6FF;
+		}
+	  </style>
+	  
+	  
+	  <style>
+		@import 'https://fonts.googleapis.com/css?family=Montserrat:400,700';
+.aa-input-container {
+  display: inline-block;
+  width: 90%;
+  left: 15%;
+  top: 10%;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  display: none;
+}
+.aa-input-container span,.aa-input-container input {
+    width: inherit;
+}
+.aa-input-search {
+  width: 300px;
+  padding: 12px 28px 12px 12px;
+  border: 2px solid #e4e4e4;
+  border-radius: 4px;
+  -webkit-transition: .2s;
+  transition: .2s;
+  font-family: "Montserrat", sans-serif;
+  box-shadow: 4px 4px 0 rgba(241, 241, 241, 0.35);
+  font-size: 11px;
+  box-sizing: border-box;
+  color: #333;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.aa-input-search::-webkit-search-decoration, .aa-input-search::-webkit-search-cancel-button, .aa-input-search::-webkit-search-results-button, .aa-input-search::-webkit-search-results-decoration {
+    display: none;
+}
+.aa-input-search:focus {
+    outline: 0;
+    border-color: #3a96cf;
+    box-shadow: 4px 4px 0 rgba(58, 150, 207, 0.1);
+}
+.aa-input-icon {
+  height: 16px;
+  width: 16px;
+  position: absolute;
+  top: 25px;
+  right: 330px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  fill: #e4e4e4;
+}
+.aa-hint {
+  color: #e4e4e4;
+}
+.aa-dropdown-menu {
+  background-color: #fff;
+  border: 2px solid rgba(228, 228, 228, 0.6);
+  border-top-width: 1px;
+  font-family: "Montserrat", sans-serif;
+  width: 300px;
+  margin-top: 10px;
+  box-shadow: 4px 4px 0 rgba(241, 241, 241, 0.35);
+  font-size: 11px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.aa-suggestion {
+  padding: 12px;
+  border-top: 1px solid rgba(228, 228, 228, 0.6);
+  cursor: pointer;
+  -webkit-transition: .2s;
+  transition: .2s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+
+}
+.aa-suggestion:hover, .aa-suggestion.aa-cursor {
+    background-color: rgba(241, 241, 241, 0.35);
+}
+.aa-suggestion > span:first-child {
+    color: #333;
+}
+.aa-suggestion > span:last-child {
+    text-transform: uppercase;
+    color: #a9a9a9;
+}
+.aa-suggestion > span:first-child em, .aa-suggestion > span:last-child em {
+  font-weight: 700;
+  font-style: normal;
+  background-color: rgba(58, 150, 207, 0.1);
+  padding: 2px 0 2px 2px;
+}
+
+ 
+.aa-suggestion {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+
+.aa-suggestion img {
+  max-width: 64px;
+  max-height: 64px;
+  margin-right: 16px;
+}
+
+.aa-suggestion .aa-suggestion-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.aa-suggestion .aa-suggestion-summary {
+  font-size: 14px;
+  color: #666;
+}
+
+	  </style>
+	  <style>
+		#back-to-top {
+			right: 10px;
+  			border-radius: 5px;
+  			height: 38px;
+		  	width: 38px;
+			border: none;
+			top: 85%;
+			box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.3);
+		}
+
+	  </style>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" >
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MWPM4C5TJS"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-MWPM4C5TJS', { 'anonymize_ip': false });
+}
+</script>
+
+
+	
+</head>
+
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog" >
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  
+		</div>
+		<div class="modal-body">
+		  <div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="Search for titles or URIs..."
+      name="search" autocomplete="off" />
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+      <path
+        d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+  </div>
+  <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/algoliasearch.min.js"></script>
+  <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/autocomplete.min.js"></script>
+  <script>
+    var client = algoliasearch("6CA8UYGMKF","0b6aa5d5a7d49848cea785697d9a99ba");
+    var index = client.initIndex('sunnote');
+    autocomplete('#aa-search-input',
+      { hint: false }, {
+      source: autocomplete.sources.hits(index, { hitsPerPage: 20 }),
+      displayKey: 'name',
+      templates: {
+          suggestion: function (suggestion) {
+              return '<div class="suggestion">' +
+      '<div class="suggestion-image">' +
+      '<img src="' + suggestion.cover + '" alt="' + suggestion.title + '" />' +
+      '</div>' +
+      '<div class="suggestion-content">' +
+      '<h4><a href="' + suggestion.url + '">' + suggestion.title + '</a></h4>' +
+      '<br>' +
+      '<small>' + '<a href="' + suggestion.url + '">'+suggestion.summary+ '</a>' + '</small>' +
+      '</div>' +
+      '</div>';
+        }
+      }
+    });
+  
+    $('#searchGlyph').click(function() {
+      setTimeout(function(){
+        $('#aa-search-input').focus();
+      },300);
+    });
+  </script>
+		</div>
+	  </div>
+	</div>
+  </div>
+<span class="sun-btn">&#x2600;</span>
+<span class="moon-btn">&#x263D;</span>
+
+<script>
+	
+let darkModeState = false;
+
+const sun = document.querySelector('.sun-btn');
+const moon = document.querySelector('.moon-btn');
+
+
+const useDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+
+function toggleDarkMode(state) {
+  document.documentElement.classList.toggle("dark-mode", state);
+  darkModeState = state;
+}
+
+
+function setDarkModeLocalStorage(state) {
+  localStorage.setItem("dark-mode", state);
+}
+
+
+toggleDarkMode(localStorage.getItem("dark-mode") == "true");
+
+
+
+  useDark.addEventListener('change', (evt) => {
+    toggleDarkMode(evt.matches);
+  });
+
+
+
+sun.addEventListener("click", () => {
+  darkModeState = !darkModeState;
+
+  toggleDarkMode(darkModeState);
+  setDarkModeLocalStorage(darkModeState);
+});
+moon.addEventListener("click", () => {
+  darkModeState = !darkModeState;
+
+  toggleDarkMode(darkModeState);
+  setDarkModeLocalStorage(darkModeState);
+});
+</script>
+
+<body class="body">
+	
+	<script>
+		window.fbAsyncInit = function () {
+			FB.init({
+				appId: '725315935966817',
+				xfbml: true,
+				version: 'v16.0'
+			});
+			FB.AppEvents.logPageView();
+		};
+
+		(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) { return; }
+			js = d.createElement(s); js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
+
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Sun Notes" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Sun Notes</div>
+					<div class="logo__tagline">Program , Life , Investment , Travel , Insights</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+  <button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+    <span class="menu__btn-title" tabindex="-1">☰Menu</span>
+  </button>
+  <ul class="menu__list">
+    <li class="menu__item">
+      <a class="menu__link" href="/about">
+        <i class='fas fa-house'></i>
+          <span class="menu__text">About</span>
+        
+      </a>
+    </li>
+    <li class="menu__item">
+      <a class="menu__link" href="/search">
+        <i class='fas fa-magnifying-glass'></i>
+          <span class="menu__text">Site Search</span>
+        
+      </a>
+    </li>
+    <li class="menu__item">
+      <a class="menu__link" href="/archives">
+        <i class='fas fa-box-archive'></i>
+          <span class="menu__text">Archives</span>
+        
+      </a>
+    </li>
+    <li class="menu__item menu__dropdown">
+      
+        <a class="menu__link">
+        <i class='fas fa-plane'></i>
+        <span class="menu__text">Life</span>
+        <label class="drop-icon" for="Life">▾</label>
+        
+      </a>
+      <input type="checkbox" id="Life">
+      <ul class="submenu__list">
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/tags/philippines/">
+            
+            <span class="menu__text">Philippines</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/tags/cebu/">
+            
+            <span class="menu__text">Cebu</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/tags/taiwan/">
+            
+            <span class="menu__text">Taiwan</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/tags/japan/">
+            
+            <span class="menu__text">Japan</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/tags/hokkaido/">
+            
+            <span class="menu__text">Hokkaido</span>
+            
+          </a>
+          </li>
+        
+      </ul>
+    </li>
+    <li class="menu__item menu__dropdown">
+      
+        <a class="menu__link">
+        <i class='fas fa-globe'></i>
+        <span class="menu__text"> </span>
+        <label class="drop-icon" for=" ">▾</label>
+        
+      </a>
+      <input type="checkbox" id=" ">
+      <ul class="submenu__list">
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/">
+            
+            <span class="menu__text">EN</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/zh-tw">
+            
+            <span class="menu__text">Zh</span>
+            
+          </a>
+          </li>
+        
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+	</div>
+</header>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-MWPM4C5TJS', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+		<div class="wrapper flex">
+			<div class="primary">
+				
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"></link>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"></link>
+<style>
+	.owl-theme .item {
+	  height: 15rem;
+	   
+	  background-color: var(--wrapperBG);
+	  padding: 0.5rem;
+	  box-shadow: 0 0 20px 0 var(--shadow); 
+	  transform:scale(0.9,0.9);
+	  transition: all 0.3s ease-out;
+	}
+	.owl-theme .item:hover {
+		margin-top: -10px;
+		 
+	}
+	
+	.owl-carousel .item h6 {
+	  color: #000000;
+	  font-weight: 400;
+	  font-size: 1rem;
+	  margin-top: 0rem;
+
+	  position: relative;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 5;  
+	text-overflow: ellipsis;
+	overflow: hidden;
+	}
+	.owl-carousel .item img {
+	  width: 100%;
+	  height: 7.5rem;
+	  border-radius: 4px;
+	}
+</style>
+
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Using CTE (Common Table Expression) to achieve lazy loading and querying infinite hierarchical data structure</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-calendar"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 5.332031 L 2 12.667969 C 2 13.035156 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 5.332031 C 14 4.964844 13.703125 4.667969 13.335938 4.667969 L 2.664062 4.667969 C 2.296875 4.667969 2 4.964844 2 5.332031 Z M 0.667969 5.332031 C 0.667969 4.230469 1.558594 3.332031 2.664062 3.332031 L 13.335938 3.332031 C 14.441406 3.332031 15.332031 4.230469 15.332031 5.332031 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.769531 0.667969 12.667969 Z M 2 7.332031 L 2 6 L 14 6 L 14 7.332031 Z M 4 2 C 4 1.632812 4.296875 1.332031 4.667969 1.332031 C 5.035156 1.332031 5.332031 1.628906 5.332031 2 L 5.332031 3.332031 L 4 3.332031 Z M 10.667969 2 C 10.667969 1.632812 10.960938 1.332031 11.332031 1.332031 C 11.703125 1.332031 12 1.628906 12 2 L 12 3.332031 L 10.667969 3.332031 Z M 10.667969 2 "/>
+</g>
+</svg>
+<time class="meta__text" datetime="2023-07-25T14:00:18&#43;08:00">July 25, 2023</time></div><div class="meta__item-categories meta__item">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-folders"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 6 L 2 12.664062 C 2 13.03125 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 8 C 14 7.632812 13.703125 7.332031 13.335938 7.332031 L 9.808594 7.332031 L 8.03125 5.332031 L 2.667969 5.332031 C 2.300781 5.332031 2 5.632812 2 6 Z M 13.335938 6 C 14.4375 6 15.332031 6.894531 15.332031 8 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.761719 0.667969 12.664062 L 0.667969 6 C 0.667969 4.894531 1.5625 4 2.667969 4 L 8.632812 4 L 10.40625 6 Z M 4.425781 3.625 C 4.425781 3.625 4.425781 3.703125 4.425781 4.074219 C 4.425781 4.328125 5.15625 4.75 6 4.667969 C 6.777344 4.589844 8.453125 4.589844 8.796875 5.050781 C 10 6.667969 14.242188 7.15625 14.242188 6.667969 L 14.242188 5.25 C 14.242188 4.949219 14 4.707031 13.699219 4.707031 L 10.8125 4.707031 L 9.359375 3.082031 L 4.972656 3.082031 C 4.667969 3.082031 4.425781 3.328125 4.425781 3.625 Z M 13.699219 3.625 C 14.601562 3.625 15.332031 4.351562 15.332031 5.25 L 15.332031 8 C 15.332031 8.304688 14.667969 6.667969 10 6.667969 C 8.652344 6.160156 9.402344 5.636719 8 5.25 C 6.496094 4.832031 4.703125 5.296875 3.863281 5.285156 C 3.320312 5.273438 3.332031 4.855469 3.332031 4.667969 L 3.332031 3.625 C 3.332031 2.726562 4.066406 2 4.972656 2 L 9.851562 2 L 11.300781 3.625 Z M 13.699219 3.625 "/>
+</g>
+</svg>
+<span class="meta__text"><a class="meta__link" href="/categories/program/" rel="category">Program</a>
+	</span>
+</div>
+<div class="meta__item-translations meta__item"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+class="meta__icon icon icon-author"
+width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 5.121094 L 2 13.109375 C 2 13.484375 2.25 13.617188 2.554688 13.410156 L 5.445312 11.488281 C 5.75 11.28125 6.25 11.28125 6.554688 11.488281 L 9.445312 13.410156 C 9.75 13.617188 10.25 13.617188 10.554688 13.410156 L 13.445312 11.488281 C 13.75 11.28125 14 10.816406 14 10.445312 L 14 2.453125 C 14 2.082031 13.75 1.949219 13.445312 2.152344 L 10.554688 4.078125 C 10.25 4.28125 9.75 4.28125 9.445312 4.078125 L 6.554688 2.152344 C 6.25 1.949219 5.75 1.949219 5.445312 2.152344 L 2.554688 4.078125 C 2.25 4.28125 2 4.75 2 5.121094 Z M 0.667969 5.121094 C 0.667969 4.304688 1.140625 3.421875 1.816406 2.96875 L 4.703125 1.042969 C 5.460938 0.539062 6.542969 0.542969 7.296875 1.042969 L 10.183594 2.96875 C 10.042969 2.875 9.957031 2.875 9.816406 2.96875 L 12.703125 1.042969 C 13.898438 0.246094 15.332031 1.019531 15.332031 2.453125 L 15.332031 10.445312 C 15.332031 11.261719 14.859375 12.144531 14.183594 12.597656 L 11.296875 14.519531 C 10.539062 15.023438 9.457031 15.023438 8.703125 14.519531 L 5.816406 12.597656 C 5.957031 12.691406 6.042969 12.691406 6.183594 12.597656 L 3.296875 14.519531 C 2.101562 15.316406 0.667969 14.542969 0.667969 13.109375 Z M 5.332031 1.78125 L 6.667969 1.78125 L 6.667969 11.78125 L 5.332031 11.78125 Z M 9.332031 3.78125 L 10.667969 3.78125 L 10.667969 13.78125 L 9.332031 13.78125 Z M 9.332031 3.78125 "/>
+</g>
+</svg>
+<span class="meta__text"><a class="meta__link" href="/zh-tw/tutorials/cte-lazy-loading-infinite-data-structure/">ZH-TW</a>　
+	</span>
+</div>
+
+				
+				
+				
+				<span>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-clock"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 8 12.667969 C 10.578125 12.667969 12.667969 10.578125 12.667969 8 C 12.667969 5.421875 10.578125 3.332031 8 3.332031 C 5.421875 3.332031 3.332031 5.421875 3.332031 8 C 3.332031 10.578125 5.421875 12.667969 8 12.667969 Z M 3.957031 12.433594 C 2.753906 11.335938 2 9.757812 2 8 C 2 4.6875 4.6875 2 8 2 C 11.3125 2 14 4.6875 14 8 C 14 9.757812 13.246094 11.335938 12.042969 12.433594 L 12.9375 13.328125 C 13.207031 13.597656 13.203125 14.015625 12.941406 14.277344 C 12.679688 14.539062 12.257812 14.535156 11.996094 14.273438 L 10.949219 13.226562 C 10.078125 13.71875 9.070312 14 8 14 C 6.929688 14 5.921875 13.71875 5.050781 13.226562 L 4.003906 14.273438 C 3.738281 14.539062 3.316406 14.535156 3.058594 14.277344 C 2.796875 14.015625 2.796875 13.589844 3.0625 13.328125 Z M 7.332031 5.335938 C 7.332031 4.964844 7.628906 4.667969 8 4.667969 C 8.367188 4.667969 8.667969 4.957031 8.667969 5.335938 L 8.667969 9.332031 L 7.332031 9.332031 Z M 5.332031 8.667969 C 5.332031 8.296875 5.628906 8 6 8 L 7.332031 8 L 7.332031 9.332031 L 6 9.332031 C 5.632812 9.332031 5.332031 9.039062 5.332031 8.667969 Z M 5.332031 8.667969 "/>
+</g>
+</svg>
+1241 words</span>
+				<span>| 4 min read.　</span>
+				
+			
+				
+
+			</div>
+
+
+			<div id="fb-root"></div>
+			<script async defer crossorigin="anonymous"
+				src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0&appId=725315935966817&autoLogAppEvents=1"
+				nonce="aF40iZ15"></script>
+		</header>
+		
+	<figure class="post__thumbnail thumbnail">
+		
+		<img class="thumbnail__image" src="/img/thumbnail/037en.webp" alt="Using CTE (Common Table Expression) to achieve lazy loading and querying infinite hierarchical data structure">
+		
+	</figure>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#foreword">Foreword</a></li>
+        <li><a href="#infinite-hierarchical-data-structure">Infinite hierarchical data structure</a></li>
+        <li><a href="#implementing-lazy-loading">Implementing lazy loading</a></li>
+        <li><a href="#using-cte-to-implement-reading-infinite-hierarchical-data-structure">Using CTE to implement reading infinite hierarchical data structure</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<p>Recording the backend implementation of Lazy loading querying infinite hierarchical data structure.</p>
+<h3 id="foreword">Foreword</h3>
+<p>This article focuses on querying and implementing lazy loading for an infinite hierarchical data structure, which is commonly encountered in social media platforms that offer comment functionalities. Users can reply to specific comments, generating multi-level comments. If the system does not have restrictions, it may lead to an infinite depth of comments. This article records how to query and implement lazy loading for such infinite hierarchical data structure.</p>
+<h3 id="infinite-hierarchical-data-structure">Infinite hierarchical data structure</h3>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>comment_id</td>
+<td>comment ID</td>
+</tr>
+<tr>
+<td>parent_id</td>
+<td>parent comment ID, if null, represents the first level.</td>
+</tr>
+</tbody>
+</table>
+<p>This structure can store comments and their hierarchical relationships. The comment_id is used to identify each comment, while the parent_id indicates which parent comment the comment is replying to.</p>
+<h3 id="implementing-lazy-loading">Implementing lazy loading</h3>
+<p>Lazy loading is implemented on the frontend, while the backend is responsible for sequentially providing corresponding data. By utilizing the OFFSET-FETCH pagination technique, the backend can provide the desired data in the specified order.</p>
+<p>e.g.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span> <span style="color:#66d9ef">OFFSET</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">ROWS</span> <span style="color:#66d9ef">FETCH</span> <span style="color:#66d9ef">NEXT</span> <span style="color:#ae81ff">2</span> <span style="color:#66d9ef">ROWS</span> <span style="color:#66d9ef">ONLY</span>    
+</span></span></code></pre></div><p>To retrieve data starting from the 0th record and fetching the next two records is equivalent to obtaining the 1st and 2nd records (modifiable as per requirements).</p>
+<h3 id="using-cte-to-implement-reading-infinite-hierarchical-data-structure">Using CTE to implement reading infinite hierarchical data structure</h3>
+<p>When sorting the comments based on the creation time, we can retrieve data in the correct order to resolve the issue of lazy loading. However, a problem arises with the creation time of child comments not always being in chronological order. This means that the oldest comment at the first level might have newer child comments. If we strictly sort based on creation time and return the latest 10 comments, the frontend might receive the newest child comment without getting the corresponding parent comment from the first level, causing display issues on the interface.</p>
+<p>To address this issue, the data retrieval approach involves pagination and sorting based on the creation time of the first-level comments. It fetches the latest 10 first-level comments along with all their corresponding child comments. This ensures that there will be no mismatch between child comments and their respective parent comments, eliminating any problems arising from child comments not corresponding to their parent comments.</p>
+<p>However, due to the possibility of having an infinite number of child comments, it is necessary to use CTE (Common Table Expression) to ensure that data from each level is accurately retrieved.</p>
+<p>Assuming the table name is <code>comment_history</code></p>
+<p>e.g.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">WITH</span> CommentHierarchy <span style="color:#66d9ef">AS</span> (
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    <span style="color:#75715e">-- Anchor member definition
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>        comment_id,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>        parent_id,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>        message,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>        created_time,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>        created_user,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>        <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">Level</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>    <span style="color:#66d9ef">FROM</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>        comment_history
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    <span style="color:#66d9ef">WHERE</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>        parent_id <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">NULL</span> <span style="color:#75715e">-- Fetching top-level comments
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">and</span> comment_id <span style="color:#66d9ef">in</span> (
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>  <span style="color:#66d9ef">select</span> comment_id <span style="color:#66d9ef">from</span> comment_history
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>  <span style="color:#66d9ef">where</span> parent_id <span style="color:#66d9ef">is</span> <span style="color:#66d9ef">null</span><span style="color:#960050;background-color:#1e0010">　</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>  <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> created_time <span style="color:#66d9ef">desc</span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>  <span style="color:#66d9ef">OFFSET</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">ROWS</span> <span style="color:#66d9ef">FETCH</span> <span style="color:#66d9ef">NEXT</span> <span style="color:#ae81ff">10</span> <span style="color:#66d9ef">ROWS</span> <span style="color:#66d9ef">ONLY</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>	
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>    <span style="color:#66d9ef">UNION</span> <span style="color:#66d9ef">ALL</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>    <span style="color:#75715e">-- Recursive member definition
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>        <span style="color:#66d9ef">c</span>.comment_id,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>        <span style="color:#66d9ef">c</span>.parent_id,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>        <span style="color:#66d9ef">c</span>.message,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>        <span style="color:#66d9ef">c</span>.created_time,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span>        <span style="color:#66d9ef">c</span>.created_user,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span>        ch.<span style="color:#66d9ef">Level</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">Level</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span>    <span style="color:#66d9ef">FROM</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span><span>        comment_history <span style="color:#66d9ef">c</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span><span>    <span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34</span><span>        CommentHierarchy ch <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">c</span>.parent_id <span style="color:#f92672">=</span> ch.comment_id
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35</span><span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36</span><span><span style="color:#66d9ef">SELECT</span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37</span><span>    comment_id,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38</span><span>    parent_id,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39</span><span>    message,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40</span><span>    created_time,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41</span><span>    created_user,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42</span><span>	<span style="color:#66d9ef">Level</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43</span><span><span style="color:#66d9ef">FROM</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44</span><span>    CommentHierarchy
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45</span><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46</span><span>    created_time <span style="color:#66d9ef">DESC</span>  
+</span></span></code></pre></div><hr>
+<p>Syntax Explanation:</p>
+<p>Create the <code>CommentHierarchy</code>, first fetching the original data of comments where the condition is specified.</p>
+<pre tabindex="0"><code>parent_id IS NULL (It represents the first level.) 
+</code></pre><p>and</p>
+<pre tabindex="0"><code>comment_id in (
+  select comment_id from comment_history
+  where parent_id is null　
+  order by created_time desc 
+  OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY)
+</code></pre><p>In conjunction with lazy loading, fetch the latest 10 comments and create a new column &ldquo;Level&rdquo; with a value of 1 (representing first-level comments).</p>
+<hr>
+<p>After obtaining the first level, perform a <code>JOIN</code> between the <code>original data</code> and <code>CommentHierarchy</code>, binding the relationship where the <code>parent_id</code> in the original data matches the <code>comment_id</code> in the <code>CommentHierarchy</code>.<strong>(Retrieve the second-level child comments using the comment_id from the first level.)</strong></p>
+<pre tabindex="0"><code>-- Recursive member definition
+    SELECT
+        c.comment_id,
+        c.parent_id,
+        c.message,
+        c.created_time,
+        c.created_user,
+        ch.Level + 1 AS Level
+    FROM
+        comment_history c
+    INNER JOIN
+        CommentHierarchy ch ON c.parent_id = ch.comment_id
+</code></pre><p>Continuously use the <code>CommentHierarchy</code>&rsquo;s comment_id to determine if there are child comments, obtaining each level of child comments in a recursive manner, and finally merging all the data together.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>With the above approach, you can obtain all child comments of parent comments and label the level of each comment.</p>
+<table>
+<thead>
+<tr>
+<th>comment_id</th>
+<th>parent_id</th>
+<th>message</th>
+<th>created_time</th>
+<th>created_user</th>
+<th>Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>138808E8-5FFA-4F26-927D-3E06654079BC</td>
+<td>82D25141-29D3-4135-A162-A588B61AA6EF</td>
+<td>2233</td>
+<td>2023-07-25 11:55:44.443</td>
+<td>Alvin</td>
+<td>2</td>
+</tr>
+<tr>
+<td>0D46466C-3725-4FBA-9676-C1D364ED0D16</td>
+<td>82D25141-29D3-4135-A162-A588B61AA6EF</td>
+<td>1112</td>
+<td>2023-07-25 11:16:55.977</td>
+<td>OKA</td>
+<td>2</td>
+</tr>
+<tr>
+<td>548439B1-7D6C-4268-88CA-A52570DC5409</td>
+<td>30C7A6F8-4E69-4F3C-836B-04AEBAE46F84</td>
+<td>test</td>
+<td>2023-07-25 11:10:43.610</td>
+<td>David</td>
+<td>3</td>
+</tr>
+<tr>
+<td>30C7A6F8-4E69-4F3C-836B-04AEBAE46F84</td>
+<td>82D25141-29D3-4135-A162-A588B61AA6EF</td>
+<td>XD</td>
+<td>2023-07-25 11:10:17.560</td>
+<td>Alvin</td>
+<td>2</td>
+</tr>
+<tr>
+<td>82D25141-29D3-4135-A162-A588B61AA6EF</td>
+<td>NULL</td>
+<td>so tired</td>
+<td>2023-07-25 11:09:52.187</td>
+<td>OKA</td>
+<td>1</td>
+</tr>
+<tr>
+<td>6722E047-5547-4EE7-8959-938A10534858</td>
+<td>B6C20E72-2F7A-4891-B8A3-301DBBF72CC6</td>
+<td>cool~</td>
+<td>2023-07-25 11:02:23.717</td>
+<td>Alvin</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2281BDB4-7B21-442F-84C5-A0736BE7DD9A</td>
+<td>B6C20E72-2F7A-4891-B8A3-301DBBF72CC6</td>
+<td>wow new system</td>
+<td>2023-07-25 11:02:19.607</td>
+<td>Alvin</td>
+<td>2</td>
+</tr>
+<tr>
+<td>B6C20E72-2F7A-4891-B8A3-301DBBF72CC6</td>
+<td>NULL</td>
+<td>what is this?</td>
+<td>2023-07-25 11:02:09.060</td>
+<td>JSON</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+		</div>
+		<br>
+		<br>
+		
+		<br>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/sql/" rel="tag">SQL</a>
+		</li>
+	</ul>
+</div>
+			
+			
+
+
+
+
+
+
+
+
+
+<style>
+    .sharebuttons {
+        position:relative;
+        float: right;
+    }
+    .sharebuttons ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .sharebuttons ul li {
+        display: inline-block;
+        margin-left: 10px;
+    }
+</style>
+<nav class="sharebuttons">
+    <span>:</span>
+     <ul>
+        <li><a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fsunnote.xyz%2ftutorials%2fcte-lazy-loading-infinite-data-structure%2f&t=Using%20CTE%20%28Common%20Table%20Expression%29%20to%20achieve%20lazy%20loading%20and%20querying%20infinite%20hierarchical%20data%20structure" target="_blank"><svg height="50" viewBox="0 0 50 50" width="50" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="m12.8064516 26.63h5.4808065v22.5635484c0 .4454839.3609677.8064516.8064516.8064516h9.2929032c.4454839 0 .8064516-.3609677.8064516-.8064516v-22.4572581h6.3006452c.4096774 0 .7543548-.3074193.801129-.7143548l.9569355-8.3067742c.0262903-.2285484-.046129-.4574194-.1990323-.628871-.1530645-.1716129-.3720967-.2698387-.6019354-.2698387h-7.2574194v-5.2070968c0-1.5696774.8451613-2.36564512 2.5122581-2.36564512h4.7451613c.4454838 0 .8064516-.36112903.8064516-.80645162v-7.6248387c0-.44548388-.3609678-.80645162-.8064516-.80645162h-6.5395162c-.046129-.00225806-.1485484-.00596774-.2995161-.00596774-1.1346774 0-5.0787097.22274194-8.1941936 3.08887097-3.4519354 3.17612903-2.9720967 6.97903223-2.8574193 7.63838713v6.0890322h-5.7537097c-.4454839 0-.8064516.3609678-.8064516.8064516v8.2006452c0 .4454839.3609677.8066129.8064516.8066129z" fill="#d5d5d5" class="will-change" fill-rule="nonzero"/><path d="m0 0h50v50h-50z"/></g></svg></a></li>
+        <li><a href="https://twitter.com/share?text=Using%20CTE%20%28Common%20Table%20Expression%29%20to%20achieve%20lazy%20loading%20and%20querying%20infinite%20hierarchical%20data%20structure&url=http%3a%2f%2fsunnote.xyz%2ftutorials%2fcte-lazy-loading-infinite-data-structure%2f" target="_blank"><svg height="50" viewBox="0 0 50 50" width="50" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="m48.8670204 9.72441272c-.7854489.34833978-1.5930659.64238268-2.418261.88115208.9769529-1.10488248 1.7217769-2.40488211 2.1764642-3.8274403.1019531-.31884757-.0037109-.66787091-.2658202-.8764646-.2618163-.20869135-.6254881-.23369134-.9136716-.06289061-1.7524409 1.03935518-3.6430654 1.78632762-5.6254867 2.22304625-1.9969721-1.95126898-4.7091784-3.06181554-7.5130838-3.06181554-5.918553 0-10.7336884 4.8150377-10.7336884 10.7333954 0 .4661131.0294922.9296872.0878906 1.386816-7.3443338-.644824-14.17226158-4.2546863-18.86093212-10.0061495-.1670898-.20498041-.4245116-.31552725-.68808575-.29433585-.2636718.02060546-.50068345.16933589-.63388653.3979491-.9509763 1.63173782-1.45371053 3.49804585-1.45371053 5.39697115 0 2.5863274.92333958 5.0401353 2.55449146 6.9576152-.49599595-.1717773-.97724581-.3864257-1.43662068-.6414061-.24658196-.1373046-.54755844-.1351562-.7925779.0052735-.24511712.1405273-.39882802.398828-.40537098.6812498-.00117188.0475585-.00117188.0951171-.00117188.1433593 0 3.8604481 2.07773379 7.3361307 5.25439304 9.2304661-.27294914-.027246-.54560531-.0667968-.81660133-.1185546-.27939445-.053418-.5666014.0445312-.75498025.2576171-.18867182.2128906-.2511718.5096678-.16416011.7806638 1.17578092 3.6709951 4.20302615 6.371092 7.86269306 7.1943339-3.0353507 1.9011714-6.50644345 2.8969719-10.15029007 2.8969719-.76035135 0-1.52499957-.0446289-2.2733392-.1332031-.37177724-.0442383-.72724588.1752929-.85390601.5289061-.12666012.3537108.00761719.7480466.32382804.950781 4.68115101 3.001464 10.09384484 4.5878893 15.65272994 4.5878893 10.9280242 0 17.7643504-5.1532212 21.5747986-9.4762669 4.7516588-5.3905258 7.4767557-12.5254847 7.4767557-19.5752874 0-.2945311-.0044922-.5918943-.0135743-.8883786 1.8747065-1.412402 3.4886709-3.1217765 4.8020495-5.0864244.1995116-.2983397.1779296-.6927732-.0532227-.96738251-.2305663-.27509758-.6153318-.36396474-.9436521-.21845697z" fill="#d5d5d5" class="will-change" fill-rule="nonzero"/><path d="m0 0h50v50h-50z"/></g></svg></a></li>
+        <li><a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fsunnote.xyz%2ftutorials%2fcte-lazy-loading-infinite-data-structure%2f&title=Using%20CTE%20%28Common%20Table%20Expression%29%20to%20achieve%20lazy%20loading%20and%20querying%20infinite%20hierarchical%20data%20structure&summary=%253Cp%253ERecording%2bthe%2bbackend%2bimplementation%2bof%2bLazy%2bloading%2bquerying%2binfinite%2bhierarchical%2bdata%2bstructure.%253C%252Fp%253E" target="_blank"><svg height="51" viewBox="0 0 50 51" width="50" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="m37.17 16.2290323c11.3056452 0 12.83 8.1724193 12.83 16.1667742v17.6877419c0 .4454839-.3609677.8064516-.8064516.8064516h-10.0193549c-.4454838 0-.8064516-.3609677-.8064516-.8064516l-.0003842-15.9301537c-.0134805-4.2654904-.4024632-7.4953302-4.4055835-7.4953302-3.7477419 0-5.2080645 2.0945161-5.2080645 7.4708065v15.9545161c0 .4454839-.3609678.8066129-.8064516.8066129h-10.0156452c-.4454839 0-.8064516-.361129-.8064516-.8066129v-32.2464516c0-.4453226.3609677-.8064516.8064516-.8064516h9.6127419c.4454839 0 .8064517.361129.8064517.8064516v2.0943548c1.8075806-1.9691935 4.7877419-3.702258 8.8191935-3.702258zm-25.5312903.8014516c.4454838 0 .8064516.361129.8064516.8064516v32.2464516c0 .4454839-.3609678.8064516-.8064516.8064516h-10.03758067c-.44548387 0-.80645161-.3609677-.80645161-.8064516v-32.2464516c0-.4453226.36096774-.8064516.80645161-.8064516zm-5.01516131-16.0304839c3.64935481 0 6.61838711 2.96806452 6.61822581 6.61629032 0 3.64967738-2.968871 6.61903228-6.61822581 6.61903228-3.65225807 0-6.62354839-2.9691936-6.62354839-6.61903228 0-3.6482258 2.97129032-6.61629032 6.62354839-6.61629032z" fill="#d5d5d5" class="will-change" fill-rule="nonzero"/><path d="m0 0h50v50h-50z"/></g></svg></a></li>
+        <li><a href="whatsapp://send?text=Using%20CTE%20%28Common%20Table%20Expression%29%20to%20achieve%20lazy%20loading%20and%20querying%20infinite%20hierarchical%20data%20structure%0a%0a%3cp%3eRecording%20the%20backend%20implementation%20of%20Lazy%20loading%20querying%20infinite%20hierarchical%20data%20structure.%3c%2fp%3e%0a%0ahttp%3a%2f%2fsunnote.xyz%2ftutorials%2fcte-lazy-loading-infinite-data-structure%2f%0a" target="_blank"><svg height="50" viewBox="0 0 50 50" width="50" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="m25.4437935 0c13.5404221 0 24.5561688 10.9340909 24.5561688 24.3738636 0 13.4383117-11.0157467 24.3712663-24.5560065 24.3711039-4.0610389 0-8.0737013-1.0012987-11.624026-2.8982143l-12.97402593 4.1227273c-.06461039.0206169-.13084416.0305195-.19659091.0305195-.17159091 0-.33961039-.0681818-.46347403-.1946429-.17159091-.1746753-.23003247-.4311688-.15146104-.6631493l4.21801948-12.4423701c-2.20373376-3.724026-3.36704545-7.9790585-3.36704545-12.3259741 0-13.4397727 11.01688308-24.3738636 24.55844158-24.3738636zm-.0001624 5.07727273c-10.725974 0-19.45227269 8.65649347-19.45227269 19.29659087 0 4.0896104 1.28068182 8.0008117 3.70340909 11.3112013.125.1707793.15892857.3917208.09107143.5920455l-2.09805195 6.1897727 6.49918832-2.0659091c.064448-.0204545.1306818-.0305195.1967532-.0305195.125 0 .2491884.036039.3561689.1063312 3.1814935 2.0876624 6.8826298 3.1910714 10.7038961 3.1910714 10.7248376 0 19.4498376-8.6551948 19.4498376-19.2939935 0-10.6400974-8.7253246-19.29659087-19.45-19.29659087zm-6.6467532 7.85259737c.7225649 0 1.2425325.4384741 1.636039 1.3801948.1636363.3902598 1.7027597 4.1048702 1.788961 4.2772728.1050325.2060065.4300325.8439935.049513 1.6l-.0816559.1641233c-.1558441.3159091-.2902597.5886364-.5922078.9399351-.0969155.112013-.1956168.2308442-.2941558.349513-.2081169.250487-.4232143.5094156-.6217532.7058441-.0678572.0680195-.1993507.1998377-.2136364.2522728.000487 0 .0029221.0449675.0610389.1439935.4069806.6887987 3.375 4.7733766 7.2852273 6.4719156.1707792.0741883.7349026.3064935.7675325.3064935.0363636 0 .0970779-.0607143.1415584-.111526.3405844-.3849026 1.4428572-1.6733766 1.8069806-2.2146104.3220779-.4818182.7355519-.7271104 1.2277597-.7271104.3012987 0 .5845779.0926948.849026.1876624.6030564.2170398 3.8043369 1.7879312 4.3216328 2.0413055l.0686269.0335321c.4774351.2292208.8545455.4102273 1.0733766.7699676.3194805.5290584.1928572 1.9868506-.2873376 3.3211038-.609578 1.6939936-3.2894481 3.0826299-4.5089286 3.1907468l-.1788961.0170455c-.2819805.0277597-.6016234.0590909-1.000974.0590909l-.0944191-.0005452c-.9658464-.0112678-2.6415309-.2079278-6.0576913-1.5725068-3.6667208-1.4647727-7.2837663-4.6050325-10.1852273-8.8423701-.0501623-.0733766-.0847403-.124513-.1035714-.1496753-.7576299-.998539-2.5222403-3.624026-2.5222403-6.4047078 0-3.0896104 1.4788961-4.8464286 2.3530844-5.397565.8243507-.5196428 2.6887987-.7650974 3.0311689-.7795454.0351461-.0014814.0648513-.0027775.0900577-.0039117l.1047884-.0050457c.0548951-.0028933.0444193-.0028933.0863227-.0028933z" fill="#d5d5d5" class="will-change" fill-rule="nonzero"/><path d="m0 0h50v50h-50z"/></g></svg></a></li>
+        
+        <li><a href="mailto:?subject=Using%20CTE%20%28Common%20Table%20Expression%29%20to%20achieve%20lazy%20loading%20and%20querying%20infinite%20hierarchical%20data%20structure&body=Using%20CTE%20%28Common%20Table%20Expression%29%20to%20achieve%20lazy%20loading%20and%20querying%20infinite%20hierarchical%20data%20structure%0a%0a%3cp%3eRecording%20the%20backend%20implementation%20of%20Lazy%20loading%20querying%20infinite%20hierarchical%20data%20structure.%3c%2fp%3e%0a%0ahttp%3a%2f%2fsunnote.xyz%2ftutorials%2fcte-lazy-loading-infinite-data-structure%2f%0a" target="_blank"><svg height="50" viewBox="0 0 50 50" width="50" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="m46.149789 6h-42.29957803c-2.12025316 0-3.85021097 1.72995781-3.85021097 3.85021097v29.78902953c0 2.1202532 1.72995781 3.850211 3.85021097 3.850211h42.29957803c2.1202532 0 3.850211-1.7299578 3.850211-3.850211v-29.78902953c0-2.12025316-1.7299578-3.85021097-3.850211-3.85021097zm-.5590717 2.84810127-20.3270042 17.38396623-20.32700424-17.38396623zm1.5611814 30.79113923c0 .5485232-.4535865 1.0021097-1.0021097 1.0021097h-42.29957803c-.54852321 0-1.0021097-.4535865-1.0021097-1.0021097v-28.8291139l21.48734173 18.3755274c.0105486.0105485.0316456.0210971.0421941.0316456.0105486.0105485.0316456.021097.0421941.0316455.0316456.0210971.0527426.0421941.0843882.0527427.0105485.0105485.0210971.0105485.0316456.021097.0421941.0210971.0843882.0421941.1265823.0632911.0105485 0 .021097.0105486.0316455.0105486.0316456.0105485.0632912.0316455.1054853.0421941.0105485 0 .0316455.0105485.0421941.0105485.0316455.0105485.0632911.021097.0949367.021097.0105485 0 .0316455.0105486.0421941.0105486.0316455.0105485.0738396.0105485.1054852.021097h.0316456c.042194 0 .0949367.0105485.1371308.0105485.042194 0 .0949367 0 .1371308-.0105485h.0316455c.0316456 0 .0738397-.0105485.1054853-.021097.0105485 0 .0316455-.0105486.0421941-.0105486.0316455-.0105485.0632911-.021097.0949367-.021097.0105485 0 .0316455-.0105485.0421941-.0105485.0316455-.0105486.0632911-.0210971.1054852-.0421941.0105485 0 .021097-.0105486.0316456-.0105486.042194-.021097.0843881-.042194.1265822-.0632911.0105486-.0105485.0210971-.0105485.0316456-.021097.0316456-.0210971.0527426-.0316456.0843882-.0527427.0105485-.0105485.0316456-.021097.0421941-.0316455s.0316456-.0210971.0421941-.0316456l20.9810126-17.9219409z" fill="#d5d5d5" class="will-change" fill-rule="nonzero"/><path d="m0 0h50v50h-50z"/></g></svg></a></li>
+    </ul>
+</nav>
+<style>
+.sharebuttons, .sharebuttons ul {display: flex; margin: 0.25rem 0; align-items: center;}
+.sharebuttons span {color: #bbb;}
+.sharebuttons ul li {list-style: none; margin: 0;}
+.sharebuttons ul li a {margin: 0 0.5rem; display: block;}
+.sharebuttons ul li:first-child a {margin: 0 0.2rem 0 0.5rem;}
+.sharebuttons ul li a svg {width: auto; height: 1.1rem; display: block;}
+.will-change {transition: 250ms;} 
+nav.sharebuttons li > a:hover .will-change { fill: #444444 }
+</style>
+		</footer>
+		<hr>
+		<div id="type-effect">
+</div>
+<br>
+<br>
+<br>
+<br>
+<iframe class="LikeCoin" height="180" src="https://button.like.co/in/embed/sunnote/button?referrer=http%3a%2f%2fsunnote.xyz%2ftutorials%2fcte-lazy-loading-infinite-data-structure%2f" width="80%" frameborder=0></iframe>
+
+<style>
+	#type-effect {
+	  white-space: nowrap;
+	  overflow: hidden;
+	  font-size: 20px;
+	  font-family: monospace, sans-serif  ;
+	  border-right: 1px solid rgb(255, 255, 255);
+	   
+	  padding-right: 5px;
+	  white-space: pre-wrap;
+	  position: absolute;
+    
+	}
+  </style>
+  <script>
+  	var url = window.location.href;
+	var ln = "en";
+	if (url.indexOf("/zh-tw/") > -1) {
+  	ln = "zh";
+	}
+	if (ln === "zh") {
+	  var message = "如果這個文章對您有幫助或是有任何疑問，歡迎留言。👇"
+	  speed = 100
+	}
+	else {
+	  var message = "If this posts was helpful to you or if you have any questions, feel free to leave a comment and ask.👇"
+	  speed = 50
+	}
+  
+	const typeEffectDiv = document.getElementById("type-effect");
+  
+	function typeEffect(message, element) {
+	  let i = 0;
+	  const interval = setInterval(function () {
+		if (i === message.length) {
+		  clearInterval(interval);
+		  setTimeout(function () {
+			element.textContent = "";
+			typeEffect(message, element);
+		  }, 2000); 
+		} else {
+		  element.textContent += message[i];
+		  i++;
+		}
+	  }, speed); 
+
+	}
+	typeEffect(message, typeEffectDiv);
+  </script>
+
+	</article>
+</main>
+
+
+
+<hr>
+<div class="related-content">
+
+<h3>See Also</h3>
+
+<div class="owl-carousel owl-theme"> 
+	  
+	  
+	
+	 
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/tutorials/database-optimization-clustered-index-nonclustered-index/">
+					<img src="https://sunnote.xyz/img/thumbnail/036en.png" alt="Database Query Performance Optimization Tips : Index Concepts, Clustered, Non-Clustered"/>
+					
+				</a>
+			
+
+			<h6><a href="/tutorials/database-optimization-clustered-index-nonclustered-index/">Database Query Performance Optimization Tips : Index Concepts, Clustered, Non-Clustered
+				
+				<br>
+				<time datetime="2023-06-13T05:21:06&#43;0000">
+					June 13, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/tutorials/database-optimization-index-tips/">
+					<img src="https://sunnote.xyz/img/thumbnail/025en.webp" alt="Database Query Performance Optimization Tips : Statement Optimization, Adding Indexes"/>
+					
+				</a>
+			
+
+			<h6><a href="/tutorials/database-optimization-index-tips/">Database Query Performance Optimization Tips : Statement Optimization, Adding Indexes
+				
+				<br>
+				<time datetime="2023-03-29T01:38:14&#43;0000">
+					March 29, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/tutorials/sql-scopeidentity-identity-diff/">
+					<img src="https://sunnote.xyz/img/thumbnail/023en.png" alt="SQL SCOPE_IDENTITY() and @@IDENTITY Differences in Retrieving Auto-Increment Values"/>
+					
+				</a>
+			
+
+			<h6><a href="/tutorials/sql-scopeidentity-identity-diff/">SQL SCOPE_IDENTITY() and @@IDENTITY Differences in Retrieving Auto-Increment Values
+				
+				<br>
+				<time datetime="2023-03-20T02:44:19&#43;0000">
+					March 20, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<h6><a href="/tutorials/sql-partition-by/">SQL-implement data partitioning (partition by)
+				&ndash; 
+				<time datetime="2023-02-07T00:00:00&#43;0000">
+					February 7, 2023
+				</time></a></h6>
+				<hr>
+				<h6><a>Implement data partitioning using SQL partition by and compare the performance with LINQ.
+</a></h6>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<h6><a href="/tutorials/sql-merge-into-statement/">SQL-merge into statement
+				&ndash; 
+				<time datetime="2022-12-22T02:44:38&#43;0000">
+					December 22, 2022
+				</time></a></h6>
+				<hr>
+				<h6><a>I was assigned to implement the function of synchronizing from different databases.
+The company currently has an ERP system.
+All data sources are based on this standard, so that customers can create , update, write to ERP,
+and synchronize with ERP in their own systems…
+</a></h6>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/tutorials/aspnetcore-6.0-signalr-websocket-2/">
+					<img src="https://sunnote.xyz/img/thumbnail/034en.webp" alt="Implementing Real-Time Communication with WebSocket using SignalR and .NET 6 Web API - Part 2"/>
+					
+				</a>
+			
+
+			<h6><a href="/tutorials/aspnetcore-6.0-signalr-websocket-2/">Implementing Real-Time Communication with WebSocket using SignalR and .NET 6 Web API - Part 2
+				
+				<br>
+				<time datetime="2023-06-16T03:05:34&#43;0000">
+					June 16, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/tutorials/aspnetcore-6.0-signalr-websocket-1/">
+					<img src="https://sunnote.xyz/img/thumbnail/029en.webp" alt="Implementing Real-Time Communication with WebSocket using SignalR and .NET 6 Web API - Part 1"/>
+					
+				</a>
+			
+
+			<h6><a href="/tutorials/aspnetcore-6.0-signalr-websocket-1/">Implementing Real-Time Communication with WebSocket using SignalR and .NET 6 Web API - Part 1
+				
+				<br>
+				<time datetime="2023-06-15T08:08:13&#43;0000">
+					June 15, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/cryptocurrency/exchange-recommendations-value-investing-insights/">
+					<img src="https://sunnote.xyz/img/thumbnail/033en.webp" alt="Cryptocurrency Exchanges : User Experience, Value Investing, Diversification of Risk Perspective"/>
+					
+				</a>
+			
+
+			<h6><a href="/cryptocurrency/exchange-recommendations-value-investing-insights/">Cryptocurrency Exchanges : User Experience, Value Investing, Diversification of Risk Perspective
+				
+				<br>
+				<time datetime="2023-05-29T06:17:01&#43;0000">
+					May 29, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/hokkaido/sapporo-dormyinn-kanihonke/">
+					<img src="https://sunnote.xyz/img/thumbnail/032.webp" alt="Hokkaido-Sapporo Travel Diary: Dormy Inn Accommodation and Sapporo Kani Honke Experience"/>
+					
+				</a>
+			
+
+			<h6><a href="/hokkaido/sapporo-dormyinn-kanihonke/">Hokkaido-Sapporo Travel Diary: Dormy Inn Accommodation and Sapporo Kani Honke Experience
+				
+				<br>
+				<time datetime="2023-05-10T00:29:57&#43;0000">
+					May 10, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/hokkaido/hakodate-attractions-lodging/">
+					<img src="https://sunnote.xyz/img/thumbnail/031.webp" alt="Recommended attractions in Hakodate, Hokkaido and review of Hakodate Hotel Banso"/>
+					
+				</a>
+			
+
+			<h6><a href="/hokkaido/hakodate-attractions-lodging/">Recommended attractions in Hakodate, Hokkaido and review of Hakodate Hotel Banso
+				
+				<br>
+				<time datetime="2023-05-07T00:29:57&#43;0000">
+					May 7, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+  
+</div>
+</div>
+<br>
+<br>
+
+
+<script>
+window.addEventListener('load', () => {
+  const highlightBlocks = document.querySelectorAll('.highlight');
+  highlightBlocks.forEach((highlightBlock) => {
+    const button = highlightBlock.querySelector('.highlight-copy-btn');
+	const code_type = highlightBlock.querySelector('code[data-lang]');
+    highlightBlock.addEventListener('mouseover', () => {
+      
+      if (button) {
+        button.style.display = 'block';
+      }
+    });
+	highlightBlock.addEventListener('mouseout', () => {
+      
+      if (button) {
+        button.style.display = 'none';
+      }
+    });
+  });
+});
+
+
+
+</script>
+
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Alvin avatar" src="/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">
+			<a href="../../about/" target="_blank" style="text-decoration:none;">
+			About Alvin ☀️
+		    </a>
+		</span>
+	</div>
+	<div class="authorbox__description">
+		Life is about pursuing a sense of accomplishment while messing around.
+	</div>
+</div>
+
+
+<section class="comments">
+	
+	
+</section>
+
+<div>
+	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img
+			src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script> 
+<script>
+	var owl = $('.owl-carousel');
+	owl.owlCarousel({
+  loop: true, 
+  margin: 10, 
+  nav: true, 
+  responsive: {
+    0: {
+      items: 2 
+    },
+    600: {
+      items: 3 
+    },
+    1000: {
+      items: 3 
+    }
+  }
+});
+</script>
+
+
+
+
+
+<style>
+	.nav {
+		display: inline-flex;
+		position: relative;
+		overflow: hidden;
+		max-width: 100%;
+		background-color: var(--wrapperBG);
+		padding: 0 20px;
+		border-radius: 20px;
+		 
+		display: flex;
+		justify-content: center;
+
+	}
+
+	.nav-item {
+		color: #83818c;
+		padding: 20px;
+		text-decoration: none;
+		transition: .3s;
+		margin: 0 6px;
+		z-index: 1;
+		font-family: 'DM Sans', sans-serif;
+		font-weight: 500;
+		position: relative;
+
+		&:before {
+			content: "";
+			position: absolute;
+			bottom: -6px;
+			left: 0;
+			width: 100%;
+			height: 5px;
+			background-color: #dfe2ea;
+			border-radius: 8px 8px 0 0;
+			opacity: 0;
+			transition: .3s;
+		}
+	}
+
+	.nav-item:not(.is-active):hover:before {
+		opacity: 1;
+		bottom: 0;
+	}
+
+
+	.nav-item:not(.is-active):hover {
+		color: #333;
+	}
+
+	.nav-indicator {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		height: 4px;
+		transition: .5s;
+		height: 5px;
+		z-index: 1;
+		border-radius: 8px 8px 0 0;
+	}
+
+	.nav-item {
+		border: none;
+		outline: none;
+		background-color:  var(--wrapperBG);
+	}
+
+	@media (max-width: 580px) {
+		.nav {
+			overflow: auto;
+		}
+	}
+</style>
+<br>
+
+<nav class="nav">
+	<button id="fb-btn" class="nav-item" active-color="#ACD6FF">Facebook</button>
+	<button id="github-btn" class="nav-item is-active" active-color="#ACD6FF">Github</button>
+	<button id="disqus-btn" class="nav-item" active-color="#ACD6FF">Disqus</button>
+	<span class="nav-indicator"></span>
+</nav>
+
+<script>
+	const indicator = document.querySelector('.nav-indicator');
+	const items = document.querySelectorAll('.nav-item');
+
+	function handleIndicator(el) {
+		items.forEach(item => {
+			item.classList.remove('is-active');
+			item.removeAttribute('style');
+		});
+
+		indicator.style.width = `${el.offsetWidth}px`;
+		indicator.style.left = `${el.offsetLeft}px`;
+		indicator.style.backgroundColor = el.getAttribute('active-color');
+
+		el.classList.add('is-active');
+		el.style.color = el.getAttribute('active-color');
+	}
+
+
+	items.forEach((item, index) => {
+		item.addEventListener('click', (e) => { handleIndicator(e.target) });
+		item.classList.contains('is-active') && handleIndicator(item);
+	});
+
+
+</script>
+<br><br>
+
+
+<div id="disqus-comments" class="comments markdown" style="display: none;">
+	<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    
+    
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'sun';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+</div>
+
+
+
+<div id="utterances-comments" class="comments markdown" style="display: block;">
+	<script src="https://giscus.app/client.js"
+        data-repo="zhongyousun/giscus"
+        data-repo-id="R_kgDOJJwIkA"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOJJwIkM4CU4ky"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light_protanopia"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</div>
+
+
+
+<div id="facebook-comments" class="fb-comments" data-href="http://sunnote.xyz/tutorials/cte-lazy-loading-infinite-data-structure/" data-width="100%" data-numposts="5"
+	data-csp="true" data-order-by="reverse_time" style="display: none;"></div>
+<script>
+
+	
+	const githubBtn = document.getElementById("github-btn");
+	const disqusBtn = document.getElementById("disqus-btn");
+	const fbBtn = document.getElementById("fb-btn");
+
+	
+	const githubBoard = document.getElementById("utterances-comments");
+	const disqusBoard = document.getElementById("disqus-comments");
+	const fbBoard = document.getElementById("facebook-comments");
+
+	
+	githubBtn.addEventListener("click", function () {
+		githubBoard.style.display = "block";
+		disqusBoard.style.display = "none";
+		fbBoard.style.display = "none";
+	});
+	disqusBtn.addEventListener("click", function () {
+		githubBoard.style.display = "none";
+		disqusBoard.style.display = "block";
+		fbBoard.style.display = "none";
+	});
+	fbBtn.addEventListener("click", function () {
+		githubBoard.style.display = "none";
+		disqusBoard.style.display = "none";
+		fbBoard.style.display = "block";
+	});
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.12.2/intersection-observer.min.js"></script>
+<script type="text/javascript">
+    const observer = new IntersectionObserver((entries, owner) => {
+        for (let entry of entries) {
+            if (entry.isIntersecting) {
+                
+                const img = entry.target;
+                img.setAttribute('src', img.dataset.src);
+                img.removeAttribute('data-src');
+                owner.unobserve(img);
+            }
+        }
+    });
+    const images = document.querySelectorAll('img.lazy')
+    for (let image of images) {
+        observer.observe(image);
+    }
+</script>
+
+
+			</div>
+			<aside class="sidebar">
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/tutorials/cte-lazy-loading-infinite-data-structure/">Using CTE (Common Table Expression) to achieve lazy loading and querying infinite hierarchical data structure</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/tutorials/aspnetcore-6.0-signalr-websocket-2/">Implementing Real-Time Communication with WebSocket using SignalR and .NET 6 Web API - Part 2</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/tutorials/aspnetcore-6.0-signalr-websocket-1/">Implementing Real-Time Communication with WebSocket using SignalR and .NET 6 Web API - Part 1</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/tutorials/database-optimization-clustered-index-nonclustered-index/">Database Query Performance Optimization Tips : Index Concepts, Clustered, Non-Clustered</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/cryptocurrency/exchange-recommendations-value-investing-insights/">Cryptocurrency Exchanges : User Experience, Value Investing, Diversification of Risk Perspective</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/just-sharing/">Just Sharing</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">3</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/life-record/">Life Record</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">12</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/overseas-travel/">Overseas Travel</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">11</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/program/">Program</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">16</span></span>
+				
+				</li>
+		</ul>
+	</div>
+</div><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://cse.google.com/cse">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SITE SEARCH…" value="" name="q" aria-label="SITE SEARCH…">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="http://sunnote.xyz">
+		<input type="hidden" name="cx" value="51cfcdef3e098403d" />
+	</form>
+</div>
+
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/cebu/" title="Cebu">Cebu (<span class="count">8</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cryptocurrency/" title="Cryptocurrency">Cryptocurrency (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/csharp/" title="Csharp">Csharp (<span class="count">6</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/css/" title="CSS">CSS (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hokkaido/" title="Hokkaido">Hokkaido (<span class="count">3</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hugo/" title="Hugo">Hugo (<span class="count">3</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/investing/" title="Investing">Investing (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/japan/" title="Japan">Japan (<span class="count">3</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="JavaScript">JavaScript (<span class="count">3</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/kenting/" title="Kenting">Kenting (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/language-school/" title="Language School">Language School (<span class="count">3</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/leetcode/" title="LeetCode">LeetCode (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/life/" title="Life">Life (<span class="count">2</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nosql/" title="NoSQL">NoSQL (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/philippines/" title="Philippines">Philippines (<span class="count">8</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/python/" title="Python">Python (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sql/" title="SQL">SQL (<span class="count">6</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/taiwan/" title="Taiwan">Taiwan (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/web/" title="Web">Web (<span class="count">4</span>)</a>
+	</div>
+</div>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+			<script>
+				$('.count').each(function () {
+				$(this).prop('Counter',0).animate({
+					Counter: $(this).text()
+				}, {
+					duration: 4000,
+					easing: 'swing',
+					step: function (now) {
+						$(this).text(Math.ceil(now));
+					}
+				});
+			});
+			</script><a href="https://info.flagcounter.com/8Z5p"><img src="https://s11.flagcounter.com/countxl/8Z5p/bg_FFFFFF/txt_000000/border_FFFFFF/columns_3/maxflags_30/viewers_3/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+<br>
+<br>
+<br>
+
+
+
+
+
+
+<iframe class="LikeCoin" height="180" src="https://button.like.co/in/embed/sunnote/button?referrer=http%3a%2f%2fsunnote.xyz%2ftutorials%2fcte-lazy-loading-infinite-data-structure%2f" width="80%" frameborder=0></iframe>
+
+</aside>
+
+
+		</div>
+		
+<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy;  2022-2023 sunnote.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+
+		</div>
+
+	</div>
+	
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6706017277983363"
+     crossorigin="anonymous"></script>
+
+<script src="/js/copy-to-clipboard.js"></script>
+	</div>
+	<script async defer src="/js/menu.js"></script>
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+
+	<div class="floating-menu">
+		<button class="main-button"><i class="fas fa-bars"></i></button>
+		<div class="sub-buttons">
+		  <button class="sub-button" id="read-mode" title="Read mode"><i class="fas fa-book-open"></i></button>
+		  <button class="sub-button" id="toc" title="Toggle ToC"><i class="fa-solid fa-list-ol"></i></button>
+		  <button class="sub-button" id="search-algolia" title="Algolia Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+		  
+		  
+		  
+		</div>
+	</div>
+	<button class="toc-button" id ="toc-button"><i class="fa-solid fa-xmark"></i></button>
+</body>
+
+</html>
+
+
+<script>
+	const mainButton = document.querySelector('.main-button');
+	const iconElement = document.querySelector('.main-button i');
+	const subButtons = document.querySelector('.sub-buttons');
+
+	const readModeButton = document.getElementById('read-mode');
+	const icon_readmode = document.querySelector('#read-mode i');
+
+	const tocButton = document.getElementById('toc');
+	const icon_toc = document.querySelector('#toc i');
+
+	const tocButton1 = document.getElementById('toc-button');
+
+	const icon_theme = document.querySelector('#theme i');
+
+	const searchButton = document.getElementById('search-algolia');
+	const icon_search = document.querySelector('#search-algolia i');
+	const algolia = document.querySelector('.aa-input-container');
+	
+	const asideElement = document.querySelector("aside.sidebar");
+	
+	const isSidebarVisible = localStorage.getItem('isSidebarVisible') !== 'false';
+	
+	function setSidebarLocalStorage(state) {
+  		localStorage.setItem("isSidebarVisible", state);
+	}
+
+	
+	const isTOCStatus = localStorage.getItem('isTOCStatus') !== 'false';
+	
+	function setTOCLocalStorage(state) {
+  		localStorage.setItem("isTOCStatus", state);
+	}
+
+	mainButton.addEventListener('click', () => {
+	  if (subButtons.style.display === 'block') {
+		  iconElement.classList.replace('fa-xmark', 'fa-bars');
+		  subButtons.style.display = 'none';
+	  } else {
+		  iconElement.classList.replace('fa-bars', 'fa-xmark');
+		  subButtons.style.display = 'block';
+	  }
+	});
+
+	readModeButton.addEventListener('click', () => {
+	  if (icon_readmode.classList.contains('fa-book-open')) {
+		showTOCButton();
+			setSidebarLocalStorage(false); 
+			setTOCLocalStorage(false);
+			asideElement.style.display = 'none';
+		  icon_readmode.classList.replace('fa-book-open', 'fa-angle-left');
+		  setTimeout(function() {
+			
+            document.querySelector(".primary").style = "flex: 1 0 100%;";
+			
+        }, 100);
+			document.querySelector(".post__toc.toc").className = "toc-side";
+			tocButton1.style.display='block';
+	  } else {
+			setSidebarLocalStorage(true); 
+			setTOCLocalStorage(true);
+			asideElement.style.display = 'block';
+		  icon_readmode.classList.replace('fa-angle-left', 'fa-book-open');
+		  setTimeout(function() {
+            document.querySelector(".primary").style = "flex: 0 0 65.83%;";
+        }, 100);
+			document.querySelector(".toc-side").className = "post__toc toc";
+			tocButton1.style.display='none';
+
+	  }
+	});
+	tocButton.addEventListener('click', () => {
+	  if (icon_toc.classList.contains('fa-list-ol')) {
+		  icon_toc.classList.replace('fa-list-ol', 'fa-xmark');
+		  document.querySelector(".post__toc.toc").className = "toc-side";
+		  tocButton1.style.display='block';
+		  setTOCLocalStorage(false);
+	  } else {
+		  icon_toc.classList.replace('fa-xmark', 'fa-list-ol');
+		  document.querySelector(".toc-side").className = "post__toc toc";
+		  tocButton1.style.display='none';
+		  setTOCLocalStorage(true);
+	  }
+	});
+	tocButton1.addEventListener('click', () => {
+		  icon_toc.classList.replace('fa-xmark', 'fa-list-ol');
+		  document.querySelector(".toc-side").className = "post__toc toc";
+		  tocButton1.style.display='none';
+		  setTOCLocalStorage(true);
+	});
+
+	
+	
+	
+	
+	
+	
+	
+
+
+	searchButton.addEventListener('click', () => {
+		if (icon_search.classList.contains('fa-magnifying-glass')) {
+			algolia.style.display = 'block';
+			icon_search.classList.replace('fa-magnifying-glass', 'fa-xmark');
+	  } else {
+		algolia.style.display = 'none';
+		icon_search.classList.replace('fa-xmark', 'fa-magnifying-glass');
+	  }
+	});
+  </script>
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+  const isSidebarVisible = localStorage.getItem('isSidebarVisible') !== 'false';
+  const isTOCStatus = localStorage.getItem('isTOCStatus') !== 'false';
+  const asideElement = document.querySelector("aside.sidebar");
+  if (isSidebarVisible) {
+    asideElement.style.display = 'block';
+    document.querySelector(".primary").style = "flex: 0 0 65.83%;";
+    
+	icon_readmode.classList.remove('fa-angle-left');
+    icon_readmode.classList.add('fa-book-open');
+  } else {
+    asideElement.style.display = 'none';
+    document.querySelector(".primary").style = "flex: 1 0 100%;";
+    
+	icon_readmode.classList.remove('fa-book-open');
+    icon_readmode.classList.add('fa-angle-left');
+  }
+  if (isTOCStatus) {
+    document.querySelector(".toc-side").className = "post__toc toc";
+	icon_toc.classList.remove('fa-xmark');
+    icon_toc.classList.add('fa-list-ol');
+  } else {
+    document.querySelector(".post__toc.toc").className = "toc-side";
+	icon_toc.classList.remove('fa-list-ol');
+    icon_toc.classList.add('fa-xmark');
+  }
+});
+</script>
+<script>
+	function showTOCButton() {
+	
+	document.addEventListener('DOMContentLoaded', function() {
+ 		const tocSide = document.querySelector('.toc-side');
+  		const tocSideBTN = document.getElementById('toc-button');
+  	
+  	if(tocSide){
+		tocSideBTN.style.display='block';
+	}else{
+		tocSideBTN.style.display='none';
+	}
+});
+	}
+	showTOCButton();
+</script>
+<script src="https://sunnote.xyz/js-pkg/BackToTopButton.js"></script>
+<script>addBackToTop({
+		diameter: 40,
+		backgroundColor: 'rgb(172, 214, 255)',
+		textColor: '#fff',
+		scrollDuration: 300,
+		showWhenScrollTopIs: 800
+	})</script>
+
+
+
