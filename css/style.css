@@ -332,7 +332,12 @@ ul {
 	padding: 0;
 	margin: 0;
 }
-
+table {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
 small {
 	font-size: 12px;
 	font-size: .75rem;
@@ -501,6 +506,11 @@ select {
 .logo__item {
 	display: inline-block;
 	vertical-align: middle;
+	transition: all 0.3s;
+}
+.logo__item:hover {
+	letter-spacing: 1px;
+	transition: all 0.3s;
 }
 
 .logo__img {
@@ -660,6 +670,7 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 @media screen and (min-width: 767px) {
 	.menu {
 		border-bottom: 5px solid #ACD6FF;
+		
 	}
 
 	.menu__btn {
@@ -1288,10 +1299,14 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 	overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+	min-height: 1.2em;
+	max-height: 1.2em;
+	transition: min-height 1s,  max-height 1s ;
 }
 .list__title.post__title:hover {
-    animation: post__title 5s linear infinite;
     white-space: normal;
+	min-height: 1.9em;
+	max-height: auto;
 }
 @media screen and (max-width: 768px) {
     /* 小於等於 768px 的手機尺寸 */
@@ -1312,7 +1327,11 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 	font-size: 20px;
 	/* font-size: 1.25rem; */
 }
-
+.list__title:hover {
+    white-space: normal;
+	max-height: 100px;
+	transition: max-height 1s ;
+}
 .list__meta {
 	margin-top: 5px;
 }
