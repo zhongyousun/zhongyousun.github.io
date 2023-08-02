@@ -61,7 +61,35 @@ body {
 	background: var(--bodyBG);
 	-webkit-font-smoothing: antialiased;
 }
-
+/* 適用於全域的滾輪 */
+/* Webkit瀏覽器 (例如Chrome、Safari) */
+/* 設置滾輪寬度 */
+/* 設置滾輪背景色 */
+::-webkit-scrollbar {
+	width: 8px;
+	background-color: var(--codeBG);
+  }
+  
+  /* 設置滾輪滑塊的背景色 */
+  /* 設置滾輪滑塊的圓角 */
+  ::-webkit-scrollbar-thumb {
+	background-color: #ACD6FF;
+	border-radius: 5px;
+  }
+  
+  /* 設置滾輪滑塊在hover狀態時的背景色 */
+  ::-webkit-scrollbar-thumb:hover {
+	background-color: #C5C5C5;
+  }
+  table::-webkit-scrollbar-thumb {
+	background-color: #C5C5C5;
+  }
+  
+  /* 設置滾輪滑塊在hover狀態時的背景色 */
+  table::-webkit-scrollbar-thumb:hover {
+	background-color: #a7a7a7;
+  }
+  
 .container {
 	position: relative;
 	width: 100%;
@@ -338,6 +366,14 @@ table {
     overflow-x: auto;
     white-space: nowrap;
 }
+th{
+	background-color: var(--wrapperBG2);
+  }
+  
+tr:nth-child(even) {
+	background-color: var(--codeBG);
+}
+
 small {
 	font-size: 12px;
 	font-size: .75rem;
