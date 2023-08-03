@@ -210,12 +210,12 @@ textarea {
  .dark-mode .moon-btn {
 	 display: block;
 	 font-size: 2rem;
-	 color: #fff9be;
+	 color: #C5C5C5;
    }
    .dark-mode .moon-btn:hover {
 	display: block;
 	font-size: 2.1rem;
-	color: #f9f7e6;
+	color: #dddddd;
 	cursor: pointer;
   }
    .dark-mode #type-effect{
@@ -246,6 +246,12 @@ textarea {
     right: 7.5px;
 	z-index: 1;
 }
+@media (max-width: 991px) {
+	.sun-btn,
+	.moon-btn  {
+		position: absolute;
+	}
+  }
 
 #toggle-sidebar {
 	position: fixed;
