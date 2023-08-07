@@ -765,8 +765,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/menu.png" width="40%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/menu.png" width="40%" alt="" class="lazy">
     <figcaption></figcaption>
+    
 </figure></p>
 <hr>
 <p>選單下方就是接著顯示留言板的區塊，因為我想要畫面的預設是facebook的留言功能，在fb的區塊加上<code>style=&quot;display: block;&quot;</code>;其他的留言板則是加上 <code>style=&quot;display: none;&quot;</code>  。<br>
@@ -819,8 +820,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/messageboard.gif" width="50%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/messageboard.gif" width="50%" alt="" class="lazy">
     <figcaption></figcaption>
+    
 </figure></p>
 <p>會有這樣子的想法有一部分也是因為自己選擇困難，第三方留言功能套件實在太多了，只好全都要。😎</p>
 		</div>
@@ -1480,6 +1482,51 @@ window.addEventListener('load', () => {
 </script>
 
 
+
+<style>
+    .lazy {
+  cursor: pointer;
+  
+}
+
+    .zoomed {
+		position: fixed;
+  top: 5%;
+  left: 5%;
+  width: 90vw;
+  height: 90vh;
+  z-index: 9999;
+  cursor: zoom-out;
+  object-fit: contain;
+  transition: all 1s ;
+  background-color: rgba(231, 231, 231, 0.7);  
+  border-radius: 10px;
+}
+</style>
+<script>
+
+const zoomed = document.querySelectorAll('img');
+
+zoomed.forEach((image) => {
+  image.addEventListener('click', () => {
+    image.classList.toggle('zoomed');
+  });
+});
+
+
+document.addEventListener('click', (event) => {
+  
+  const isClickedOnImage = Array.from(images).some((img) => img.contains(event.target));
+
+  
+  if (!isClickedOnImage && document.querySelector('.zoomed')) {
+    images.forEach((img) => img.classList.remove('zoomed'));
+  }
+});
+
+</script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.12.2/intersection-observer.min.js"></script>
 <script type="text/javascript">
     const observer = new IntersectionObserver((entries, owner) => {
@@ -1498,6 +1545,7 @@ window.addEventListener('load', () => {
         observer.observe(image);
     }
 </script>
+
 
 
 			</div>

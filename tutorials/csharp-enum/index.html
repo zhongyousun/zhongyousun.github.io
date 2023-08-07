@@ -1360,6 +1360,51 @@ window.addEventListener('load', () => {
 </script>
 
 
+
+<style>
+    .lazy {
+  cursor: pointer;
+  
+}
+
+    .zoomed {
+		position: fixed;
+  top: 5%;
+  left: 5%;
+  width: 90vw;
+  height: 90vh;
+  z-index: 9999;
+  cursor: zoom-out;
+  object-fit: contain;
+  transition: all 1s ;
+  background-color: rgba(231, 231, 231, 0.7);  
+  border-radius: 10px;
+}
+</style>
+<script>
+
+const zoomed = document.querySelectorAll('img');
+
+zoomed.forEach((image) => {
+  image.addEventListener('click', () => {
+    image.classList.toggle('zoomed');
+  });
+});
+
+
+document.addEventListener('click', (event) => {
+  
+  const isClickedOnImage = Array.from(images).some((img) => img.contains(event.target));
+
+  
+  if (!isClickedOnImage && document.querySelector('.zoomed')) {
+    images.forEach((img) => img.classList.remove('zoomed'));
+  }
+});
+
+</script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.12.2/intersection-observer.min.js"></script>
 <script type="text/javascript">
     const observer = new IntersectionObserver((entries, owner) => {
@@ -1378,6 +1423,7 @@ window.addEventListener('load', () => {
         observer.observe(image);
     }
 </script>
+
 
 
 			</div>

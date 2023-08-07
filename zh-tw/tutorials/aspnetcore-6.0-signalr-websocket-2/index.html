@@ -926,8 +926,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/B.png" width="80%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/B.png" width="80%" alt="" class="lazy">
     <figcaption>使用者 B 登入，並傳訊息給使用者 A</figcaption>
+    
 </figure><br>
 
 
@@ -936,8 +937,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/A.png" width="80%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/A.png" width="80%" alt="" class="lazy">
     <figcaption>使用者 A 的介面，確認收到訊息</figcaption>
+    
 </figure></p>
 <p>以上為使用 Web API 簡單的實踐即時通訊功能方式。過程包含綁定使用者、連線ID 並儲存，且提供對特定使用者即時通訊的API。雖然前端畫面有點簡陋，但主要是為了解其中原理，我想應該是任何功能都可以實現了吧。</p>
 <p>專案已上傳至
@@ -1582,6 +1584,51 @@ window.addEventListener('load', () => {
 </script>
 
 
+
+<style>
+    .lazy {
+  cursor: pointer;
+  
+}
+
+    .zoomed {
+		position: fixed;
+  top: 5%;
+  left: 5%;
+  width: 90vw;
+  height: 90vh;
+  z-index: 9999;
+  cursor: zoom-out;
+  object-fit: contain;
+  transition: all 1s ;
+  background-color: rgba(231, 231, 231, 0.7);  
+  border-radius: 10px;
+}
+</style>
+<script>
+
+const zoomed = document.querySelectorAll('img');
+
+zoomed.forEach((image) => {
+  image.addEventListener('click', () => {
+    image.classList.toggle('zoomed');
+  });
+});
+
+
+document.addEventListener('click', (event) => {
+  
+  const isClickedOnImage = Array.from(images).some((img) => img.contains(event.target));
+
+  
+  if (!isClickedOnImage && document.querySelector('.zoomed')) {
+    images.forEach((img) => img.classList.remove('zoomed'));
+  }
+});
+
+</script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.12.2/intersection-observer.min.js"></script>
 <script type="text/javascript">
     const observer = new IntersectionObserver((entries, owner) => {
@@ -1600,6 +1647,7 @@ window.addEventListener('load', () => {
         observer.observe(image);
     }
 </script>
+
 
 
 			</div>

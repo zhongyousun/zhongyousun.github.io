@@ -659,8 +659,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/IMG_0448.webp" width="80%" alt="christmas tree" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/IMG_0448.webp" width="80%" alt="christmas tree" class="lazy">
     <figcaption></figcaption>
+    
 </figure></p>
 
 
@@ -669,8 +670,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/IMG_0707.webp" width="80%" alt="christmas tree" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/IMG_0707.webp" width="80%" alt="christmas tree" class="lazy">
     <figcaption></figcaption>
+    
 </figure>
 <p>Ayala malls 的內圍裝飾也頗有氣氛，很適合散步幽會。
 
@@ -680,8 +682,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/IMG_0714.webp" width="80%" alt="christmas view" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/IMG_0714.webp" width="80%" alt="christmas view" class="lazy">
     <figcaption></figcaption>
+    
 </figure></p>
 <p>連叫外送也感受得到，這位司機是那一年第一位跟我說聖誕快樂的人😎
 
@@ -691,8 +694,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/photo1672387407.webp" width="80%" alt="merry christmas" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/photo1672387407.webp" width="80%" alt="merry christmas" class="lazy">
     <figcaption></figcaption>
+    
 </figure></p>
 <p>在換匯的時候，更是有人直接戴起聖誕帽😆<br>
 
@@ -702,8 +706,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/IMG_0759.webp" width="80%" alt="christmas hat" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/IMG_0759.webp" width="80%" alt="christmas hat" class="lazy">
     <figcaption></figcaption>
+    
 </figure></p>
 <h3 id="跨年">跨年</h3>
 <p>過完聖誕節，接下來就是跨年與農曆新年。在宿霧跨年跟其他地區一樣都有放煙火的活動。而今年放煙火的位置位於Ayala malls，當天晚上就跟朋友相約去吃飯，想吃高級一點的店沒事先預約，也是會沒位子的。</p>
@@ -714,8 +719,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/IMG_0944.webp" width="80%" alt="full house" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/IMG_0944.webp" width="80%" alt="full house" class="lazy">
     <figcaption></figcaption>
+    
 </figure>
 <p>之後就是臨時找間店，有位子就進去吃了，聚餐後朋友提議去喝點小酒。<br>
 於是選了一間法式餐廳:La Vie Parisienne,
@@ -727,8 +733,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/IMG_0948.webp" width="80%" alt="La Vie Parisienne" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/IMG_0948.webp" width="80%" alt="La Vie Parisienne" class="lazy">
     <figcaption></figcaption>
+    
 </figure></p>
 <blockquote>
 <p>店家資訊</p>
@@ -750,8 +757,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/IMG_0951.webp" width="80%" alt="cebu new year fireworks" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/IMG_0951.webp" width="80%" alt="cebu new year fireworks" class="lazy">
     <figcaption></figcaption>
+    
 </figure>
 <p>自己獨自在宿舍看著跨年煙火還真的有點感傷XD。</p>
 <h3 id="結語">結語</h3>
@@ -1397,6 +1405,51 @@ window.addEventListener('load', () => {
 </script>
 
 
+
+<style>
+    .lazy {
+  cursor: pointer;
+  
+}
+
+    .zoomed {
+		position: fixed;
+  top: 5%;
+  left: 5%;
+  width: 90vw;
+  height: 90vh;
+  z-index: 9999;
+  cursor: zoom-out;
+  object-fit: contain;
+  transition: all 1s ;
+  background-color: rgba(231, 231, 231, 0.7);  
+  border-radius: 10px;
+}
+</style>
+<script>
+
+const zoomed = document.querySelectorAll('img');
+
+zoomed.forEach((image) => {
+  image.addEventListener('click', () => {
+    image.classList.toggle('zoomed');
+  });
+});
+
+
+document.addEventListener('click', (event) => {
+  
+  const isClickedOnImage = Array.from(images).some((img) => img.contains(event.target));
+
+  
+  if (!isClickedOnImage && document.querySelector('.zoomed')) {
+    images.forEach((img) => img.classList.remove('zoomed'));
+  }
+});
+
+</script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.12.2/intersection-observer.min.js"></script>
 <script type="text/javascript">
     const observer = new IntersectionObserver((entries, owner) => {
@@ -1415,6 +1468,7 @@ window.addEventListener('load', () => {
         observer.observe(image);
     }
 </script>
+
 
 
 			</div>

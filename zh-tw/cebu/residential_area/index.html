@@ -667,8 +667,9 @@ Cabantan Street 位於Luz區，可以看到Luz區位於Ayala Malls的旁邊，�
 
 
 <figure>
-    <img src="" data-src="pics/Cabantan_St_CEBU_CITY.png" width="80%" alt="Cabantan_St_CEBU_CITY" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/Cabantan_St_CEBU_CITY.png" width="80%" alt="Cabantan_St_CEBU_CITY" class="lazy">
     <figcaption></figcaption>
+    
 </figure></p>
 <p>因為這家店的位置剛好在Cabantan Street上方出口處，如果是叫Grab的話，大概路線就是繞著兩側的Mindanao Ave或是Pope John Paul II Ave主要道路前往，但因為剛好當天趕時間而選擇搭乘Angkas，司機就帶著我直接抄Cabantan Street小路直達。</p>
 <h3 id="住宅區cabantan-street">住宅區Cabantan Street</h3>
@@ -680,8 +681,9 @@ Cabantan Street 位於Luz區，可以看到Luz區位於Ayala Malls的旁邊，�
 
 
 <figure>
-    <img src="" data-src="pics/IMG_0397.JPG" width="80%" alt="Cabantan_St_CEBU_CITY" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/IMG_0397.JPG" width="80%" alt="Cabantan_St_CEBU_CITY" class="lazy">
     <figcaption></figcaption>
+    
 </figure></p>
 <p>在宿霧如果地點距離不遠的話，我常常選擇用走的，但因為安全考量基本上都是走Avenue等級的道路，比較不敢直接往小巷走，畢竟華人走在宿霧的街上真的是蠻顯眼的。</p>
 <p>這次卻因為趕時間偶然的進入這個我覺得非常有東南亞氣氛的小街還是在晚上。😎<br>
@@ -693,8 +695,9 @@ Cabantan Street 位於Luz區，可以看到Luz區位於Ayala Malls的旁邊，�
 
 
 <figure>
-    <img src="" data-src="pics/IMG_1380.jpeg" width="80%" alt="Cabantan_St_CEBU_CITY" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/IMG_1380.jpeg" width="80%" alt="Cabantan_St_CEBU_CITY" class="lazy">
     <figcaption></figcaption>
+    
 </figure>
 
 
@@ -703,8 +706,9 @@ Cabantan Street 位於Luz區，可以看到Luz區位於Ayala Malls的旁邊，�
 
 
 <figure>
-    <img src="" data-src="pics/IMG_1381.jpeg" width="80%" alt="Cabantan_St_CEBU_CITY" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/IMG_1381.jpeg" width="80%" alt="Cabantan_St_CEBU_CITY" class="lazy">
     <figcaption></figcaption>
+    
 </figure>
 
 
@@ -713,8 +717,9 @@ Cabantan Street 位於Luz區，可以看到Luz區位於Ayala Malls的旁邊，�
 
 
 <figure>
-    <img src="" data-src="pics/IMG_1382.jpeg" width="80%" alt="Cabantan_St_CEBU_CITY" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/IMG_1382.jpeg" width="80%" alt="Cabantan_St_CEBU_CITY" class="lazy">
     <figcaption></figcaption>
+    
 </figure></p>
 <h3 id="結語">結語</h3>
 <p>雖然只是匆匆忙忙的路過而已，但是當地住宅區的人文建築真的是蠻特殊的，之後有機會一定得實際去走走。😆</p>
@@ -725,8 +730,9 @@ Cabantan Street 位於Luz區，可以看到Luz區位於Ayala Malls的旁邊，�
 
 
 <figure>
-    <img src="" data-src="pics/IMG_0392.jpeg" width="80%" alt="Cabantan_St_CEBU_CITY" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/IMG_0392.jpeg" width="80%" alt="Cabantan_St_CEBU_CITY" class="lazy">
     <figcaption></figcaption>
+    
 </figure>
 <p>附上一個白天的街景影片
 
@@ -1372,6 +1378,51 @@ window.addEventListener('load', () => {
 </script>
 
 
+
+<style>
+    .lazy {
+  cursor: pointer;
+  
+}
+
+    .zoomed {
+		position: fixed;
+  top: 5%;
+  left: 5%;
+  width: 90vw;
+  height: 90vh;
+  z-index: 9999;
+  cursor: zoom-out;
+  object-fit: contain;
+  transition: all 1s ;
+  background-color: rgba(231, 231, 231, 0.7);  
+  border-radius: 10px;
+}
+</style>
+<script>
+
+const zoomed = document.querySelectorAll('img');
+
+zoomed.forEach((image) => {
+  image.addEventListener('click', () => {
+    image.classList.toggle('zoomed');
+  });
+});
+
+
+document.addEventListener('click', (event) => {
+  
+  const isClickedOnImage = Array.from(images).some((img) => img.contains(event.target));
+
+  
+  if (!isClickedOnImage && document.querySelector('.zoomed')) {
+    images.forEach((img) => img.classList.remove('zoomed'));
+  }
+});
+
+</script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.12.2/intersection-observer.min.js"></script>
 <script type="text/javascript">
     const observer = new IntersectionObserver((entries, owner) => {
@@ -1390,6 +1441,7 @@ window.addEventListener('load', () => {
         observer.observe(image);
     }
 </script>
+
 
 
 			</div>

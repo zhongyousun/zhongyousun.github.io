@@ -172,14 +172,35 @@ textarea {
 	display: block;
 	font-size: 2rem;
 	color: #ffc533;
+	position: relative; 
   }
 
   .sun-btn:hover {
 	display: block;
-	font-size: 2.1rem;
+	font-size: 2rem;
 	color: #edb72e;
 	cursor: pointer;
   }
+  
+	.sun-btn::before {
+		position: absolute;
+		top: 15px;
+		right: 40px;
+		width: 122px;
+		color: #fff;
+		font-size: 0.2rem;
+		background: #adadad;
+		padding: 5px;
+		border-radius: 5px;
+		content: 'Turn on dark mode.';
+		visibility: hidden;
+		opacity: 0; 
+		transition: opacity 0.3s linear, visibility 0s 0.3s; 
+	}
+	.sun-btn:hover::before {
+		visibility: visible;
+		opacity: 1; 
+	}
   
   .moon-btn {
 	display: none;
@@ -214,7 +235,7 @@ textarea {
    }
    .dark-mode .moon-btn:hover {
 	display: block;
-	font-size: 2.1rem;
+	font-size: 2rem;
 	color: #dddddd;
 	cursor: pointer;
   }

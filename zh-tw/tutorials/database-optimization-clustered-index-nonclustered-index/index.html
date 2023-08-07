@@ -662,8 +662,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/sqlserver-index.png" width="40%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/sqlserver-index.png" width="40%" alt="" class="lazy">
     <figcaption>點選資料表的索引即可看到有哪些索引。</figcaption>
+    
 </figure>
 <p>索引種類主要有 叢集索引（Clustered Index）、非叢集索引（Non-Clustered Index）、唯一索引（Unique Index）、主鍵索引（Primary Key Index）、聚集索引（Clustered Index）與 全文索引（Full-Text Index）。</p>
 <p>此篇主要討論:</p>
@@ -719,8 +720,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/Execution%20Plan.png" width="40%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/Execution%20Plan.png" width="40%" alt="" class="lazy">
     <figcaption>點選此按鈕後每次的查詢就能看到執行計畫。</figcaption>
+    
 </figure>
 
 
@@ -729,8 +731,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/Execution%20Plan%201.png" width="80%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/Execution%20Plan%201.png" width="80%" alt="" class="lazy">
     <figcaption>之後在每次查詢結果中都可點選執行計畫查看。</figcaption>
+    
 </figure>
 <p>其實太複雜的查詢，我也不是看的很懂，還在研究中，但基本上就能明確清楚知道這次查詢是使用索引搜尋還是索引掃描。</p>
 <h3 id="叢集索引搜尋clustered-index-seek和叢集索引掃描clustered-index-scan">叢集索引搜尋（Clustered Index Seek）和叢集索引掃描（Clustered Index Scan）</h3>
@@ -1390,6 +1393,51 @@ window.addEventListener('load', () => {
 </script>
 
 
+
+<style>
+    .lazy {
+  cursor: pointer;
+  
+}
+
+    .zoomed {
+		position: fixed;
+  top: 5%;
+  left: 5%;
+  width: 90vw;
+  height: 90vh;
+  z-index: 9999;
+  cursor: zoom-out;
+  object-fit: contain;
+  transition: all 1s ;
+  background-color: rgba(231, 231, 231, 0.7);  
+  border-radius: 10px;
+}
+</style>
+<script>
+
+const zoomed = document.querySelectorAll('img');
+
+zoomed.forEach((image) => {
+  image.addEventListener('click', () => {
+    image.classList.toggle('zoomed');
+  });
+});
+
+
+document.addEventListener('click', (event) => {
+  
+  const isClickedOnImage = Array.from(images).some((img) => img.contains(event.target));
+
+  
+  if (!isClickedOnImage && document.querySelector('.zoomed')) {
+    images.forEach((img) => img.classList.remove('zoomed'));
+  }
+});
+
+</script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.12.2/intersection-observer.min.js"></script>
 <script type="text/javascript">
     const observer = new IntersectionObserver((entries, owner) => {
@@ -1408,6 +1456,7 @@ window.addEventListener('load', () => {
         observer.observe(image);
     }
 </script>
+
 
 
 			</div>

@@ -609,7 +609,7 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 8 12.667969 C 10.578125 12.667969 12.667969 10.578125 12.667969 8 C 12.667969 5.421875 10.578125 3.332031 8 3.332031 C 5.421875 3.332031 3.332031 5.421875 3.332031 8 C 3.332031 10.578125 5.421875 12.667969 8 12.667969 Z M 3.957031 12.433594 C 2.753906 11.335938 2 9.757812 2 8 C 2 4.6875 4.6875 2 8 2 C 11.3125 2 14 4.6875 14 8 C 14 9.757812 13.246094 11.335938 12.042969 12.433594 L 12.9375 13.328125 C 13.207031 13.597656 13.203125 14.015625 12.941406 14.277344 C 12.679688 14.539062 12.257812 14.535156 11.996094 14.273438 L 10.949219 13.226562 C 10.078125 13.71875 9.070312 14 8 14 C 6.929688 14 5.921875 13.71875 5.050781 13.226562 L 4.003906 14.273438 C 3.738281 14.539062 3.316406 14.535156 3.058594 14.277344 C 2.796875 14.015625 2.796875 13.589844 3.0625 13.328125 Z M 7.332031 5.335938 C 7.332031 4.964844 7.628906 4.667969 8 4.667969 C 8.367188 4.667969 8.667969 4.957031 8.667969 5.335938 L 8.667969 9.332031 L 7.332031 9.332031 Z M 5.332031 8.667969 C 5.332031 8.296875 5.628906 8 6 8 L 7.332031 8 L 7.332031 9.332031 L 6 9.332031 C 5.632812 9.332031 5.332031 9.039062 5.332031 8.667969 Z M 5.332031 8.667969 "/>
 </g>
 </svg>
-682 words</span>
+707 words</span>
 				<span>| 4 min read.　</span>
 				
 			
@@ -670,8 +670,9 @@ The position of the plane as shown in the picture below is actually located on t
 
 
 <figure>
-    <img src="" data-src="pics/Mactan-Cebu-airport-location.png" width="70%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/Mactan-Cebu-airport-location.png" width="70%" alt="" class="lazy">
     <figcaption></figcaption>
+    
 </figure><br>
 Language school is in the main island of Cebu</p>
 <p>On the bridge to the main island of Cebu.
@@ -682,8 +683,9 @@ Language school is in the main island of Cebu</p>
 
 
 <figure>
-    <img src="" data-src="pics/IMG_0290.jpeg" width="70%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/IMG_0290.jpeg" width="70%" alt="" class="lazy">
     <figcaption></figcaption>
+    
 </figure></p>
 <p>I really didn’t leave any photos on the way, I only had one thought in mind,<br>
 <strong>Oh my god, why did the city look quite old after leaving the airport?😂</strong></p>
@@ -703,8 +705,9 @@ I really don&rsquo;t know what he&rsquo;s talking about XD, because of my poor l
 
 
 <figure>
-    <img src="" data-src="pics/IMG_0336.jpeg" width="70%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/IMG_0336.jpeg" width="70%" alt="" class="lazy">
     <figcaption></figcaption>
+    
 </figure></p>
 <p>Three people share a room, which is not bad for someone like me who has just finished compulsory military service.😎</p>
 <p>Fortunately, The roommates I met were very nice. I still remember when I first time entering the room.<br>
@@ -720,8 +723,9 @@ Of course, the following courses will let me speak more English then that night.
 
 
 <figure>
-    <img src="" data-src="pics/IMG_0335.PNG" width="70%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/IMG_0335.PNG" width="70%" alt="" class="lazy">
     <figcaption></figcaption>
+    
 </figure></p>
 <p>The street view near the language school is attached, it seems that it was raised by the neighbors nearby.</p>
 
@@ -731,8 +735,9 @@ Of course, the following courses will let me speak more English then that night.
 
 
 <figure>
-    <img src="" data-src="pics/IMG_0389.jpeg" width="70%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/IMG_0389.jpeg" width="70%" alt="" class="lazy">
     <figcaption></figcaption>
+    
 </figure>
 <p>I grow up in Taiwan, really think it&rsquo;s so cool.</p>
 		</div>
@@ -1412,6 +1417,51 @@ window.addEventListener('load', () => {
 </script>
 
 
+
+<style>
+    .lazy {
+  cursor: pointer;
+  
+}
+
+    .zoomed {
+		position: fixed;
+  top: 5%;
+  left: 5%;
+  width: 90vw;
+  height: 90vh;
+  z-index: 9999;
+  cursor: zoom-out;
+  object-fit: contain;
+  transition: all 1s ;
+  background-color: rgba(231, 231, 231, 0.7);  
+  border-radius: 10px;
+}
+</style>
+<script>
+
+const zoomed = document.querySelectorAll('img');
+
+zoomed.forEach((image) => {
+  image.addEventListener('click', () => {
+    image.classList.toggle('zoomed');
+  });
+});
+
+
+document.addEventListener('click', (event) => {
+  
+  const isClickedOnImage = Array.from(images).some((img) => img.contains(event.target));
+
+  
+  if (!isClickedOnImage && document.querySelector('.zoomed')) {
+    images.forEach((img) => img.classList.remove('zoomed'));
+  }
+});
+
+</script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.12.2/intersection-observer.min.js"></script>
 <script type="text/javascript">
     const observer = new IntersectionObserver((entries, owner) => {
@@ -1430,6 +1480,7 @@ window.addEventListener('load', () => {
         observer.observe(image);
     }
 </script>
+
 
 
 			</div>

@@ -665,8 +665,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/marimo.webp" width="60%" alt="mario" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/marimo.webp" width="60%" alt="mario" class="lazy">
     <figcaption>不同形狀的綠藻球</figcaption>
+    
 </figure>
 <h3 id="原生地">🗾原生地</h3>
 <p>綠藻球目前只有在日本、冰島和愛沙尼亞被發現，而離我們最近的發源地是位於北海道的阿寒湖，阿寒湖是一個美麗的湖泊，位於日本北海道東部的釧路市，是當地的主要旅遊勝地之一。這個湖泊的水質清澈，生態環境豐富，吸引了大量的遊客前來觀光。</p>
@@ -679,8 +680,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/LakeAkanMarimo.webp" width="80%" alt="LakeAkanMarimo" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/LakeAkanMarimo.webp" width="80%" alt="LakeAkanMarimo" class="lazy">
     <figcaption>阿寒湖底部的原生綠藻球</figcaption>
+    
 </figure>
 <h3 id="象徵意義">🫶象徵意義</h3>
 <p>綠藻球非常適合作為情人節的禮物，因為它有象徵意義。在北歐和日本，綠藻球被認為是愛情和忠誠的象徵，因此送給摯愛的人是一個非常適合的選擇。此外，綠藻球還能代表長期的關係，因為它可以生長很長一段時間，並保持它美麗的外觀。</p>
@@ -692,8 +694,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/mario2.webp" width="80%" alt="mario" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/mario2.webp" width="80%" alt="mario" class="lazy">
     <figcaption>剛開始養不知道何時才可以炸毛🫥</figcaption>
+    
 </figure>
 <p><strong>雖然一開始只是我自己想養，但自己養又感覺好像很無聊只好邀另一半一起養了，一人一顆，屬於工程師的浪漫。😎</strong></p>
 <h3 id="飼養方法">🌱飼養方法</h3>
@@ -713,8 +716,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/mario4.webp" width="80%" alt="mario" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/mario4.webp" width="80%" alt="mario" class="lazy">
     <figcaption></figcaption>
+    
 </figure></p>
 <blockquote>
 <p>參考資料</p>
@@ -1385,6 +1389,51 @@ window.addEventListener('load', () => {
 </script>
 
 
+
+<style>
+    .lazy {
+  cursor: pointer;
+  
+}
+
+    .zoomed {
+		position: fixed;
+  top: 5%;
+  left: 5%;
+  width: 90vw;
+  height: 90vh;
+  z-index: 9999;
+  cursor: zoom-out;
+  object-fit: contain;
+  transition: all 1s ;
+  background-color: rgba(231, 231, 231, 0.7);  
+  border-radius: 10px;
+}
+</style>
+<script>
+
+const zoomed = document.querySelectorAll('img');
+
+zoomed.forEach((image) => {
+  image.addEventListener('click', () => {
+    image.classList.toggle('zoomed');
+  });
+});
+
+
+document.addEventListener('click', (event) => {
+  
+  const isClickedOnImage = Array.from(images).some((img) => img.contains(event.target));
+
+  
+  if (!isClickedOnImage && document.querySelector('.zoomed')) {
+    images.forEach((img) => img.classList.remove('zoomed'));
+  }
+});
+
+</script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.12.2/intersection-observer.min.js"></script>
 <script type="text/javascript">
     const observer = new IntersectionObserver((entries, owner) => {
@@ -1403,6 +1452,7 @@ window.addEventListener('load', () => {
         observer.observe(image);
     }
 </script>
+
 
 
 			</div>

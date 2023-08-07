@@ -670,8 +670,9 @@ WebSocket 則可以在<strong>建立連接後一直保持通訊狀態</strong>�
 
 
 <figure>
-    <img src="" data-src="pics/Project-Structure.webp" width="50%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/Project-Structure.webp" width="50%" alt="" class="lazy">
     <figcaption></figcaption>
+    
 </figure></p>
 <pre tabindex="0"><code>SignalR-Example/
 ├── Connected Services/
@@ -694,8 +695,9 @@ WebSocket 則可以在<strong>建立連接後一直保持通訊狀態</strong>�
 
 
 <figure>
-    <img src="" data-src="pics/Visual-studio-SignalR.webp" width="80%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/Visual-studio-SignalR.webp" width="80%" alt="" class="lazy">
     <figcaption></figcaption>
+    
 </figure></p>
 <h3 id="建立-signalr-hub">建立 SignalR Hub</h3>
 <p>新增 Hub 資料夾 &gt; 在 Hub 底下新增 IMessageHub.cs 介面 &gt; 新增一個 sendToAllConnections 方法 用於傳送訊息給所有已經連線的使用者</p>
@@ -824,8 +826,9 @@ WebSocket 則可以在<strong>建立連接後一直保持通訊狀態</strong>�
 
 
 <figure>
-    <img src="" data-src="pics/Project-Structure1.webp" width="50%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/Project-Structure1.webp" width="50%" alt="" class="lazy">
     <figcaption>最終專案結構</figcaption>
+    
 </figure>
 <h3 id="結果">結果</h3>
 <p>啟動專案，開啟 swagger 與 <code>https://localhost:7013/htmlpage.html</code>，用來確認呼叫API時，前端是否有收到訊息。</p>
@@ -836,8 +839,9 @@ WebSocket 則可以在<strong>建立連接後一直保持通訊狀態</strong>�
 
 
 <figure>
-    <img src="" data-src="pics/swagger.webp" width="80%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/swagger.webp" width="80%" alt="" class="lazy">
     <figcaption></figcaption>
+    
 </figure>
 
 
@@ -846,8 +850,9 @@ WebSocket 則可以在<strong>建立連接後一直保持通訊狀態</strong>�
 
 
 <figure>
-    <img src="" data-src="pics/console.webp" width="80%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/console.webp" width="80%" alt="" class="lazy">
     <figcaption>進入網站，就會跳出連線已成功。</figcaption>
+    
 </figure>
 
 
@@ -856,8 +861,9 @@ WebSocket 則可以在<strong>建立連接後一直保持通訊狀態</strong>�
 
 
 <figure>
-    <img src="" data-src="pics/console1.webp" width="80%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/console1.webp" width="80%" alt="" class="lazy">
     <figcaption>呼叫 toALL 後，就會顯示訊息，可以打開多個畫面確認都會收到訊息</figcaption>
+    
 </figure>
 <p>以上實作了對所有連線使用者傳遞訊息的功能。</p>
 <blockquote>
@@ -1506,6 +1512,51 @@ window.addEventListener('load', () => {
 </script>
 
 
+
+<style>
+    .lazy {
+  cursor: pointer;
+  
+}
+
+    .zoomed {
+		position: fixed;
+  top: 5%;
+  left: 5%;
+  width: 90vw;
+  height: 90vh;
+  z-index: 9999;
+  cursor: zoom-out;
+  object-fit: contain;
+  transition: all 1s ;
+  background-color: rgba(231, 231, 231, 0.7);  
+  border-radius: 10px;
+}
+</style>
+<script>
+
+const zoomed = document.querySelectorAll('img');
+
+zoomed.forEach((image) => {
+  image.addEventListener('click', () => {
+    image.classList.toggle('zoomed');
+  });
+});
+
+
+document.addEventListener('click', (event) => {
+  
+  const isClickedOnImage = Array.from(images).some((img) => img.contains(event.target));
+
+  
+  if (!isClickedOnImage && document.querySelector('.zoomed')) {
+    images.forEach((img) => img.classList.remove('zoomed'));
+  }
+});
+
+</script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.12.2/intersection-observer.min.js"></script>
 <script type="text/javascript">
     const observer = new IntersectionObserver((entries, owner) => {
@@ -1524,6 +1575,7 @@ window.addEventListener('load', () => {
         observer.observe(image);
     }
 </script>
+
 
 
 			</div>

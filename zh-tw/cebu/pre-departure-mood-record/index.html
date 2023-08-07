@@ -666,8 +666,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/Mactan-Cebu-airport-location.png" width="70%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/Mactan-Cebu-airport-location.png" width="70%" alt="" class="lazy">
     <figcaption></figcaption>
+    
 </figure></p>
 <p>而我的語言學校則是在宿霧本島。</p>
 <p>在前往宿霧本島的橋上
@@ -678,8 +679,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/IMG_0290.jpeg" width="70%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/IMG_0290.jpeg" width="70%" alt="" class="lazy">
     <figcaption></figcaption>
+    
 </figure></p>
 <p>中途真的沒留下什麼照片，當時心理只有一個念頭，<br>
 <strong>天啊，怎麼出了機場城市市容會差那麼多😂</strong></p>
@@ -698,8 +700,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/IMG_0336.jpeg" width="70%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/IMG_0336.jpeg" width="70%" alt="" class="lazy">
     <figcaption></figcaption>
+    
 </figure></p>
 <p>三人一寢，對我這種剛當完兵已經睡大通鋪很久的人來說不錯了哈哈</p>
 <p>遇到的室友很幸運人都不錯，還記得第一次進房間，<br>
@@ -715,8 +718,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/IMG_0335.PNG" width="70%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/IMG_0335.PNG" width="70%" alt="" class="lazy">
     <figcaption></figcaption>
+    
 </figure></p>
 <p>附上語言學校附近的街景，這好像是附近鄰居養的</p>
 
@@ -726,8 +730,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
-    <img src="" data-src="pics/IMG_0389.jpeg" width="70%" alt="" class="lazy">
+    <img  src="/img/lazyloading.webp" data-src="pics/IMG_0389.jpeg" width="70%" alt="" class="lazy">
     <figcaption></figcaption>
+    
 </figure>
 <p>在台灣長大的我真的覺得太酷了。😆</p>
 		</div>
@@ -1380,6 +1385,51 @@ window.addEventListener('load', () => {
 </script>
 
 
+
+<style>
+    .lazy {
+  cursor: pointer;
+  
+}
+
+    .zoomed {
+		position: fixed;
+  top: 5%;
+  left: 5%;
+  width: 90vw;
+  height: 90vh;
+  z-index: 9999;
+  cursor: zoom-out;
+  object-fit: contain;
+  transition: all 1s ;
+  background-color: rgba(231, 231, 231, 0.7);  
+  border-radius: 10px;
+}
+</style>
+<script>
+
+const zoomed = document.querySelectorAll('img');
+
+zoomed.forEach((image) => {
+  image.addEventListener('click', () => {
+    image.classList.toggle('zoomed');
+  });
+});
+
+
+document.addEventListener('click', (event) => {
+  
+  const isClickedOnImage = Array.from(images).some((img) => img.contains(event.target));
+
+  
+  if (!isClickedOnImage && document.querySelector('.zoomed')) {
+    images.forEach((img) => img.classList.remove('zoomed'));
+  }
+});
+
+</script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.12.2/intersection-observer.min.js"></script>
 <script type="text/javascript">
     const observer = new IntersectionObserver((entries, owner) => {
@@ -1398,6 +1448,7 @@ window.addEventListener('load', () => {
         observer.observe(image);
     }
 </script>
+
 
 
 			</div>
