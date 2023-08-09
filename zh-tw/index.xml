@@ -6,7 +6,16 @@
     <description>Recent content on Sun 記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 25 Jul 2023 14:00:18 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 08 Aug 2023 11:24:03 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 .NET 6 進行 MongoDB Atlas CRUD 操作</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/mongodb-atlas-crud/</link>
+      <pubDate>Tue, 08 Aug 2023 11:24:03 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/mongodb-atlas-crud/</guid>
+      <description>&lt;p&gt;紀錄.net core 6 操作 MongoDB 的一些常用語法。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>使用CTE（Common Table Expression）實現延遲加載(Lazy loading)與查詢無限層資料結構</title>
       <link>http://sunnote.xyz/zh-tw/tutorials/cte-lazy-loading-infinite-data-structure/</link>

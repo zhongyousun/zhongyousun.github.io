@@ -6,7 +6,16 @@
     <description>Recent content on Sun Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 25 Jul 2023 14:00:18 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 08 Aug 2023 11:24:03 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Performing MongoDB Atlas CRUD Operations with .NET 6</title>
+      <link>http://sunnote.xyz/tutorials/mongodb-atlas-crud/</link>
+      <pubDate>Tue, 08 Aug 2023 11:24:03 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/tutorials/mongodb-atlas-crud/</guid>
+      <description>&lt;p&gt;Recording Common .NET Core 6 Syntax for MongoDB Operations.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Using CTE (Common Table Expression) to achieve lazy loading and querying infinite hierarchical data structure</title>
       <link>http://sunnote.xyz/tutorials/cte-lazy-loading-infinite-data-structure/</link>

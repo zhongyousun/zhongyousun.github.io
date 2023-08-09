@@ -17,6 +17,51 @@
                 href="http://sunnote.xyz/categories/"
                 />
   </url><url>
+    <loc>http://sunnote.xyz/tags/csharp/</loc>
+    <lastmod>2023-08-08T11:24:03+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/csharp/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/csharp/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tags/nosql/</loc>
+    <lastmod>2023-08-08T11:24:03+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/nosql/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/nosql/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tutorials/mongodb-atlas-crud/</loc>
+    <lastmod>2023-08-08T11:24:03+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tutorials/mongodb-atlas-crud/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tutorials/mongodb-atlas-crud/"
+                />
+  </url><url>
     <loc>http://sunnote.xyz/posts/</loc>
     <lastmod>2023-12-30T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
@@ -33,24 +78,9 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/categories/program/</loc>
-    <lastmod>2023-07-25T14:00:18+08:00</lastmod>
+    <lastmod>2023-08-08T11:24:03+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
-  </url><url>
-    <loc>http://sunnote.xyz/tags/sql/</loc>
-    <lastmod>2023-07-25T14:00:18+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/sql/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/sql/"
-                />
   </url><url>
     <loc>http://sunnote.xyz/</loc>
     <lastmod>2023-12-30T00:00:00+00:00</lastmod>
@@ -82,6 +112,21 @@
                 href="http://sunnote.xyz/tags/"
                 />
   </url><url>
+    <loc>http://sunnote.xyz/tags/sql/</loc>
+    <lastmod>2023-07-25T14:00:18+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/sql/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/sql/"
+                />
+  </url><url>
     <loc>http://sunnote.xyz/tutorials/cte-lazy-loading-infinite-data-structure/</loc>
     <lastmod>2023-07-25T14:00:18+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -95,21 +140,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://sunnote.xyz/tutorials/cte-lazy-loading-infinite-data-structure/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/tags/csharp/</loc>
-    <lastmod>2023-06-21T19:44:38+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/csharp/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/csharp/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/aspnetcore-6.0-signalr-websocket-2/</loc>
@@ -325,21 +355,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://sunnote.xyz/tutorials/mongodb-atlas-compass-tips/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/tags/nosql/</loc>
-    <lastmod>2023-04-24T15:33:44+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/nosql/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/nosql/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/database-optimization-index-tips/</loc>
