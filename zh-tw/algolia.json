@@ -2,6 +2,17 @@
 	{
 	
 		
+	  "url": "http://sunnote.xyz/zh-tw/life/mk870-hand-rest-unboxing/",
+	  "title": "開箱腹靈MK870機械鍵盤與非洲花梨木質手托",
+	  "summary": "\u003cp\u003e腹靈MK870機械鍵盤的使用體驗~\u003c/p\u003e",
+	  "content": "腹靈MK870機械鍵盤的使用體驗~\n前言 身為一個碼農，鍵盤大概是一天使用最頻繁的東西，但窮窮的我總是抱持著東西還能用就不需要換的心態。這次終於下定決心好好犒賞自己一下，雖然對機械式鍵盤沒什麼研究，平常也都是使用剪刀腳鍵盤，但因為使用體驗真的不錯，就來純粹分享一下腹靈MK870機械鍵盤。沒有什麼專業評語，外表質感高、使用感覺爽 就這樣😎。 (淘寶真的太好逛了，下單完鍵盤，又看到手托還可以免費幫刻字，立碼加購 ❗)\n實物 購買的是三模機械鍵盤，平常就是使用無線藍芽與電腦連接，目前使用起來連線順暢也沒有延遲的問題，鍵盤RGB燈也可以自己調整喜歡的樣式，實際測試唯有使用有線模式連接電腦，鍵盤RGB燈的驅動才可以有效讀取並調整，可以調整完再換回無線模式就好。\n側刻鍵帽\rMK870與非洲花梨木質手托\rBe More Than Just a Code Monkey.\n期許自己不管是人生還是程式都可以更精進。\n",
+	  "pubDate": "2023-08-09T08:29:23+08:00",
+	  "cover": "https://sunnote.xyz/img/thumbnail/039.webp"
+
+	}, 
+	{
+	
+		
 	  "url": "http://sunnote.xyz/zh-tw/tutorials/mongodb-atlas-crud/",
 	  "title": "使用 .NET 6 進行 MongoDB Atlas CRUD 操作",
 	  "summary": "\u003cp\u003e紀錄.net core 6 操作 MongoDB 的一些常用語法。\u003c/p\u003e",
