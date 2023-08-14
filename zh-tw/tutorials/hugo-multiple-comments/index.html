@@ -790,19 +790,14 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 <figure>
     <div class="image-container">
+        
     <img  src="/img/lazyloading.webp" data-src="pics/menu.png" width="40%" alt="" class="lazy">
-    <span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+    
     <figcaption></figcaption>
     </div>
 </figure>
 
-<style>
-    .image-container {
-        position: relative;
-        display: inline-block;
-        margin: 10px;
-    }
-</style></p>
+</p>
 <hr>
 <p>選單下方就是接著顯示留言板的區塊，因為我想要畫面的預設是facebook的留言功能，在fb的區塊加上<code>style=&quot;display: block;&quot;</code>;其他的留言板則是加上 <code>style=&quot;display: none;&quot;</code>  。<br>
 (此篇不提供加入各種留言板的教學)</p>
@@ -855,19 +850,14 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 <figure>
     <div class="image-container">
+        
     <img  src="/img/lazyloading.webp" data-src="pics/messageboard.gif" width="50%" alt="" class="lazy">
-    <span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+    
     <figcaption></figcaption>
     </div>
 </figure>
 
-<style>
-    .image-container {
-        position: relative;
-        display: inline-block;
-        margin: 10px;
-    }
-</style></p>
+</p>
 <p>會有這樣子的想法有一部分也是因為自己選擇困難，第三方留言功能套件實在太多了，只好全都要。😎</p>
 		</div>
 		<br>
@@ -1547,25 +1537,7 @@ window.addEventListener('load', () => {
   background-color: rgba(231, 231, 231, 0.7);  
   border-radius: 10px;
 }
-.zoom-icon {
-        position: absolute;
-        top: 19px;
-        right: 12%;
-        transform: translate(50%, -50%);
-        font-size: 14px;
-        color: #fff;
-        background-color: rgba(219, 217, 217, 0.7);
-        border-radius: 5px;
-        padding-left: 5px;
-		padding-right: 5px;
-        cursor: pointer;
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-    }
-
-    .image-container:hover .zoom-icon {
-        opacity: 1;
-    }
+ 
 </style>
 <script>
 
@@ -1576,13 +1548,13 @@ zoomed.forEach((image) => {
 	const img= image.parentNode.querySelector('.lazy');
     img.classList.toggle('zoomed');
 
-	
-	const zoomIcon = image.querySelector('.zoom-icon');
-            if (img.classList.contains('zoomed')) {
-                zoomIcon.style.display = 'none';
-            } else {
-                zoomIcon.style.display = 'block';
-            }
+
+
+
+
+
+
+
   });
 });
 

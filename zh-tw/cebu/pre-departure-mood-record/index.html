@@ -691,19 +691,14 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 <figure>
     <div class="image-container">
+        
     <img  src="/img/lazyloading.webp" data-src="pics/Mactan-Cebu-airport-location.png" width="70%" alt="" class="lazy">
-    <span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+    
     <figcaption></figcaption>
     </div>
 </figure>
 
-<style>
-    .image-container {
-        position: relative;
-        display: inline-block;
-        margin: 10px;
-    }
-</style></p>
+</p>
 <p>而我的語言學校則是在宿霧本島。</p>
 <p>在前往宿霧本島的橋上
 
@@ -714,19 +709,14 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 <figure>
     <div class="image-container">
+        
     <img  src="/img/lazyloading.webp" data-src="pics/IMG_0290.jpeg" width="70%" alt="" class="lazy">
-    <span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+    
     <figcaption></figcaption>
     </div>
 </figure>
 
-<style>
-    .image-container {
-        position: relative;
-        display: inline-block;
-        margin: 10px;
-    }
-</style></p>
+</p>
 <p>中途真的沒留下什麼照片，當時心理只有一個念頭，<br>
 <strong>天啊，怎麼出了機場城市市容會差那麼多😂</strong></p>
 <h3 id="抵達語言學校">抵達語言學校</h3>
@@ -745,19 +735,14 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 <figure>
     <div class="image-container">
+        
     <img  src="/img/lazyloading.webp" data-src="pics/IMG_0336.jpeg" width="70%" alt="" class="lazy">
-    <span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+    
     <figcaption></figcaption>
     </div>
 </figure>
 
-<style>
-    .image-container {
-        position: relative;
-        display: inline-block;
-        margin: 10px;
-    }
-</style></p>
+</p>
 <p>三人一寢，對我這種剛當完兵已經睡大通鋪很久的人來說不錯了哈哈</p>
 <p>遇到的室友很幸運人都不錯，還記得第一次進房間，<br>
 剛好遇到在休息的韓籍室友，在充滿尷尬的情境下只能盡可能的從腦袋擠出目前所能想到的字彙跟語法<br>
@@ -773,19 +758,14 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 <figure>
     <div class="image-container">
+        
     <img  src="/img/lazyloading.webp" data-src="pics/IMG_0335.PNG" width="70%" alt="" class="lazy">
-    <span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+    
     <figcaption></figcaption>
     </div>
 </figure>
 
-<style>
-    .image-container {
-        position: relative;
-        display: inline-block;
-        margin: 10px;
-    }
-</style></p>
+</p>
 <p>附上語言學校附近的街景，這好像是附近鄰居養的</p>
 
 
@@ -795,19 +775,14 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 <figure>
     <div class="image-container">
+        
     <img  src="/img/lazyloading.webp" data-src="pics/IMG_0389.jpeg" width="70%" alt="" class="lazy">
-    <span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+    
     <figcaption></figcaption>
     </div>
 </figure>
 
-<style>
-    .image-container {
-        position: relative;
-        display: inline-block;
-        margin: 10px;
-    }
-</style>
+
 <p>在台灣長大的我真的覺得太酷了。😆</p>
 		</div>
 		<br>
@@ -1480,25 +1455,7 @@ window.addEventListener('load', () => {
   background-color: rgba(231, 231, 231, 0.7);  
   border-radius: 10px;
 }
-.zoom-icon {
-        position: absolute;
-        top: 19px;
-        right: 12%;
-        transform: translate(50%, -50%);
-        font-size: 14px;
-        color: #fff;
-        background-color: rgba(219, 217, 217, 0.7);
-        border-radius: 5px;
-        padding-left: 5px;
-		padding-right: 5px;
-        cursor: pointer;
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-    }
-
-    .image-container:hover .zoom-icon {
-        opacity: 1;
-    }
+ 
 </style>
 <script>
 
@@ -1509,13 +1466,13 @@ zoomed.forEach((image) => {
 	const img= image.parentNode.querySelector('.lazy');
     img.classList.toggle('zoomed');
 
-	
-	const zoomIcon = image.querySelector('.zoom-icon');
-            if (img.classList.contains('zoomed')) {
-                zoomIcon.style.display = 'none';
-            } else {
-                zoomIcon.style.display = 'block';
-            }
+
+
+
+
+
+
+
   });
 });
 

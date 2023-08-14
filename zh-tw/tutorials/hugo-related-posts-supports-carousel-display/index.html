@@ -728,19 +728,14 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 <figure>
     <div class="image-container">
+        
     <img  src="/img/lazyloading.webp" data-src="pics/RelatedPosts.png" width="80%" alt="RelatedPosts" class="lazy">
-    <span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+    
     <figcaption>相關文章列表，預設顯示三篇</figcaption>
     </div>
 </figure>
 
-<style>
-    .image-container {
-        position: relative;
-        display: inline-block;
-        margin: 10px;
-    }
-</style>
+
 <div id="block13"></div>
 <script>
     var myDiv = document.getElementById("block13");
@@ -857,19 +852,14 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 <figure>
     <div class="image-container">
+        
     <img  src="/img/lazyloading.webp" data-src="pics/carousel.gif" width="80%" alt="carousel" class="lazy">
-    <span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+    
     <figcaption>推薦文章輪播</figcaption>
     </div>
 </figure>
 
-<style>
-    .image-container {
-        position: relative;
-        display: inline-block;
-        margin: 10px;
-    }
-</style>
+
 <div id="block15"></div>
 <script>
     var myDiv = document.getElementById("block15");
@@ -1575,25 +1565,7 @@ window.addEventListener('load', () => {
   background-color: rgba(231, 231, 231, 0.7);  
   border-radius: 10px;
 }
-.zoom-icon {
-        position: absolute;
-        top: 19px;
-        right: 12%;
-        transform: translate(50%, -50%);
-        font-size: 14px;
-        color: #fff;
-        background-color: rgba(219, 217, 217, 0.7);
-        border-radius: 5px;
-        padding-left: 5px;
-		padding-right: 5px;
-        cursor: pointer;
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-    }
-
-    .image-container:hover .zoom-icon {
-        opacity: 1;
-    }
+ 
 </style>
 <script>
 
@@ -1604,13 +1576,13 @@ zoomed.forEach((image) => {
 	const img= image.parentNode.querySelector('.lazy');
     img.classList.toggle('zoomed');
 
-	
-	const zoomIcon = image.querySelector('.zoom-icon');
-            if (img.classList.contains('zoomed')) {
-                zoomIcon.style.display = 'none';
-            } else {
-                zoomIcon.style.display = 'block';
-            }
+
+
+
+
+
+
+
   });
 });
 

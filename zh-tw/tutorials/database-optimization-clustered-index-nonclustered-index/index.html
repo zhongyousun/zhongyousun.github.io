@@ -687,19 +687,14 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 <figure>
     <div class="image-container">
+        
     <img  src="/img/lazyloading.webp" data-src="pics/sqlserver-index.png" width="40%" alt="" class="lazy">
-    <span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+    
     <figcaption>點選資料表的索引即可看到有哪些索引。</figcaption>
     </div>
 </figure>
 
-<style>
-    .image-container {
-        position: relative;
-        display: inline-block;
-        margin: 10px;
-    }
-</style>
+
 <p>索引種類主要有 叢集索引（Clustered Index）、非叢集索引（Non-Clustered Index）、唯一索引（Unique Index）、主鍵索引（Primary Key Index）、聚集索引（Clustered Index）與 全文索引（Full-Text Index）。</p>
 <p>此篇主要討論:</p>
 <p>叢集索引（Clustered Index）：叢集索引決定了資料在資料庫中的物理排序方式。<code>每個資料庫表只能有一個叢集索引</code>，它決定了表的物理存儲順序。</p>
@@ -755,19 +750,14 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 <figure>
     <div class="image-container">
+        
     <img  src="/img/lazyloading.webp" data-src="pics/Execution%20Plan.png" width="40%" alt="" class="lazy">
-    <span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+    
     <figcaption>點選此按鈕後每次的查詢就能看到執行計畫。</figcaption>
     </div>
 </figure>
 
-<style>
-    .image-container {
-        position: relative;
-        display: inline-block;
-        margin: 10px;
-    }
-</style>
+
 
 
 
@@ -776,19 +766,14 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 <figure>
     <div class="image-container">
+        
     <img  src="/img/lazyloading.webp" data-src="pics/Execution%20Plan%201.png" width="80%" alt="" class="lazy">
-    <span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+    
     <figcaption>之後在每次查詢結果中都可點選執行計畫查看。</figcaption>
     </div>
 </figure>
 
-<style>
-    .image-container {
-        position: relative;
-        display: inline-block;
-        margin: 10px;
-    }
-</style>
+
 <p>其實太複雜的查詢，我也不是看的很懂，還在研究中，但基本上就能明確清楚知道這次查詢是使用索引搜尋還是索引掃描。</p>
 <h3 id="叢集索引搜尋clustered-index-seek和叢集索引掃描clustered-index-scan">叢集索引搜尋（Clustered Index Seek）和叢集索引掃描（Clustered Index Scan）</h3>
 <ol>
@@ -1468,25 +1453,7 @@ window.addEventListener('load', () => {
   background-color: rgba(231, 231, 231, 0.7);  
   border-radius: 10px;
 }
-.zoom-icon {
-        position: absolute;
-        top: 19px;
-        right: 12%;
-        transform: translate(50%, -50%);
-        font-size: 14px;
-        color: #fff;
-        background-color: rgba(219, 217, 217, 0.7);
-        border-radius: 5px;
-        padding-left: 5px;
-		padding-right: 5px;
-        cursor: pointer;
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-    }
-
-    .image-container:hover .zoom-icon {
-        opacity: 1;
-    }
+ 
 </style>
 <script>
 
@@ -1497,13 +1464,13 @@ zoomed.forEach((image) => {
 	const img= image.parentNode.querySelector('.lazy');
     img.classList.toggle('zoomed');
 
-	
-	const zoomIcon = image.querySelector('.zoom-icon');
-            if (img.classList.contains('zoomed')) {
-                zoomIcon.style.display = 'none';
-            } else {
-                zoomIcon.style.display = 'block';
-            }
+
+
+
+
+
+
+
   });
 });
 
