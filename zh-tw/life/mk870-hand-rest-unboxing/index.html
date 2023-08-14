@@ -613,7 +613,6 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 				
 			
 				
-
 			</div>
 
 
@@ -622,6 +621,31 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 				src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0&appId=725315935966817&autoLogAppEvents=1"
 				nonce="aF40iZ15"></script>
 		</header>
+		<div class="a2abutton">
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-icon-color="var(--shadow)">
+	<a class="a2a_button_facebook"></a>
+	<a class="a2a_button_x"></a>
+	<a class="a2a_button_whatsapp"></a>
+	<a class="a2a_button_telegram"></a>
+	<a class="a2a_button_reddit"></a>
+	<a class="a2a_button_wechat"></a>
+	<a class="a2a_button_line"></a>
+    <a class="a2a_button_copy_link"></a>
+</div>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2abutton{
+    display: flex;
+    justify-content: right;  
+    align-items: center;  
+     
+     
+    opacity: 0.7;
+    border-radius: 100%;
+    }
+</style>
+
 		
 	<figure class="post__thumbnail thumbnail">
 		
@@ -640,10 +664,20 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
+    <div class="image-container">
     <img  src="/img/lazyloading.webp" data-src="pics/MK870-1.webp" width="80%" alt="" class="lazy">
+    <span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
     <figcaption>側刻鍵帽</figcaption>
-    
+    </div>
 </figure>
+
+<style>
+    .image-container {
+        position: relative;
+        display: inline-block;
+        margin: 10px;
+    }
+</style>
 
 
 
@@ -651,10 +685,20 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
+    <div class="image-container">
     <img  src="/img/lazyloading.webp" data-src="pics/MK870.webp" width="80%" alt="" class="lazy">
+    <span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
     <figcaption>MK870與非洲花梨木質手托</figcaption>
-    
+    </div>
 </figure>
+
+<style>
+    .image-container {
+        position: relative;
+        display: inline-block;
+        margin: 10px;
+    }
+</style>
 <p><strong>Be More Than Just a Code Monkey.</strong></p>
 <p>期許自己不管是人生還是程式都可以更精進。</p>
 		</div>
@@ -1318,9 +1362,10 @@ window.addEventListener('load', () => {
 <style>
     .lazy {
   cursor: pointer;
-  
 }
-
+	.lazy:hover {
+  background-image: white;
+}
     .zoomed {
 		position: fixed;
   top: 5%;
@@ -1334,14 +1379,42 @@ window.addEventListener('load', () => {
   background-color: rgba(231, 231, 231, 0.7);  
   border-radius: 10px;
 }
+.zoom-icon {
+        position: absolute;
+        top: 19px;
+        right: 12%;
+        transform: translate(50%, -50%);
+        font-size: 14px;
+        color: #fff;
+        background-color: rgba(219, 217, 217, 0.7);
+        border-radius: 5px;
+        padding-left: 5px;
+		padding-right: 5px;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .image-container:hover .zoom-icon {
+        opacity: 1;
+    }
 </style>
 <script>
 
-const zoomed = document.querySelectorAll('.lazy');
+const zoomed = document.querySelectorAll('.image-container');
 
 zoomed.forEach((image) => {
   image.addEventListener('click', () => {
-    image.classList.toggle('zoomed');
+	const img= image.parentNode.querySelector('.lazy');
+    img.classList.toggle('zoomed');
+
+	
+	const zoomIcon = image.querySelector('.zoom-icon');
+            if (img.classList.contains('zoomed')) {
+                zoomIcon.style.display = 'none';
+            } else {
+                zoomIcon.style.display = 'block';
+            }
   });
 });
 

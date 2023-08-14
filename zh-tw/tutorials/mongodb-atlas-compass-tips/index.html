@@ -613,7 +613,6 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 				
 			
 				
-
 			</div>
 
 
@@ -622,6 +621,31 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 				src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0&appId=725315935966817&autoLogAppEvents=1"
 				nonce="aF40iZ15"></script>
 		</header>
+		<div class="a2abutton">
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-icon-color="var(--shadow)">
+	<a class="a2a_button_facebook"></a>
+	<a class="a2a_button_x"></a>
+	<a class="a2a_button_whatsapp"></a>
+	<a class="a2a_button_telegram"></a>
+	<a class="a2a_button_reddit"></a>
+	<a class="a2a_button_wechat"></a>
+	<a class="a2a_button_line"></a>
+    <a class="a2a_button_copy_link"></a>
+</div>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2abutton{
+    display: flex;
+    justify-content: right;  
+    align-items: center;  
+     
+     
+    opacity: 0.7;
+    border-radius: 100%;
+    }
+</style>
+
 		
 	<figure class="post__thumbnail thumbnail">
 		
@@ -690,10 +714,20 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
+    <div class="image-container">
     <img  src="/img/lazyloading.webp" data-src="pics/connect.webp" width="80%" alt="" class="lazy">
+    <span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
     <figcaption></figcaption>
-    
-</figure></p>
+    </div>
+</figure>
+
+<style>
+    .image-container {
+        position: relative;
+        display: inline-block;
+        margin: 10px;
+    }
+</style></p>
 <p>因為是使用Compass 連線，所以就點選Compass，畫面就會出現對於Compass的連線字串。</p>
 <pre tabindex="0"><code>mongodb+srv://&lt;user&gt;:&lt;password&gt;@cluster0.swvkd15.mongodb.net/test
 </code></pre><p><code>&lt;user&gt;</code> <code>&lt;password&gt;</code>就是當初建立Cluster時建立的帳號與密碼。</p>
@@ -705,10 +739,20 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 
 <figure>
+    <div class="image-container">
     <img  src="/img/lazyloading.webp" data-src="pics/Network%20Access.webp" width="" alt="" class="lazy">
+    <span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
     <figcaption></figcaption>
-    
-</figure></p>
+    </div>
+</figure>
+
+<style>
+    .image-container {
+        position: relative;
+        display: inline-block;
+        margin: 10px;
+    }
+</style></p>
 <p>設定好後，在 MongoDB Compass 貼上連線字串後就能連線成功了。</p>
 <h3 id="6-資料庫結構">6. 資料庫結構</h3>
 <p>在 MongoDB 中，資料是以文件（document）的形式儲存的。一個集合（collection）則是一個文件的集合。換句話說，一個 MongoDB 資料庫可以包含多個集合，而每個集合裡面包含多個文件。</p>
@@ -1400,9 +1444,10 @@ window.addEventListener('load', () => {
 <style>
     .lazy {
   cursor: pointer;
-  
 }
-
+	.lazy:hover {
+  background-image: white;
+}
     .zoomed {
 		position: fixed;
   top: 5%;
@@ -1416,14 +1461,42 @@ window.addEventListener('load', () => {
   background-color: rgba(231, 231, 231, 0.7);  
   border-radius: 10px;
 }
+.zoom-icon {
+        position: absolute;
+        top: 19px;
+        right: 12%;
+        transform: translate(50%, -50%);
+        font-size: 14px;
+        color: #fff;
+        background-color: rgba(219, 217, 217, 0.7);
+        border-radius: 5px;
+        padding-left: 5px;
+		padding-right: 5px;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .image-container:hover .zoom-icon {
+        opacity: 1;
+    }
 </style>
 <script>
 
-const zoomed = document.querySelectorAll('.lazy');
+const zoomed = document.querySelectorAll('.image-container');
 
 zoomed.forEach((image) => {
   image.addEventListener('click', () => {
-    image.classList.toggle('zoomed');
+	const img= image.parentNode.querySelector('.lazy');
+    img.classList.toggle('zoomed');
+
+	
+	const zoomIcon = image.querySelector('.zoom-icon');
+            if (img.classList.contains('zoomed')) {
+                zoomIcon.style.display = 'none';
+            } else {
+                zoomIcon.style.display = 'block';
+            }
   });
 });
 
