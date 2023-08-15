@@ -22,7 +22,7 @@
 	<meta itemprop="name" content="使用 .NET 6 進行 MongoDB Atlas CRUD 操作">
 <meta itemprop="description" content="紀錄.net core 6 操作 MongoDB 的一些常用語法。"><meta itemprop="datePublished" content="2023-08-08T11:24:03+08:00" />
 <meta itemprop="dateModified" content="2023-08-08T11:24:03+08:00" />
-<meta itemprop="wordCount" content="398">
+<meta itemprop="wordCount" content="432">
 <meta itemprop="keywords" content="NoSQL,Csharp," />
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="使用 .NET 6 進行 MongoDB Atlas CRUD 操作"/>
@@ -767,6 +767,14 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>{
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>    <span style="color:#66d9ef">string</span> name = nameElement.Value.AsString;
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>}
+</span></span></code></pre></div><p>將 bsonDocument 轉為 List&lt;&gt;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>List&lt;People&gt; result = documents.Select(bsonDocument =&gt; <span style="color:#66d9ef">new</span> People
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>            {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>                name = bsonDocument.GetValue(<span style="color:#e6db74">&#34;name&#34;</span>).AsString,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>                age = bsonDocument.GetValue(<span style="color:#e6db74">&#34;age&#34;</span>).AsInt32,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>                email = bsonDocument.GetValue(<span style="color:#e6db74">&#34;email&#34;</span>).AsString,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>                <span style="color:#75715e">// Map other properties as needed</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>            }).ToList();
 </span></span></code></pre></div><h3 id="新增">新增</h3>
 <p>Json格式的物件，可以直接轉換成BsonDocument即可存入DB</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">string</span> jsonString = <span style="color:#e6db74">&#34;{ \&#34;name\&#34;: \&#34;Alice\&#34;, \&#34;age\&#34;: 30, \&#34;email\&#34;: \&#34;alice@example.com\&#34; }&#34;</span>;

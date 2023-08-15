@@ -22,7 +22,7 @@
 	<meta itemprop="name" content="Performing MongoDB Atlas CRUD Operations with .NET 6">
 <meta itemprop="description" content="Recording Common .NET Core 6 Syntax for MongoDB Operations."><meta itemprop="datePublished" content="2023-08-08T11:24:03+08:00" />
 <meta itemprop="dateModified" content="2023-08-08T11:24:03+08:00" />
-<meta itemprop="wordCount" content="913">
+<meta itemprop="wordCount" content="947">
 <meta itemprop="keywords" content="NoSQL,Csharp," />
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Performing MongoDB Atlas CRUD Operations with .NET 6"/>
@@ -609,7 +609,7 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 8 12.667969 C 10.578125 12.667969 12.667969 10.578125 12.667969 8 C 12.667969 5.421875 10.578125 3.332031 8 3.332031 C 5.421875 3.332031 3.332031 5.421875 3.332031 8 C 3.332031 10.578125 5.421875 12.667969 8 12.667969 Z M 3.957031 12.433594 C 2.753906 11.335938 2 9.757812 2 8 C 2 4.6875 4.6875 2 8 2 C 11.3125 2 14 4.6875 14 8 C 14 9.757812 13.246094 11.335938 12.042969 12.433594 L 12.9375 13.328125 C 13.207031 13.597656 13.203125 14.015625 12.941406 14.277344 C 12.679688 14.539062 12.257812 14.535156 11.996094 14.273438 L 10.949219 13.226562 C 10.078125 13.71875 9.070312 14 8 14 C 6.929688 14 5.921875 13.71875 5.050781 13.226562 L 4.003906 14.273438 C 3.738281 14.539062 3.316406 14.535156 3.058594 14.277344 C 2.796875 14.015625 2.796875 13.589844 3.0625 13.328125 Z M 7.332031 5.335938 C 7.332031 4.964844 7.628906 4.667969 8 4.667969 C 8.367188 4.667969 8.667969 4.957031 8.667969 5.335938 L 8.667969 9.332031 L 7.332031 9.332031 Z M 5.332031 8.667969 C 5.332031 8.296875 5.628906 8 6 8 L 7.332031 8 L 7.332031 9.332031 L 6 9.332031 C 5.632812 9.332031 5.332031 9.039062 5.332031 8.667969 Z M 5.332031 8.667969 "/>
 </g>
 </svg>
-1553 words</span>
+1706 words</span>
 				<span>| 5 min read.　</span>
 				
 			
@@ -768,6 +768,14 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>{
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>    <span style="color:#66d9ef">string</span> name = nameElement.Value.AsString;
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>}
+</span></span></code></pre></div><p>Convert bsonDocument to List&lt;&gt;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>List&lt;People&gt; result = documents.Select(bsonDocument =&gt; <span style="color:#66d9ef">new</span> People
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>            {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>                name = bsonDocument.GetValue(<span style="color:#e6db74">&#34;name&#34;</span>).AsString,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>                age = bsonDocument.GetValue(<span style="color:#e6db74">&#34;age&#34;</span>).AsInt32,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>                email = bsonDocument.GetValue(<span style="color:#e6db74">&#34;email&#34;</span>).AsString,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>                <span style="color:#75715e">// Map other properties as needed</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>            }).ToList();
 </span></span></code></pre></div><h3 id="insert">Insert</h3>
 <p>JSON-formatted objects can be directly converted into BsonDocument and stored in the database.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">string</span> jsonString = <span style="color:#e6db74">&#34;{ \&#34;name\&#34;: \&#34;Alice\&#34;, \&#34;age\&#34;: 30, \&#34;email\&#34;: \&#34;alice@example.com\&#34; }&#34;</span>;
