@@ -265,7 +265,7 @@ textarea {
 	position: fixed;
 	top: 0px;
     right: 7.5px;
-	z-index: 1;
+	z-index: 999;
 }
 @media (max-width: 991px) {
 	.sun-btn,
