@@ -1173,12 +1173,30 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 	width: 32px;
 	height: 32px;
 	padding: 8px;
-	margin-right: 6px;
+	margin-right: 5px;
 	background: #ACD6FF;
 	fill: #fff;
 	border-radius: 10px;
-}
 
+
+	/* margin: 0 auto; 自動計算左右 margin */
+  border-radius: 10px;
+  border: none;
+  transition: 0.5s;
+  animation: jump 1s;
+  animation-iteration-count: infinite; /* 重複次數 */
+}
+@keyframes jump {
+	0% {
+	  transform: translateY(0);
+	}
+	50% {
+	  transform: translateY(-5px);
+	}
+	100% {
+	  transform: translateY(0);
+	}
+  }
 /* Table of Contents */
 .toc {
 	font-weight: 600;
