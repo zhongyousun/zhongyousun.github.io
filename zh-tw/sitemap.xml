@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://sunnote.xyz/zh-tw/categories/</loc>
-    <lastmod>2023-08-15T14:36:56+08:00</lastmod>
+    <lastmod>2023-08-21T16:29:19+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -17,8 +17,38 @@
                 href="http://sunnote.xyz/zh-tw/categories/"
                 />
   </url><url>
+    <loc>http://sunnote.xyz/zh-tw/tags/hugo/</loc>
+    <lastmod>2023-08-21T16:29:19+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/hugo/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/hugo/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/zh-tw/tutorials/hugo-auto-update-last-modified/</loc>
+    <lastmod>2023-08-21T16:29:19+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tutorials/hugo-auto-update-last-modified/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tutorials/hugo-auto-update-last-modified/"
+                />
+  </url><url>
     <loc>http://sunnote.xyz/zh-tw/posts/</loc>
-    <lastmod>2023-08-17T08:58:04+08:00</lastmod>
+    <lastmod>2023-08-21T16:29:19+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -33,7 +63,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/</loc>
-    <lastmod>2023-08-17T08:58:04+08:00</lastmod>
+    <lastmod>2023-08-21T16:29:19+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -48,7 +78,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/tags/</loc>
-    <lastmod>2023-08-15T14:36:56+08:00</lastmod>
+    <lastmod>2023-08-21T16:29:19+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -61,6 +91,11 @@
                 hreflang="zh-tw"
                 href="http://sunnote.xyz/zh-tw/tags/"
                 />
+  </url><url>
+    <loc>http://sunnote.xyz/zh-tw/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/</loc>
+    <lastmod>2023-08-21T16:29:19+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/tags/%E7%94%9F%E6%B4%BB/</loc>
     <lastmod>2023-08-10T08:29:39+08:00</lastmod>
@@ -131,11 +166,6 @@
                 hreflang="zh-tw"
                 href="http://sunnote.xyz/zh-tw/tutorials/mongodb-atlas-crud/"
                 />
-  </url><url>
-    <loc>http://sunnote.xyz/zh-tw/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/</loc>
-    <lastmod>2023-08-15T14:36:56+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/tags/sql/</loc>
     <lastmod>2023-08-09T08:25:32+08:00</lastmod>
@@ -400,21 +430,6 @@
                 rel="alternate"
                 hreflang="zh-tw"
                 href="http://sunnote.xyz/zh-tw/tags/css/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/zh-tw/tags/hugo/</loc>
-    <lastmod>2023-03-23T10:26:54+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/hugo/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/hugo/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/zh-tw/tutorials/dark-mode-tips-hugo/</loc>
