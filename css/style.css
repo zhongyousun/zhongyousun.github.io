@@ -630,6 +630,7 @@ select {
 	background-color:var(--wrapperBG2);
 	border: 0;
 	outline: 0;
+	transition: background-color 1.3s ease, color 0.3s ease;
 }
 
 .menu__btn-title {
