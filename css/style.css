@@ -69,6 +69,7 @@ body {
 ::-webkit-scrollbar {
 	width: 8px;
 	background-color: var(--codeBG);
+	transition: background-color 1.3s ease, color 0.3s ease;
   }
   
   /* 設置滾輪滑塊的背景色 */
@@ -747,7 +748,7 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 	}
 
 	.menu__item {
-		border-left: 1px solid rgba(255, 255, 255, .1);
+		/* border-left: 1px solid rgba(255, 255, 255, .1); */
 		float: right;    
 		
 	}
@@ -916,7 +917,7 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 	  transform: none;
 	  }
 	.menu__item {
-	  border-left: 1px solid var(--wrapperBG2);
+	  /* border-left: 1px solid var(--wrapperBG2); */
 	  display: block;	 
 	}
   }

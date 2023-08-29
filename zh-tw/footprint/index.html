@@ -543,6 +543,8 @@ if (!doNotTrack) {
 	  box-shadow: 0 0 20px 0 var(--shadow); 
 	  transform:scale(0.9,0.9);
 	  transition: all 0.3s ease-out;
+	  border-radius: 3%;
+	  transition: background-color 1.3s ease, color 0.3s ease, margin-top 0.4s ease;
 	}
 	.owl-theme .item:hover {
 		margin-top: -10px;
@@ -1317,6 +1319,7 @@ window.addEventListener('load', () => {
 		 
 		display: flex;
 		justify-content: center;
+		transition: background-color 1.3s ease, color 0.3s ease;
 
 	}
 
@@ -1330,6 +1333,7 @@ window.addEventListener('load', () => {
 		font-family: 'DM Sans', sans-serif;
 		font-weight: 500;
 		position: relative;
+		transition: inherit;
 
 		&:before {
 			content: "";
