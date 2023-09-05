@@ -324,11 +324,13 @@ h6 {
 h1 {
 	font-size: 28px;
 	/* font-size: 2rem; */
+	transition: color 1.3s ease;
 }
 
 h2 {
 	font-size: 26px;
 	font-size: 1.5rem;
+	transition: color 1.3s ease;
 }
 
 h3 {
@@ -336,26 +338,31 @@ h3 {
 	font-size: 1.25rem;
 	padding-bottom: 30px;
 	padding-top: 70px;
+	transition: color 1.3s ease;
 }
 
 h4 {
 	font-size: 18px;
 	font-size: 1.125rem;
+	transition: color 1.3s ease;
 }
 
 h5 {
 	font-size: 16px;
 	font-size: 1rem;
+	transition: color 1.3s ease;
 }
 
 h6 {
 	font-size: 16px;
 	font-size: 1rem;
+	transition: color 1.3s ease;
 }
 
 a {
 	color: var(--text-color);
 	text-decoration: none;
+	transition: color 1.3s ease;
 }
 
 a:hover {
@@ -372,7 +379,9 @@ p {
 	margin: 0 0 20px;
 	margin: 0 0 1.25rem;
 	color: var(--text-color);
+	transition: color 1.3s ease;
 	line-height: 35px;　
+	
 }
 
 b,
@@ -445,6 +454,7 @@ pre {
 	margin-bottom: 1.25rem;
 	overflow: auto;
 	color: var(--text-color);
+	transition: color 1.3s ease;
 }
 
 pre code {
