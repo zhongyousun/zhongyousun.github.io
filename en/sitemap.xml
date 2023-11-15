@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://sunnote.xyz/categories/</loc>
-    <lastmod>2023-10-19T08:47:32+08:00</lastmod>
+    <lastmod>2023-11-15T11:39:43+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -17,10 +17,80 @@
                 href="http://sunnote.xyz/categories/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/categories/just-sharing/</loc>
-    <lastmod>2023-10-19T08:47:32+08:00</lastmod>
+    <loc>http://sunnote.xyz/tags/great-reads/</loc>
+    <lastmod>2023-11-15T11:39:43+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/tags/investing/</loc>
+    <lastmod>2023-11-15T11:39:43+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/categories/just-sharing/</loc>
+    <lastmod>2023-11-15T11:39:43+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/posts/</loc>
+    <lastmod>2023-11-15T11:39:43+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/posts/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/</loc>
+    <lastmod>2023-11-15T11:39:43+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tags/</loc>
+    <lastmod>2023-11-15T11:39:43+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/book/just-keep-buying/</loc>
+    <lastmod>2023-11-15T11:39:43+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/book/just-keep-buying/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/book/just-keep-buying/"
+                />
   </url><url>
     <loc>http://sunnote.xyz/tags/life/</loc>
     <lastmod>2023-10-19T08:47:32+08:00</lastmod>
@@ -45,51 +115,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://sunnote.xyz/life/nasal-septum-inferior-turbinate-hypertrophy-surgery/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/posts/</loc>
-    <lastmod>2023-10-19T08:47:32+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/posts/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/</loc>
-    <lastmod>2023-10-19T08:47:32+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/tags/</loc>
-    <lastmod>2023-10-19T08:47:32+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/hugo-auto-update-last-modified/</loc>
@@ -311,11 +336,6 @@
                 hreflang="en"
                 href="http://sunnote.xyz/cryptocurrency/exchange-recommendations-value-investing-insights/"
                 />
-  </url><url>
-    <loc>http://sunnote.xyz/tags/investing/</loc>
-    <lastmod>2023-05-30T13:14:11+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/tags/hokkaido/</loc>
     <lastmod>2023-06-19T16:17:31+08:00</lastmod>
