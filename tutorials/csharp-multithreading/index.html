@@ -16,12 +16,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://sunnote.xyz/tutorials/csharp-multithreading/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-01-19T11:49:15+08:00" />
-<meta property="article:modified_time" content="2023-01-30T07:53:30+08:00" /><meta property="og:site_name" content="Sun Notes" />
+<meta property="article:modified_time" content="2023-06-29T21:46:19+08:00" />
+
 
 		  	<meta property="og:image" content="https://sunnote.xyz/TravelIsGoodForTheSoul.webp" />
 	<meta itemprop="name" content="C# Multi-threading principle, asynchronous usage and parameter with custom objects">
 <meta itemprop="description" content="C# multi-threading principle, asynchronous usage and parameter with custom objects records"><meta itemprop="datePublished" content="2023-01-19T11:49:15+08:00" />
-<meta itemprop="dateModified" content="2023-01-30T07:53:30+08:00" />
+<meta itemprop="dateModified" content="2023-06-29T21:46:19+08:00" />
 <meta itemprop="wordCount" content="816">
 <meta itemprop="keywords" content="Csharp," />
 	<meta name="twitter:card" content="summary"/>
@@ -584,7 +585,7 @@ if (!doNotTrack) {
 </g>
 </svg>
 <time class="meta__text" datetime="2023-01-19T11:49:15&#43;08:00">January 19, 2023</time>
-	<time class="meta__text" datetime="2023-01-30T07:53:30&#43;08:00">(Last Modified: January 30, 2023)</time></div>
+	<time class="meta__text" datetime="2023-06-29T21:46:19&#43;08:00">(Last Modified: June 29, 2023)</time></div>
 <div class="meta__item-categories meta__item">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-folders"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <g id="surface1">
@@ -676,34 +677,34 @@ None of the projects encountered so far have a hard requirement to use multi-thr
 <li>Tasks need to be executed on multiple cores to take advantage of the performance of multi-core CPUs.</li>
 </ol>
 <h3 id="example">Example</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">using</span> System.Threading;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>Thread thread1 = <span style="color:#66d9ef">new</span> Thread(Task1); 
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>thread1.Start();
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>Thread thread2 = <span style="color:#66d9ef">new</span> Thread(Task2);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>thread2.Start();
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>Console.WriteLine(<span style="color:#e6db74">&#34;Completed&#34;</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>Console.ReadKey();
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Task1()
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i = <span style="color:#ae81ff">0</span>; i &lt; <span style="color:#ae81ff">5</span>; i++)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>    {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>        Console.WriteLine(<span style="color:#e6db74">&#34;Task 1&#34;</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>        Thread.Sleep(<span style="color:#ae81ff">1000</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>    }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>}
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Task2()
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i = <span style="color:#ae81ff">0</span>; i &lt; <span style="color:#ae81ff">5</span>; i++)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>    {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>        Console.WriteLine(<span style="color:#e6db74">&#34;Task 2&#34;</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>        Thread.Sleep(<span style="color:#ae81ff">1000</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>    }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">using</span> System.Threading;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>Thread thread1 = <span style="color:#66d9ef">new</span> Thread(Task1); 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>thread1.Start();
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>Thread thread2 = <span style="color:#66d9ef">new</span> Thread(Task2);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>thread2.Start();
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>Console.WriteLine(<span style="color:#e6db74">&#34;Completed&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>Console.ReadKey();
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Task1()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i = <span style="color:#ae81ff">0</span>; i &lt; <span style="color:#ae81ff">5</span>; i++)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>        Console.WriteLine(<span style="color:#e6db74">&#34;Task 1&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>        Thread.Sleep(<span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Task2()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i = <span style="color:#ae81ff">0</span>; i &lt; <span style="color:#ae81ff">5</span>; i++)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>        Console.WriteLine(<span style="color:#e6db74">&#34;Task 2&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>        Thread.Sleep(<span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>}
 </span></span></code></pre></div><p>Result:</p>
 <pre tabindex="0"><code>Completed
 Task 1
@@ -723,33 +724,33 @@ This is because in the above code, two threads are started at the same time, and
 <p>In actual use, the thread often needs to be executed with parameters. You can use ParameterizedThreadStart. ParameterizedThreadStart is a delegate, which points to a method with an object parameter and no return value. So when using ParameterizedThreadStart delegation, you need to pass in an object type parameter.<br>
 But usually the data type is not object, most of them are JObject or self-defined types, the following is the implementation method.</p>
 <p>Create corresponding objects for different execution threads</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#75715e">// Create an object to hold the list</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ListContainer1</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>    {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>        <span style="color:#66d9ef">public</span> List&lt;<span style="color:#66d9ef">dynamic</span>&gt; TheList { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>    }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ListContainer2</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>    {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>        <span style="color:#66d9ef">public</span> List&lt;customize&gt; TheList { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span>    }
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#75715e">// Create an object to hold the list</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ListContainer1</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>        <span style="color:#66d9ef">public</span> List&lt;<span style="color:#66d9ef">dynamic</span>&gt; TheList { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ListContainer2</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>        <span style="color:#66d9ef">public</span> List&lt;customize&gt; TheList { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span>    }
 </span></span></code></pre></div><p>Pass <code>List&lt;dynamic&gt;</code> customize_obj to Task1, get customize_obj in Task1 function and execute</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>List&lt;<span style="color:#66d9ef">dynamic</span>&gt; customize_obj  = <span style="color:#66d9ef">new</span> List&lt;<span style="color:#66d9ef">dynamic</span>&gt;();
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#66d9ef">var</span> listContainer1 = <span style="color:#66d9ef">new</span> ListContainer1 { TheList = customize_obj };
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#75715e">// create new thread</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>Thread t1 = <span style="color:#66d9ef">new</span> Thread(<span style="color:#66d9ef">new</span> ParameterizedThreadStart(Task1));
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#75715e">// pass parameters and start thread</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>t1.Start(listContainer1);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#66d9ef">void</span> Task1(Object listContainer)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    <span style="color:#75715e">// get customize_obj</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    ListContainer1 container = (ListContainer1)listContainer;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>    List&lt;<span style="color:#66d9ef">dynamic</span>&gt; customize_obj = container.TheList;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    <span style="color:#75715e">//...</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>    <span style="color:#75715e">//code</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>    <span style="color:#75715e">//...</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>List&lt;<span style="color:#66d9ef">dynamic</span>&gt; customize_obj  = <span style="color:#66d9ef">new</span> List&lt;<span style="color:#66d9ef">dynamic</span>&gt;();
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#66d9ef">var</span> listContainer1 = <span style="color:#66d9ef">new</span> ListContainer1 { TheList = customize_obj };
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#75715e">// create new thread</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>Thread t1 = <span style="color:#66d9ef">new</span> Thread(<span style="color:#66d9ef">new</span> ParameterizedThreadStart(Task1));
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#75715e">// pass parameters and start thread</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>t1.Start(listContainer1);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#66d9ef">void</span> Task1(Object listContainer)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    <span style="color:#75715e">// get customize_obj</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    ListContainer1 container = (ListContainer1)listContainer;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>    List&lt;<span style="color:#66d9ef">dynamic</span>&gt; customize_obj = container.TheList;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    <span style="color:#75715e">//...</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>    <span style="color:#75715e">//code</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>    <span style="color:#75715e">//...</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>}
 </span></span></code></pre></div><h3 id="asynchronous-programming-with-async-and-awaitto-be-continued">Asynchronous programming with async and await(to be continued)</h3>
 		</div>
 		<br>
@@ -894,6 +895,31 @@ nav.sharebuttons li > a:hover .will-change { fill: #444444 }
 	  
 	
 	 
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/tutorials/aspnetcore-6.0-blazor-globalization/">
+					<img src="https://sunnote.xyz/img/thumbnail/043en.webp" alt="Implementing Multilingual Support in ASP.NET Core Blazor"/>
+					
+				</a>
+			
+
+			<h6><a href="/tutorials/aspnetcore-6.0-blazor-globalization/">Implementing Multilingual Support in ASP.NET Core Blazor
+				
+				<br>
+				<time datetime="2023-11-16T03:05:34&#43;0000">
+					November 16, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
 	<div class="item">
 		
 			<div class="related-post__image">
@@ -1108,31 +1134,6 @@ nav.sharebuttons li > a:hover .will-change { fill: #444444 }
 				<br>
 				<time datetime="2023-08-21T02:51:46&#43;0000">
 					August 21, 2023
-				</time></a></h6>
-				</time>
-			
-			</div>
-
-		
-			
-		
-			
-	</div>
-   
-	<div class="item">
-		
-			<div class="related-post__image">
-				<a href="/life/mk870-hand-rest-unboxing/">
-					<img src="https://sunnote.xyz/img/thumbnail/039.webp" alt="Unboxing the Fuling MK870 Mechanical Keyboard with African Rosewood Wrist Rest"/>
-					
-				</a>
-			
-
-			<h6><a href="/life/mk870-hand-rest-unboxing/">Unboxing the Fuling MK870 Mechanical Keyboard with African Rosewood Wrist Rest
-				
-				<br>
-				<time datetime="2023-08-09T00:29:23&#43;0000">
-					August 9, 2023
 				</time></a></h6>
 				</time>
 			
@@ -1501,6 +1502,9 @@ document.addEventListener('click', (event) => {
 		<ul class="widget__list">
 			
 			
+			<li class="widget__item"><a class="widget__link" href="/tutorials/aspnetcore-6.0-blazor-globalization/">Implementing Multilingual Support in ASP.NET Core Blazor</a></li>
+			
+			
 			<li class="widget__item"><a class="widget__link" href="/book/just-keep-buying/">The Best Investment Strategy - Just Keep Buying (Book Recommendation)</a></li>
 			
 			
@@ -1511,9 +1515,6 @@ document.addEventListener('click', (event) => {
 			
 			
 			<li class="widget__item"><a class="widget__link" href="/life/mk870-hand-rest-unboxing/">Unboxing the Fuling MK870 Mechanical Keyboard with African Rosewood Wrist Rest</a></li>
-			
-			
-			<li class="widget__item"><a class="widget__link" href="/tutorials/mongodb-atlas-crud/">Performing MongoDB Atlas CRUD Operations with .NET 6</a></li>
 		</ul>
 	</div>
 </div>
@@ -1538,7 +1539,7 @@ document.addEventListener('click', (event) => {
 				</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/program/">Program</a>&nbsp;
-				<span class="widget__counter widget__counter--bubble"><span class="count">18</span></span>
+				<span class="widget__counter widget__counter--bubble"><span class="count">19</span></span>
 				
 				</li>
 		</ul>
@@ -1557,16 +1558,17 @@ document.addEventListener('click', (event) => {
 <div class="widget-taglist widget">
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/blazor/" title="Blazor">Blazor (<span class="count">1</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cebu/" title="Cebu">Cebu (<span class="count">8</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cryptocurrency/" title="Cryptocurrency">Cryptocurrency (<span class="count">1</span>)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/csharp/" title="Csharp">Csharp (<span class="count">7</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/csharp/" title="Csharp">Csharp (<span class="count">8</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/css/" title="CSS">CSS (<span class="count">1</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/great-reads/" title="Great Reads">Great Reads (<span class="count">1</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/hokkaido/" title="Hokkaido">Hokkaido (<span class="count">3</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/hugo/" title="Hugo">Hugo (<span class="count">4</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/investing/" title="Investing">Investing (<span class="count">2</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/japan/" title="Japan">Japan (<span class="count">3</span>)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="JavaScript">JavaScript (<span class="count">3</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="JavaScript">JavaScript (<span class="count">4</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/kenting/" title="Kenting">Kenting (<span class="count">1</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/language-school/" title="Language School">Language School (<span class="count">3</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/leetcode/" title="LeetCode">LeetCode (<span class="count">1</span>)</a>
@@ -1576,7 +1578,7 @@ document.addEventListener('click', (event) => {
 		<a class="widget-taglist__link widget__link btn" href="/tags/python/" title="Python">Python (<span class="count">1</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql/" title="SQL">SQL (<span class="count">6</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/taiwan/" title="Taiwan">Taiwan (<span class="count">1</span>)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/web/" title="Web">Web (<span class="count">4</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/web/" title="Web">Web (<span class="count">5</span>)</a>
 	</div>
 </div>
 

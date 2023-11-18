@@ -16,12 +16,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://sunnote.xyz/zh-tw/tutorials/dark-mode-tips-hugo/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-03-22T11:34:07+08:00" />
-<meta property="article:modified_time" content="2023-03-23T10:26:54+08:00" />
+<meta property="article:modified_time" content="2023-06-29T21:46:20+08:00" />
+
 <meta property="og:image" content="http://sunnote.xyz/img/thumbnail/024.webp" />
 		  	
 	<meta itemprop="name" content="黑暗模式(dark mode)設計與Hugo實作">
 <meta itemprop="description" content="紀錄一下網站增加黑暗模式功能踩到的一些坑、一些前端顯示的細節還有在Hugo上實作。"><meta itemprop="datePublished" content="2023-03-22T11:34:07+08:00" />
-<meta itemprop="dateModified" content="2023-03-23T10:26:54+08:00" />
+<meta itemprop="dateModified" content="2023-06-29T21:46:20+08:00" />
 <meta itemprop="wordCount" content="335">
 <meta itemprop="keywords" content="Hugo,Web,CSS,JavaScript," />
 	<meta name="twitter:card" content="summary"/>
@@ -583,7 +584,8 @@ if (!doNotTrack) {
 <path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 5.332031 L 2 12.667969 C 2 13.035156 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 5.332031 C 14 4.964844 13.703125 4.667969 13.335938 4.667969 L 2.664062 4.667969 C 2.296875 4.667969 2 4.964844 2 5.332031 Z M 0.667969 5.332031 C 0.667969 4.230469 1.558594 3.332031 2.664062 3.332031 L 13.335938 3.332031 C 14.441406 3.332031 15.332031 4.230469 15.332031 5.332031 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.769531 0.667969 12.667969 Z M 2 7.332031 L 2 6 L 14 6 L 14 7.332031 Z M 4 2 C 4 1.632812 4.296875 1.332031 4.667969 1.332031 C 5.035156 1.332031 5.332031 1.628906 5.332031 2 L 5.332031 3.332031 L 4 3.332031 Z M 10.667969 2 C 10.667969 1.632812 10.960938 1.332031 11.332031 1.332031 C 11.703125 1.332031 12 1.628906 12 2 L 12 3.332031 L 10.667969 3.332031 Z M 10.667969 2 "/>
 </g>
 </svg>
-<time class="meta__text" datetime="2023-03-22T11:34:07&#43;08:00">March 22, 2023</time></div>
+<time class="meta__text" datetime="2023-03-22T11:34:07&#43;08:00">March 22, 2023</time>
+	<time class="meta__text" datetime="2023-06-29T21:46:20&#43;08:00">(更新日期: June 29, 2023)</time></div>
 <div class="meta__item-categories meta__item">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-folders"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <g id="surface1">
@@ -662,74 +664,74 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <h3 id="轉換模式按鈕">轉換模式按鈕</h3>
 <p>首先要先設一個可以點選轉換模式的按鈕，樣式可以自己選擇，這裡我是選擇用Unicode對應的太陽與月亮的符號來充當按鈕的樣子。<br>
 位置可以放在<code>根目錄\themes\Mainroad\layouts\baseof.html</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-HTML" data-lang="HTML"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sun-btn&#34;</span>&gt;&amp;#x2600;&lt;/<span style="color:#f92672">span</span>&gt;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;moon-btn&#34;</span>&gt;&amp;#x263D;&lt;/<span style="color:#f92672">span</span>&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-HTML" data-lang="HTML"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sun-btn&#34;</span>&gt;&amp;#x2600;&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;moon-btn&#34;</span>&gt;&amp;#x263D;&lt;/<span style="color:#f92672">span</span>&gt;
 </span></span></code></pre></div><p>然後在style.css增加按鈕的樣式與黑暗模式的樣式。</p>
 <h3 id="css-variable-應用">CSS variable 應用</h3>
 <p>CSS的部分因為不同網站的配置都不相同還是需要自己去設置對應的黑暗模式配色，為了更好的控管CSS，可以使用<code>CSS variable</code>(CSS 自訂屬性)，是一種在 CSS 中定義和使用的值，可以在整個文件中重複使用。它們以雙減號（&ndash;）為前綴加上變數名稱來命名。</p>
 <p>範例:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-CSS" data-lang="CSS"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>:<span style="color:#a6e22e">root</span> {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>  --main-color: <span style="color:#ae81ff">#ff0000</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>}
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#f92672">h1</span> {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>  <span style="color:#66d9ef">color</span>: <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span>main<span style="color:#f92672">-</span><span style="color:#66d9ef">color</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-CSS" data-lang="CSS"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>:<span style="color:#a6e22e">root</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>  --main-color: <span style="color:#ae81ff">#ff0000</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#f92672">h1</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>  <span style="color:#66d9ef">color</span>: <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span>main<span style="color:#f92672">-</span><span style="color:#66d9ef">color</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>}
 </span></span></code></pre></div><p>在 :root 偽類中定義了一個名為 <code>--main-color</code> 的CSS變數，並將其設置為紅色。然後，在h1元素中，使用<code>var()</code>函數來引用這個變數，將其值應用於 color 屬性。<br>
 CSS 變數的優點之一是它們可以在不同的元素和選擇器之間共享，並且可以通過 JavaScript 動態更改它們的值。這使得 CSS 變數成為一種非常強大和靈活的工具，可以用於實現動態和可維護的樣式表。</p>
 <p>以下是我的主題使用的CSS，為了方便管理，與增加黑暗模式的樣式，先新增:root 偽類中定義各個CSS variable，然後把整個css.style裡有用到的都先替換成這些CSS變數，這樣就可以透過在dark mode類直接修改變數值達到統一轉換的效果。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-CSS" data-lang="CSS"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>:<span style="color:#a6e22e">root</span> {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>	--bodyBG: <span style="color:#ae81ff">#f7f7f7</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>	--wrapperBG:<span style="color:#ae81ff">#ffffff</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>	--wrapperBG2:<span style="color:#ae81ff">#f5f5f5</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>	--text-color: <span style="color:#ae81ff">#000000</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>	--codeBG:<span style="color:#ae81ff">#f6f8fa</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>  }  
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-CSS" data-lang="CSS"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>:<span style="color:#a6e22e">root</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>	--bodyBG: <span style="color:#ae81ff">#f7f7f7</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>	--wrapperBG:<span style="color:#ae81ff">#ffffff</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>	--wrapperBG2:<span style="color:#ae81ff">#f5f5f5</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>	--text-color: <span style="color:#ae81ff">#000000</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>	--codeBG:<span style="color:#ae81ff">#f6f8fa</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>  }  
 </span></span></code></pre></div><p>然後對明暗轉換的按鈕客製化一下樣式</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-CSS" data-lang="CSS"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e">/* Light Mode */</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>.<span style="color:#a6e22e">sun-btn</span> {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>	<span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">block</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>	<span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">2</span><span style="color:#66d9ef">rem</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>	<span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#ffc533</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>  }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>  
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>.<span style="color:#a6e22e">moon-btn</span> {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>	<span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">none</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>  }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#75715e">/* Dark Mode */</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span> .<span style="color:#a6e22e">dark-mode</span> .<span style="color:#a6e22e">sun-btn</span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>	<span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">none</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span> }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span> 
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span> .<span style="color:#a6e22e">dark-mode</span> .<span style="color:#a6e22e">moon-btn</span> {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>	 <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">block</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>	 <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">2</span><span style="color:#66d9ef">rem</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>	 <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#fff9be</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>   }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-CSS" data-lang="CSS"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e">/* Light Mode */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>.<span style="color:#a6e22e">sun-btn</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>	<span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">block</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>	<span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">2</span><span style="color:#66d9ef">rem</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>	<span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#ffc533</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>  }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>  
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>.<span style="color:#a6e22e">moon-btn</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>	<span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">none</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>  }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#75715e">/* Dark Mode */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span> .<span style="color:#a6e22e">dark-mode</span> .<span style="color:#a6e22e">sun-btn</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>	<span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">none</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span> }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span> .<span style="color:#a6e22e">dark-mode</span> .<span style="color:#a6e22e">moon-btn</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>	 <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">block</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>	 <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">2</span><span style="color:#66d9ef">rem</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>	 <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#fff9be</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>   }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span> 
 </span></span></code></pre></div><p>以下則是黑暗模式下的CSS，可以看到實際要改的其實不多，因為都用CSS variable取代了。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-CSS" data-lang="CSS"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>  <span style="color:#75715e">/*dark-mode styles*/</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>.<span style="color:#a6e22e">dark-mode</span> {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>	--bodyBG:<span style="color:#ae81ff">#2b2b2b</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>	--wrapperBG: <span style="color:#ae81ff">#212121</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>	--wrapperBG2: <span style="color:#ae81ff">#212121</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>	--text-color: <span style="color:#ae81ff">#C5C5C5</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>	--codeBG:<span style="color:#ae81ff">#424242</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>	<span style="color:#66d9ef">box-shadow</span>: <span style="color:#66d9ef">none</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>  } 
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>.<span style="color:#a6e22e">dark-mode</span> <span style="color:#f92672">span</span>.<span style="color:#a6e22e">nav-indicator</span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>	<span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#ACD6FF</span> <span style="color:#75715e">!important</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>  } 
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>.<span style="color:#a6e22e">dark-mode</span> <span style="color:#f92672">li</span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>	<span style="color:#66d9ef">color</span>: <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">text</span><span style="color:#f92672">-</span><span style="color:#66d9ef">color</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>  }
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-CSS" data-lang="CSS"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>  <span style="color:#75715e">/*dark-mode styles*/</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>.<span style="color:#a6e22e">dark-mode</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>	--bodyBG:<span style="color:#ae81ff">#2b2b2b</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>	--wrapperBG: <span style="color:#ae81ff">#212121</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>	--wrapperBG2: <span style="color:#ae81ff">#212121</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>	--text-color: <span style="color:#ae81ff">#C5C5C5</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>	--codeBG:<span style="color:#ae81ff">#424242</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>	<span style="color:#66d9ef">box-shadow</span>: <span style="color:#66d9ef">none</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>  } 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>.<span style="color:#a6e22e">dark-mode</span> <span style="color:#f92672">span</span>.<span style="color:#a6e22e">nav-indicator</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>	<span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#ACD6FF</span> <span style="color:#75715e">!important</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>  } 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>.<span style="color:#a6e22e">dark-mode</span> <span style="color:#f92672">li</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>	<span style="color:#66d9ef">color</span>: <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">text</span><span style="color:#f92672">-</span><span style="color:#66d9ef">color</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>  }
 </span></span></code></pre></div><h3 id="降低白底亮度">降低白底亮度</h3>
 <p>如果網頁上會放一些影音或是圖片，若是白底的可能會在黑暗模式下異常刺眼，可以使用此屬性降低在黑暗模式下的亮度。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-CSS" data-lang="CSS"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>.<span style="color:#a6e22e">dark-mode</span> <span style="color:#f92672">iframe</span><span style="color:#f92672">,</span> 
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>.<span style="color:#a6e22e">dark-mode</span> <span style="color:#f92672">img</span><span style="color:#f92672">,</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>.<span style="color:#a6e22e">dark-mode</span> <span style="color:#f92672">video</span> {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>  <span style="color:#66d9ef">filter</span>: brightness(<span style="color:#ae81ff">0.9</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-CSS" data-lang="CSS"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>.<span style="color:#a6e22e">dark-mode</span> <span style="color:#f92672">iframe</span><span style="color:#f92672">,</span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>.<span style="color:#a6e22e">dark-mode</span> <span style="color:#f92672">img</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>.<span style="color:#a6e22e">dark-mode</span> <span style="color:#f92672">video</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>  <span style="color:#66d9ef">filter</span>: brightness(<span style="color:#ae81ff">0.9</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>}
 </span></span></code></pre></div><h3 id="按鈕監聽localstorage存放用戶偏好模式">按鈕監聽、localStorage存放用戶偏好模式</h3>
 <p>接下來就是使用JS實現以下功能。<br>
 位置放在<code>根目錄\themes\Mainroad\layouts\baseof.html</code></p>
@@ -738,48 +740,48 @@ CSS 變數的優點之一是它們可以在不同的元素和選擇器之間共�
 <li>監聽系統設置是否切換到深色模式（通過 window.matchMedia 創建 MediaQueryList 對象來實現）。</li>
 <li>當用戶點擊「太陽」或「月亮」按鈕時，切換深色模式的狀態，並同時更新 localStorage 的值。</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">darkModeState</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#66d9ef">const</span> sun <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;.sun-btn&#39;</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">moon</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;.moon-btn&#39;</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span><span style="color:#75715e">// MediaQueryList object
-</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">useDark</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">matchMedia</span>(<span style="color:#e6db74">&#34;(prefers-color-scheme: dark)&#34;</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#75715e">// Toggles the &#34;dark-mode&#34; class
-</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">toggleDarkMode</span>(<span style="color:#a6e22e">state</span>) {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>  document.<span style="color:#a6e22e">documentElement</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">toggle</span>(<span style="color:#e6db74">&#34;dark-mode&#34;</span>, <span style="color:#a6e22e">state</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>  <span style="color:#a6e22e">darkModeState</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">state</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>}
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span><span style="color:#75715e">// Sets localStorage state
-</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setDarkModeLocalStorage</span>(<span style="color:#a6e22e">state</span>) {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>  <span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">setItem</span>(<span style="color:#e6db74">&#34;dark-mode&#34;</span>, <span style="color:#a6e22e">state</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>}
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span><span style="color:#75715e">// Initial setting
-</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span><span style="color:#75715e"></span><span style="color:#a6e22e">toggleDarkMode</span>(<span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">getItem</span>(<span style="color:#e6db74">&#34;dark-mode&#34;</span>) <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;true&#34;</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span><span style="color:#75715e">// Listen for changes in the OS settings.
-</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span><span style="color:#75715e">// useDark.addListener((evt) =&gt; toggleDarkMode(evt.matches));
-</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">useDark</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;change&#39;</span>, (<span style="color:#a6e22e">evt</span>) =&gt; {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>    <span style="color:#a6e22e">toggleDarkMode</span>(<span style="color:#a6e22e">evt</span>.<span style="color:#a6e22e">matches</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>  });
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span><span style="color:#75715e">// Toggles the &#34;dark-mode&#34; class on click and sets localStorage state
-</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span><span style="color:#75715e"></span>sun.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, () =&gt; {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span><span>  <span style="color:#a6e22e">darkModeState</span> <span style="color:#f92672">=</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">darkModeState</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34</span><span>  <span style="color:#a6e22e">toggleDarkMode</span>(<span style="color:#a6e22e">darkModeState</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35</span><span>  <span style="color:#a6e22e">setDarkModeLocalStorage</span>(<span style="color:#a6e22e">darkModeState</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36</span><span>});
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37</span><span><span style="color:#a6e22e">moon</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, () =&gt; {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38</span><span>  <span style="color:#a6e22e">darkModeState</span> <span style="color:#f92672">=</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">darkModeState</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40</span><span>  <span style="color:#a6e22e">toggleDarkMode</span>(<span style="color:#a6e22e">darkModeState</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41</span><span>  <span style="color:#a6e22e">setDarkModeLocalStorage</span>(<span style="color:#a6e22e">darkModeState</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42</span><span>});
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">darkModeState</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#66d9ef">const</span> sun <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;.sun-btn&#39;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">moon</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;.moon-btn&#39;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span><span style="color:#75715e">// MediaQueryList object
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">useDark</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">matchMedia</span>(<span style="color:#e6db74">&#34;(prefers-color-scheme: dark)&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#75715e">// Toggles the &#34;dark-mode&#34; class
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">toggleDarkMode</span>(<span style="color:#a6e22e">state</span>) {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>  document.<span style="color:#a6e22e">documentElement</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">toggle</span>(<span style="color:#e6db74">&#34;dark-mode&#34;</span>, <span style="color:#a6e22e">state</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>  <span style="color:#a6e22e">darkModeState</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">state</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span><span style="color:#75715e">// Sets localStorage state
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setDarkModeLocalStorage</span>(<span style="color:#a6e22e">state</span>) {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>  <span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">setItem</span>(<span style="color:#e6db74">&#34;dark-mode&#34;</span>, <span style="color:#a6e22e">state</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span><span style="color:#75715e">// Initial setting
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span><span style="color:#75715e"></span><span style="color:#a6e22e">toggleDarkMode</span>(<span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">getItem</span>(<span style="color:#e6db74">&#34;dark-mode&#34;</span>) <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;true&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span><span style="color:#75715e">// Listen for changes in the OS settings.
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span><span style="color:#75715e">// useDark.addListener((evt) =&gt; toggleDarkMode(evt.matches));
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">useDark</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;change&#39;</span>, (<span style="color:#a6e22e">evt</span>) =&gt; {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>    <span style="color:#a6e22e">toggleDarkMode</span>(<span style="color:#a6e22e">evt</span>.<span style="color:#a6e22e">matches</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>  });
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span><span style="color:#75715e">// Toggles the &#34;dark-mode&#34; class on click and sets localStorage state
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span><span style="color:#75715e"></span>sun.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, () =&gt; {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span><span>  <span style="color:#a6e22e">darkModeState</span> <span style="color:#f92672">=</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">darkModeState</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34</span><span>  <span style="color:#a6e22e">toggleDarkMode</span>(<span style="color:#a6e22e">darkModeState</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35</span><span>  <span style="color:#a6e22e">setDarkModeLocalStorage</span>(<span style="color:#a6e22e">darkModeState</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36</span><span>});
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37</span><span><span style="color:#a6e22e">moon</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, () =&gt; {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38</span><span>  <span style="color:#a6e22e">darkModeState</span> <span style="color:#f92672">=</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">darkModeState</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40</span><span>  <span style="color:#a6e22e">toggleDarkMode</span>(<span style="color:#a6e22e">darkModeState</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41</span><span>  <span style="color:#a6e22e">setDarkModeLocalStorage</span>(<span style="color:#a6e22e">darkModeState</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42</span><span>});
 </span></span></code></pre></div><h3 id="心得">心得</h3>
 <p>其實我認為此方法，跟我原本也是使用JS在頁面上動態地添加或刪除 <code>dark-mode</code> 類的方法大同小異，實在是不清楚為何就能解決頁面跳轉時會出現短暫的白色閃爍問題，希望有前端專業的人可以補充。</p>
 <div id="block1"></div>
@@ -948,6 +950,31 @@ nav.sharebuttons li > a:hover .will-change { fill: #444444 }
 	  
 	
 	 
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/zh-tw/tutorials/aspnetcore-6.0-blazor-globalization/">
+					<img src="https://sunnote.xyz/img/thumbnail/043.webp" alt="ASP.NET Core Blazor 實作多國語系"/>
+					
+				</a>
+			
+
+			<h6><a href="/zh-tw/tutorials/aspnetcore-6.0-blazor-globalization/">ASP.NET Core Blazor 實作多國語系
+				
+				<br>
+				<time datetime="2023-11-16T03:05:34&#43;0000">
+					November 16, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
 	<div class="item">
 		
 			<div class="related-post__image">
@@ -1162,31 +1189,6 @@ nav.sharebuttons li > a:hover .will-change { fill: #444444 }
 				<br>
 				<time datetime="2023-08-09T00:29:23&#43;0000">
 					August 9, 2023
-				</time></a></h6>
-				</time>
-			
-			</div>
-
-		
-			
-		
-			
-	</div>
-   
-	<div class="item">
-		
-			<div class="related-post__image">
-				<a href="/zh-tw/tutorials/mongodb-atlas-crud/">
-					<img src="https://sunnote.xyz/img/thumbnail/038.webp" alt="使用 .NET 6 進行 MongoDB Atlas CRUD 操作"/>
-					
-				</a>
-			
-
-			<h6><a href="/zh-tw/tutorials/mongodb-atlas-crud/">使用 .NET 6 進行 MongoDB Atlas CRUD 操作
-				
-				<br>
-				<time datetime="2023-08-08T03:24:03&#43;0000">
-					August 8, 2023
 				</time></a></h6>
 				</time>
 			
@@ -1555,6 +1557,9 @@ document.addEventListener('click', (event) => {
 		<ul class="widget__list">
 			
 			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/aspnetcore-6.0-blazor-globalization/">ASP.NET Core Blazor 實作多國語系</a></li>
+			
+			
 			<li class="widget__item"><a class="widget__link" href="/zh-tw/book/just-keep-buying/">投資的最佳實證方法-持續買進(好書推薦)</a></li>
 			
 			
@@ -1565,9 +1570,6 @@ document.addEventListener('click', (event) => {
 			
 			
 			<li class="widget__item"><a class="widget__link" href="/zh-tw/life/mk870-hand-rest-unboxing/">開箱腹靈MK870機械鍵盤與非洲花梨木質手托</a></li>
-			
-			
-			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/mongodb-atlas-crud/">使用 .NET 6 進行 MongoDB Atlas CRUD 操作</a></li>
 		</ul>
 	</div>
 </div>
@@ -1587,7 +1589,7 @@ document.addEventListener('click', (event) => {
 				</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/zh-tw/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/">程式語言</a>&nbsp;
-				<span class="widget__counter widget__counter--bubble"><span class="count">18</span></span>
+				<span class="widget__counter widget__counter--bubble"><span class="count">19</span></span>
 				
 				</li>
 			<li class="widget__item">
@@ -1616,15 +1618,16 @@ document.addEventListener('click', (event) => {
 <div class="widget-taglist widget">
 	<h4 class="widget__title">標籤</h4>
 	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/csharp/" title="Csharp">Csharp (<span class="count">7</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/blazor/" title="Blazor">Blazor (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/csharp/" title="Csharp">Csharp (<span class="count">8</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/css/" title="CSS">CSS (<span class="count">1</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/hugo/" title="Hugo">Hugo (<span class="count">4</span>)</a>
-		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/javascript/" title="JavaScript">JavaScript (<span class="count">3</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/javascript/" title="JavaScript">JavaScript (<span class="count">4</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/leetcode/" title="LeetCode">LeetCode (<span class="count">1</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/nosql/" title="NoSQL">NoSQL (<span class="count">2</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/python/" title="Python">Python (<span class="count">1</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/sql/" title="SQL">SQL (<span class="count">6</span>)</a>
-		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/web/" title="Web">Web (<span class="count">4</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/web/" title="Web">Web (<span class="count">5</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E5%8C%97%E6%B5%B7%E9%81%93/" title="北海道">北海道 (<span class="count">3</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E5%8F%B0%E7%81%A3/" title="台灣">台灣 (<span class="count">1</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E5%A2%BE%E4%B8%81/" title="墾丁">墾丁 (<span class="count">1</span>)</a>
