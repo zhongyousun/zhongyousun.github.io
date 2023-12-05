@@ -2,8 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://sunnote.xyz/tags/aws/</loc>
+    <lastmod>2023-12-05T15:41:45+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/aws/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/aws/"
+                />
+  </url><url>
     <loc>http://sunnote.xyz/tags/blazor/</loc>
-    <lastmod>2023-11-18T16:51:48+08:00</lastmod>
+    <lastmod>2023-12-05T15:41:45+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -18,7 +33,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/categories/</loc>
-    <lastmod>2023-11-18T16:51:48+08:00</lastmod>
+    <lastmod>2023-12-05T15:41:45+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -33,7 +48,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/csharp/</loc>
-    <lastmod>2023-11-18T16:51:48+08:00</lastmod>
+    <lastmod>2023-12-05T15:41:45+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -47,38 +62,23 @@
                 href="http://sunnote.xyz/tags/csharp/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/tutorials/aspnetcore-6.0-blazor-globalization/</loc>
-    <lastmod>2023-11-18T16:51:48+08:00</lastmod>
+    <loc>http://sunnote.xyz/tutorials/aspnetcore-6.0-aws-s3/</loc>
+    <lastmod>2023-12-05T15:41:45+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tutorials/aspnetcore-6.0-blazor-globalization/"
+                href="http://sunnote.xyz/zh-tw/tutorials/aspnetcore-6.0-aws-s3/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://sunnote.xyz/tutorials/aspnetcore-6.0-blazor-globalization/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/tags/javascript/</loc>
-    <lastmod>2023-11-18T16:51:48+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/javascript/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/javascript/"
+                href="http://sunnote.xyz/tutorials/aspnetcore-6.0-aws-s3/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/posts/</loc>
-    <lastmod>2023-11-18T16:51:48+08:00</lastmod>
+    <lastmod>2023-12-05T15:41:45+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -93,12 +93,12 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/categories/program/</loc>
-    <lastmod>2023-11-18T16:51:48+08:00</lastmod>
+    <lastmod>2023-12-05T15:41:45+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/</loc>
-    <lastmod>2023-11-18T16:51:48+08:00</lastmod>
+    <lastmod>2023-12-05T15:41:45+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -113,7 +113,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/</loc>
-    <lastmod>2023-11-18T16:51:48+08:00</lastmod>
+    <lastmod>2023-12-05T15:41:45+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -128,7 +128,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/web/</loc>
-    <lastmod>2023-11-18T16:51:48+08:00</lastmod>
+    <lastmod>2023-12-05T15:41:45+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -142,23 +142,53 @@
                 href="http://sunnote.xyz/tags/web/"
                 />
   </url><url>
+    <loc>http://sunnote.xyz/tutorials/aspnetcore-6.0-blazor-globalization/</loc>
+    <lastmod>2023-11-20T07:48:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tutorials/aspnetcore-6.0-blazor-globalization/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tutorials/aspnetcore-6.0-blazor-globalization/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tags/javascript/</loc>
+    <lastmod>2023-11-20T07:48:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/javascript/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/javascript/"
+                />
+  </url><url>
     <loc>http://sunnote.xyz/tags/great-reads/</loc>
-    <lastmod>2023-11-17T18:53:29+08:00</lastmod>
+    <lastmod>2023-11-15T11:39:43+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/tags/investing/</loc>
-    <lastmod>2023-11-17T18:53:29+08:00</lastmod>
+    <lastmod>2023-11-15T11:39:43+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/categories/just-sharing/</loc>
-    <lastmod>2023-11-17T18:53:29+08:00</lastmod>
+    <lastmod>2023-11-15T11:39:43+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/book/just-keep-buying/</loc>
-    <lastmod>2023-11-17T18:53:29+08:00</lastmod>
+    <lastmod>2023-11-15T11:39:43+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -173,17 +203,17 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/life/</loc>
-    <lastmod>2023-10-22T20:22:21+08:00</lastmod>
+    <lastmod>2023-10-19T08:47:32+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/categories/life-record/</loc>
-    <lastmod>2023-10-22T20:22:21+08:00</lastmod>
+    <lastmod>2023-10-19T08:47:32+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/life/nasal-septum-inferior-turbinate-hypertrophy-surgery/</loc>
-    <lastmod>2023-10-22T20:22:21+08:00</lastmod>
+    <lastmod>2023-10-19T08:47:32+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -198,7 +228,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/hugo-auto-update-last-modified/</loc>
-    <lastmod>2023-10-22T20:22:21+08:00</lastmod>
+    <lastmod>2023-08-21T16:29:12+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -213,7 +243,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/hugo/</loc>
-    <lastmod>2023-10-22T20:22:21+08:00</lastmod>
+    <lastmod>2023-08-21T16:29:12+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -228,7 +258,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/life/mk870-hand-rest-unboxing/</loc>
-    <lastmod>2023-10-22T20:22:21+08:00</lastmod>
+    <lastmod>2023-08-10T08:45:14+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -243,7 +273,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/nosql/</loc>
-    <lastmod>2023-10-22T20:22:21+08:00</lastmod>
+    <lastmod>2023-08-16T13:27:14+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -258,7 +288,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/mongodb-atlas-crud/</loc>
-    <lastmod>2023-10-22T20:22:21+08:00</lastmod>
+    <lastmod>2023-08-16T13:27:14+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -273,7 +303,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/sql/</loc>
-    <lastmod>2023-08-09T19:40:56+08:00</lastmod>
+    <lastmod>2023-08-09T08:25:51+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -288,7 +318,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/cte-lazy-loading-infinite-data-structure/</loc>
-    <lastmod>2023-08-08T21:26:06+08:00</lastmod>
+    <lastmod>2023-07-31T13:27:26+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -303,7 +333,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/aspnetcore-6.0-signalr-websocket-2/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-06-16T13:30:27+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -318,7 +348,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/aspnetcore-6.0-signalr-websocket-1/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-06-16T13:30:47+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -333,7 +363,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/database-optimization-clustered-index-nonclustered-index/</loc>
-    <lastmod>2023-08-09T19:40:56+08:00</lastmod>
+    <lastmod>2023-08-09T08:25:51+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -348,12 +378,12 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/cryptocurrency/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-05-30T13:14:11+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/cryptocurrency/exchange-recommendations-value-investing-insights/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-05-30T13:14:11+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -368,12 +398,12 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/hokkaido/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-06-19T16:17:31+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/hokkaido/sapporo-dormyinn-kanihonke/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-06-19T16:17:31+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -388,17 +418,17 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/japan/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-06-19T16:17:31+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/categories/overseas-travel/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-06-19T16:17:31+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/hokkaido/hakodate-attractions-lodging/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-05-18T11:11:45+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -413,7 +443,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/hokkaido/noboribetsu-jigokudani/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-05-17T07:56:29+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -428,17 +458,17 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/kenting/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-05-11T13:38:12+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/tags/taiwan/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-05-11T13:38:12+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/taiwan/kenting-caesarpark/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-05-11T13:38:12+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -453,7 +483,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/mongodb-atlas-compass-tips/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-04-28T10:44:58+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -468,7 +498,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/database-optimization-index-tips/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-03-30T14:42:07+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -483,7 +513,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/css/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-03-23T10:26:50+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -498,7 +528,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/dark-mode-tips-hugo/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-03-23T10:26:50+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -513,7 +543,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/sql-scopeidentity-identity-diff/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-03-20T13:54:56+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -528,7 +558,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/jwt-authentication-mechanism/</loc>
-    <lastmod>2023-10-22T20:22:21+08:00</lastmod>
+    <lastmod>2023-08-21T13:57:21+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -543,7 +573,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/hugo-related-posts-supports-carousel-display/</loc>
-    <lastmod>2023-10-22T20:22:21+08:00</lastmod>
+    <lastmod>2023-08-21T13:57:58+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -558,7 +588,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/hugo-multiple-comments/</loc>
-    <lastmod>2023-10-22T20:22:21+08:00</lastmod>
+    <lastmod>2023-08-21T13:58:16+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -573,7 +603,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/life/valentine-gift-marimo/</loc>
-    <lastmod>2023-10-22T20:22:21+08:00</lastmod>
+    <lastmod>2023-08-21T13:58:30+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -588,7 +618,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/sql-partition-by/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-02-20T09:07:04+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -603,7 +633,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/csharp-multithreading/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-01-30T07:53:30+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -618,7 +648,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/csharp-enum/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-02-10T08:18:04+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -633,7 +663,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/sql-merge-into-statement/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-01-30T07:53:30+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -648,7 +678,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/leetcode/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-01-31T16:11:28+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -663,7 +693,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/leetcode-lru-cache-medium-python/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-01-31T16:11:28+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -678,7 +708,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/python/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-01-31T16:11:28+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -693,12 +723,12 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/cebu/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-04-10T07:55:42+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/cebu/residential_area/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-03-24T08:16:54+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -713,12 +743,12 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/philippines/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-04-10T07:55:42+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/cebu/bohol-island-day-tour-tarsier-chocolate-hills/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-04-10T07:55:42+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -733,7 +763,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/cebu/jeepney-anjo-world-theme-park-day-trip/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-04-10T07:55:42+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -748,7 +778,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/cebu/simala-church-day-trip/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-03-24T08:13:29+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -763,7 +793,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/cebu/christmas-in-cebu/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-03-24T08:09:09+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -778,12 +808,12 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/language-school/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-03-24T08:07:46+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://sunnote.xyz/cebu/daily-life-part2/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-03-24T08:07:46+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -798,7 +828,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/cebu/daily-life-part1/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-03-24T08:06:48+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -813,7 +843,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/cebu/pre-departure-mood-record/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-03-24T08:04:19+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -828,7 +858,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/about/</loc>
-    <lastmod>2023-10-22T20:22:21+08:00</lastmod>
+    <lastmod>2023-08-17T08:58:07+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -843,7 +873,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/archives/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-03-30T14:11:41+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -858,7 +888,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/search/</loc>
-    <lastmod>2023-06-29T21:46:19+08:00</lastmod>
+    <lastmod>2023-02-10T08:09:16+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -873,7 +903,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/timeline/</loc>
-    <lastmod>2023-06-30T20:46:31+08:00</lastmod>
+    <lastmod>2023-06-30T09:40:14+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
