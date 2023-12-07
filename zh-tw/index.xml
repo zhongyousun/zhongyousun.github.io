@@ -6,7 +6,16 @@
     <description>Recent content on Sun 記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 05 Dec 2023 11:05:34 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 07 Dec 2023 07:44:38 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>URL 查詢字串與編、解碼淺談</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/url-querystring-encoding-decoding/</link>
+      <pubDate>Thu, 07 Dec 2023 07:44:38 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/url-querystring-encoding-decoding/</guid>
+      <description>&lt;p&gt;URL查詢字串傳遞參數時，使用編碼與解碼與該注意的細節。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>ASP.NET Core Web API &amp; Blazor 實作Amazon S3 檔案串接</title>
       <link>http://sunnote.xyz/zh-tw/tutorials/aspnetcore-6.0-aws-s3/</link>

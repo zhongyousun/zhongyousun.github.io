@@ -6,7 +6,16 @@
     <description>Recent content on Sun Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 05 Dec 2023 11:05:34 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 07 Dec 2023 07:44:38 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding URL Query Strings and Encoding/Decoding</title>
+      <link>http://sunnote.xyz/tutorials/url-querystring-encoding-decoding/</link>
+      <pubDate>Thu, 07 Dec 2023 07:44:38 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/tutorials/url-querystring-encoding-decoding/</guid>
+      <description>&lt;p&gt;When passing parameters in URL query strings, use encoding and decoding and some details that need to be attention.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Operating Amazon S3 with ASP.NET Core Web API and Blazor</title>
       <link>http://sunnote.xyz/tutorials/aspnetcore-6.0-aws-s3/</link>
