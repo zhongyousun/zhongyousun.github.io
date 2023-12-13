@@ -16,12 +16,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://sunnote.xyz/zh-tw/tutorials/database-optimization-clustered-index-nonclustered-index/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-06-13T13:21:06+08:00" />
-<meta property="article:modified_time" content="2023-08-09T08:25:32+08:00" />
+<meta property="article:modified_time" content="2023-08-09T19:40:57+08:00" />
+
 <meta property="og:image" content="http://sunnote.xyz/img/thumbnail/036.webp" />
 		  	
 	<meta itemprop="name" content="資料庫查詢性能優化技巧:索引概念、叢集、非叢集">
 <meta itemprop="description" content="紀錄藉由索引優化查詢性能技巧方式，叢集與非叢集索引差異。"><meta itemprop="datePublished" content="2023-06-13T13:21:06+08:00" />
-<meta itemprop="dateModified" content="2023-08-09T08:25:32+08:00" />
+<meta itemprop="dateModified" content="2023-08-09T19:40:57+08:00" />
 <meta itemprop="wordCount" content="137">
 <meta itemprop="keywords" content="SQL," />
 	<meta name="twitter:card" content="summary"/>
@@ -584,7 +585,7 @@ if (!doNotTrack) {
 </g>
 </svg>
 <time class="meta__text" datetime="2023-06-13T13:21:06&#43;08:00">June 13, 2023</time>
-	<time class="meta__text" datetime="2023-08-09T08:25:32&#43;08:00">(更新日期: August 9, 2023)</time></div>
+	<time class="meta__text" datetime="2023-08-09T19:40:57&#43;08:00">(更新日期: August 9, 2023)</time></div>
 <div class="meta__item-categories meta__item">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-folders"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <g id="surface1">
@@ -699,8 +700,8 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <h3 id="索引選擇原則">索引選擇原則</h3>
 <p><code>索引選擇應該是選擇最常被查詢且重覆性較低(唯一性高)的欄位。</code></p>
 <h3 id="建立叢集索引">建立叢集索引</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">CREATE</span> CLUSTERED <span style="color:#66d9ef">INDEX</span> IX_ClusteredIndexName
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">ON</span> YourTableName (ColumnName);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">CREATE</span> CLUSTERED <span style="color:#66d9ef">INDEX</span> IX_ClusteredIndexName
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">ON</span> YourTableName (ColumnName);
 </span></span></code></pre></div><p>叢集索引會影響資料表實際儲存資料時的排序規則，適用於叢集索引的欄位包含:</p>
 <ol>
 <li>Where 條件中會搜尋大量重複值的欄位, ex: where city=&lsquo;台北&rsquo;</li>
@@ -714,11 +715,11 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <a href="https://blog.darkthread.net/blog/guid-as-pk-on-db/" title="GUID Primary Key資料庫避雷守則" target="_blank" rel="noopener">GUID Primary Key資料庫避雷守則</a>。</p>
 </blockquote>
 <h3 id="建立非叢集索引">建立非叢集索引</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">INDEX</span> index_name
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">table_name</span> (<span style="color:#66d9ef">column_name</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">INDEX</span> index_name
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">table_name</span> (<span style="color:#66d9ef">column_name</span>);
 </span></span></code></pre></div><p>一個以上的欄位建立複合索引</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">INDEX</span> idx_column1_column2
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">ON</span> your_table (column1, column2);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">INDEX</span> idx_column1_column2
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">ON</span> your_table (column1, column2);
 </span></span></code></pre></div><p>非叢集索引不會影響資料表實際儲存資料時的排序規則。</p>
 <h3 id="顯示估計執行計畫ctrl--l">顯示估計執行計畫(Ctrl + L)</h3>
 <p>不管有沒有建立索引，在撰寫複雜TSQL時也能查看執行計畫，確認此查詢哪個部分耗掉大部分的查詢效能。</p>
@@ -835,7 +836,12 @@ nav.sharebuttons li > a:hover .will-change { fill: #444444 }
 </style>
 
 		</footer>
+		
 		<hr>
+		
+		
+		<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="alvinsun" data-color="#acd6ff" data-emoji="🍺"  data-font="Comic" data-text="Buy me a beer" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#FFDD00" ></script>
+
 		<div id="type-effect">
 </div>
 <br>
@@ -894,8 +900,26 @@ nav.sharebuttons li > a:hover .will-change { fill: #444444 }
 	typeEffect(message, typeEffectDiv);
   </script>
 
+		
 	</article>
 </main>
+
+<style>
+	#bmc-wbtn{
+		height: 38px !important;
+		width: 38px !important;
+		border-radius: 4px !important;
+		right:10px !important;
+		top: 93% !important;
+	}
+	#bmc-wbtn img {
+		height: 30px !important;
+		width: 30px !important;
+	}
+
+</style>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="alvinsun" data-description="Support me on Buy me a coffee!" data-message="" data-color="#acd6ff" data-position="right" data-x_margin="18" data-y_margin="18"></script>
+
 
 
 

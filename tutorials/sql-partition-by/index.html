@@ -16,12 +16,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://sunnote.xyz/tutorials/sql-partition-by/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-02-07T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-02-20T09:07:04+08:00" /><meta property="og:site_name" content="Sun Notes" />
+<meta property="article:modified_time" content="2023-06-29T21:46:19+08:00" />
+
 
 		  	<meta property="og:image" content="https://sunnote.xyz/TravelIsGoodForTheSoul.webp" />
 	<meta itemprop="name" content="SQL-implement data partitioning (partition by)">
 <meta itemprop="description" content="Implement data partitioning using SQL partition by and compare the performance with LINQ."><meta itemprop="datePublished" content="2023-02-07T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2023-02-20T09:07:04+08:00" />
+<meta itemprop="dateModified" content="2023-06-29T21:46:19+08:00" />
 <meta itemprop="wordCount" content="361">
 <meta itemprop="keywords" content="SQL,Csharp," />
 	<meta name="twitter:card" content="summary"/>
@@ -584,7 +585,7 @@ if (!doNotTrack) {
 </g>
 </svg>
 <time class="meta__text" datetime="2023-02-07T00:00:00Z">February 7, 2023</time>
-	<time class="meta__text" datetime="2023-02-20T09:07:04&#43;08:00">(Last Modified: February 20, 2023)</time></div>
+	<time class="meta__text" datetime="2023-06-29T21:46:19&#43;08:00">(Last Modified: June 29, 2023)</time></div>
 <div class="meta__item-categories meta__item">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-folders"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <g id="surface1">
@@ -655,25 +656,25 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <h3 id="using-linq">Using LINQ</h3>
 <p>Intuitively, it&rsquo;s just to directly retrieve all the data, use <code>GroupBy</code> to group the vehicles by license plate, sort the update time in descending order, and then choose the first item in each group.<br>
 LINQ is very convenient!!😂</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">var</span> vehicles = dbContext.VehicleData.ToList();
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#66d9ef">var</span> latestVehicleData = vehicles
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>    .GroupBy(v =&gt; v.LicensePlate)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>    .Select(g =&gt; g.OrderByDescending(v =&gt; v.Timestamp).First());
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">var</span> vehicles = dbContext.VehicleData.ToList();
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#66d9ef">var</span> latestVehicleData = vehicles
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>    .GroupBy(v =&gt; v.LicensePlate)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>    .Select(g =&gt; g.OrderByDescending(v =&gt; v.Timestamp).First());
 </span></span></code></pre></div><p><strong>But the data volume is large, the performance of directly retrieving all the data is certainly not good.</strong></p>
 <p>So I have to use SQL queries to improve efficiency. To partition the data table, then use the <code>partition by</code> to group and use <code>row_number()</code> to get the number after sorting. By taking the first group, you can get the same result as LINQ.</p>
 <h3 id="using-partition-by">Using partition by</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#75715e">-- Create a subquery to get the latest direction for each vehicle
-</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">FROM</span> (
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>  <span style="color:#66d9ef">SELECT</span> license_plate, direction, 
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>         <span style="color:#75715e">-- Use the row_number() function to assign a unique row number to each row, 
-</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span><span style="color:#75715e"></span>         <span style="color:#75715e">-- partitioned by license plate and ordered by timestamp in descending order
-</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#75715e"></span>         row_number() over (partition <span style="color:#66d9ef">by</span> license_plate <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> <span style="color:#66d9ef">timestamp</span> <span style="color:#66d9ef">desc</span>) <span style="color:#66d9ef">as</span> row_num
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>  <span style="color:#66d9ef">FROM</span> VehicleData
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>) subquery
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span><span style="color:#75715e">-- Only return the rows where the row number is equal to 1, which corresponds to the latest data
-</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">WHERE</span> row_num <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#75715e">-- Create a subquery to get the latest direction for each vehicle
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">FROM</span> (
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>  <span style="color:#66d9ef">SELECT</span> license_plate, direction, 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>         <span style="color:#75715e">-- Use the row_number() function to assign a unique row number to each row, 
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span><span style="color:#75715e"></span>         <span style="color:#75715e">-- partitioned by license plate and ordered by timestamp in descending order
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#75715e"></span>         row_number() over (partition <span style="color:#66d9ef">by</span> license_plate <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> <span style="color:#66d9ef">timestamp</span> <span style="color:#66d9ef">desc</span>) <span style="color:#66d9ef">as</span> row_num
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>  <span style="color:#66d9ef">FROM</span> VehicleData
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>) subquery
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span><span style="color:#75715e">-- Only return the rows where the row number is equal to 1, which corresponds to the latest data
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">WHERE</span> row_num <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
 </span></span></code></pre></div><h3 id="conclusion">Conclusion</h3>
 <p>Although LINQ is easy to use, one must consider the overall data volume and what data will be used when initially retrieving the data. If other complex data operations are required, then consider using LINQ to increase efficiency.</p>
 <blockquote>
@@ -752,7 +753,12 @@ nav.sharebuttons li > a:hover .will-change { fill: #444444 }
 </style>
 
 		</footer>
+		
 		<hr>
+		
+		
+		<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="alvinsun" data-color="#acd6ff" data-emoji="🍺"  data-font="Comic" data-text="Buy me a beer" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#FFDD00" ></script>
+
 		<div id="type-effect">
 </div>
 <br>
@@ -811,8 +817,26 @@ nav.sharebuttons li > a:hover .will-change { fill: #444444 }
 	typeEffect(message, typeEffectDiv);
   </script>
 
+		
 	</article>
 </main>
+
+<style>
+	#bmc-wbtn{
+		height: 38px !important;
+		width: 38px !important;
+		border-radius: 4px !important;
+		right:10px !important;
+		top: 93% !important;
+	}
+	#bmc-wbtn img {
+		height: 30px !important;
+		width: 30px !important;
+	}
+
+</style>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="alvinsun" data-description="Support me on Buy me a coffee!" data-message="" data-color="#acd6ff" data-position="right" data-x_margin="18" data-y_margin="18"></script>
+
 
 
 
