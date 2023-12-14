@@ -16,13 +16,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://sunnote.xyz/tutorials/database-optimization-clustered-index-nonclustered-index/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-06-13T13:21:06+08:00" />
-<meta property="article:modified_time" content="2023-08-09T19:40:56+08:00" />
-
+<meta property="article:modified_time" content="2023-08-09T08:25:51+08:00" /><meta property="og:site_name" content="Sun Notes" />
 <meta property="og:image" content="http://sunnote.xyz/img/thumbnail/036en.webp" />
 		  	
 	<meta itemprop="name" content="Database Query Performance Optimization Tips : Index Concepts, Clustered, Non-Clustered">
 <meta itemprop="description" content="Recording tips for optimizing query performance through indexing, differences between clustered and non-clustered indexes."><meta itemprop="datePublished" content="2023-06-13T13:21:06+08:00" />
-<meta itemprop="dateModified" content="2023-08-09T19:40:56+08:00" />
+<meta itemprop="dateModified" content="2023-08-09T08:25:51+08:00" />
 <meta itemprop="wordCount" content="1165">
 <meta itemprop="keywords" content="SQL," />
 	<meta name="twitter:card" content="summary"/>
@@ -585,7 +584,7 @@ if (!doNotTrack) {
 </g>
 </svg>
 <time class="meta__text" datetime="2023-06-13T13:21:06&#43;08:00">June 13, 2023</time>
-	<time class="meta__text" datetime="2023-08-09T19:40:56&#43;08:00">(Last Modified: August 9, 2023)</time></div>
+	<time class="meta__text" datetime="2023-08-09T08:25:51&#43;08:00">(Last Modified: August 9, 2023)</time></div>
 <div class="meta__item-categories meta__item">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-folders"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <g id="surface1">
@@ -701,8 +700,8 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <h3 id="principles-of-index-selection">Principles of Index Selection</h3>
 <p><code>The principle of index selection is to choose the most frequently queried and less repetitive (higher uniqueness) columns for indexing.</code></p>
 <h3 id="creating-a-clustered-index">Creating a Clustered Index</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">CREATE</span> CLUSTERED <span style="color:#66d9ef">INDEX</span> IX_ClusteredIndexName
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">ON</span> YourTableName (ColumnName);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">CREATE</span> CLUSTERED <span style="color:#66d9ef">INDEX</span> IX_ClusteredIndexName
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">ON</span> YourTableName (ColumnName);
 </span></span></code></pre></div><p>A clustered index affects the sorting order of data when it is physically stored in a table. The suitable fields for a clustered index include:</p>
 <ol>
 <li>Fields used in WHERE conditions that involve searching for a large number of duplicate values, e.g., WHERE city=&lsquo;Taipei&rsquo;.</li>
@@ -716,11 +715,11 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <a href="https://stackoverflow.com/questions/11938044/what-are-the-best-practices-for-using-a-guid-as-a-primary-key-specifically-rega/11938495#11938495" title="What are the best practices for using a GUID as a primary key, specifically regarding performance?" target="_blank" rel="noopener">What are the best practices for using a GUID as a primary key, specifically regarding performance?</a></p>
 </blockquote>
 <h3 id="creating-a-non-clustered-index">Creating a Non-Clustered Index</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">INDEX</span> index_name
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">table_name</span> (<span style="color:#66d9ef">column_name</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">INDEX</span> index_name
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">table_name</span> (<span style="color:#66d9ef">column_name</span>);
 </span></span></code></pre></div><p>Creating a composite index with multiple columns.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">INDEX</span> idx_column1_column2
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">ON</span> your_table (column1, column2);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">INDEX</span> idx_column1_column2
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">ON</span> your_table (column1, column2);
 </span></span></code></pre></div><p>Non-clustered indexes do not affect the sorting order of data when it is physically stored in a table.</p>
 <h3 id="display-estimated-execution-planctrl--l">Display estimated execution plan(Ctrl + L)</h3>
 <p>Regardless of whether indexes are created or not, when writing complex TSQL queries, you can also view the execution plan to identify which part of the query consumes the majority of the query performance.</p>
@@ -1064,6 +1063,31 @@ and synchronize with ERP in their own systems…
 	<div class="item">
 		
 			<div class="related-post__image">
+				<a href="/tutorials/api-with-synology-nas/">
+					<img src="https://sunnote.xyz/img/thumbnail/046en.webp" alt="Use API to connect to Synology NAS services"/>
+					
+				</a>
+			
+
+			<h6><a href="/tutorials/api-with-synology-nas/">Use API to connect to Synology NAS services
+				
+				<br>
+				<time datetime="2023-12-13T23:44:38&#43;0000">
+					December 14, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
 				<a href="/tutorials/url-querystring-encoding-decoding/">
 					<img src="https://sunnote.xyz/img/thumbnail/045en.webp" alt="Understanding URL Query Strings and Encoding/Decoding"/>
 					
@@ -1154,31 +1178,6 @@ and synchronize with ERP in their own systems…
 				</time>
 			
 			</div>
-
-		
-			
-		
-			
-	</div>
-   
-	<div class="item">
-		
-			<a href="/life/nasal-septum-inferior-turbinate-hypertrophy-surgery/">
-				<div style="height: 7.5rem; background-color: #ACD6FF; color: rgb(93, 93, 93); padding: 10px; border-radius: 5px;">
-					<h6 style="color: rgb(249, 248, 248); font-weight: bold; text-align: center;">Nasal Septum Straightening &amp; Submucosal Turbinate Reduction Surgery for Nasal Septal Deviation and Inferior Turbinate Hypertrophy
-						
-						<hr style="border-color: #ACD6FF;">
-						<div style="font-weight:lighter; text-align: right; font-size:5px;">
-						<time datetime="2023-10-06T11:44:38&#43;0000">
-							October 6, 2023
-						</time>
-						</div>
-					</h6>
-				</div>
-			</a>
-				
-				<h6><a href="/life/nasal-septum-inferior-turbinate-hypertrophy-surgery/">Surgical Procedure and Precautions for Allergic-Induced Deviated Nasal Septum and Inferior Turbinate Hypertrophy
-</a></h6>
 
 		
 			
@@ -1543,6 +1542,9 @@ document.addEventListener('click', (event) => {
 		<ul class="widget__list">
 			
 			
+			<li class="widget__item"><a class="widget__link" href="/tutorials/api-with-synology-nas/">Use API to connect to Synology NAS services</a></li>
+			
+			
 			<li class="widget__item"><a class="widget__link" href="/tutorials/url-querystring-encoding-decoding/">Understanding URL Query Strings and Encoding/Decoding</a></li>
 			
 			
@@ -1553,9 +1555,6 @@ document.addEventListener('click', (event) => {
 			
 			
 			<li class="widget__item"><a class="widget__link" href="/book/just-keep-buying/">The Best Investment Strategy - Just Keep Buying (Book Recommendation)</a></li>
-			
-			
-			<li class="widget__item"><a class="widget__link" href="/life/nasal-septum-inferior-turbinate-hypertrophy-surgery/">Nasal Septum Straightening &amp; Submucosal Turbinate Reduction Surgery for Nasal Septal Deviation and Inferior Turbinate Hypertrophy</a></li>
 		</ul>
 	</div>
 </div>
@@ -1580,7 +1579,7 @@ document.addEventListener('click', (event) => {
 				</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/program/">Program</a>&nbsp;
-				<span class="widget__counter widget__counter--bubble"><span class="count">21</span></span>
+				<span class="widget__counter widget__counter--bubble"><span class="count">22</span></span>
 				
 				</li>
 		</ul>
@@ -1620,7 +1619,7 @@ document.addEventListener('click', (event) => {
 		<a class="widget-taglist__link widget__link btn" href="/tags/python/" title="Python">Python (<span class="count">1</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql/" title="SQL">SQL (<span class="count">6</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/taiwan/" title="Taiwan">Taiwan (<span class="count">1</span>)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/web/" title="Web">Web (<span class="count">7</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/web/" title="Web">Web (<span class="count">8</span>)</a>
 	</div>
 </div>
 

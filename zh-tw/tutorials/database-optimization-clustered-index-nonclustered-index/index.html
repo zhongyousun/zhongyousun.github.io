@@ -16,13 +16,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://sunnote.xyz/zh-tw/tutorials/database-optimization-clustered-index-nonclustered-index/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-06-13T13:21:06+08:00" />
-<meta property="article:modified_time" content="2023-08-09T19:40:57+08:00" />
-
+<meta property="article:modified_time" content="2023-08-09T08:25:32+08:00" />
 <meta property="og:image" content="http://sunnote.xyz/img/thumbnail/036.webp" />
 		  	
 	<meta itemprop="name" content="資料庫查詢性能優化技巧:索引概念、叢集、非叢集">
 <meta itemprop="description" content="紀錄藉由索引優化查詢性能技巧方式，叢集與非叢集索引差異。"><meta itemprop="datePublished" content="2023-06-13T13:21:06+08:00" />
-<meta itemprop="dateModified" content="2023-08-09T19:40:57+08:00" />
+<meta itemprop="dateModified" content="2023-08-09T08:25:32+08:00" />
 <meta itemprop="wordCount" content="137">
 <meta itemprop="keywords" content="SQL," />
 	<meta name="twitter:card" content="summary"/>
@@ -585,7 +584,7 @@ if (!doNotTrack) {
 </g>
 </svg>
 <time class="meta__text" datetime="2023-06-13T13:21:06&#43;08:00">June 13, 2023</time>
-	<time class="meta__text" datetime="2023-08-09T19:40:57&#43;08:00">(更新日期: August 9, 2023)</time></div>
+	<time class="meta__text" datetime="2023-08-09T08:25:32&#43;08:00">(更新日期: August 9, 2023)</time></div>
 <div class="meta__item-categories meta__item">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-folders"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <g id="surface1">
@@ -700,8 +699,8 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <h3 id="索引選擇原則">索引選擇原則</h3>
 <p><code>索引選擇應該是選擇最常被查詢且重覆性較低(唯一性高)的欄位。</code></p>
 <h3 id="建立叢集索引">建立叢集索引</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">CREATE</span> CLUSTERED <span style="color:#66d9ef">INDEX</span> IX_ClusteredIndexName
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">ON</span> YourTableName (ColumnName);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">CREATE</span> CLUSTERED <span style="color:#66d9ef">INDEX</span> IX_ClusteredIndexName
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">ON</span> YourTableName (ColumnName);
 </span></span></code></pre></div><p>叢集索引會影響資料表實際儲存資料時的排序規則，適用於叢集索引的欄位包含:</p>
 <ol>
 <li>Where 條件中會搜尋大量重複值的欄位, ex: where city=&lsquo;台北&rsquo;</li>
@@ -715,11 +714,11 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <a href="https://blog.darkthread.net/blog/guid-as-pk-on-db/" title="GUID Primary Key資料庫避雷守則" target="_blank" rel="noopener">GUID Primary Key資料庫避雷守則</a>。</p>
 </blockquote>
 <h3 id="建立非叢集索引">建立非叢集索引</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">INDEX</span> index_name
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">table_name</span> (<span style="color:#66d9ef">column_name</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">INDEX</span> index_name
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">table_name</span> (<span style="color:#66d9ef">column_name</span>);
 </span></span></code></pre></div><p>一個以上的欄位建立複合索引</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">INDEX</span> idx_column1_column2
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">ON</span> your_table (column1, column2);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">INDEX</span> idx_column1_column2
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">ON</span> your_table (column1, column2);
 </span></span></code></pre></div><p>非叢集索引不會影響資料表實際儲存資料時的排序規則。</p>
 <h3 id="顯示估計執行計畫ctrl--l">顯示估計執行計畫(Ctrl + L)</h3>
 <p>不管有沒有建立索引，在撰寫複雜TSQL時也能查看執行計畫，確認此查詢哪個部分耗掉大部分的查詢效能。</p>
@@ -1062,6 +1061,31 @@ nav.sharebuttons li > a:hover .will-change { fill: #444444 }
 	<div class="item">
 		
 			<div class="related-post__image">
+				<a href="/zh-tw/tutorials/api-with-synology-nas/">
+					<img src="https://sunnote.xyz/img/thumbnail/046.webp" alt="使用 API 串接 Synology NAS 服務"/>
+					
+				</a>
+			
+
+			<h6><a href="/zh-tw/tutorials/api-with-synology-nas/">使用 API 串接 Synology NAS 服務
+				
+				<br>
+				<time datetime="2023-12-13T23:44:38&#43;0000">
+					December 14, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
 				<a href="/zh-tw/tutorials/url-querystring-encoding-decoding/">
 					<img src="https://sunnote.xyz/img/thumbnail/045.webp" alt="URL 查詢字串與編、解碼淺談"/>
 					
@@ -1152,31 +1176,6 @@ nav.sharebuttons li > a:hover .will-change { fill: #444444 }
 				</time>
 			
 			</div>
-
-		
-			
-		
-			
-	</div>
-   
-	<div class="item">
-		
-			<a href="/zh-tw/life/nasal-septum-inferior-turbinate-hypertrophy-surgery/">
-				<div style="height: 7.5rem; background-color: #ACD6FF; color: rgb(93, 93, 93); padding: 10px; border-radius: 5px;">
-					<h6 style="color: rgb(249, 248, 248); font-weight: bold; text-align: center;">鼻中膈成形&#43;下鼻甲氣化棒減積手術分享(鼻中膈彎曲&#43;下鼻甲肥大)
-						
-						<hr style="border-color: #ACD6FF;">
-						<div style="font-weight:lighter; text-align: right; font-size:5px;">
-						<time datetime="2023-10-06T11:44:38&#43;0000">
-							October 6, 2023
-						</time>
-						</div>
-					</h6>
-				</div>
-			</a>
-				
-				<h6><a href="/zh-tw/life/nasal-septum-inferior-turbinate-hypertrophy-surgery/">過敏導致鼻中膈彎曲與下鼻甲肥大手術過程與注意事項分享。
-</a></h6>
 
 		
 			
@@ -1541,6 +1540,9 @@ document.addEventListener('click', (event) => {
 		<ul class="widget__list">
 			
 			
+			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/api-with-synology-nas/">使用 API 串接 Synology NAS 服務</a></li>
+			
+			
 			<li class="widget__item"><a class="widget__link" href="/zh-tw/tutorials/url-querystring-encoding-decoding/">URL 查詢字串與編、解碼淺談</a></li>
 			
 			
@@ -1551,9 +1553,6 @@ document.addEventListener('click', (event) => {
 			
 			
 			<li class="widget__item"><a class="widget__link" href="/zh-tw/book/just-keep-buying/">投資的最佳實證方法-持續買進(好書推薦)</a></li>
-			
-			
-			<li class="widget__item"><a class="widget__link" href="/zh-tw/life/nasal-septum-inferior-turbinate-hypertrophy-surgery/">鼻中膈成形&#43;下鼻甲氣化棒減積手術分享(鼻中膈彎曲&#43;下鼻甲肥大)</a></li>
 		</ul>
 	</div>
 </div>
@@ -1573,7 +1572,7 @@ document.addEventListener('click', (event) => {
 				</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/zh-tw/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/">程式語言</a>&nbsp;
-				<span class="widget__counter widget__counter--bubble"><span class="count">21</span></span>
+				<span class="widget__counter widget__counter--bubble"><span class="count">22</span></span>
 				
 				</li>
 			<li class="widget__item">
@@ -1612,7 +1611,7 @@ document.addEventListener('click', (event) => {
 		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/nosql/" title="NoSQL">NoSQL (<span class="count">2</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/python/" title="Python">Python (<span class="count">1</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/sql/" title="SQL">SQL (<span class="count">6</span>)</a>
-		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/web/" title="Web">Web (<span class="count">7</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/web/" title="Web">Web (<span class="count">8</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E5%8C%97%E6%B5%B7%E9%81%93/" title="北海道">北海道 (<span class="count">3</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E5%8F%B0%E7%81%A3/" title="台灣">台灣 (<span class="count">1</span>)</a>
 		<a class="widget-taglist__link widget__link btn" href="/zh-tw/tags/%E5%A2%BE%E4%B8%81/" title="墾丁">墾丁 (<span class="count">1</span>)</a>
