@@ -2,8 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://sunnote.xyz/tags/blazor/</loc>
+    <lastmod>2023-12-20T13:42:03+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/blazor/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/blazor/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tutorials/aspnetcore-blazor-wasm-prerender/</loc>
+    <lastmod>2023-12-20T13:42:03+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tutorials/aspnetcore-blazor-wasm-prerender/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tutorials/aspnetcore-blazor-wasm-prerender/"
+                />
+  </url><url>
     <loc>http://sunnote.xyz/categories/</loc>
-    <lastmod>2023-12-14T11:34:08+08:00</lastmod>
+    <lastmod>2023-12-20T13:42:03+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -18,7 +48,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/posts/</loc>
-    <lastmod>2023-12-14T11:34:08+08:00</lastmod>
+    <lastmod>2023-12-20T13:42:03+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -33,12 +63,27 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/categories/program/</loc>
-    <lastmod>2023-12-14T11:34:08+08:00</lastmod>
+    <lastmod>2023-12-20T13:42:03+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>http://sunnote.xyz/tags/seo/</loc>
+    <lastmod>2023-12-20T13:42:03+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/seo/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/seo/"
+                />
+  </url><url>
     <loc>http://sunnote.xyz/</loc>
-    <lastmod>2023-12-14T11:34:08+08:00</lastmod>
+    <lastmod>2023-12-20T13:42:03+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -53,7 +98,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/</loc>
-    <lastmod>2023-12-14T11:34:08+08:00</lastmod>
+    <lastmod>2023-12-20T13:42:03+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -65,6 +110,36 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://sunnote.xyz/tags/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tags/web/</loc>
+    <lastmod>2023-12-20T13:42:03+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/web/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/web/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tutorials/aspnetcore-sitemap/</loc>
+    <lastmod>2023-12-20T11:06:05+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tutorials/aspnetcore-sitemap/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tutorials/aspnetcore-sitemap/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/api-with-synology-nas/</loc>
@@ -80,21 +155,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://sunnote.xyz/tutorials/api-with-synology-nas/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/tags/web/</loc>
-    <lastmod>2023-12-14T11:34:08+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/web/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/web/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/url-querystring-encoding-decoding/</loc>
@@ -125,21 +185,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://sunnote.xyz/tags/aws/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/tags/blazor/</loc>
-    <lastmod>2023-12-05T15:41:45+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/blazor/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/blazor/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/csharp/</loc>
@@ -258,7 +303,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/hugo-auto-update-last-modified/</loc>
-    <lastmod>2023-08-21T16:29:12+08:00</lastmod>
+    <lastmod>2023-12-19T14:41:30+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -273,7 +318,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/hugo/</loc>
-    <lastmod>2023-08-21T16:29:12+08:00</lastmod>
+    <lastmod>2023-12-19T14:41:30+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -888,7 +933,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/about/</loc>
-    <lastmod>2023-08-17T08:58:07+08:00</lastmod>
+    <lastmod>2023-12-20T13:11:26+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link

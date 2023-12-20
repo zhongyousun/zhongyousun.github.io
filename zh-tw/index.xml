@@ -6,7 +6,25 @@
     <description>Recent content on Sun 記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Thu, 14 Dec 2023 07:44:38 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Dec 2023 07:44:38 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blazor WASM SEO - 使用預渲染解決 SPA 網頁爬蟲無法讀取問題 (Prerender.io &amp; Cloudflare Workers 操作流程教學)</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/aspnetcore-blazor-wasm-prerender/</link>
+      <pubDate>Wed, 20 Dec 2023 07:44:38 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/aspnetcore-blazor-wasm-prerender/</guid>
+      <description>&lt;p&gt;紀錄如何藉由 Prerender.io 與 Cloudflare Workers 解決 SPA 網站在搜尋引擎爬取不到內容的問題。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用 ASP.NET Core API &amp; Blazor 產生 Sitemap</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/aspnetcore-sitemap/</link>
+      <pubDate>Mon, 18 Dec 2023 07:44:38 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/aspnetcore-sitemap/</guid>
+      <description>&lt;p&gt;紀錄使用 Blazor WebAssembly Hybrid 產生網站地圖的過程。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>使用 API 串接 Synology NAS 服務</title>
       <link>http://sunnote.xyz/zh-tw/tutorials/api-with-synology-nas/</link>
