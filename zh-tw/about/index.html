@@ -19,13 +19,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://sunnote.xyz/zh-tw/about/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-11-20T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-12-20T13:07:08+08:00" />
+<meta property="article:modified_time" content="2023-12-21T20:22:20+08:00" />
 
-		  	<meta property="og:image" content="https://sunnote.xyz/TravelIsGoodForTheSoul.webp" />
+		  	<meta property="og:image" content="https://sunnote.xyz/sunnotes_logo.webp" />
 	<meta itemprop="name" content="關於">
 <meta itemprop="description" content="關於"><meta itemprop="datePublished" content="2022-11-20T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2023-12-20T13:07:08+08:00" />
-<meta itemprop="wordCount" content="8">
+<meta itemprop="dateModified" content="2023-12-21T20:22:20+08:00" />
+<meta itemprop="wordCount" content="28">
 <meta itemprop="keywords" content="" />
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="關於"/>
@@ -545,8 +545,8 @@ if (!doNotTrack) {
 
 
 <figure>
-    <img src="../../TravelIsGoodForTheSoul.webp" alt="TravelIsGoodForTheSoul">
-    <figcaption></figcaption>
+    <img src="../../hungary%20street%20scene.webp" width="100%" alt="Hungary street scene" >
+    <figcaption>於 2018 年匈牙利拍攝.</figcaption>
 </figure>
 <hr>
 <p>Alivn，目前為軟體工程師，負責後端系統開發。</p>
@@ -555,40 +555,190 @@ if (!doNotTrack) {
 <p>主要分享一些生活體驗、旅遊心得與一點點的技術筆記。</p>
 <p>如果有任何問題、相同興趣或是技術交流歡迎聯繫我。</p>
 <style>
-  .bmc-btn-text{
+  .bmc-btn-text {
     color: black !important;
   }
-  .bmc-btn{
+
+  .bmc-btn {
     width: 300px;
   }
- 
+
   .content {
     text-align: center;
 
   }
-  .link{
+
+  .link {
     font-size: 30px;
   }
-  
 
-.link:hover {
-  font-size: 35px;
-}
+
+  .link:hover {
+    font-size: 35px;
+  }
 </style>
+
+<style>
+   
+  .toggle-btn {
+    cursor: pointer;
+    user-select: none;
+    padding-right: 5px;
+  }
+
+  .hidden-content {
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    max-height: 0;
+  }
+
+  .toggle {
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+
+  .toggle {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 30px;
+    margin-left: 40%;
+    width: 250px;
+    font-size: 20px;
+    color: var(--text-color);
+  }
+
+  .toggle img {
+    display: block;
+  }
+
+  .toggle-btn {
+    flex-shrink: 0;
+    user-select: none;
+    padding-right: 5px;
+  }
+
+  .hidden-content {
+    color: var(--text-color);
+  }
+
+  .title {
+    flex-grow: 1;
+    text-align: center;
+  }
+</style>
+
+
 <div class="links-container">
-<a href="https://github.com/zhongyousun" target="_blank" class="link">
-  <i class="fab fa-github"></i> 
-</a>
-<a href="mailto:sunnote.xyz@gmail.com" class="link">
-  <i class="far fa-envelope"></i> 
-</a>
+  <a href="https://github.com/zhongyousun" target="_blank" class="link">
+    <i class="fab fa-github"></i>
+  </a>
+  <a href="mailto:sunnote.xyz@gmail.com" class="link">
+    <i class="far fa-envelope"></i>
+  </a>
 </div>
 <br><br><br><br><br>
+<p>
+  如果喜歡本站，歡迎贊助以供網站的域名與營運費用🤗
+</p>
+<p>
+  您的支持可以讓我知道，我的文章對世界上的某個人有所幫助
+</p>
+<p>
+  可以透過以下幾種方式贊助我💪
+</p>
 
-<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="alvinsun" data-color="#acd6ff" data-emoji="🍺"  data-font="Comic" data-text="Buy me a beer" data-outline-color="#7B7B7B" data-font-color="#7B7B7B" data-coffee-color="#FFDD00" ></script>
+<div class="toggle" onclick="toggleContent('hiddenContent1', 'toggleIcon1')">
+  <span class="toggle-btn" id="toggleIcon1">▶</span>
+  <span>虛擬貨幣轉帳</span>
+</div>
+<div class="hidden-content" id="hiddenContent1">
+  <span>Network:</span>
+  <select name="options" id="options" onchange="showImage()">
+    <option value="Polygon">Polygon-usdt</option>
+    <option value="BSC">BSC-usdt</option>
+    <option value="Arbitrum">Arbitrum-usdt</option>
+    <option value="ETH">ETH-usdt</option>
+  </select>
+
+  <img src="../../img/other/Polygon_usdt.jpg" alt="qr code" id="qrcode" width="50%">
+
+</div>
+
+
+<div class="toggle" onclick="toggleContent('hiddenContent2', 'toggleIcon2')">
+  <span class="toggle-btn" id="toggleIcon2">▶</span>
+  <span>街口支付轉帳</span>
+</div>
+<div class="hidden-content" id="hiddenContent2">
+  <img src="../../img/other/jkopay.webp" alt="qr code" id="qrcode" width="50%">
+</div>
+
+
+<div class="toggle" onclick="toggleContent('hiddenContent3', 'toggleIcon3')">
+  <span class="toggle-btn" id="toggleIcon3">▶</span>
+  <span>Buy Me a Coffee</span>
+</div>
+<div class="hidden-content" id="hiddenContent3">
+  <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button"
+    data-slug="alvinsun" data-color="#acd6ff" data-emoji="🍺" data-font="Comic" data-text="Buy me a beer"
+    data-outline-color="#7B7B7B" data-font-color="#7B7B7B" data-coffee-color="#FFDD00"></script>
+
+
+</div>
 
 
 
+
+
+
+
+<script>
+  
+  function showImage() {
+    
+    var selectBox = document.getElementById("options");
+    
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+    
+    var image = document.getElementById("qrcode");
+
+    
+    switch (selectedValue) {
+      case "Polygon":
+        image.src = "../../img/other/Polygon_usdt.jpg"; 
+        break;
+      case "BSC":
+        image.src = "../../img/other/BSC_usdt.jpg";
+        break;
+      case "Arbitrum":
+        image.src = "../../img/other/Arbitrum_usdt.jpg";
+        break;
+      case "ETH":
+        image.src = "../../img/other/ETH_usdt.jpg";
+        break;
+      default:
+        image.src = "";
+    }
+  }
+</script>
+
+<script>
+  
+  function toggleContent(contentId, toggleIconId) {
+    var content = document.getElementById(contentId);
+    var toggleIcon = document.getElementById(toggleIconId);
+
+    
+    if (content.style.maxHeight) {
+      content.style.maxHeight = null;
+      toggleIcon.innerText = "▶";
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+      toggleIcon.innerText = "▼";
+    }
+  }
+</script>
 <p><div id="block"></div>
 <script>
     var myDiv = document.getElementById("block");
