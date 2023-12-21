@@ -70,8 +70,9 @@ body {
 	width: 8px;
 	background-color: var(--codeBG);
 	transition: background-color 1.3s ease, color 0.3s ease;
+	height: 8px;
   }
-  
+
   /* 設置滾輪滑塊的背景色 */
   /* 設置滾輪滑塊的圓角 */
   ::-webkit-scrollbar-thumb {
@@ -1066,7 +1067,7 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 	overflow:hidden;
 }
 .post__thumbnail img {
-	width: 80%;
+	width: 900%;
 	border-radius: 10px;
 	transform:scale(0.9,0.9);
 	transition: all 0.3s ease-out;
@@ -1536,7 +1537,10 @@ video {
 	display: block;
 	margin:auto;
 }
-
+.image-container img{
+	border: 1px solid rgb(175, 175, 175);
+	border-radius: 5px;
+}
 /* Table */
 table {
 	
@@ -1916,6 +1920,15 @@ textarea {
 		transform:scale(0.97,0.97);
 		transition: all 0.5s ease-out;
 		border-radius: 20px;
+	}
+	.list__thumbnail img {
+		width: 100%;
+		height: auto;
+		margin-bottom: 10px;
+	}
+	.post__thumbnail img{
+		width: 100%;
+		height: auto;
 	}
 }
 
