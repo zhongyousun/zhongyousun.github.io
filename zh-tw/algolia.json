@@ -2,6 +2,17 @@
 	{
 	
 		
+	  "url": "http://sunnote.xyz/zh-tw/tutorials/aspnetcore-blazor-lazy-loading/",
+	  "title": "ASP.NET Core Blazor 實作圖片延遲載入",
+	  "summary": "\u003cp\u003e紀錄在 Blazor 框架，實作圖片延遲載入的方法。\u003c/p\u003e",
+	  "content": "紀錄在 Blazor 框架，實作圖片延遲載入的方法。\n為何要使圖片延遲載入? 基本上最大的原因就是效能問題，若某個頁面有 10 張圖片，使用者其實並沒辦法在操作視窗內(螢幕)一次性的看到所有的圖片，所以在頁面載入時若馬上就載入這 10 張或是更多完整的圖片，不僅使用者需要等待全部載完會非常耗時，甚至更慘的是覺得網頁怎麼卡卡的跑不動而關閉。若圖片是放在 S3 等雲端服務上，那長久累積下來資料的傳輸量花費也是很可觀的!!\n實作方法 圖片延遲載入其實有很多種方式，最簡單的當然就是限制圖片的載入數量，每次只載個幾張，若要觀看更多可以往下滑動或是點選載入更多按鈕。但這種方式也只是治標不治本，畢竟每次的載入張數，若太少會讓使用者覺得很麻煩，太多又達不到想要增加效能減少傳輸量的效果。\n瀏覽器本身有支援延遲載入，只要透過此語法就能實現。\n\u0026lt;img src=\u0026#34;image.jpg\u0026#34; loading=\u0026#34;lazy\u0026#34;\u0026gt; 但在 Blazor 框架，可能是因為所有的物件畫面都有額外一層藉由 JS 去渲染，不確定實際原理，但測試下來是無效的。\n目前我選擇的方式是藉由 IntersectionObserver (由 JavaScript 實作的 API 可監測元素在窗口的狀態，也就是元素是否在視窗內)，進而判斷是否要載入圖片。\n代碼 將此代碼複製至 index.html 的 body 中，這樣網站的每個畫面都能使用延遲載入功能。\n1\u0026lt;!-- lzay loading --\u0026gt; 2\u0026lt;script src=\u0026#34;https://cdn.jsdelivr.net/npm/intersection-observer@0.12.2/intersection-observer.min.js\u0026#34;\u0026gt;\u0026lt;/script\u0026gt; 3\u0026lt;script type=\u0026#34;text/javascript\u0026#34;\u0026gt; 4 window.lazyLoading = function () { 5 const observer = new IntersectionObserver((entries, owner) =\u0026gt; { 6 for (let entry of entries) { 7 if (entry.isIntersecting) { 8 // 圖片進入畫面再載入真實照片 9 const img = entry.target; 10 img.setAttribute(\u0026#39;src\u0026#39;, img.dataset.src); 11 img.removeAttribute(\u0026#39;data-src\u0026#39;); 12 owner.unobserve(img); 13 } 14 } 15 }); 16 const images = document.querySelectorAll(\u0026#39;img.lazy\u0026#39;) 17 for (let image of images) { 18 observer.observe(image); 19 } 20 } 21\u0026lt;/script\u0026gt; 主要就是藉由 IntersectionObserver 判斷圖片是否已進入視窗內，若進入則移除原本 src 顯示data-src 的內容。\n需要有延遲載入圖片的畫面(.rezor):\n@inject IJSRuntime js \u0026lt;img src=\u0026#34;@placeholderImage\u0026#34; data-src=\u0026#34;@o.ImageUrl\u0026#34; class=\u0026#34;lazy\u0026#34;\u0026gt; src為圖片未載入時的顯示畫面，可以是一個低解析度的像素圖。\ndata-src為實際要顯示的圖檔網址。\n@code的部分為:\nprotected override void OnAfterRender(bool firstRender) { if (firstRender) { js.InvokeVoidAsync(\u0026#34;lazyLoading\u0026#34;); } } 用來在第一次加載時載入 IntersectionObserver。\n結論 實際瀏覽效果如下: 可以看到當圖片進入視窗時，會由原本預設的低解析度的像素圖，載入實際圖片達到延遲載入的效果。\n",
+	  "pubDate": "2023-12-25T07:44:38+08:00",
+	  "cover": "https://sunnote.xyz/img/thumbnail/049.webp"
+
+	}, 
+	{
+	
+		
 	  "url": "http://sunnote.xyz/zh-tw/tutorials/aspnetcore-blazor-wasm-prerender/",
 	  "title": "Blazor WASM SEO - 使用預渲染解決 SPA 網頁爬蟲無法讀取問題 (Prerender.io \u0026 Cloudflare Workers 操作流程教學)",
 	  "summary": "\u003cp\u003e紀錄如何藉由 Prerender.io 與 Cloudflare Workers 解決 SPA 網站在搜尋引擎爬取不到內容的問題。\u003c/p\u003e",

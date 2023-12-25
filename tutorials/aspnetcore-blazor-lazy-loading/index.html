@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6706017277983363"
+     crossorigin="anonymous"></script>
+	
+	<meta property="fb:app_id" content="725315935966817" />
+	<title>Image Lazy Loading in ASP.NET Core Blazor - Sun Notes</title>
+	<script>(function (d, e) { d[e] = d[e].replace("no-js", "js"); })(document.documentElement, "className");</script>
+	<meta name="description"
+		content="">
+	<meta property="og:title" content="Image Lazy Loading in ASP.NET Core Blazor" />
+<meta property="og:description" content="Document the method of implementing lazy loading of images in the Blazor framework." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://sunnote.xyz/tutorials/aspnetcore-blazor-lazy-loading/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-12-25T07:44:38+08:00" />
+<meta property="article:modified_time" content="2023-12-25T13:44:21+08:00" /><meta property="og:site_name" content="Sun Notes" />
+<meta property="og:image" content="http://sunnote.xyz/img/thumbnail/049en.webp" />
+		  	
+	<meta itemprop="name" content="Image Lazy Loading in ASP.NET Core Blazor">
+<meta itemprop="description" content="Document the method of implementing lazy loading of images in the Blazor framework."><meta itemprop="datePublished" content="2023-12-25T07:44:38+08:00" />
+<meta itemprop="dateModified" content="2023-12-25T13:44:21+08:00" />
+<meta itemprop="wordCount" content="558">
+<meta itemprop="keywords" content="Blazor,Csharp,JavaScript,Web,SEO," />
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Image Lazy Loading in ASP.NET Core Blazor"/>
+<meta name="twitter:description" content="Document the method of implementing lazy loading of images in the Blazor framework."/>
+
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+	<style>
+		
+		@media screen and (max-width: 850px) {
+		.floating-menu {
+			display: none;
+			}
+		}
+		.floating-menu {
+		  position: fixed;
+		  top: 80%;
+		  right: 10px;
+		  transform: translateY(-50%);
+		}
+  
+		.main-button {
+		  border: none;
+		  border-radius: 5px;
+		  background-color: #ACD6FF;
+		  color: #fff;
+		  font-size: 14px;
+		  cursor: pointer;
+		  height: 38px;
+		  width: 38px;
+		}
+  
+		.main-button:hover {
+		  background-color: #9accff;
+		  color: #333;
+		}
+  
+		.sub-buttons {
+		  display: none;
+		  position: absolute;
+		  top: calc(100% - 170px);
+		  right: 0;
+		  background-color: var(--wrapperBG);
+		  border: 1px solid #ddd;
+		  border-radius: 5px;
+		  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+		  width: 100%;
+		  transition: background-color 1.3s ease, color 0.3s ease;
+		}
+		.sub-button {
+		  display: block;
+		  width: 100%;
+		  padding: 10px;
+		  border: none;
+		  background-color: transparent;
+		  color: var(--text-color);
+		  font-size: 14px;
+		  cursor: pointer;
+		}
+  
+		.sub-button:hover {
+		  background-color:var(--wrapperBG2);
+		  color: #ACD6FF;
+		}
+	  </style>
+	  
+	  
+	  <style>
+		@import 'https://fonts.googleapis.com/css?family=Montserrat:400,700';
+.aa-input-container {
+  display: inline-block;
+  width: 90%;
+  left: 15%;
+  top: 10%;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  display: none;
+}
+.aa-input-container span,.aa-input-container input {
+    width: inherit;
+}
+.aa-input-search {
+  width: 300px;
+  padding: 12px 28px 12px 12px;
+  border: 2px solid #e4e4e4;
+  border-radius: 4px;
+  -webkit-transition: .2s;
+  transition: .2s;
+  font-family: "Montserrat", sans-serif;
+  box-shadow: 4px 4px 0 rgba(241, 241, 241, 0.35);
+  font-size: 11px;
+  box-sizing: border-box;
+  color: #333;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.aa-input-search::-webkit-search-decoration, .aa-input-search::-webkit-search-cancel-button, .aa-input-search::-webkit-search-results-button, .aa-input-search::-webkit-search-results-decoration {
+    display: none;
+}
+.aa-input-search:focus {
+    outline: 0;
+    border-color: #3a96cf;
+    box-shadow: 4px 4px 0 rgba(58, 150, 207, 0.1);
+}
+.aa-input-icon {
+  height: 16px;
+  width: 16px;
+  position: absolute;
+  top: 25px;
+  right: 330px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  fill: #e4e4e4;
+}
+.aa-hint {
+  color: #e4e4e4;
+}
+.aa-dropdown-menu {
+  background-color: #fff;
+  border: 2px solid rgba(228, 228, 228, 0.6);
+  border-top-width: 1px;
+  font-family: "Montserrat", sans-serif;
+  width: 300px;
+  margin-top: 10px;
+  box-shadow: 4px 4px 0 rgba(241, 241, 241, 0.35);
+  font-size: 11px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.aa-suggestion {
+  padding: 12px;
+  border-top: 1px solid rgba(228, 228, 228, 0.6);
+  cursor: pointer;
+  -webkit-transition: .2s;
+  transition: .2s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+
+}
+.aa-suggestion:hover, .aa-suggestion.aa-cursor {
+    background-color: rgba(241, 241, 241, 0.35);
+}
+.aa-suggestion > span:first-child {
+    color: #333;
+}
+.aa-suggestion > span:last-child {
+    text-transform: uppercase;
+    color: #a9a9a9;
+}
+.aa-suggestion > span:first-child em, .aa-suggestion > span:last-child em {
+  font-weight: 700;
+  font-style: normal;
+  background-color: rgba(58, 150, 207, 0.1);
+  padding: 2px 0 2px 2px;
+}
+
+ 
+.aa-suggestion {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+
+.aa-suggestion img {
+  max-width: 64px;
+  max-height: 64px;
+  margin-right: 16px;
+}
+
+.aa-suggestion .aa-suggestion-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.aa-suggestion .aa-suggestion-summary {
+  font-size: 14px;
+  color: #666;
+}
+
+	  </style>
+	  <style>
+		#back-to-top {
+			right: 10px;
+  			border-radius: 5px;
+  			height: 38px;
+		  	width: 38px;
+			border: none;
+			top: 85%;
+			box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.3);
+		}
+
+	  </style>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" >
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MWPM4C5TJS"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-MWPM4C5TJS', { 'anonymize_ip': false });
+}
+</script>
+
+
+	
+</head>
+
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog" >
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  
+		</div>
+		<div class="modal-body">
+		  <div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="Search for titles or URIs..."
+      name="search" autocomplete="off" />
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+      <path
+        d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+  </div>
+  <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/algoliasearch.min.js"></script>
+  <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/autocomplete.min.js"></script>
+  <script>
+    var client = algoliasearch("6CA8UYGMKF","0b6aa5d5a7d49848cea785697d9a99ba");
+    var index = client.initIndex('sunnote');
+    autocomplete('#aa-search-input',
+      { hint: false }, {
+      source: autocomplete.sources.hits(index, { hitsPerPage: 20 }),
+      displayKey: 'name',
+      templates: {
+          suggestion: function (suggestion) {
+              return '<div class="suggestion">' +
+      '<div class="suggestion-image">' +
+      '<img src="' + suggestion.cover + '" alt="' + suggestion.title + '" />' +
+      '</div>' +
+      '<div class="suggestion-content">' +
+      '<h4><a href="' + suggestion.url + '">' + suggestion.title + '</a></h4>' +
+      '<br>' +
+      '<small>' + '<a href="' + suggestion.url + '">'+suggestion.summary+ '</a>' + '</small>' +
+      '</div>' +
+      '</div>';
+        }
+      }
+    });
+  
+    $('#searchGlyph').click(function() {
+      setTimeout(function(){
+        $('#aa-search-input').focus();
+      },300);
+    });
+  </script>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+
+<span class="sun-btn"><i class="fa-solid fa-toggle-on"></i></span>
+<span class="moon-btn"><i class="fa-solid fa-toggle-off"></i></span>
+
+<script>
+	
+let darkModeState = false;
+
+const sun = document.querySelector('.sun-btn');
+const moon = document.querySelector('.moon-btn');
+
+
+const useDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+
+function toggleDarkMode(state) {
+  document.documentElement.classList.toggle("dark-mode", state);
+  darkModeState = state;
+}
+
+
+function setDarkModeLocalStorage(state) {
+  localStorage.setItem("dark-mode", state);
+}
+
+
+toggleDarkMode(localStorage.getItem("dark-mode") == "true");
+
+
+
+  useDark.addEventListener('change', (evt) => {
+    toggleDarkMode(evt.matches);
+  });
+
+
+
+sun.addEventListener("click", () => {
+  darkModeState = !darkModeState;
+
+  toggleDarkMode(darkModeState);
+  setDarkModeLocalStorage(darkModeState);
+});
+moon.addEventListener("click", () => {
+  darkModeState = !darkModeState;
+
+  toggleDarkMode(darkModeState);
+  setDarkModeLocalStorage(darkModeState);
+});
+</script>
+
+<body class="body">
+	
+	<script>
+		window.fbAsyncInit = function () {
+			FB.init({
+				appId: '725315935966817',
+				xfbml: true,
+				version: 'v16.0'
+			});
+			FB.AppEvents.logPageView();
+		};
+
+		(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) { return; }
+			js = d.createElement(s); js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
+
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Sun Notes" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Sun Notes</div>
+					<div class="logo__tagline">Program , Life , Investment , Travel , Insights</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+  <button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+    <span class="menu__btn-title" tabindex="-1">☰Menu</span>
+  </button>
+  <ul class="menu__list">
+    <li class="menu__item">
+      <a class="menu__link" href="/about">
+        <i class='fas fa-house'></i>
+          <span class="menu__text">About</span>
+        
+      </a>
+    </li>
+    <li class="menu__item">
+      <a class="menu__link" href="/search">
+        <i class='fas fa-magnifying-glass'></i>
+          <span class="menu__text">Site Search</span>
+        
+      </a>
+    </li>
+    <li class="menu__item">
+      <a class="menu__link" href="/archives">
+        <i class='fas fa-box-archive'></i>
+          <span class="menu__text">Archives</span>
+        
+      </a>
+    </li>
+    <li class="menu__item menu__dropdown">
+      
+        <a class="menu__link">
+        <i class='fas fa-plane'></i>
+        <span class="menu__text">Life</span>
+        <label class="drop-icon" for="Life">▾</label>
+        
+      </a>
+      <input type="checkbox" id="Life">
+      <ul class="submenu__list">
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/tags/philippines/">
+            
+            <span class="menu__text">Philippines</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/tags/cebu/">
+            
+            <span class="menu__text">Cebu</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/tags/taiwan/">
+            
+            <span class="menu__text">Taiwan</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/tags/japan/">
+            
+            <span class="menu__text">Japan</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/tags/hokkaido/">
+            
+            <span class="menu__text">Hokkaido</span>
+            
+          </a>
+          </li>
+        
+      </ul>
+    </li>
+    <li class="menu__item menu__dropdown">
+      
+        <a class="menu__link">
+        <i class='fas fa-globe'></i>
+        <span class="menu__text"> </span>
+        <label class="drop-icon" for=" ">▾</label>
+        
+      </a>
+      <input type="checkbox" id=" ">
+      <ul class="submenu__list">
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/">
+            
+            <span class="menu__text">EN</span>
+            
+          </a>
+          </li>
+        
+          <li class="menu__item">
+          <a class="menu__link" href="/zh-tw">
+            
+            <span class="menu__text">Zh</span>
+            
+          </a>
+          </li>
+        
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+	</div>
+</header>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-MWPM4C5TJS', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+		<div class="wrapper flex">
+			<div class="primary">
+				
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"></link>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"></link>
+<style>
+	.owl-theme .item {
+	  height: 15rem;
+	   
+	  background-color: var(--wrapperBG);
+	  padding: 0.5rem;
+	  box-shadow: 0 0 20px 0 var(--shadow); 
+	  transform:scale(0.9,0.9);
+	  transition: all 0.3s ease-out;
+	  border-radius: 3%;
+	  transition: background-color 1.3s ease, color 0.3s ease, margin-top 0.4s ease;
+	}
+	.owl-theme .item:hover {
+		margin-top: -10px;
+		 
+	}
+	
+	.owl-carousel .item h6 {
+	  color: #000000;
+	  font-weight: 400;
+	  font-size: 1rem;
+	  margin-top: 0rem;
+
+	  position: relative;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 5;  
+	text-overflow: ellipsis;
+	overflow: hidden;
+	}
+	.owl-carousel .item img {
+	  width: 100%;
+	  height: 7.5rem;
+	  border-radius: 4px;
+	}
+</style>
+
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Image Lazy Loading in ASP.NET Core Blazor</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-calendar"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 5.332031 L 2 12.667969 C 2 13.035156 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 5.332031 C 14 4.964844 13.703125 4.667969 13.335938 4.667969 L 2.664062 4.667969 C 2.296875 4.667969 2 4.964844 2 5.332031 Z M 0.667969 5.332031 C 0.667969 4.230469 1.558594 3.332031 2.664062 3.332031 L 13.335938 3.332031 C 14.441406 3.332031 15.332031 4.230469 15.332031 5.332031 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.769531 0.667969 12.667969 Z M 2 7.332031 L 2 6 L 14 6 L 14 7.332031 Z M 4 2 C 4 1.632812 4.296875 1.332031 4.667969 1.332031 C 5.035156 1.332031 5.332031 1.628906 5.332031 2 L 5.332031 3.332031 L 4 3.332031 Z M 10.667969 2 C 10.667969 1.632812 10.960938 1.332031 11.332031 1.332031 C 11.703125 1.332031 12 1.628906 12 2 L 12 3.332031 L 10.667969 3.332031 Z M 10.667969 2 "/>
+</g>
+</svg>
+<time class="meta__text" datetime="2023-12-25T07:44:38&#43;08:00">December 25, 2023</time></div>
+<div class="meta__item-categories meta__item">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-folders"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 6 L 2 12.664062 C 2 13.03125 2.296875 13.332031 2.664062 13.332031 L 13.335938 13.332031 C 13.703125 13.332031 14 13.035156 14 12.667969 L 14 8 C 14 7.632812 13.703125 7.332031 13.335938 7.332031 L 9.808594 7.332031 L 8.03125 5.332031 L 2.667969 5.332031 C 2.300781 5.332031 2 5.632812 2 6 Z M 13.335938 6 C 14.4375 6 15.332031 6.894531 15.332031 8 L 15.332031 12.667969 C 15.332031 13.769531 14.441406 14.667969 13.335938 14.667969 L 2.664062 14.667969 C 1.558594 14.667969 0.667969 13.761719 0.667969 12.664062 L 0.667969 6 C 0.667969 4.894531 1.5625 4 2.667969 4 L 8.632812 4 L 10.40625 6 Z M 4.425781 3.625 C 4.425781 3.625 4.425781 3.703125 4.425781 4.074219 C 4.425781 4.328125 5.15625 4.75 6 4.667969 C 6.777344 4.589844 8.453125 4.589844 8.796875 5.050781 C 10 6.667969 14.242188 7.15625 14.242188 6.667969 L 14.242188 5.25 C 14.242188 4.949219 14 4.707031 13.699219 4.707031 L 10.8125 4.707031 L 9.359375 3.082031 L 4.972656 3.082031 C 4.667969 3.082031 4.425781 3.328125 4.425781 3.625 Z M 13.699219 3.625 C 14.601562 3.625 15.332031 4.351562 15.332031 5.25 L 15.332031 8 C 15.332031 8.304688 14.667969 6.667969 10 6.667969 C 8.652344 6.160156 9.402344 5.636719 8 5.25 C 6.496094 4.832031 4.703125 5.296875 3.863281 5.285156 C 3.320312 5.273438 3.332031 4.855469 3.332031 4.667969 L 3.332031 3.625 C 3.332031 2.726562 4.066406 2 4.972656 2 L 9.851562 2 L 11.300781 3.625 Z M 13.699219 3.625 "/>
+</g>
+</svg>
+<span class="meta__text"><a class="meta__link" href="/categories/program/" rel="category">Program</a>
+	</span>
+</div>
+<div class="meta__item-translations meta__item"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+class="meta__icon icon icon-author"
+width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 2 5.121094 L 2 13.109375 C 2 13.484375 2.25 13.617188 2.554688 13.410156 L 5.445312 11.488281 C 5.75 11.28125 6.25 11.28125 6.554688 11.488281 L 9.445312 13.410156 C 9.75 13.617188 10.25 13.617188 10.554688 13.410156 L 13.445312 11.488281 C 13.75 11.28125 14 10.816406 14 10.445312 L 14 2.453125 C 14 2.082031 13.75 1.949219 13.445312 2.152344 L 10.554688 4.078125 C 10.25 4.28125 9.75 4.28125 9.445312 4.078125 L 6.554688 2.152344 C 6.25 1.949219 5.75 1.949219 5.445312 2.152344 L 2.554688 4.078125 C 2.25 4.28125 2 4.75 2 5.121094 Z M 0.667969 5.121094 C 0.667969 4.304688 1.140625 3.421875 1.816406 2.96875 L 4.703125 1.042969 C 5.460938 0.539062 6.542969 0.542969 7.296875 1.042969 L 10.183594 2.96875 C 10.042969 2.875 9.957031 2.875 9.816406 2.96875 L 12.703125 1.042969 C 13.898438 0.246094 15.332031 1.019531 15.332031 2.453125 L 15.332031 10.445312 C 15.332031 11.261719 14.859375 12.144531 14.183594 12.597656 L 11.296875 14.519531 C 10.539062 15.023438 9.457031 15.023438 8.703125 14.519531 L 5.816406 12.597656 C 5.957031 12.691406 6.042969 12.691406 6.183594 12.597656 L 3.296875 14.519531 C 2.101562 15.316406 0.667969 14.542969 0.667969 13.109375 Z M 5.332031 1.78125 L 6.667969 1.78125 L 6.667969 11.78125 L 5.332031 11.78125 Z M 9.332031 3.78125 L 10.667969 3.78125 L 10.667969 13.78125 L 9.332031 13.78125 Z M 9.332031 3.78125 "/>
+</g>
+</svg>
+<span class="meta__text"><a class="meta__link" href="/zh-tw/tutorials/aspnetcore-blazor-lazy-loading/">ZH-TW</a>　
+	</span>
+</div>
+
+				
+				
+				
+				<span>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-clock"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 8 12.667969 C 10.578125 12.667969 12.667969 10.578125 12.667969 8 C 12.667969 5.421875 10.578125 3.332031 8 3.332031 C 5.421875 3.332031 3.332031 5.421875 3.332031 8 C 3.332031 10.578125 5.421875 12.667969 8 12.667969 Z M 3.957031 12.433594 C 2.753906 11.335938 2 9.757812 2 8 C 2 4.6875 4.6875 2 8 2 C 11.3125 2 14 4.6875 14 8 C 14 9.757812 13.246094 11.335938 12.042969 12.433594 L 12.9375 13.328125 C 13.207031 13.597656 13.203125 14.015625 12.941406 14.277344 C 12.679688 14.539062 12.257812 14.535156 11.996094 14.273438 L 10.949219 13.226562 C 10.078125 13.71875 9.070312 14 8 14 C 6.929688 14 5.921875 13.71875 5.050781 13.226562 L 4.003906 14.273438 C 3.738281 14.539062 3.316406 14.535156 3.058594 14.277344 C 2.796875 14.015625 2.796875 13.589844 3.0625 13.328125 Z M 7.332031 5.335938 C 7.332031 4.964844 7.628906 4.667969 8 4.667969 C 8.367188 4.667969 8.667969 4.957031 8.667969 5.335938 L 8.667969 9.332031 L 7.332031 9.332031 Z M 5.332031 8.667969 C 5.332031 8.296875 5.628906 8 6 8 L 7.332031 8 L 7.332031 9.332031 L 6 9.332031 C 5.632812 9.332031 5.332031 9.039062 5.332031 8.667969 Z M 5.332031 8.667969 "/>
+</g>
+</svg>
+981 words</span>
+				<span>| 3 min read.　</span>
+				
+			
+				
+				
+			</div>
+			
+
+			<div id="fb-root"></div>
+			<script async defer crossorigin="anonymous"
+				src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0&appId=725315935966817&autoLogAppEvents=1"
+				nonce="aF40iZ15"></script>
+		</header>
+		
+	<figure class="post__thumbnail thumbnail">
+		
+		<img class="thumbnail__image" src="/img/thumbnail/049en.webp" alt="Image Lazy Loading in ASP.NET Core Blazor">
+		
+	</figure>
+	
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#why-should-to-use-lazy-loading-in-website">Why should to use Lazy Loading in website?</a></li>
+        <li><a href="#implementation-method">Implementation method</a></li>
+        <li><a href="#code">Code</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<p>Document the method of implementing lazy loading of images in the Blazor framework.</p>
+<h3 id="why-should-to-use-lazy-loading-in-website">Why should to use Lazy Loading in website?</h3>
+<p>Basically, the biggest reason is performance issues. If a page has 10 pictures, the user cannot actually see all the pictures at once in the operation window (screen), so if the page is loaded immediately, In order to load these 10 or more complete pictures, not only does the user have to wait for them all to be loaded, which is very time-consuming, but even worse is that the user feel stuck and don&rsquo;t know how to do then choose close the website. If the pictures are placed on cloud services such as S3, the accumulated data transmission costs over a long period of time will also be considerable!!</p>
+<h3 id="implementation-method">Implementation method</h3>
+<p>There are actually many ways to implement the lazy loading of pictures. The simplest is of course to limit the number of pictures loaded. Only a few pictures are loaded at a time. If you want to view more, you can slide down or click the load more button. However, this method is not enough well. After all, if the number of images loaded each time is too small, it will be very troublesome for users. If it is too many, it will not achieve the desired effect of increasing performance and reducing transmission volume.</p>
+<p><code>The browser supports lazy loading, which can be achieved through this syntax。</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-HTML" data-lang="HTML"><span style="display:flex;"><span>&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;image.jpg&#34;</span> <span style="color:#a6e22e">loading</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lazy&#34;</span>&gt;
+</span></span></code></pre></div><p>But in the Blazor, it may be because all object screens have an extra layer rendered by JS. I am not sure about the actual principle, but it is invalid after testing.</p>
+<p>The method I currently choose is to use IntersectionObserver (an API implemented by JavaScript that can monitor the status of elements in the window, that is, whether the element is within the window) to determine whether to load the image.</p>
+<h3 id="code">Code</h3>
+<p>Copy this code into the <code>body</code> of <code>index.html</code> so that every page of the website can use the lazy loading function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e">&lt;!--</span> <span style="color:#a6e22e">lzay</span> <span style="color:#a6e22e">loading</span> <span style="color:#f92672">--&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/intersection-observer@0.12.2/intersection-observer.min.js&#34;</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>    window.<span style="color:#a6e22e">lazyLoading</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">observer</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">IntersectionObserver</span>((<span style="color:#a6e22e">entries</span>, <span style="color:#a6e22e">owner</span>) =&gt; {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">entry</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">entries</span>) {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>                <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">entry</span>.<span style="color:#a6e22e">isIntersecting</span>) {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>                    <span style="color:#75715e">// Picture enters the screen and then loads the real photo
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#75715e"></span>                    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">img</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">entry</span>.<span style="color:#a6e22e">target</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>                    <span style="color:#a6e22e">img</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;src&#39;</span>, <span style="color:#a6e22e">img</span>.<span style="color:#a6e22e">dataset</span>.<span style="color:#a6e22e">src</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>                    <span style="color:#a6e22e">img</span>.<span style="color:#a6e22e">removeAttribute</span>(<span style="color:#e6db74">&#39;data-src&#39;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>                    <span style="color:#a6e22e">owner</span>.<span style="color:#a6e22e">unobserve</span>(<span style="color:#a6e22e">img</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>                }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>            }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>        });
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">images</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#39;img.lazy&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">image</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">images</span>) {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>            <span style="color:#a6e22e">observer</span>.<span style="color:#a6e22e">observe</span>(<span style="color:#a6e22e">image</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>        }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</span></span></code></pre></div><p>The main purpose is to use <code>IntersectionObserver</code> to determine whether the image has entered the window. If it has entered, the original <code>src</code> will be removed and the content of <code>data-src</code> will be displayed.</p>
+<p>Website Page that require lazy loading of images (<code>.razor</code>):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-HTML" data-lang="HTML"><span style="display:flex;"><span>@inject IJSRuntime js
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@placeholderImage&#34;</span> <span style="color:#a6e22e">data-src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@o.ImageUrl&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lazy&#34;</span>&gt;
+</span></span></code></pre></div><p><code>src</code> is the display screen when the image is not loaded, which can be a low-resolution pixel image.<br>
+<code>data-src</code> is the actual image file URL to be displayed.</p>
+<p>The part of <code>@code</code> is:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> OnAfterRender(<span style="color:#66d9ef">bool</span> firstRender)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (firstRender)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        js.InvokeVoidAsync(<span style="color:#e6db74">&#34;lazyLoading&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Used to load <code>IntersectionObserver</code> on first load.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>The actual browsing effect is as follows:
+
+
+<video width="800" loop="loop" height="auto" controls autoplay muted>
+    <source src="pics/lazy-loading-example.mp4" type="video/mp4">
+</video></p>
+<p>You can see that when the image enters the window, the actual image will be loaded from the original default low-resolution pixel image to achieve a delayed loading effect.</p>
+		</div>
+		<br>
+		<br>
+		
+		<br>  
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/blazor/" rel="tag">Blazor</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/csharp/" rel="tag">Csharp</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/javascript/" rel="tag">JavaScript</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/web/" rel="tag">Web</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/seo/" rel="tag">SEO</a>
+		</li>
+	</ul>
+</div>
+			
+			
+
+
+
+
+
+
+
+
+
+<style>
+    .sharebuttons {
+        position:relative;
+        float: right;
+    }
+    .sharebuttons ul {
+        list-style: none;
+        margin-right: 10px;
+        padding: 0;
+    }
+    .sharebuttons ul li {
+        display: inline-block;
+        margin-left: 10px;
+    }
+</style>
+
+<nav class="sharebuttons">
+    <span>:</span>
+     <ul>
+        <li><a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fsunnote.xyz%2ftutorials%2faspnetcore-blazor-lazy-loading%2f&t=Image%20Lazy%20Loading%20in%20ASP.NET%20Core%20Blazor" target="_blank"><svg height="50" viewBox="0 0 50 50" width="50" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="m12.8064516 26.63h5.4808065v22.5635484c0 .4454839.3609677.8064516.8064516.8064516h9.2929032c.4454839 0 .8064516-.3609677.8064516-.8064516v-22.4572581h6.3006452c.4096774 0 .7543548-.3074193.801129-.7143548l.9569355-8.3067742c.0262903-.2285484-.046129-.4574194-.1990323-.628871-.1530645-.1716129-.3720967-.2698387-.6019354-.2698387h-7.2574194v-5.2070968c0-1.5696774.8451613-2.36564512 2.5122581-2.36564512h4.7451613c.4454838 0 .8064516-.36112903.8064516-.80645162v-7.6248387c0-.44548388-.3609678-.80645162-.8064516-.80645162h-6.5395162c-.046129-.00225806-.1485484-.00596774-.2995161-.00596774-1.1346774 0-5.0787097.22274194-8.1941936 3.08887097-3.4519354 3.17612903-2.9720967 6.97903223-2.8574193 7.63838713v6.0890322h-5.7537097c-.4454839 0-.8064516.3609678-.8064516.8064516v8.2006452c0 .4454839.3609677.8066129.8064516.8066129z" fill="#d5d5d5" class="will-change" fill-rule="nonzero"/><path d="m0 0h50v50h-50z"/></g></svg></a></li>
+        <li><a href="https://twitter.com/share?text=Image%20Lazy%20Loading%20in%20ASP.NET%20Core%20Blazor&url=http%3a%2f%2fsunnote.xyz%2ftutorials%2faspnetcore-blazor-lazy-loading%2f" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><style>svg{fill:#c4c4c4}</style><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" fill="#d5d5d5" class="will-change" fill-rule="nonzero"/></svg></a></li>
+        <li><a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fsunnote.xyz%2ftutorials%2faspnetcore-blazor-lazy-loading%2f&title=Image%20Lazy%20Loading%20in%20ASP.NET%20Core%20Blazor&summary=%253Cp%253EDocument%2bthe%2bmethod%2bof%2bimplementing%2blazy%2bloading%2bof%2bimages%2bin%2bthe%2bBlazor%2bframework.%253C%252Fp%253E" target="_blank"><svg height="51" viewBox="0 0 50 51" width="50" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="m37.17 16.2290323c11.3056452 0 12.83 8.1724193 12.83 16.1667742v17.6877419c0 .4454839-.3609677.8064516-.8064516.8064516h-10.0193549c-.4454838 0-.8064516-.3609677-.8064516-.8064516l-.0003842-15.9301537c-.0134805-4.2654904-.4024632-7.4953302-4.4055835-7.4953302-3.7477419 0-5.2080645 2.0945161-5.2080645 7.4708065v15.9545161c0 .4454839-.3609678.8066129-.8064516.8066129h-10.0156452c-.4454839 0-.8064516-.361129-.8064516-.8066129v-32.2464516c0-.4453226.3609677-.8064516.8064516-.8064516h9.6127419c.4454839 0 .8064517.361129.8064517.8064516v2.0943548c1.8075806-1.9691935 4.7877419-3.702258 8.8191935-3.702258zm-25.5312903.8014516c.4454838 0 .8064516.361129.8064516.8064516v32.2464516c0 .4454839-.3609678.8064516-.8064516.8064516h-10.03758067c-.44548387 0-.80645161-.3609677-.80645161-.8064516v-32.2464516c0-.4453226.36096774-.8064516.80645161-.8064516zm-5.01516131-16.0304839c3.64935481 0 6.61838711 2.96806452 6.61822581 6.61629032 0 3.64967738-2.968871 6.61903228-6.61822581 6.61903228-3.65225807 0-6.62354839-2.9691936-6.62354839-6.61903228 0-3.6482258 2.97129032-6.61629032 6.62354839-6.61629032z" fill="#d5d5d5" class="will-change" fill-rule="nonzero"/><path d="m0 0h50v50h-50z"/></g></svg></a></li>
+        <li><a href="whatsapp://send?text=Image%20Lazy%20Loading%20in%20ASP.NET%20Core%20Blazor%0a%0a%3cp%3eDocument%20the%20method%20of%20implementing%20lazy%20loading%20of%20images%20in%20the%20Blazor%20framework.%3c%2fp%3e%0a%0ahttp%3a%2f%2fsunnote.xyz%2ftutorials%2faspnetcore-blazor-lazy-loading%2f%0a" target="_blank"><svg height="50" viewBox="0 0 50 50" width="50" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="m25.4437935 0c13.5404221 0 24.5561688 10.9340909 24.5561688 24.3738636 0 13.4383117-11.0157467 24.3712663-24.5560065 24.3711039-4.0610389 0-8.0737013-1.0012987-11.624026-2.8982143l-12.97402593 4.1227273c-.06461039.0206169-.13084416.0305195-.19659091.0305195-.17159091 0-.33961039-.0681818-.46347403-.1946429-.17159091-.1746753-.23003247-.4311688-.15146104-.6631493l4.21801948-12.4423701c-2.20373376-3.724026-3.36704545-7.9790585-3.36704545-12.3259741 0-13.4397727 11.01688308-24.3738636 24.55844158-24.3738636zm-.0001624 5.07727273c-10.725974 0-19.45227269 8.65649347-19.45227269 19.29659087 0 4.0896104 1.28068182 8.0008117 3.70340909 11.3112013.125.1707793.15892857.3917208.09107143.5920455l-2.09805195 6.1897727 6.49918832-2.0659091c.064448-.0204545.1306818-.0305195.1967532-.0305195.125 0 .2491884.036039.3561689.1063312 3.1814935 2.0876624 6.8826298 3.1910714 10.7038961 3.1910714 10.7248376 0 19.4498376-8.6551948 19.4498376-19.2939935 0-10.6400974-8.7253246-19.29659087-19.45-19.29659087zm-6.6467532 7.85259737c.7225649 0 1.2425325.4384741 1.636039 1.3801948.1636363.3902598 1.7027597 4.1048702 1.788961 4.2772728.1050325.2060065.4300325.8439935.049513 1.6l-.0816559.1641233c-.1558441.3159091-.2902597.5886364-.5922078.9399351-.0969155.112013-.1956168.2308442-.2941558.349513-.2081169.250487-.4232143.5094156-.6217532.7058441-.0678572.0680195-.1993507.1998377-.2136364.2522728.000487 0 .0029221.0449675.0610389.1439935.4069806.6887987 3.375 4.7733766 7.2852273 6.4719156.1707792.0741883.7349026.3064935.7675325.3064935.0363636 0 .0970779-.0607143.1415584-.111526.3405844-.3849026 1.4428572-1.6733766 1.8069806-2.2146104.3220779-.4818182.7355519-.7271104 1.2277597-.7271104.3012987 0 .5845779.0926948.849026.1876624.6030564.2170398 3.8043369 1.7879312 4.3216328 2.0413055l.0686269.0335321c.4774351.2292208.8545455.4102273 1.0733766.7699676.3194805.5290584.1928572 1.9868506-.2873376 3.3211038-.609578 1.6939936-3.2894481 3.0826299-4.5089286 3.1907468l-.1788961.0170455c-.2819805.0277597-.6016234.0590909-1.000974.0590909l-.0944191-.0005452c-.9658464-.0112678-2.6415309-.2079278-6.0576913-1.5725068-3.6667208-1.4647727-7.2837663-4.6050325-10.1852273-8.8423701-.0501623-.0733766-.0847403-.124513-.1035714-.1496753-.7576299-.998539-2.5222403-3.624026-2.5222403-6.4047078 0-3.0896104 1.4788961-4.8464286 2.3530844-5.397565.8243507-.5196428 2.6887987-.7650974 3.0311689-.7795454.0351461-.0014814.0648513-.0027775.0900577-.0039117l.1047884-.0050457c.0548951-.0028933.0444193-.0028933.0863227-.0028933z" fill="#d5d5d5" class="will-change" fill-rule="nonzero"/><path d="m0 0h50v50h-50z"/></g></svg></a></li>
+        
+        <li><a href="mailto:?subject=Image%20Lazy%20Loading%20in%20ASP.NET%20Core%20Blazor&body=Image%20Lazy%20Loading%20in%20ASP.NET%20Core%20Blazor%0a%0a%3cp%3eDocument%20the%20method%20of%20implementing%20lazy%20loading%20of%20images%20in%20the%20Blazor%20framework.%3c%2fp%3e%0a%0ahttp%3a%2f%2fsunnote.xyz%2ftutorials%2faspnetcore-blazor-lazy-loading%2f%0a" target="_blank"><svg height="50" viewBox="0 0 50 50" width="50" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="m46.149789 6h-42.29957803c-2.12025316 0-3.85021097 1.72995781-3.85021097 3.85021097v29.78902953c0 2.1202532 1.72995781 3.850211 3.85021097 3.850211h42.29957803c2.1202532 0 3.850211-1.7299578 3.850211-3.850211v-29.78902953c0-2.12025316-1.7299578-3.85021097-3.850211-3.85021097zm-.5590717 2.84810127-20.3270042 17.38396623-20.32700424-17.38396623zm1.5611814 30.79113923c0 .5485232-.4535865 1.0021097-1.0021097 1.0021097h-42.29957803c-.54852321 0-1.0021097-.4535865-1.0021097-1.0021097v-28.8291139l21.48734173 18.3755274c.0105486.0105485.0316456.0210971.0421941.0316456.0105486.0105485.0316456.021097.0421941.0316455.0316456.0210971.0527426.0421941.0843882.0527427.0105485.0105485.0210971.0105485.0316456.021097.0421941.0210971.0843882.0421941.1265823.0632911.0105485 0 .021097.0105486.0316455.0105486.0316456.0105485.0632912.0316455.1054853.0421941.0105485 0 .0316455.0105485.0421941.0105485.0316455.0105485.0632911.021097.0949367.021097.0105485 0 .0316455.0105486.0421941.0105486.0316455.0105485.0738396.0105485.1054852.021097h.0316456c.042194 0 .0949367.0105485.1371308.0105485.042194 0 .0949367 0 .1371308-.0105485h.0316455c.0316456 0 .0738397-.0105485.1054853-.021097.0105485 0 .0316455-.0105486.0421941-.0105486.0316455-.0105485.0632911-.021097.0949367-.021097.0105485 0 .0316455-.0105485.0421941-.0105485.0316455-.0105486.0632911-.0210971.1054852-.0421941.0105485 0 .021097-.0105486.0316456-.0105486.042194-.021097.0843881-.042194.1265822-.0632911.0105486-.0105485.0210971-.0105485.0316456-.021097.0316456-.0210971.0527426-.0316456.0843882-.0527427.0105485-.0105485.0316456-.021097.0421941-.0316455s.0316456-.0210971.0421941-.0316456l20.9810126-17.9219409z" fill="#d5d5d5" class="will-change" fill-rule="nonzero"/><path d="m0 0h50v50h-50z"/></g></svg></a></li>
+        <li><a href="https://t.me/share/url?url=http%3a%2f%2fsunnote.xyz%2ftutorials%2faspnetcore-blazor-lazy-loading%2f&text=Image%20Lazy%20Loading%20in%20ASP.NET%20Core%20Blazor%0a%0a%3cp%3eDocument%20the%20method%20of%20implementing%20lazy%20loading%20of%20images%20in%20the%20Blazor%20framework.%3c%2fp%3e%0a%0ahttp%3a%2f%2fsunnote.xyz%2ftutorials%2faspnetcore-blazor-lazy-loading%2f%0a" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 496 512"><style>svg{fill:#cccccc}</style><path d="M248,8C111.033,8,0,119.033,0,256S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,134.378-28.1,178.3-3.476,18.584-10.322,24.816-16.948,25.425-14.4,1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25,5.342-39.5,3.652-3.793,67.107-61.51,68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608,69.142-14.845,10.194-26.894,9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7,18.45-13.7,108.446-47.248,144.628-62.3c68.872-28.647,83.183-33.623,92.511-33.789,2.052-.034,6.639.474,9.61,2.885a10.452,10.452,0,0,1,3.53,6.716A43.765,43.765,0,0,1,362.952,176.66Z" fill="#d5d5d5" class="will-change" fill-rule="nonzero"/></svg></a></li>
+        <li><a href="https://social-plugins.line.me/lineit/share?url=http%3a%2f%2fsunnote.xyz%2ftutorials%2faspnetcore-blazor-lazy-loading%2f"  target="_blank"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc.<style>svg{fill:#d4d4d4}</style><path d="M311 196.8v81.3c0 2.1-1.6 3.7-3.7 3.7h-13c-1.3 0-2.4-.7-3-1.5l-37.3-50.3v48.2c0 2.1-1.6 3.7-3.7 3.7h-13c-2.1 0-3.7-1.6-3.7-3.7V196.9c0-2.1 1.6-3.7 3.7-3.7h12.9c1.1 0 2.4 .6 3 1.6l37.3 50.3V196.9c0-2.1 1.6-3.7 3.7-3.7h13c2.1-.1 3.8 1.6 3.8 3.5zm-93.7-3.7h-13c-2.1 0-3.7 1.6-3.7 3.7v81.3c0 2.1 1.6 3.7 3.7 3.7h13c2.1 0 3.7-1.6 3.7-3.7V196.8c0-1.9-1.6-3.7-3.7-3.7zm-31.4 68.1H150.3V196.8c0-2.1-1.6-3.7-3.7-3.7h-13c-2.1 0-3.7 1.6-3.7 3.7v81.3c0 1 .3 1.8 1 2.5c.7 .6 1.5 1 2.5 1h52.2c2.1 0 3.7-1.6 3.7-3.7v-13c0-1.9-1.6-3.7-3.5-3.7zm193.7-68.1H327.3c-1.9 0-3.7 1.6-3.7 3.7v81.3c0 1.9 1.6 3.7 3.7 3.7h52.2c2.1 0 3.7-1.6 3.7-3.7V265c0-2.1-1.6-3.7-3.7-3.7H344V247.7h35.5c2.1 0 3.7-1.6 3.7-3.7V230.9c0-2.1-1.6-3.7-3.7-3.7H344V213.5h35.5c2.1 0 3.7-1.6 3.7-3.7v-13c-.1-1.9-1.7-3.7-3.7-3.7zM512 93.4V419.4c-.1 51.2-42.1 92.7-93.4 92.6H92.6C41.4 511.9-.1 469.8 0 418.6V92.6C.1 41.4 42.2-.1 93.4 0H419.4c51.2 .1 92.7 42.1 92.6 93.4zM441.6 233.5c0-83.4-83.7-151.3-186.4-151.3s-186.4 67.9-186.4 151.3c0 74.7 66.3 137.4 155.9 149.3c21.8 4.7 19.3 12.7 14.4 42.1c-.8 4.7-3.8 18.4 16.1 10.1s107.3-63.2 146.5-108.2c27-29.7 39.9-59.8 39.9-93.1z" fill="#d5d5d5" class="will-change" fill-rule="nonzero"/></svg></a></li>
+        <li><a href="https://reddit.com/submit?url=http%3a%2f%2fsunnote.xyz%2ftutorials%2faspnetcore-blazor-lazy-loading%2f" onclick="window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" title="Share on Reddit" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><style>svg{fill:#d3d4d4}</style><path d="M440.3 203.5c-15 0-28.2 6.2-37.9 15.9-35.7-24.7-83.8-40.6-137.1-42.3L293 52.3l88.2 19.8c0 21.6 17.6 39.2 39.2 39.2 22 0 39.7-18.1 39.7-39.7s-17.6-39.7-39.7-39.7c-15.4 0-28.7 9.3-35.3 22l-97.4-21.6c-4.9-1.3-9.7 2.2-11 7.1L246.3 177c-52.9 2.2-100.5 18.1-136.3 42.8-9.7-10.1-23.4-16.3-38.4-16.3-55.6 0-73.8 74.6-22.9 100.1-1.8 7.9-2.6 16.3-2.6 24.7 0 83.8 94.4 151.7 210.3 151.7 116.4 0 210.8-67.9 210.8-151.7 0-8.4-.9-17.2-3.1-25.1 49.9-25.6 31.5-99.7-23.8-99.7zM129.4 308.9c0-22 17.6-39.7 39.7-39.7 21.6 0 39.2 17.6 39.2 39.7 0 21.6-17.6 39.2-39.2 39.2-22 .1-39.7-17.6-39.7-39.2zm214.3 93.5c-36.4 36.4-139.1 36.4-175.5 0-4-3.5-4-9.7 0-13.7 3.5-3.5 9.7-3.5 13.2 0 27.8 28.5 120 29 149 0 3.5-3.5 9.7-3.5 13.2 0 4.1 4 4.1 10.2.1 13.7zm-.8-54.2c-21.6 0-39.2-17.6-39.2-39.2 0-22 17.6-39.7 39.2-39.7 22 0 39.7 17.6 39.7 39.7-.1 21.5-17.7 39.2-39.7 39.2z" fill="#d5d5d5" class="will-change" fill-rule="nonzero"/></svg></a></li>
+    
+    </ul>
+</nav>
+<style>
+.sharebuttons, .sharebuttons ul {display: flex; margin: 0.25rem 0;margin-top: -0.35rem; align-items: center;}
+.sharebuttons span {color: #bbb;}
+.sharebuttons ul li {list-style: none; margin: 0;}
+.sharebuttons ul li a {margin: 0 0.5rem; display: block;}
+.sharebuttons ul li:first-child a {margin: 0 0.2rem 0 0.5rem;}
+.sharebuttons ul li a svg {width: auto; height: 1.4rem; display: block; margin-right: 5px;}
+.will-change {transition: 250ms;} 
+nav.sharebuttons li > a:hover .will-change { fill: #444444 }
+</style>
+
+		</footer>
+		
+		<hr>
+		
+		
+		<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="alvinsun" data-color="#acd6ff" data-emoji="🍺"  data-font="Comic" data-text="Buy me a beer" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#FFDD00" ></script>
+
+		<div id="type-effect">
+</div>
+<br>
+<br>
+<br>
+<br>
+<iframe class="LikeCoin" height="180" src="https://button.like.co/in/embed/sunnote/button?referrer=http%3a%2f%2fsunnote.xyz%2ftutorials%2faspnetcore-blazor-lazy-loading%2f" width="80%" frameborder=0></iframe>
+
+<style>
+	#type-effect {
+	  white-space: nowrap;
+	  overflow: hidden;
+	  font-size: 20px;
+	  font-family: monospace, sans-serif  ;
+	  border-right: 1px solid rgb(255, 255, 255);
+	   
+	  padding-right: 5px;
+	  white-space: pre-wrap;
+	  position: absolute;
+    
+	}
+  </style>
+  <script>
+  	var url = window.location.href;
+	var ln = "en";
+	if (url.indexOf("/zh-tw/") > -1) {
+  	ln = "zh";
+	}
+	if (ln === "zh") {
+	  var message = "如果這個文章對您有幫助或是有任何疑問，歡迎留言。👇"
+	  speed = 100
+	}
+	else {
+	  var message = "If this posts was helpful to you or if you have any questions, feel free to leave a comment and ask.👇"
+	  speed = 50
+	}
+  
+	const typeEffectDiv = document.getElementById("type-effect");
+  
+	function typeEffect(message, element) {
+	  let i = 0;
+	  const interval = setInterval(function () {
+		if (i === message.length) {
+		  clearInterval(interval);
+		  setTimeout(function () {
+			element.textContent = "";
+			typeEffect(message, element);
+		  }, 2000); 
+		} else {
+		  element.textContent += message[i];
+		  i++;
+		}
+	  }, speed); 
+
+	}
+	typeEffect(message, typeEffectDiv);
+  </script>
+
+		
+	</article>
+</main>
+
+<style>
+	#bmc-wbtn{
+		height: 38px !important;
+		width: 38px !important;
+		border-radius: 4px !important;
+		right:10px !important;
+		top: 93% !important;
+	}
+	#bmc-wbtn img {
+		height: 30px !important;
+		width: 30px !important;
+	}
+
+</style>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="alvinsun" data-description="Support me on Buy me a coffee!" data-message="" data-color="#acd6ff" data-position="right" data-x_margin="18" data-y_margin="18"></script>
+
+
+
+
+<hr>
+<div class="related-content">
+
+<h3>See Also</h3>
+
+<div class="owl-carousel owl-theme"> 
+	  
+	  
+	
+	 
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/tutorials/aspnetcore-blazor-wasm-prerender/">
+					<img src="https://sunnote.xyz/img/thumbnail/048en.webp" alt="Blazor WASM SEO - Use pre-rendering to solve the problem that SPA web SEO (Prerender.io &amp; Cloudflare Workers tutorial)"/>
+					
+				</a>
+			
+
+			<h6><a href="/tutorials/aspnetcore-blazor-wasm-prerender/">Blazor WASM SEO - Use pre-rendering to solve the problem that SPA web SEO (Prerender.io &amp; Cloudflare Workers tutorial)
+				
+				<br>
+				<time datetime="2023-12-19T23:44:38&#43;0000">
+					December 20, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/tutorials/aspnetcore-sitemap/">
+					<img src="https://sunnote.xyz/img/thumbnail/047en.webp" alt="Create a Sitemap Using ASP.NET Core API &amp; Blazor"/>
+					
+				</a>
+			
+
+			<h6><a href="/tutorials/aspnetcore-sitemap/">Create a Sitemap Using ASP.NET Core API &amp; Blazor
+				
+				<br>
+				<time datetime="2023-12-17T23:44:38&#43;0000">
+					December 18, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/tutorials/api-with-synology-nas/">
+					<img src="https://sunnote.xyz/img/thumbnail/046en.webp" alt="Use API to connect to Synology NAS services"/>
+					
+				</a>
+			
+
+			<h6><a href="/tutorials/api-with-synology-nas/">Use API to connect to Synology NAS services
+				
+				<br>
+				<time datetime="2023-12-13T23:44:38&#43;0000">
+					December 14, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/tutorials/url-querystring-encoding-decoding/">
+					<img src="https://sunnote.xyz/img/thumbnail/045en.webp" alt="Understanding URL Query Strings and Encoding/Decoding"/>
+					
+				</a>
+			
+
+			<h6><a href="/tutorials/url-querystring-encoding-decoding/">Understanding URL Query Strings and Encoding/Decoding
+				
+				<br>
+				<time datetime="2023-12-06T23:44:38&#43;0000">
+					December 7, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/tutorials/aspnetcore-6.0-aws-s3/">
+					<img src="https://sunnote.xyz/img/thumbnail/044en.webp" alt="Operating Amazon S3 with ASP.NET Core Web API and Blazor"/>
+					
+				</a>
+			
+
+			<h6><a href="/tutorials/aspnetcore-6.0-aws-s3/">Operating Amazon S3 with ASP.NET Core Web API and Blazor
+				
+				<br>
+				<time datetime="2023-12-05T03:05:34&#43;0000">
+					December 5, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/tutorials/aspnetcore-6.0-blazor-globalization/">
+					<img src="https://sunnote.xyz/img/thumbnail/043en.webp" alt="Implementing Multilingual Support in ASP.NET Core Blazor"/>
+					
+				</a>
+			
+
+			<h6><a href="/tutorials/aspnetcore-6.0-blazor-globalization/">Implementing Multilingual Support in ASP.NET Core Blazor
+				
+				<br>
+				<time datetime="2023-11-16T03:05:34&#43;0000">
+					November 16, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/tutorials/hugo-auto-update-last-modified/">
+					<img src="https://sunnote.xyz/img/thumbnail/040en.webp" alt="Automatically Updating the Last Modified Date of Hugo Posts: Streamlining Management Steps and Enhancing SEO"/>
+					
+				</a>
+			
+
+			<h6><a href="/tutorials/hugo-auto-update-last-modified/">Automatically Updating the Last Modified Date of Hugo Posts: Streamlining Management Steps and Enhancing SEO
+				
+				<br>
+				<time datetime="2023-08-21T02:51:46&#43;0000">
+					August 21, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/tutorials/mongodb-atlas-crud/">
+					<img src="https://sunnote.xyz/img/thumbnail/038en.webp" alt="Performing MongoDB Atlas CRUD Operations with .NET 6"/>
+					
+				</a>
+			
+
+			<h6><a href="/tutorials/mongodb-atlas-crud/">Performing MongoDB Atlas CRUD Operations with .NET 6
+				
+				<br>
+				<time datetime="2023-08-08T03:24:03&#43;0000">
+					August 8, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/tutorials/aspnetcore-6.0-signalr-websocket-2/">
+					<img src="https://sunnote.xyz/img/thumbnail/034en.webp" alt="Implementing Real-Time Communication with WebSocket using SignalR and .NET 6 Web API - Part 2"/>
+					
+				</a>
+			
+
+			<h6><a href="/tutorials/aspnetcore-6.0-signalr-websocket-2/">Implementing Real-Time Communication with WebSocket using SignalR and .NET 6 Web API - Part 2
+				
+				<br>
+				<time datetime="2023-06-16T03:05:34&#43;0000">
+					June 16, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+   
+	<div class="item">
+		
+			<div class="related-post__image">
+				<a href="/tutorials/aspnetcore-6.0-signalr-websocket-1/">
+					<img src="https://sunnote.xyz/img/thumbnail/029en.webp" alt="Implementing Real-Time Communication with WebSocket using SignalR and .NET 6 Web API - Part 1"/>
+					
+				</a>
+			
+
+			<h6><a href="/tutorials/aspnetcore-6.0-signalr-websocket-1/">Implementing Real-Time Communication with WebSocket using SignalR and .NET 6 Web API - Part 1
+				
+				<br>
+				<time datetime="2023-06-15T08:08:13&#43;0000">
+					June 15, 2023
+				</time></a></h6>
+				</time>
+			
+			</div>
+
+		
+			
+		
+			
+	</div>
+  
+</div>
+</div>
+<br>
+<br>
+
+
+<script>
+window.addEventListener('load', () => {
+  const highlightBlocks = document.querySelectorAll('.highlight');
+  highlightBlocks.forEach((highlightBlock) => {
+    const button = highlightBlock.querySelector('.highlight-copy-btn');
+	const code_type = highlightBlock.querySelector('code[data-lang]');
+    highlightBlock.addEventListener('mouseover', () => {
+      
+      if (button) {
+        button.style.display = 'block';
+      }
+    });
+	highlightBlock.addEventListener('mouseout', () => {
+      
+      if (button) {
+        button.style.display = 'none';
+      }
+    });
+  });
+});
+
+
+
+</script>
+
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Alvin avatar" src="/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">
+			<a href="../../about/" target="_blank" style="text-decoration:none;">
+			About Alvin ☀️
+		    </a>
+		</span>
+	</div>
+	<div class="authorbox__description">
+		Life is about pursuing a sense of accomplishment while messing around.
+	</div>
+</div>
+
+
+<div>
+	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img
+			src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script> 
+<script>
+	var owl = $('.owl-carousel');
+	owl.owlCarousel({
+  loop: true, 
+  margin: 10, 
+  nav: true, 
+  responsive: {
+    0: {
+      items: 2 
+    },
+    600: {
+      items: 3 
+    },
+    1000: {
+      items: 3 
+    }
+  }
+});
+</script>
+
+
+
+
+
+<style>
+	.nav {
+		display: inline-flex;
+		position: relative;
+		overflow: hidden;
+		max-width: 100%;
+		background-color: var(--wrapperBG);
+		padding: 0 20px;
+		border-radius: 20px;
+		 
+		display: flex;
+		justify-content: center;
+		transition: background-color 1.3s ease, color 0.3s ease;
+
+	}
+
+	.nav-item {
+		color: #83818c;
+		padding: 20px;
+		text-decoration: none;
+		transition: .3s;
+		margin: 0 6px;
+		z-index: 1;
+		font-family: 'DM Sans', sans-serif;
+		font-weight: 500;
+		position: relative;
+		transition: inherit;
+
+		&:before {
+			content: "";
+			position: absolute;
+			bottom: -6px;
+			left: 0;
+			width: 100%;
+			height: 5px;
+			background-color: #dfe2ea;
+			border-radius: 8px 8px 0 0;
+			opacity: 0;
+			transition: .3s;
+		}
+	}
+
+	.nav-item:not(.is-active):hover:before {
+		opacity: 1;
+		bottom: 0;
+	}
+
+
+	.nav-item:not(.is-active):hover {
+		color: #333;
+	}
+
+	.nav-indicator {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		height: 4px;
+		transition: .5s;
+		height: 5px;
+		z-index: 1;
+		border-radius: 8px 8px 0 0;
+	}
+
+	.nav-item {
+		border: none;
+		outline: none;
+		background-color:  var(--wrapperBG);
+	}
+
+	@media (max-width: 580px) {
+		.nav {
+			overflow: auto;
+		}
+	}
+</style>
+<br>
+
+<nav class="nav">
+	<button id="fb-btn" class="nav-item" active-color="#ACD6FF">Facebook</button>
+	<button id="github-btn" class="nav-item is-active" active-color="#ACD6FF">Github</button>
+	<button id="disqus-btn" class="nav-item" active-color="#ACD6FF">Disqus</button>
+	<span class="nav-indicator"></span>
+</nav>
+
+<script>
+	const indicator = document.querySelector('.nav-indicator');
+	const items = document.querySelectorAll('.nav-item');
+
+	function handleIndicator(el) {
+		items.forEach(item => {
+			item.classList.remove('is-active');
+			item.removeAttribute('style');
+		});
+
+		indicator.style.width = `${el.offsetWidth}px`;
+		indicator.style.left = `${el.offsetLeft}px`;
+		indicator.style.backgroundColor = el.getAttribute('active-color');
+
+		el.classList.add('is-active');
+		el.style.color = el.getAttribute('active-color');
+	}
+
+
+	items.forEach((item, index) => {
+		item.addEventListener('click', (e) => { handleIndicator(e.target) });
+		item.classList.contains('is-active') && handleIndicator(item);
+	});
+
+
+</script>
+<br><br>
+
+
+<div id="disqus-comments" class="comments markdown" style="display: none;">
+	<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    
+    
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'sun';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+</div>
+
+
+
+<div id="utterances-comments" class="comments markdown" style="display: block;">
+	<script src="https://giscus.app/client.js"
+        data-repo="zhongyousun/giscus"
+        data-repo-id="R_kgDOJJwIkA"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOJJwIkM4CU4ky"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light_protanopia"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</div>
+
+
+
+<div id="facebook-comments" class="fb-comments" data-href="http://sunnote.xyz/tutorials/aspnetcore-blazor-lazy-loading/" data-width="100%" data-numposts="5"
+	data-csp="true" data-order-by="reverse_time" style="display: none;"></div>
+<script>
+
+	
+	const githubBtn = document.getElementById("github-btn");
+	const disqusBtn = document.getElementById("disqus-btn");
+	const fbBtn = document.getElementById("fb-btn");
+
+	
+	const githubBoard = document.getElementById("utterances-comments");
+	const disqusBoard = document.getElementById("disqus-comments");
+	const fbBoard = document.getElementById("facebook-comments");
+
+	
+	githubBtn.addEventListener("click", function () {
+		githubBoard.style.display = "block";
+		disqusBoard.style.display = "none";
+		fbBoard.style.display = "none";
+	});
+	disqusBtn.addEventListener("click", function () {
+		githubBoard.style.display = "none";
+		disqusBoard.style.display = "block";
+		fbBoard.style.display = "none";
+	});
+	fbBtn.addEventListener("click", function () {
+		githubBoard.style.display = "none";
+		disqusBoard.style.display = "none";
+		fbBoard.style.display = "block";
+	});
+</script>
+
+
+
+<style>
+    .lazy {
+  cursor: pointer;
+}
+	.lazy:hover {
+  background-image: white;
+}
+    .zoomed {
+		position: fixed;
+  top: 5%;
+  left: 5%;
+  width: 90vw;
+  height: 90vh;
+  z-index: 9999;
+  cursor: zoom-out;
+  object-fit: contain;
+  transition: all 1s ;
+  background-color: rgba(231, 231, 231, 0.7);  
+  border-radius: 10px;
+}
+ 
+</style>
+<script>
+
+const zoomed = document.querySelectorAll('.image-container');
+
+zoomed.forEach((image) => {
+  image.addEventListener('click', () => {
+	const img= image.parentNode.querySelector('.lazy');
+    img.classList.toggle('zoomed');
+
+
+
+
+
+
+
+
+  });
+});
+
+
+document.addEventListener('click', (event) => {
+  
+  const isClickedOnImage = Array.from(images).some((img) => img.contains(event.target));
+
+  
+  if (!isClickedOnImage && document.querySelector('.zoomed')) {
+    images.forEach((img) => img.classList.remove('zoomed'));
+  }
+});
+
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.12.2/intersection-observer.min.js"></script>
+<script type="text/javascript">
+    const observer = new IntersectionObserver((entries, owner) => {
+        for (let entry of entries) {
+            if (entry.isIntersecting) {
+                
+                const img = entry.target;
+                img.setAttribute('src', img.dataset.src);
+                img.removeAttribute('data-src');
+                owner.unobserve(img);
+            }
+        }
+    });
+    const images = document.querySelectorAll('img.lazy')
+    for (let image of images) {
+        observer.observe(image);
+    }
+</script>
+
+
+
+			</div>
+			<aside class="sidebar">
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/tutorials/aspnetcore-blazor-lazy-loading/">Image Lazy Loading in ASP.NET Core Blazor</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/tutorials/aspnetcore-blazor-wasm-prerender/">Blazor WASM SEO - Use pre-rendering to solve the problem that SPA web SEO (Prerender.io &amp; Cloudflare Workers tutorial)</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/tutorials/aspnetcore-sitemap/">Create a Sitemap Using ASP.NET Core API &amp; Blazor</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/tutorials/api-with-synology-nas/">Use API to connect to Synology NAS services</a></li>
+			
+			
+			<li class="widget__item"><a class="widget__link" href="/tutorials/url-querystring-encoding-decoding/">Understanding URL Query Strings and Encoding/Decoding</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/just-sharing/">Just Sharing</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">6</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/life-record/">Life Record</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">13</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/overseas-travel/">Overseas Travel</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">11</span></span>
+				
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/program/">Program</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble"><span class="count">25</span></span>
+				
+				</li>
+		</ul>
+	</div>
+</div><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://cse.google.com/cse">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SITE SEARCH…" value="" name="q" aria-label="SITE SEARCH…">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="http://sunnote.xyz">
+		<input type="hidden" name="cx" value="51cfcdef3e098403d" />
+	</form>
+</div>
+
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/aws/" title="AWS">AWS (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/blazor/" title="Blazor">Blazor (<span class="count">5</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cebu/" title="Cebu">Cebu (<span class="count">8</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cryptocurrency/" title="Cryptocurrency">Cryptocurrency (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/csharp/" title="Csharp">Csharp (<span class="count">10</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/css/" title="CSS">CSS (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/great-reads/" title="Great Reads">Great Reads (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hokkaido/" title="Hokkaido">Hokkaido (<span class="count">3</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hugo/" title="Hugo">Hugo (<span class="count">4</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/investing/" title="Investing">Investing (<span class="count">2</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/japan/" title="Japan">Japan (<span class="count">3</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="JavaScript">JavaScript (<span class="count">5</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/kenting/" title="Kenting">Kenting (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/language-school/" title="Language School">Language School (<span class="count">3</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/leetcode/" title="LeetCode">LeetCode (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/life/" title="Life">Life (<span class="count">4</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nosql/" title="NoSQL">NoSQL (<span class="count">2</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/philippines/" title="Philippines">Philippines (<span class="count">8</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/python/" title="Python">Python (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/seo/" title="SEO">SEO (<span class="count">4</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sql/" title="SQL">SQL (<span class="count">6</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/taiwan/" title="Taiwan">Taiwan (<span class="count">1</span>)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/web/" title="Web">Web (<span class="count">11</span>)</a>
+	</div>
+</div>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+			<script>
+				$('.count').each(function () {
+				$(this).prop('Counter',0).animate({
+					Counter: $(this).text()
+				}, {
+					duration: 4000,
+					easing: 'swing',
+					step: function (now) {
+						$(this).text(Math.ceil(now));
+					}
+				});
+			});
+			</script><a href="https://info.flagcounter.com/8Z5p"><img src="https://s11.flagcounter.com/countxl/8Z5p/bg_FFFFFF/txt_000000/border_FFFFFF/columns_3/maxflags_30/viewers_3/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+<br>
+<br>
+<br>
+
+
+
+
+
+
+<iframe class="LikeCoin" height="180" src="https://button.like.co/in/embed/sunnote/button?referrer=http%3a%2f%2fsunnote.xyz%2ftutorials%2faspnetcore-blazor-lazy-loading%2f" width="80%" frameborder=0></iframe>
+
+</aside>
+
+
+		</div>
+		
+<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy;  2022-2023 sunnote.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+
+		</div>
+
+	</div>
+	
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6706017277983363"
+     crossorigin="anonymous"></script>
+
+<script src="/js/copy-to-clipboard.js"></script>
+	</div>
+	<script async defer src="/js/menu.js"></script>
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+
+	<div class="floating-menu">
+		<button class="main-button"><i class="fas fa-bars"></i></button>
+		<div class="sub-buttons">
+		  <button class="sub-button" id="read-mode" title="Read mode"><i class="fas fa-book-open"></i></button>
+		  <button class="sub-button" id="toc" title="Toggle ToC"><i class="fa-solid fa-list-ol"></i></button>
+		  <button class="sub-button" id="search-algolia" title="Algolia Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+		  
+		  
+		  
+		</div>
+	</div>
+	<button class="toc-button" id ="toc-button"><i class="fa-solid fa-xmark"></i></button>
+</body>
+
+</html>
+
+
+<script>
+	const mainButton = document.querySelector('.main-button');
+	const iconElement = document.querySelector('.main-button i');
+	const subButtons = document.querySelector('.sub-buttons');
+
+	const readModeButton = document.getElementById('read-mode');
+	const icon_readmode = document.querySelector('#read-mode i');
+
+	const tocButton = document.getElementById('toc');
+	const icon_toc = document.querySelector('#toc i');
+
+	const tocButton1 = document.getElementById('toc-button');
+
+	const icon_theme = document.querySelector('#theme i');
+
+	const searchButton = document.getElementById('search-algolia');
+	const icon_search = document.querySelector('#search-algolia i');
+	const algolia = document.querySelector('.aa-input-container');
+	
+	const asideElement = document.querySelector("aside.sidebar");
+	
+	const isSidebarVisible = localStorage.getItem('isSidebarVisible') !== 'false';
+	
+	function setSidebarLocalStorage(state) {
+  		localStorage.setItem("isSidebarVisible", state);
+	}
+
+	
+	const isTOCStatus = localStorage.getItem('isTOCStatus') !== 'false';
+	
+	function setTOCLocalStorage(state) {
+  		localStorage.setItem("isTOCStatus", state);
+	}
+
+	mainButton.addEventListener('click', () => {
+	  if (subButtons.style.display === 'block') {
+		  iconElement.classList.replace('fa-xmark', 'fa-bars');
+		  subButtons.style.display = 'none';
+	  } else {
+		  iconElement.classList.replace('fa-bars', 'fa-xmark');
+		  subButtons.style.display = 'block';
+	  }
+	});
+
+	readModeButton.addEventListener('click', () => {
+	  if (icon_readmode.classList.contains('fa-book-open')) {
+		showTOCButton();
+			setSidebarLocalStorage(false); 
+			setTOCLocalStorage(false);
+			asideElement.style.display = 'none';
+		  icon_readmode.classList.replace('fa-book-open', 'fa-angle-left');
+		  setTimeout(function() {
+			
+            document.querySelector(".primary").style = "flex: 1 0 100%;";
+			
+        }, 100);
+			document.querySelector(".post__toc.toc").className = "toc-side";
+			tocButton1.style.display='block';
+	  } else {
+			setSidebarLocalStorage(true); 
+			setTOCLocalStorage(true);
+			asideElement.style.display = 'block';
+		  icon_readmode.classList.replace('fa-angle-left', 'fa-book-open');
+		  setTimeout(function() {
+            document.querySelector(".primary").style = "flex: 0 0 65.83%;";
+        }, 100);
+			document.querySelector(".toc-side").className = "post__toc toc";
+			tocButton1.style.display='none';
+
+	  }
+	});
+	tocButton.addEventListener('click', () => {
+	  if (icon_toc.classList.contains('fa-list-ol')) {
+		  icon_toc.classList.replace('fa-list-ol', 'fa-xmark');
+		  document.querySelector(".post__toc.toc").className = "toc-side";
+		  tocButton1.style.display='block';
+		  setTOCLocalStorage(false);
+	  } else {
+		  icon_toc.classList.replace('fa-xmark', 'fa-list-ol');
+		  document.querySelector(".toc-side").className = "post__toc toc";
+		  tocButton1.style.display='none';
+		  setTOCLocalStorage(true);
+	  }
+	});
+	tocButton1.addEventListener('click', () => {
+		  icon_toc.classList.replace('fa-xmark', 'fa-list-ol');
+		  document.querySelector(".toc-side").className = "post__toc toc";
+		  tocButton1.style.display='none';
+		  setTOCLocalStorage(true);
+	});
+
+	
+	
+	
+	
+	
+	
+	
+
+
+	searchButton.addEventListener('click', () => {
+		if (icon_search.classList.contains('fa-magnifying-glass')) {
+			algolia.style.display = 'block';
+			icon_search.classList.replace('fa-magnifying-glass', 'fa-xmark');
+	  } else {
+		algolia.style.display = 'none';
+		icon_search.classList.replace('fa-xmark', 'fa-magnifying-glass');
+	  }
+	});
+  </script>
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+  const isSidebarVisible = localStorage.getItem('isSidebarVisible') !== 'false';
+  const isTOCStatus = localStorage.getItem('isTOCStatus') !== 'false';
+  const asideElement = document.querySelector("aside.sidebar");
+  if (isSidebarVisible) {
+    asideElement.style.display = 'block';
+    document.querySelector(".primary").style = "flex: 0 0 65.83%;";
+    
+	icon_readmode.classList.remove('fa-angle-left');
+    icon_readmode.classList.add('fa-book-open');
+  } else {
+    asideElement.style.display = 'none';
+    document.querySelector(".primary").style = "flex: 1 0 100%;";
+    
+	icon_readmode.classList.remove('fa-book-open');
+    icon_readmode.classList.add('fa-angle-left');
+  }
+  if (isTOCStatus) {
+    document.querySelector(".toc-side").className = "post__toc toc";
+	icon_toc.classList.remove('fa-xmark');
+    icon_toc.classList.add('fa-list-ol');
+  } else {
+    document.querySelector(".post__toc.toc").className = "toc-side";
+	icon_toc.classList.remove('fa-list-ol');
+    icon_toc.classList.add('fa-xmark');
+  }
+});
+</script>
+<script>
+	function showTOCButton() {
+	
+	document.addEventListener('DOMContentLoaded', function() {
+ 		const tocSide = document.querySelector('.toc-side');
+  		const tocSideBTN = document.getElementById('toc-button');
+  	
+  	if(tocSide){
+		tocSideBTN.style.display='block';
+	}else{
+		tocSideBTN.style.display='none';
+	}
+});
+	}
+	showTOCButton();
+</script>
+<script src="https://sunnote.xyz/js-pkg/BackToTopButton.js"></script>
+<script>addBackToTop({
+		diameter: 40,
+		backgroundColor: 'rgb(172, 214, 255)',
+		textColor: '#fff',
+		scrollDuration: 300,
+		showWhenScrollTopIs: 800
+	})</script>
+
+
+

@@ -6,7 +6,16 @@
     <description>Recent content on Sun 記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Wed, 20 Dec 2023 07:44:38 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 25 Dec 2023 07:44:38 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ASP.NET Core Blazor 實作圖片延遲載入</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/aspnetcore-blazor-lazy-loading/</link>
+      <pubDate>Mon, 25 Dec 2023 07:44:38 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/aspnetcore-blazor-lazy-loading/</guid>
+      <description>&lt;p&gt;紀錄在 Blazor 框架，實作圖片延遲載入的方法。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Blazor WASM SEO - 使用預渲染解決 SPA 網頁爬蟲無法讀取問題 (Prerender.io &amp; Cloudflare Workers 操作流程教學)</title>
       <link>http://sunnote.xyz/zh-tw/tutorials/aspnetcore-blazor-wasm-prerender/</link>
