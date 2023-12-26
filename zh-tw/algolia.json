@@ -2,6 +2,17 @@
 	{
 	
 		
+	  "url": "http://sunnote.xyz/zh-tw/tutorials/aspnetcore-blazor-basic/",
+	  "title": "ASP.NET Core Blazor 基本概念淺談與模型選擇",
+	  "summary": "\u003cp\u003eBlazor 的一些基礎概念，討論 WebAssembly 與 Server 模型優劣。\u003c/p\u003e",
+	  "content": "Blazor 的一些基礎概念，討論 WebAssembly 與 Server 模型優劣。\nBlazor Blazor 是由 Microsoft 所開發的一個用於建立現代 Web 應用程式的框架。最大優點就是開發人員可以直接使用 C# 建立動態、互動性豐富的網頁應用程式。Blazor 在客戶端以 WebAssembly (這項技術讓後端的程式碼能夠以類似 JavaScript 的方式在瀏覽器中運行)技術的方式執行 C# 程序，從而實現高性能的應用程式開發。\n光以上的介紹，應該就足夠以讓平常使用 C# 的後端開發人員有興趣學習了，而我實際學習下來，覺得若已經有一定的 C# 語言基礎，學習曲線可以說是非常平滑，非常建議若想試著學習全端或是對前端還不熟悉的開發人員，可以嘗試以 Blazor 這個框架當作基礎入們。\nBlazor WebAssembly vs. Blazor Server Blazor 提供兩種開發模型選擇，一開始學習時挺苦惱的，來解釋一下兩者有哪些差異。\nBlazor Server Blazor Server\r當進入網站時，前端會透過 SignalR ( C# 實現 WebSocket 雙向通訊功能的套件)與後端伺服器連線，資料主是由後端提供。\n幾個優點為:\n初始的載入速度較 WebAssembly 模式快。 比起 WebAssembly 的靜態網站，Server 模型保有 API 的功能。 缺點:\n因為使用 SignalR 傳遞資訊，若遇到網路不穩或是中途斷線(如果只是瞬間斷線，其瀏覽器會自動重連一次)，網站便無法使用。 使用者需連線才能持續操作網站，連線池數量根據硬體有其上限，也就是說遇到同時大量使用者連線時或許會有問題!? 官網也建議使用 Azure SignalR Service。 此服務允許將 Blazor Server 應用程式向上擴充為大量的並行 SignalR 連線。 看來若是拿來建置大型專案可能是個燒錢的選擇😅。\nBlazor WebAssembly Blazor Webassembly\r可以看到整個架構是直接在用戶端執行，當使用者連線時，即會載入獨立的 Blazor WebAssembly 應用程式，後續的操作都不需要與後端伺服器互動。\n優點為:\n為獨立的，可以想成是直接下載一個應用程式，後續的使用與伺服器無關，若是斷線仍可正常使用。 因為無關後端伺服器，基本上使用者進入網頁後，可以完全運用用戶端資源，而不是依賴伺服器資源。 屬於靜態網站，部署方便。 缺點:\n用戶端需支援 WebAssembly(會越來越普及)。 因為是整個代碼在用戶端被加載，網頁初次載入時需較長時間。 同上，因傳送至用戶端的程式碼無法受到保護，在實作時謹慎考慮代碼內容。 該如何選擇模型 比較兩種模型，其實各有優劣，而劣勢部分也是能使用其他方式解決，例如: Blazor Server 無法連線就無法使用的問題，可用更改代碼為若斷線時，隱藏會跳出的重新連線提示來解決，或是 Blazor WASM 初次載入較耗時也能使用載入特效解決。\n個人認為若專案為後台管理系統，使用人數可預測，需要操作資料庫，Blazor Server 就是一個好的選擇。若專案為小型網站屬於單純顯示資訊性質，就可以選擇 Blazor WASM。\nBlazor Hybrid 又或者若想取兩者之優點，可以選擇以 ASP.NET Core Hosted 的 Blazor WASM Hybrid 模式，簡而言之就是以 WASM 當作前端，後端則是以 .NET Core 提供任何 API 操作。解決了 Blazor Server 需要持續連線還有 WASM 若網站太大預先載入耗時與全部代碼需傳送至用戶端安全性上的問題。\nHybrid 模式可以使用不同的 .NET 原生應用程式架構來建置包括 .NET MAUI、WPF 和 Windows Forms等。而我則是選擇使用 .NET Core API 來建置。要建置這種 Blazor WASM Hosted 的方式很簡單，只要透過 Visual Studio 選擇建置 Blazor WebAssembly 專案，在框架選擇的畫面，勾選 ASP.NET Core Hosted 並創建就行了。 Create Blazor WASM Hybrid Project\r專案結構如下: Blazor WASM Hybrid Project Structure\rBlazorApp1.Client 為 WebAssembly 的部分，主要負責前端畫面顯示。\nBlazorApp1.Server 為後端 Web API 的部分，實作與 ASP.NET Web API 一致，由控制器控管 API。\nBlazorApp1.Shared 為物件存放位置，供 Client 與 Server 使用。\n結論 Blazor 是一個嶄新的框架，靈活性高，高效。非常適合原先使用 C#　語言的開發人員，知道後端工程師對於前端不熟悉的痛點，個人使用過後對於簡單的應用可以在短時間內就能建立一個前後端的應用程式，若想接觸前端或是全端的後端工程師，推薦可以藉由 Blazor 入門。\n參考\nASP.NET Core Blazor 裝載模型 ",
+	  "pubDate": "2023-12-26T07:44:38+08:00",
+	  "cover": "https://sunnote.xyz/img/thumbnail/050.webp"
+
+	}, 
+	{
+	
+		
 	  "url": "http://sunnote.xyz/zh-tw/tutorials/aspnetcore-blazor-lazy-loading/",
 	  "title": "ASP.NET Core Blazor 實作圖片延遲載入",
 	  "summary": "\u003cp\u003e紀錄在 Blazor 框架，實作圖片延遲載入的方法。\u003c/p\u003e",

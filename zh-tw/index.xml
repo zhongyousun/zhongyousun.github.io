@@ -6,7 +6,16 @@
     <description>Recent content on Sun 記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 25 Dec 2023 07:44:38 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Dec 2023 07:44:38 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ASP.NET Core Blazor 基本概念淺談與模型選擇</title>
+      <link>http://sunnote.xyz/zh-tw/tutorials/aspnetcore-blazor-basic/</link>
+      <pubDate>Tue, 26 Dec 2023 07:44:38 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/zh-tw/tutorials/aspnetcore-blazor-basic/</guid>
+      <description>&lt;p&gt;Blazor 的一些基礎概念，討論 WebAssembly 與 Server 模型優劣。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>ASP.NET Core Blazor 實作圖片延遲載入</title>
       <link>http://sunnote.xyz/zh-tw/tutorials/aspnetcore-blazor-lazy-loading/</link>

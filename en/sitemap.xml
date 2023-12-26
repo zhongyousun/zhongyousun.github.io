@@ -2,8 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://sunnote.xyz/tutorials/aspnetcore-blazor-basic/</loc>
+    <lastmod>2023-12-26T11:52:35+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tutorials/aspnetcore-blazor-basic/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tutorials/aspnetcore-blazor-basic/"
+                />
+  </url><url>
     <loc>http://sunnote.xyz/tags/blazor/</loc>
-    <lastmod>2023-12-25T13:44:21+08:00</lastmod>
+    <lastmod>2023-12-26T11:52:35+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -18,7 +33,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/categories/</loc>
-    <lastmod>2023-12-25T13:44:21+08:00</lastmod>
+    <lastmod>2023-12-26T11:52:35+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -33,7 +48,7 @@
                 />
   </url><url>
     <loc>http://sunnote.xyz/tags/csharp/</loc>
-    <lastmod>2023-12-25T13:44:21+08:00</lastmod>
+    <lastmod>2023-12-26T11:52:35+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -45,6 +60,71 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://sunnote.xyz/tags/csharp/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/posts/</loc>
+    <lastmod>2023-12-26T11:52:35+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/posts/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/categories/program/</loc>
+    <lastmod>2023-12-26T11:52:35+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://sunnote.xyz/</loc>
+    <lastmod>2023-12-26T11:52:35+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tags/</loc>
+    <lastmod>2023-12-26T11:52:35+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/"
+                />
+  </url><url>
+    <loc>http://sunnote.xyz/tags/web/</loc>
+    <lastmod>2023-12-26T11:52:35+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://sunnote.xyz/zh-tw/tags/web/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://sunnote.xyz/tags/web/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/aspnetcore-blazor-lazy-loading/</loc>
@@ -77,26 +157,6 @@
                 href="http://sunnote.xyz/tags/javascript/"
                 />
   </url><url>
-    <loc>http://sunnote.xyz/posts/</loc>
-    <lastmod>2023-12-25T13:44:21+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/posts/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/categories/program/</loc>
-    <lastmod>2023-12-25T13:44:21+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>http://sunnote.xyz/tags/seo/</loc>
     <lastmod>2023-12-25T13:44:21+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -110,51 +170,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://sunnote.xyz/tags/seo/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/</loc>
-    <lastmod>2023-12-25T13:44:21+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/tags/</loc>
-    <lastmod>2023-12-25T13:44:21+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/"
-                />
-  </url><url>
-    <loc>http://sunnote.xyz/tags/web/</loc>
-    <lastmod>2023-12-25T13:44:21+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://sunnote.xyz/zh-tw/tags/web/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://sunnote.xyz/tags/web/"
                 />
   </url><url>
     <loc>http://sunnote.xyz/tutorials/aspnetcore-blazor-wasm-prerender/</loc>
