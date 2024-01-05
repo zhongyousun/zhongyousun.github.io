@@ -19,12 +19,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://sunnote.xyz/tutorials/aspnetcore-blazor-basic/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-12-26T07:44:38+08:00" />
-<meta property="article:modified_time" content="2023-12-26T11:52:35+08:00" /><meta property="og:site_name" content="Sun Notes" />
+<meta property="article:modified_time" content="2023-12-27T14:40:16+08:00" /><meta property="og:site_name" content="Sun Notes" />
 <meta property="og:image" content="http://sunnote.xyz/img/thumbnail/050en.webp" />
 		  	
 	<meta itemprop="name" content="ASP.NET Core Blazor Basic Concepts and Hosting Models Selection">
 <meta itemprop="description" content="Some basic concepts of Blazor, discussing the pros and cons of WebAssembly and Server models."><meta itemprop="datePublished" content="2023-12-26T07:44:38+08:00" />
-<meta itemprop="dateModified" content="2023-12-26T11:52:35+08:00" />
+<meta itemprop="dateModified" content="2023-12-27T14:40:16+08:00" />
 <meta itemprop="wordCount" content="947">
 <meta itemprop="keywords" content="Blazor,Csharp,Web," />
 	<meta name="twitter:card" content="summary"/>
@@ -649,7 +649,7 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
         <li><a href="#blazor-webassembly">Blazor WebAssembly</a></li>
       </ul>
     </li>
-    <li><a href="#how-yo-choose-hosting-models">How yo choose Hosting Models</a>
+    <li><a href="#how-to-choose-hosting-models">How to choose Hosting Models</a>
       <ul>
         <li><a href="#blazor-hybrid">Blazor Hybrid</a></li>
       </ul>
@@ -720,7 +720,7 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <li>Because the entire code is loaded on the user side, the web page will take a long time to load for the first time.</li>
 <li>Same as above, since the code sent to the client cannot be protected, please carefully consider the code content during implementation.</li>
 </ul>
-<h2 id="how-yo-choose-hosting-models">How yo choose Hosting Models</h2>
+<h2 id="how-to-choose-hosting-models">How to choose Hosting Models</h2>
 <p>Comparing the two models, in fact, each has its own advantages and disadvantages, and the disadvantages can also be solved in other ways. For example: the problem that Blazor Server cannot be used if it cannot be connected can be changed to hide the reconnect message that will pop up if it is disconnected and if Blazor WASM takes a long time to load for the first time, you can also use loading effects to solve it.</p>
 <p>Personally, I think that if the project is a back-end management system, the number of users is predictable, and the database needs to be operated, Blazor Server is a good choice. If the project is a small website that simply displays information, you can choose Blazor WASM.</p>
 <h3 id="blazor-hybrid">Blazor Hybrid</h3>
@@ -1657,7 +1657,7 @@ document.addEventListener('click', (event) => {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy;  2022-2023 sunnote.
+			&copy;  2022-2024 sunnote.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 
 		</div>

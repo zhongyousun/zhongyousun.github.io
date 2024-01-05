@@ -529,59 +529,73 @@ if (!doNotTrack) {
 			<div class="primary">
 				
 <style>
-  #more {display: none;}
-  #myBtn, .thumbnail{
-  margin: 0 auto;  
-  border-radius: 10px;
-  border: none;
-  transition: 0.5s;
-  animation: jump 1s;
-  animation-iteration-count: infinite;  
+  #more {
+    display: none;
   }
+
+  #myBtn,
+  .thumbnail {
+    margin: 0 auto;
+     
+    border-radius: 10px;
+    border: none;
+    transition: 0.5s;
+    animation: jump 1s;
+    animation-iteration-count: infinite;
+     
+  }
+
   #myBtn:hover {
     animation: jump 1s;
-    cursor: pointer;  
-}
-@keyframes jump {
-  0% {
-    transform: translateY(0);
+    cursor: pointer;
+     
   }
-  50% {
-    transform: translateY(-5px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
 
-#more {
-  display: none;
-  animation-name: fadein;
-  animation-duration: 1s;
-}
+  @keyframes jump {
+    0% {
+      transform: translateY(0);
+    }
 
-@keyframes fadein {
-  from {
-    opacity: 0;
+    50% {
+      transform: translateY(-5px);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
   }
-  to {
-    opacity: 1;
+
+  #more {
+    display: none;
+    animation-name: fadein;
+    animation-duration: 1s;
   }
-}
-@keyframes fadeout {
-  from {
-    opacity: 1;
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
   }
-  to {
-    opacity: 0;
+
+  @keyframes fadeout {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
   }
-}
 </style>
 
 <style>
    
   .thumbnail {
-    display: block; 
+    display: block;
     position: absolute;
     margin-top: -70px;
     margin-left: -30px;
@@ -589,517 +603,515 @@ if (!doNotTrack) {
     height: 100px;
     border-radius: 10px;
     filter: drop-shadow(10px 10px 10px rgb(211, 211, 211));
-    opacity: 0;  
-    transition: opacity 1s;  
-    
-}
+    opacity: 0;
+     
+    transition: opacity 1s;
+     
 
-
-@media (min-width: 800px) {
-	.title:hover + .thumbnail {
-    display: block; 
-    position: absolute;
-    margin-top: -70px;
-    margin-left: -30px;
-    opacity: 1;  
-}
   }
 
+
+  @media (min-width: 800px) {
+    .title:hover+.thumbnail {
+      display: block;
+      position: absolute;
+      margin-top: -70px;
+      margin-left: -30px;
+      opacity: 1;
+       
+    }
+  }
 </style>
 <main class="main" role="main">
-	<article class="post">
-		<header class="post__header">
-			<h1 class="post__title"><svg class="tags__badge icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>Archives</h1>
-			
-			<br>
-			<h6>Total number of articles : <span class="count" style="color: #ACD6FF; font-size: 25px; font-family: 'Courier New', Courier, monospace;">47</span></h6>
-			
-		</header>
-		
-		
+  <article class="post">
+    <header class="post__header">
+      <h1 class="post__title"><svg class="tags__badge icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>Archives</h1>
+      
+      <br>
+      <h6>Total number of articles : <span class="count"
+          style="color: #ACD6FF; font-size: 25px; font-family: 'Courier New', Courier, monospace;">47</span></h6>
+      
+    </header>
+
+    
 	
 
 	<div class="content post__content clearfix">
 
-			
+      
 
-  
-   
-  
-  
-		    <h4>2023</h4><hr>
-        
-        <ul class="archive-list" style = "list-style-type: none;">
-				
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-26   -
+      
+      
+        <h4>2023</h4>
+        <hr>
+
+        <ul class="archive-list" style="list-style-type: none;">
+
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-26 -
             <a href="/tutorials/aspnetcore-blazor-basic/" class="title">ASP.NET Core Blazor Basic Concepts and Hosting Models Selection</a>
             
-              <img src="/img/thumbnail/050en.webp" class="thumbnail">
+            <img src="/img/thumbnail/050en.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-25   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-25 -
             <a href="/tutorials/aspnetcore-blazor-lazy-loading/" class="title">Image Lazy Loading in ASP.NET Core Blazor</a>
             
-              <img src="/img/thumbnail/049en.webp" class="thumbnail">
+            <img src="/img/thumbnail/049en.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-20   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-20 -
             <a href="/tutorials/aspnetcore-blazor-wasm-prerender/" class="title">Blazor WASM SEO - Use pre-rendering to solve the problem that SPA web SEO (Prerender.io &amp; Cloudflare Workers tutorial)</a>
             
-              <img src="/img/thumbnail/048en.webp" class="thumbnail">
+            <img src="/img/thumbnail/048en.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-18   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-18 -
             <a href="/tutorials/aspnetcore-sitemap/" class="title">Create a Sitemap Using ASP.NET Core API &amp; Blazor</a>
             
-              <img src="/img/thumbnail/047en.webp" class="thumbnail">
+            <img src="/img/thumbnail/047en.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-14   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-14 -
             <a href="/tutorials/api-with-synology-nas/" class="title">Use API to connect to Synology NAS services</a>
             
-              <img src="/img/thumbnail/046en.webp" class="thumbnail">
+            <img src="/img/thumbnail/046en.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-07   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-07 -
             <a href="/tutorials/url-querystring-encoding-decoding/" class="title">Understanding URL Query Strings and Encoding/Decoding</a>
             
-              <img src="/img/thumbnail/045en.webp" class="thumbnail">
+            <img src="/img/thumbnail/045en.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-05   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-05 -
             <a href="/tutorials/aspnetcore-6.0-aws-s3/" class="title">Operating Amazon S3 with ASP.NET Core Web API and Blazor</a>
             
-              <img src="/img/thumbnail/044en.webp" class="thumbnail">
+            <img src="/img/thumbnail/044en.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-11-16   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-11-16 -
             <a href="/tutorials/aspnetcore-6.0-blazor-globalization/" class="title">Implementing Multilingual Support in ASP.NET Core Blazor</a>
             
-              <img src="/img/thumbnail/043en.webp" class="thumbnail">
+            <img src="/img/thumbnail/043en.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-11-15   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-11-15 -
             <a href="/book/just-keep-buying/" class="title">The Best Investment Strategy - Just Keep Buying (Book Recommendation)</a>
             
-              <img src="/img/thumbnail/042en.webp" class="thumbnail">
+            <img src="/img/thumbnail/042en.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-10-06   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-10-06 -
             <a href="/life/nasal-septum-inferior-turbinate-hypertrophy-surgery/" class="title">Nasal Septum Straightening &amp; Submucosal Turbinate Reduction Surgery for Nasal Septal Deviation and Inferior Turbinate Hypertrophy</a>
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-08-21   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-08-21 -
             <a href="/tutorials/hugo-auto-update-last-modified/" class="title">Automatically Updating the Last Modified Date of Hugo Posts: Streamlining Management Steps and Enhancing SEO</a>
             
-              <img src="/img/thumbnail/040en.webp" class="thumbnail">
+            <img src="/img/thumbnail/040en.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-08-09   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-08-09 -
             <a href="/life/mk870-hand-rest-unboxing/" class="title">Unboxing the Fuling MK870 Mechanical Keyboard with African Rosewood Wrist Rest</a>
             
-              <img src="/img/thumbnail/039.webp" class="thumbnail">
+            <img src="/img/thumbnail/039.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-08-08   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-08-08 -
             <a href="/tutorials/mongodb-atlas-crud/" class="title">Performing MongoDB Atlas CRUD Operations with .NET 6</a>
             
-              <img src="/img/thumbnail/038en.webp" class="thumbnail">
+            <img src="/img/thumbnail/038en.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-07-25   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-07-25 -
             <a href="/tutorials/cte-lazy-loading-infinite-data-structure/" class="title">Using CTE (Common Table Expression) to achieve lazy loading and querying infinite hierarchical data structure</a>
             
-              <img src="/img/thumbnail/037en.webp" class="thumbnail">
+            <img src="/img/thumbnail/037en.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-06-16   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-06-16 -
             <a href="/tutorials/aspnetcore-6.0-signalr-websocket-2/" class="title">Implementing Real-Time Communication with WebSocket using SignalR and .NET 6 Web API - Part 2</a>
             
-              <img src="/img/thumbnail/034en.webp" class="thumbnail">
+            <img src="/img/thumbnail/034en.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-06-15   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-06-15 -
             <a href="/tutorials/aspnetcore-6.0-signalr-websocket-1/" class="title">Implementing Real-Time Communication with WebSocket using SignalR and .NET 6 Web API - Part 1</a>
             
-              <img src="/img/thumbnail/029en.webp" class="thumbnail">
+            <img src="/img/thumbnail/029en.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-06-13   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-06-13 -
             <a href="/tutorials/database-optimization-clustered-index-nonclustered-index/" class="title">Database Query Performance Optimization Tips : Index Concepts, Clustered, Non-Clustered</a>
             
-              <img src="/img/thumbnail/036en.webp" class="thumbnail">
+            <img src="/img/thumbnail/036en.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-05-29   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-05-29 -
             <a href="/cryptocurrency/exchange-recommendations-value-investing-insights/" class="title">Cryptocurrency Exchanges : User Experience, Value Investing, Diversification of Risk Perspective</a>
             
-              <img src="/img/thumbnail/033en.webp" class="thumbnail">
+            <img src="/img/thumbnail/033en.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-05-10   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-05-10 -
             <a href="/hokkaido/sapporo-dormyinn-kanihonke/" class="title">Hokkaido-Sapporo Travel Diary: Dormy Inn Accommodation and Sapporo Kani Honke Experience</a>
             
-              <img src="/img/thumbnail/032.webp" class="thumbnail">
+            <img src="/img/thumbnail/032.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-05-07   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-05-07 -
             <a href="/hokkaido/hakodate-attractions-lodging/" class="title">Recommended attractions in Hakodate, Hokkaido and review of Hakodate Hotel Banso</a>
             
-              <img src="/img/thumbnail/031.webp" class="thumbnail">
+            <img src="/img/thumbnail/031.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-05-06   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-05-06 -
             <a href="/hokkaido/noboribetsu-jigokudani/" class="title">Self-driving attractions in Hokkaido: Noboribetsu Onsen Jigokudani, Izumi Park, Yunokawa Shrine, and Enmado</a>
             
-              <img src="/img/thumbnail/030.webp" class="thumbnail">
+            <img src="/img/thumbnail/030.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-04-30   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-04-30 -
             <a href="/taiwan/kenting-caesarpark/" class="title">The Experience of Staying at Caesar Park Hotel Kenting - Kenting Street, Attractions, and Bars</a>
             
-              <img src="/img/thumbnail/028kenting.caesarpark_view.webp" class="thumbnail">
+            <img src="/img/thumbnail/028kenting.caesarpark_view.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-04-24   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-04-24 -
             <a href="/tutorials/mongodb-atlas-compass-tips/" class="title">MongoDB Atlas Basic Concepts &amp; Using Compass to Connect MongoDB</a>
             
-              <img src="/img/thumbnail/026en.webp" class="thumbnail">
+            <img src="/img/thumbnail/026en.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-03-29   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-03-29 -
             <a href="/tutorials/database-optimization-index-tips/" class="title">Database Query Performance Optimization Tips : Statement Optimization, Adding Indexes</a>
             
-              <img src="/img/thumbnail/025en.webp" class="thumbnail">
+            <img src="/img/thumbnail/025en.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-03-22   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-03-22 -
             <a href="/tutorials/dark-mode-tips-hugo/" class="title">Designing and Implementing Dark Mode in Hugo</a>
             
-              <img src="/img/thumbnail/024en.webp" class="thumbnail">
+            <img src="/img/thumbnail/024en.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-03-20   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-03-20 -
             <a href="/tutorials/sql-scopeidentity-identity-diff/" class="title">SQL SCOPE_IDENTITY() and @@IDENTITY Differences in Retrieving Auto-Increment Values</a>
             
-              <img src="/img/thumbnail/023en.png" class="thumbnail">
+            <img src="/img/thumbnail/023en.png" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-03-06   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-03-06 -
             <a href="/tutorials/jwt-authentication-mechanism/" class="title">JWT Authentication Mechanism Principles and Implementation Examples (C#) </a>
             
-              <img src="/img/thumbnail/022en.png" class="thumbnail">
+            <img src="/img/thumbnail/022en.png" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-02-22   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-02-22 -
             <a href="/tutorials/hugo-related-posts-supports-carousel-display/" class="title">Implementing Recommended Posts and Carousel Display in Hugo</a>
             
-              <img src="/img/thumbnail/021en.png" class="thumbnail">
+            <img src="/img/thumbnail/021en.png" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-02-16   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-02-16 -
             <a href="/tutorials/hugo-multiple-comments/" class="title">Implementing Multiple Comment Sections in a Static Website Generated by Hugo</a>
             
-              <img src="/img/thumbnail/020en.png" class="thumbnail">
+            <img src="/img/thumbnail/020en.png" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-02-14   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-02-14 -
             <a href="/life/valentine-gift-marimo/" class="title">Valentine&#39;s Day Gift Idea: Marimo Moss Ball (Basic Introduction, Care Instructions, and Symbolic Meaning)</a>
             
-              <img src="/img/thumbnail/019mario.jpg" class="thumbnail">
+            <img src="/img/thumbnail/019mario.jpg" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-02-07   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-02-07 -
             <a href="/tutorials/sql-partition-by/" class="title">SQL-implement data partitioning (partition by)</a>
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-01-19   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-01-19 -
             <a href="/tutorials/csharp-multithreading/" class="title">C# Multi-threading principle, asynchronous usage and parameter with custom objects</a>
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-01-15   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-01-15 -
             <a href="/tutorials/csharp-enum/" class="title">C# Enum Usage Record</a>
             
-            </li>
-		      
+          </li>
+          
+          
+        </ul>
         
-    	</ul>
-      
 
-  
-   
-  
-  
-  <span id="dots"></span>
-  <span id="more">
       
-		    <h4>2022</h4><hr>
-        
-        <ul class="archive-list" style = "list-style-type: none;">
-				
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-22   -
+      
+        <h4>2022</h4>
+        <hr>
+
+        <ul class="archive-list" style="list-style-type: none;">
+
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-22 -
             <a href="/tutorials/sql-merge-into-statement/" class="title">SQL-merge into statement</a>
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-04   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-04 -
             <a href="/tutorials/leetcode-lru-cache-medium-python/" class="title">Leetcode(Medium) 146. LRU Cache (Python)</a>
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-04   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-04 -
             <a href="/cebu/residential_area/" class="title">Cebu Residential Area Strolling</a>
             
-              <img src="/img/thumbnail/015Cabantan_Street.jpg" class="thumbnail">
+            <img src="/img/thumbnail/015Cabantan_Street.jpg" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-03   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-03 -
             <a href="/cebu/bohol-island-day-tour-tarsier-chocolate-hills/" class="title">Cebu-Bohol island Day Tour (Tarsier &amp; Chocolate Hills)</a>
             
-              <img src="/img/thumbnail/014IMG_1491.jpeg" class="thumbnail">
+            <img src="/img/thumbnail/014IMG_1491.jpeg" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-02   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-02 -
             <a href="/cebu/jeepney-anjo-world-theme-park-day-trip/" class="title">Philippines Jeepney &amp; Cebu Anjo World Theme Park Day Trip</a>
             
-              <img src="/img/thumbnail/012IMG_1129.jpeg" class="thumbnail">
+            <img src="/img/thumbnail/012IMG_1129.jpeg" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-01   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-01 -
             <a href="/cebu/simala-church-day-trip/" class="title">Cebu-Simala Church Day Trip</a>
             
-              <img src="/img/thumbnail/013IMG_0563.jpeg" class="thumbnail">
+            <img src="/img/thumbnail/013IMG_0563.jpeg" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-30   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-30 -
             <a href="/cebu/christmas-in-cebu/" class="title">Christmas in Cebu</a>
             
-              <img src="/img/thumbnail/011IMG_0714.jpeg" class="thumbnail">
+            <img src="/img/thumbnail/011IMG_0714.jpeg" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-30   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-30 -
             <a href="/cebu/daily-life-part2/" class="title">Study tour in Cebu - Daily life Part 2</a>
             
-              <img src="/img/thumbnail/010.IMG_1727.jpeg" class="thumbnail">
+            <img src="/img/thumbnail/010.IMG_1727.jpeg" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-30   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-30 -
             <a href="/cebu/daily-life-part1/" class="title">Study tour in Cebu - Daily life Part 1</a>
             
-              <img src="/img/thumbnail/009.IMG_0720.jpeg" class="thumbnail">
+            <img src="/img/thumbnail/009.IMG_0720.jpeg" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-29   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-29 -
             <a href="/cebu/pre-departure-mood-record/" class="title">Study tour in Cebu - pre-departure mood record</a>
             
-            </li>
-		      
+          </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </ul>
         
-		      
-        
-		      
-        
-		      
-        
-		      
-        
-    	</ul>
-      
-		</div>
+    </div>
 
-  </span>
-  <hr>
-  <button class="tags__link btn" onclick="myFunction()" id="myBtn">Show more . . .</button>
-	</article>
+    </span>
+    <hr>
+    
+  </article>
 </main>
 <script>
   function myFunction() {
     var dots = document.getElementById("dots");
     var moreText = document.getElementById("more");
     var btnText = document.getElementById("myBtn");
-  
+
     if (dots.style.display === "none") {
       dots.style.display = "inline";
-      btnText.innerHTML = "Show more"; 
+      btnText.innerHTML = "Show more";
       moreText.style.display = "none";
       moreText.style.animation = "fadeout 1s"; 
     } else {
       dots.style.display = "none";
-      btnText.innerHTML = "Show less"; 
+      btnText.innerHTML = "Show less";
       moreText.style.display = "inline";
       moreText.style.animation = "fadein 2s"; 
     }
   }
-  </script>
-  
+</script>
+
 
 
 
@@ -1234,7 +1246,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy;  2022-2023 sunnote.
+			&copy;  2022-2024 sunnote.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 
 		</div>

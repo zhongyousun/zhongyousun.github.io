@@ -529,59 +529,73 @@ if (!doNotTrack) {
 			<div class="primary">
 				
 <style>
-  #more {display: none;}
-  #myBtn, .thumbnail{
-  margin: 0 auto;  
-  border-radius: 10px;
-  border: none;
-  transition: 0.5s;
-  animation: jump 1s;
-  animation-iteration-count: infinite;  
+  #more {
+    display: none;
   }
+
+  #myBtn,
+  .thumbnail {
+    margin: 0 auto;
+     
+    border-radius: 10px;
+    border: none;
+    transition: 0.5s;
+    animation: jump 1s;
+    animation-iteration-count: infinite;
+     
+  }
+
   #myBtn:hover {
     animation: jump 1s;
-    cursor: pointer;  
-}
-@keyframes jump {
-  0% {
-    transform: translateY(0);
+    cursor: pointer;
+     
   }
-  50% {
-    transform: translateY(-5px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
 
-#more {
-  display: none;
-  animation-name: fadein;
-  animation-duration: 1s;
-}
+  @keyframes jump {
+    0% {
+      transform: translateY(0);
+    }
 
-@keyframes fadein {
-  from {
-    opacity: 0;
+    50% {
+      transform: translateY(-5px);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
   }
-  to {
-    opacity: 1;
+
+  #more {
+    display: none;
+    animation-name: fadein;
+    animation-duration: 1s;
   }
-}
-@keyframes fadeout {
-  from {
-    opacity: 1;
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
   }
-  to {
-    opacity: 0;
+
+  @keyframes fadeout {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
   }
-}
 </style>
 
 <style>
    
   .thumbnail {
-    display: block; 
+    display: block;
     position: absolute;
     margin-top: -70px;
     margin-left: -30px;
@@ -589,563 +603,561 @@ if (!doNotTrack) {
     height: 100px;
     border-radius: 10px;
     filter: drop-shadow(10px 10px 10px rgb(211, 211, 211));
-    opacity: 0;  
-    transition: opacity 1s;  
-    
-}
+    opacity: 0;
+     
+    transition: opacity 1s;
+     
 
-
-@media (min-width: 800px) {
-	.title:hover + .thumbnail {
-    display: block; 
-    position: absolute;
-    margin-top: -70px;
-    margin-left: -30px;
-    opacity: 1;  
-}
   }
 
+
+  @media (min-width: 800px) {
+    .title:hover+.thumbnail {
+      display: block;
+      position: absolute;
+      margin-top: -70px;
+      margin-left: -30px;
+      opacity: 1;
+       
+    }
+  }
 </style>
 <main class="main" role="main">
-	<article class="post">
-		<header class="post__header">
-			<h1 class="post__title"><svg class="tags__badge icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>文章歸檔</h1>
-			
-			<br>
-			<h6>總文章數 : <span class="count" style="color: #ACD6FF; font-size: 25px; font-family: 'Courier New', Courier, monospace;">53</span></h6>
-			
-		</header>
-		
-		
+  <article class="post">
+    <header class="post__header">
+      <h1 class="post__title"><svg class="tags__badge icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>文章歸檔</h1>
+      
+      <br>
+      <h6>總文章數 : <span class="count"
+          style="color: #ACD6FF; font-size: 25px; font-family: 'Courier New', Courier, monospace;">53</span></h6>
+      
+    </header>
+
+    
 	
 
 	<div class="content post__content clearfix">
 
-			
+      
 
-  
-   
-  
-  
-		    <h4>2023</h4><hr>
-        
-        <ul class="archive-list" style = "list-style-type: none;">
-				
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-26   -
+      
+      
+        <h4>2023</h4>
+        <hr>
+
+        <ul class="archive-list" style="list-style-type: none;">
+
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-26 -
             <a href="/zh-tw/tutorials/aspnetcore-blazor-basic/" class="title">ASP.NET Core Blazor 基本概念淺談與模型選擇</a>
             
-              <img src="/img/thumbnail/050.webp" class="thumbnail">
+            <img src="/img/thumbnail/050.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-25   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-25 -
             <a href="/zh-tw/tutorials/aspnetcore-blazor-lazy-loading/" class="title">ASP.NET Core Blazor 實作圖片延遲載入</a>
             
-              <img src="/img/thumbnail/049.webp" class="thumbnail">
+            <img src="/img/thumbnail/049.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-20   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-20 -
             <a href="/zh-tw/tutorials/aspnetcore-blazor-wasm-prerender/" class="title">Blazor WASM SEO - 使用預渲染解決 SPA 網頁爬蟲無法讀取問題 (Prerender.io &amp; Cloudflare Workers 操作流程教學)</a>
             
-              <img src="/img/thumbnail/048.webp" class="thumbnail">
+            <img src="/img/thumbnail/048.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-18   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-18 -
             <a href="/zh-tw/tutorials/aspnetcore-sitemap/" class="title">使用 ASP.NET Core API &amp; Blazor 產生 Sitemap</a>
             
-              <img src="/img/thumbnail/047.webp" class="thumbnail">
+            <img src="/img/thumbnail/047.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-14   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-14 -
             <a href="/zh-tw/tutorials/api-with-synology-nas/" class="title">使用 API 串接 Synology NAS 服務</a>
             
-              <img src="/img/thumbnail/046.webp" class="thumbnail">
+            <img src="/img/thumbnail/046.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-07   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-07 -
             <a href="/zh-tw/tutorials/url-querystring-encoding-decoding/" class="title">URL 查詢字串與編、解碼淺談</a>
             
-              <img src="/img/thumbnail/045.webp" class="thumbnail">
+            <img src="/img/thumbnail/045.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-05   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-12-05 -
             <a href="/zh-tw/tutorials/aspnetcore-6.0-aws-s3/" class="title">ASP.NET Core Web API &amp; Blazor 實作Amazon S3 檔案串接</a>
             
-              <img src="/img/thumbnail/044.webp" class="thumbnail">
+            <img src="/img/thumbnail/044.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-11-16   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-11-16 -
             <a href="/zh-tw/tutorials/aspnetcore-6.0-blazor-globalization/" class="title">ASP.NET Core Blazor 實作多國語系</a>
             
-              <img src="/img/thumbnail/043.webp" class="thumbnail">
+            <img src="/img/thumbnail/043.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-11-15   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-11-15 -
             <a href="/zh-tw/book/just-keep-buying/" class="title">投資的最佳實證方法-持續買進(好書推薦)</a>
             
-              <img src="/img/thumbnail/042.webp" class="thumbnail">
+            <img src="/img/thumbnail/042.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-10-06   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-10-06 -
             <a href="/zh-tw/life/nasal-septum-inferior-turbinate-hypertrophy-surgery/" class="title">鼻中膈成形&#43;下鼻甲氣化棒減積手術分享(鼻中膈彎曲&#43;下鼻甲肥大)</a>
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-08-21   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-08-21 -
             <a href="/zh-tw/tutorials/hugo-auto-update-last-modified/" class="title">Hugo 自動更新文章最後修改日期:簡化管理步驟、提升SEO</a>
             
-              <img src="/img/thumbnail/040.webp" class="thumbnail">
+            <img src="/img/thumbnail/040.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-08-09   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-08-09 -
             <a href="/zh-tw/life/mk870-hand-rest-unboxing/" class="title">開箱腹靈MK870機械鍵盤與非洲花梨木質手托</a>
             
-              <img src="/img/thumbnail/039.webp" class="thumbnail">
+            <img src="/img/thumbnail/039.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-08-08   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-08-08 -
             <a href="/zh-tw/tutorials/mongodb-atlas-crud/" class="title">使用 .NET 6 進行 MongoDB Atlas CRUD 操作</a>
             
-              <img src="/img/thumbnail/038.webp" class="thumbnail">
+            <img src="/img/thumbnail/038.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-07-25   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-07-25 -
             <a href="/zh-tw/tutorials/cte-lazy-loading-infinite-data-structure/" class="title">使用CTE（Common Table Expression）實現延遲加載(Lazy loading)與查詢無限層資料結構</a>
             
-              <img src="/img/thumbnail/037.webp" class="thumbnail">
+            <img src="/img/thumbnail/037.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-06-16   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-06-16 -
             <a href="/zh-tw/tutorials/aspnetcore-6.0-signalr-websocket-2/" class="title">.NET 6 Web API 使用SignalR實作WebSocket技術實現即時通訊-2</a>
             
-              <img src="/img/thumbnail/034.webp" class="thumbnail">
+            <img src="/img/thumbnail/034.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-06-15   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-06-15 -
             <a href="/zh-tw/tutorials/aspnetcore-6.0-signalr-websocket-1/" class="title">.NET 6 Web API 使用SignalR實作WebSocket技術實現即時通訊-1</a>
             
-              <img src="/img/thumbnail/029.webp" class="thumbnail">
+            <img src="/img/thumbnail/029.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-06-13   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-06-13 -
             <a href="/zh-tw/tutorials/database-optimization-clustered-index-nonclustered-index/" class="title">資料庫查詢性能優化技巧:索引概念、叢集、非叢集</a>
             
-              <img src="/img/thumbnail/036.webp" class="thumbnail">
+            <img src="/img/thumbnail/036.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-05-29   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-05-29 -
             <a href="/zh-tw/cryptocurrency/exchange-recommendations-value-investing-insights/" class="title">虛擬貨幣 交易所推薦 : 分享使用體驗、價值投資、分散風險觀念</a>
             
-              <img src="/img/thumbnail/033.webp" class="thumbnail">
+            <img src="/img/thumbnail/033.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-05-10   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-05-10 -
             <a href="/zh-tw/hokkaido/sapporo-dormyinn-kanihonke/" class="title">北海道-札幌遊記 Dormy Inn 住宿與螃蟹本家體驗</a>
             
-              <img src="/img/thumbnail/032.webp" class="thumbnail">
+            <img src="/img/thumbnail/032.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-05-07   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-05-07 -
             <a href="/zh-tw/hokkaido/hakodate-attractions-lodging/" class="title">北海道-函館景點推薦與萬總飯店(Hakodate Hotel Banso)評價</a>
             
-              <img src="/img/thumbnail/031.webp" class="thumbnail">
+            <img src="/img/thumbnail/031.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-05-06   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-05-06 -
             <a href="/zh-tw/hokkaido/noboribetsu-jigokudani/" class="title">北海道自駕景點推薦 : 登別地獄谷、泉源公園、湯澤神社、閻魔堂</a>
             
-              <img src="/img/thumbnail/030.webp" class="thumbnail">
+            <img src="/img/thumbnail/030.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-04-30   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-04-30 -
             <a href="/zh-tw/taiwan/kenting-caesarpark/" class="title">墾丁凱薩大飯店住宿體驗-墾丁大街、景點、酒吧</a>
             
-              <img src="/img/thumbnail/028kenting.caesarpark_view.webp" class="thumbnail">
+            <img src="/img/thumbnail/028kenting.caesarpark_view.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-04-24   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-04-24 -
             <a href="/zh-tw/tutorials/mongodb-atlas-compass-tips/" class="title">MongoDB Atlas 資料庫基礎觀念、操作流程與使用 Compass 連線</a>
             
-              <img src="/img/thumbnail/026.webp" class="thumbnail">
+            <img src="/img/thumbnail/026.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-03-29   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-03-29 -
             <a href="/zh-tw/tutorials/database-optimization-index-tips/" class="title">資料庫查詢性能優化技巧 : 語句優化、添加索引</a>
             
-              <img src="/img/thumbnail/025.webp" class="thumbnail">
+            <img src="/img/thumbnail/025.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-03-22   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-03-22 -
             <a href="/zh-tw/tutorials/dark-mode-tips-hugo/" class="title">黑暗模式(dark mode)設計與Hugo實作</a>
             
-              <img src="/img/thumbnail/024.webp" class="thumbnail">
+            <img src="/img/thumbnail/024.webp" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-03-20   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-03-20 -
             <a href="/zh-tw/tutorials/sql-scopeidentity-identity-diff/" class="title">SQL SCOPE_IDENTITY() 與 @@IDENTITY 取得自動增量值差異</a>
             
-              <img src="/img/thumbnail/023.png" class="thumbnail">
+            <img src="/img/thumbnail/023.png" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-03-06   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-03-06 -
             <a href="/zh-tw/tutorials/jwt-authentication-mechanism/" class="title">JWT 驗證機制原理與實作範例 (C#)</a>
             
-              <img src="/img/thumbnail/022.png" class="thumbnail">
+            <img src="/img/thumbnail/022.png" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-02-22   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-02-22 -
             <a href="/zh-tw/tutorials/hugo-related-posts-supports-carousel-display/" class="title">Hugo 實現推薦文章功能與輪播顯示</a>
             
-              <img src="/img/thumbnail/021.png" class="thumbnail">
+            <img src="/img/thumbnail/021.png" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-02-16   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-02-16 -
             <a href="/zh-tw/tutorials/hugo-multiple-comments/" class="title">Hugo 實現提供多種留言版選擇</a>
             
-              <img src="/img/thumbnail/020.png" class="thumbnail">
+            <img src="/img/thumbnail/020.png" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-02-14   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-02-14 -
             <a href="/zh-tw/life/valentine-gift-marimo/" class="title">情人節就送這個當禮物:綠藻球Marimo (基本介紹、飼養方式、象徵意義)</a>
             
-              <img src="/img/thumbnail/019mario.jpg" class="thumbnail">
+            <img src="/img/thumbnail/019mario.jpg" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-02-07   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-02-07 -
             <a href="/zh-tw/tutorials/sql-partition-by/" class="title">SQL-partition by 實現資料分組</a>
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-01-19   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-01-19 -
             <a href="/zh-tw/tutorials/csharp-multithreading/" class="title">C# 多執行緒原理、非同步用法與帶入自定義物件</a>
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-01-15   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2023-01-15 -
             <a href="/zh-tw/tutorials/csharp-enum/" class="title">C# Enum(枚舉) 用法紀錄</a>
             
-            </li>
-		      
+          </li>
+          
+          
+        </ul>
         
-    	</ul>
-      
 
-  
-   
-  
-  
-  <span id="dots"></span>
-  <span id="more">
       
-		    <h4>2022</h4><hr>
-        
-        <ul class="archive-list" style = "list-style-type: none;">
-				
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-22   -
+      
+        <h4>2022</h4>
+        <hr>
+
+        <ul class="archive-list" style="list-style-type: none;">
+
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-22 -
             <a href="/zh-tw/tutorials/sql-merge-into-statement/" class="title">SQL-merge into 語法紀錄</a>
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-04   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-04 -
             <a href="/zh-tw/tutorials/leetcode-lru-cache-medium-python/" class="title">Leetcode(Medium) 146. LRU Cache (Python)</a>
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-04   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-04 -
             <a href="/zh-tw/cebu/residential_area/" class="title">深入宿霧住宅區</a>
             
-              <img src="/img/thumbnail/015Cabantan_Street.jpg" class="thumbnail">
+            <img src="/img/thumbnail/015Cabantan_Street.jpg" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-03   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-03 -
             <a href="/zh-tw/cebu/bohol-island-day-tour-tarsier-chocolate-hills/" class="title">宿霧-薄荷島一日遊(眼鏡猴 &#43; 巧克力山)</a>
             
-              <img src="/img/thumbnail/014IMG_1491.jpeg" class="thumbnail">
+            <img src="/img/thumbnail/014IMG_1491.jpeg" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-02   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-02 -
             <a href="/zh-tw/cebu/jeepney-anjo-world-theme-park-day-trip/" class="title">菲律賓吉普尼體驗&#43;宿霧主題樂園一日遊</a>
             
-              <img src="/img/thumbnail/012IMG_1129.jpeg" class="thumbnail">
+            <img src="/img/thumbnail/012IMG_1129.jpeg" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-01   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-12-01 -
             <a href="/zh-tw/cebu/simala-church-day-trip/" class="title">宿霧-希瑪拉教堂(Simala Church)一日遊</a>
             
-              <img src="/img/thumbnail/013IMG_0563.jpeg" class="thumbnail">
+            <img src="/img/thumbnail/013IMG_0563.jpeg" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-30   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-30 -
             <a href="/zh-tw/cebu/christmas-in-cebu/" class="title">在宿霧的聖誕氣氛</a>
             
-              <img src="/img/thumbnail/011IMG_0714.jpeg" class="thumbnail">
+            <img src="/img/thumbnail/011IMG_0714.jpeg" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-30   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-30 -
             <a href="/zh-tw/cebu/daily-life-part2/" class="title">宿霧遊學-日常生活(二)</a>
             
-              <img src="/img/thumbnail/010.IMG_1727.jpeg" class="thumbnail">
+            <img src="/img/thumbnail/010.IMG_1727.jpeg" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-30   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-30 -
             <a href="/zh-tw/cebu/daily-life-part1/" class="title">宿霧遊學-日常生活(一)</a>
             
-              <img src="/img/thumbnail/009.IMG_0720.jpeg" class="thumbnail">
+            <img src="/img/thumbnail/009.IMG_0720.jpeg" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-29   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-29 -
             <a href="/zh-tw/cebu/pre-departure-mood-record/" class="title">宿霧遊學-行前心情紀錄</a>
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-29   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-29 -
             <a href="/zh-tw/%E8%8B%B1%E6%96%87%E5%BE%88%E7%88%9B%E8%83%BD%E5%8E%BB%E5%BF%B5%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E5%97%8E%E6%95%88%E7%9B%8A%E8%A9%95%E4%BC%B0/" class="title">英文很爛能去念語言學校嗎(效益評估)</a>
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-29   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-29 -
             <a href="/zh-tw/%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E7%B4%80%E9%8C%84-%E8%A9%B2%E9%81%B8%E5%93%AA%E9%96%93%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E5%91%A2/" class="title">語言學校紀錄-該選哪間語言學校呢</a>
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-28   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-28 -
             <a href="/zh-tw/%E6%AD%90%E7%BE%8E%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1-vs-%E8%8F%B2%E5%BE%8B%E8%B3%93%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1/" class="title">歐美語言學校 vs 菲律賓語言學校</a>
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-28   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-28 -
             <a href="/zh-tw/%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E7%B4%80%E9%8C%84-%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E5%8E%BB%E8%8F%B2%E5%BE%8B%E8%B3%93%E5%BF%B5%E8%8B%B1%E6%96%87/" class="title">語言學校紀錄-為什麼要去菲律賓念英文?</a>
             
-              <img src="/img/thumbnail/3.%e8%aa%9e%e8%a8%80%e5%ad%b8%e6%a0%a1%e7%b4%80%e9%8c%84-%e7%82%ba%e4%bb%80%e9%ba%bc%e8%a6%81%e5%8e%bb%e8%8f%b2%e5%be%8b%e8%b3%93%e5%bf%b5%e8%8b%b1%e6%96%87.jpg" class="thumbnail">
+            <img src="/img/thumbnail/3.%e8%aa%9e%e8%a8%80%e5%ad%b8%e6%a0%a1%e7%b4%80%e9%8c%84-%e7%82%ba%e4%bb%80%e9%ba%bc%e8%a6%81%e5%8e%bb%e8%8f%b2%e5%be%8b%e8%b3%93%e5%bf%b5%e8%8b%b1%e6%96%87.jpg" class="thumbnail">
             
-            </li>
-		      
-        
-		      	
-            <li class >
-				  <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-24   -
+          </li>
+          
+          
+          
+          <li class>
+            <svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>2022-11-24 -
             <a href="/zh-tw/%E5%A4%9A%E7%9B%8A350~690%E7%B6%93%E9%A9%97%E5%88%86%E4%BA%AB/" class="title">多益350~690經驗分享</a>
             
-              <img src="/https://janstockcoin.com/wp-content/uploads/2021/06/pexels-photo-747964-2048x1293.jpeg" class="thumbnail">
+            <img src="/https://janstockcoin.com/wp-content/uploads/2021/06/pexels-photo-747964-2048x1293.jpeg" class="thumbnail">
             
-            </li>
-		      
+          </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </ul>
         
-		      
-        
-		      
-        
-		      
-        
-		      
-        
-		      
-        
-    	</ul>
-      
-		</div>
+    </div>
 
-  </span>
-  <hr>
-  <button class="tags__link btn" onclick="myFunction()" id="myBtn">Show more . . .</button>
-	</article>
+    </span>
+    <hr>
+    
+  </article>
 </main>
 <script>
   function myFunction() {
     var dots = document.getElementById("dots");
     var moreText = document.getElementById("more");
     var btnText = document.getElementById("myBtn");
-  
+
     if (dots.style.display === "none") {
       dots.style.display = "inline";
-      btnText.innerHTML = "Show more"; 
+      btnText.innerHTML = "Show more";
       moreText.style.display = "none";
       moreText.style.animation = "fadeout 1s"; 
     } else {
       dots.style.display = "none";
-      btnText.innerHTML = "Show less"; 
+      btnText.innerHTML = "Show less";
       moreText.style.display = "inline";
       moreText.style.animation = "fadein 2s"; 
     }
   }
-  </script>
-  
+</script>
+
 
 
 
@@ -1286,7 +1298,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy;  2022-2023 sunnote.
+			&copy;  2022-2024 sunnote.
 			<span class="footer__copyright-credits">使用 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 技術與 <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>主題</span>
 
 		</div>
