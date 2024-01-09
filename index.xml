@@ -6,7 +6,16 @@
     <description>Recent content on Sun Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 26 Dec 2023 07:44:38 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Jan 2024 07:44:38 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ASP.NET Core API &amp; Blazor Implements Caching Mechanism to Improve Performance</title>
+      <link>http://sunnote.xyz/tutorials/aspnetcore-blazor-cache/</link>
+      <pubDate>Tue, 09 Jan 2024 07:44:38 +0800</pubDate>
+      
+      <guid>http://sunnote.xyz/tutorials/aspnetcore-blazor-cache/</guid>
+      <description>&lt;p&gt;What is caching ? A basic introduction to the caching mechanism and records how to use the ASP.NET Core API to implement the caching mechanism.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>ASP.NET Core Blazor Basic Concepts and Hosting Models Selection</title>
       <link>http://sunnote.xyz/tutorials/aspnetcore-blazor-basic/</link>

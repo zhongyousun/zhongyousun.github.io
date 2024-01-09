@@ -2,6 +2,17 @@
 	{
 	
 		
+	  "url": "http://sunnote.xyz/zh-tw/tutorials/aspnetcore-blazor-cache/",
+	  "title": "ASP.NET Core API \u0026 Blazor 實作快取機制提升效能",
+	  "summary": "\u003cp\u003e何謂快取? 一些基本介紹與紀錄使用 ASP.NET Core API 實作快取機制。\u003c/p\u003e",
+	  "content": "何謂快取? 一些基本介紹與紀錄使用 ASP.NET Core API 實作快取機制。\n前言 最近的專案，因為有大量縮圖與計算，導致每次畫面呈現的速度，都達不到想要的水準，除了本身代碼與 T-SQL 的優化、還可以藉由懶加載 ( Lazy loading ) 等，達到提升資料讀取速度的效果。\n除了這些方式，還能藉由快取，達到更好的性能，此文章紀錄使用 Blazor WASM 架構與 ASP.NET Core API 建立快取機制。\n快取機制 說到快取(緩存)，可以理解為使用或是讀取預先存放好的資料，因為不用重新從資料庫或是伺服器取得檔案，速度可以有效提升，降低網站負荷。\n如果網站為靜態網站，或是有大量靜態資源的需求，若每次使用者進入網站，都需要讀取一次資源，那勢必會有流暢度的問題，這時若使用 CDN（Content Delivery Network）服務，藉由分布於全球的伺服器節點組成的網路，就能有效提升靜態資源的傳輸速度與性能，這其中就有用到快取的技術，藉由預先存放靜態資源在各地，達到高效傳輸。\n而若是在後端 API 的部分，也能使用類似的快取機制達到高效傳輸，預先存放資料的位置則是存放在記憶體中。本篇將介紹如何使用 MemoryCache 類進行緩存，若是大型網站或是分散式系統可使用 IDistributedCache 類等之後有機會再研究。\n使用時機 若要使用 MemoryCache 類進行緩存，因資料存放於記憶體，若應用程式關閉或重啟、系統故障，或是系統本身對於內存進行管理與優化，都會造成存放的資料消失。所以快取並不建議存放重要資料，或是頻繁變動的資料以致網站內容資訊不正確。\n以本篇為例，專案網站在首頁會顯示封面圖，而因為封面圖並不會頻繁更新，且資料也已儲存在資料庫與AWS S3，所以預先儲存在快取，就是一個不錯的方式以提升使用者載入首頁的速度。\n代碼 架構不管是 Blazor WASM 還是 一般的 Web API 都是對控制器內的 API 進行修改。 代碼如下:\n1using Microsoft.Extensions.Caching.Memory; 2namespace BlazorApp.Server.Controllers 3{ 4 [Route(\u0026#34;api/[controller]\u0026#34;)] 5 [ApiController] 6 public class StorageController : ControllerBase 7 { 8 private readonly IStorageService _storageService; 9 private readonly IMemoryCache _cache; 10 11 public StorageController(IStorageService storageService, IMemoryCache memoryCache) 12 { 13 _storageService = storageService; 14 _cache = memoryCache; 15 } 16 17 [HttpGet(\u0026#34;logo/admin-no-cache\u0026#34;)] 18 public async Task\u0026lt;List\u0026lt;S3FileInfo\u0026gt;\u0026gt; GetLogoFileNoCache() 19 { 20 List\u0026lt;S3FileInfo\u0026gt; FileInfo = await _storageService.GetFileByKeyAsync(); 21 return FileInfo; 22 } 23 24 [HttpGet(\u0026#34;logo\u0026#34;)] 25 public async Task\u0026lt;List\u0026lt;S3FileInfo\u0026gt;\u0026gt; GetLogoFile() 26 { 27 string cacheKey = \u0026#34;logo\u0026#34;; 28 if (!_cache.TryGetValue\u0026lt;List\u0026lt;S3FileInfo\u0026gt;\u0026gt;(cacheKey, out List\u0026lt;S3FileInfo\u0026gt; cachedData)) 29 { 30 List\u0026lt;S3FileInfo\u0026gt; FileInfo = await _storageService.GetFileByKeyAsync(); 31 cachedData = FileInfo; 32 33 _cache.Set(cacheKey, cachedData, TimeSpan.FromHours(24)); 34 } 35 return cachedData; 36 } 37 } 38} 有兩支 API，一支為logo/admin-no-cache為管理員使用，針對管理員需當下確認資料正確性，為無快取版本。\n另一支為logo，供首頁載入時使用，邏輯為設定快取的Key為logo，每次呼叫時，需確認快取是否有包含Key為logo的資料， 若有則取用，若無則重新取得資料。\n_cache.Set(cacheKey, cachedData, TimeSpan.FromHours(24));\n在取得資料後，儲存資料至快取，並設定24小時候過期。也就是說每過了24小時，快取就會消失，之後的第一個讀取網站的人，載入速度就會回歸正常，因為必須重新讀取資料，而之後的每位使用者就還是一樣的高效快速。😎\n移除快取 有時也有清除快取的需求，例如資料更新後清除快取以讓使用者看到即時內容。\n移除特定快取代碼:\n_cache.Remove(\u0026#34;logo\u0026#34;); 移除所有快取代碼:\n_cache.Dispose(); 結論 以上就是如何使用 ASP.NET Core 實作內存快取機制，個人是把需要快取的資料分為兩支 API，比較好分類，實際可依照需求增加判斷決定是否取得快取資料或是實際資料。網站若是使用雲端資料庫或是 S3 等服務，如果能好好善用快取，相信可以減少許多傳輸資料的花費呢。😎\n",
+	  "pubDate": "2024-01-09T07:44:38+08:00",
+	  "cover": "https://sunnote.xyz/img/thumbnail/051.webp"
+
+	}, 
+	{
+	
+		
 	  "url": "http://sunnote.xyz/zh-tw/tutorials/aspnetcore-blazor-basic/",
 	  "title": "ASP.NET Core Blazor 基本概念淺談與模型選擇",
 	  "summary": "\u003cp\u003eBlazor 的一些基礎概念，討論 WebAssembly 與 Server 模型優劣。\u003c/p\u003e",
