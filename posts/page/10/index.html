@@ -567,6 +567,10 @@ if (!doNotTrack) {
 		display: flex;
 		justify-content: center;
 	}
+	.pagination-wrapper-mobile .pagination{
+		display: flex;
+		justify-content: center;
+	}
 
 	.pagination__item {
 		border-radius: 10px;
@@ -574,17 +578,38 @@ if (!doNotTrack) {
 
 	.pagination__item_dot {
 		background-color: var(--wrapperBG);
-		color:var(--text-color);
+		color: var(--text-color);
 	}
 
 	.pagination__item_dot:hover {
 		background-color: var(--wrapperBG);
-		color:var(--text-color);
+		color: var(--text-color);
+	}
+</style>
+
+
+<style>
+	 
+	.pagination-wrapper-mobile {
+		display: none;
+	}
+
+	 
+	@media only screen and (max-width: 767px) {
+		.pagination-wrapper {
+			display: none;
+		}
+
+		.pagination-wrapper-mobile {
+			display: block;
+		}
+
+		
 	}
 </style>
 <div class="pagination-wrapper">
 	<div class="pagination">
-		<a class="pagination__item pagination__item--prev btn" href="/posts/page/9/">«</a>
+		<a class="pagination__item pagination__item--prev btn" href="/posts/page/9/">«&thinsp;Previous</a>
 		
 		
 		<a class="pagination__item pagination__item" href="http://sunnote.xyz/posts//page/1">1</a>
@@ -619,8 +644,14 @@ if (!doNotTrack) {
 		<a class="pagination__item pagination__item--current">10</a>
 
 	</div>
+</div>
 
+<div class="pagination-wrapper-mobile">
+	<div class="pagination">
+		<a class="pagination__item pagination__item--prev btn" href="/posts/page/9/">«&thinsp;Previous</a>
+		<span class="pagination__item pagination__item--current">10/10</span>
 
+	</div>
 </div>
 
 			</div>

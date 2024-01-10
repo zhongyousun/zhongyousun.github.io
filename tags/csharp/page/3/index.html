@@ -679,6 +679,10 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 		display: flex;
 		justify-content: center;
 	}
+	.pagination-wrapper-mobile .pagination{
+		display: flex;
+		justify-content: center;
+	}
 
 	.pagination__item {
 		border-radius: 10px;
@@ -686,17 +690,38 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 
 	.pagination__item_dot {
 		background-color: var(--wrapperBG);
-		color:var(--text-color);
+		color: var(--text-color);
 	}
 
 	.pagination__item_dot:hover {
 		background-color: var(--wrapperBG);
-		color:var(--text-color);
+		color: var(--text-color);
+	}
+</style>
+
+
+<style>
+	 
+	.pagination-wrapper-mobile {
+		display: none;
+	}
+
+	 
+	@media only screen and (max-width: 767px) {
+		.pagination-wrapper {
+			display: none;
+		}
+
+		.pagination-wrapper-mobile {
+			display: block;
+		}
+
+		
 	}
 </style>
 <div class="pagination-wrapper">
 	<div class="pagination">
-		<a class="pagination__item pagination__item--prev btn" href="/tags/csharp/page/2/">«</a>
+		<a class="pagination__item pagination__item--prev btn" href="/tags/csharp/page/2/">«&thinsp;Previous</a>
 		
 		
 		<a class="pagination__item pagination__item" href="http://sunnote.xyz/tags/csharp//page/1">1</a>
@@ -708,8 +733,14 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 		<a class="pagination__item pagination__item--current">3</a>
 
 	</div>
+</div>
 
+<div class="pagination-wrapper-mobile">
+	<div class="pagination">
+		<a class="pagination__item pagination__item--prev btn" href="/tags/csharp/page/2/">«&thinsp;Previous</a>
+		<span class="pagination__item pagination__item--current">3/3</span>
 
+	</div>
 </div>
 
 			</div>

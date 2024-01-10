@@ -736,6 +736,10 @@ if (!doNotTrack) {
 		display: flex;
 		justify-content: center;
 	}
+	.pagination-wrapper-mobile .pagination{
+		display: flex;
+		justify-content: center;
+	}
 
 	.pagination__item {
 		border-radius: 10px;
@@ -743,17 +747,38 @@ if (!doNotTrack) {
 
 	.pagination__item_dot {
 		background-color: var(--wrapperBG);
-		color:var(--text-color);
+		color: var(--text-color);
 	}
 
 	.pagination__item_dot:hover {
 		background-color: var(--wrapperBG);
-		color:var(--text-color);
+		color: var(--text-color);
+	}
+</style>
+
+
+<style>
+	 
+	.pagination-wrapper-mobile {
+		display: none;
+	}
+
+	 
+	@media only screen and (max-width: 767px) {
+		.pagination-wrapper {
+			display: none;
+		}
+
+		.pagination-wrapper-mobile {
+			display: block;
+		}
+
+		
 	}
 </style>
 <div class="pagination-wrapper">
 	<div class="pagination">
-		<a class="pagination__item pagination__item--prev btn" href="/zh-tw/page/9/">«</a>
+		<a class="pagination__item pagination__item--prev btn" href="/zh-tw/page/9/">«&thinsp;上一頁</a>
 		
 		
 		<a class="pagination__item pagination__item" href="http://sunnote.xyz/zh-tw//page/1">1</a>
@@ -789,11 +814,18 @@ if (!doNotTrack) {
 		
 		<a class="pagination__item pagination__item" href="http://sunnote.xyz/zh-tw//page/11">11</a>
 		
-		<a class="pagination__item pagination__item--next btn" href="/zh-tw/page/11/">»</a>
+		<a class="pagination__item pagination__item--next btn" href="/zh-tw/page/11/">下一頁&thinsp;»</a>
 
 	</div>
+</div>
 
+<div class="pagination-wrapper-mobile">
+	<div class="pagination">
+		<a class="pagination__item pagination__item--prev btn" href="/zh-tw/page/9/">«&thinsp;上一頁</a>
+		<span class="pagination__item pagination__item--current">10/11</span>
+		<a class="pagination__item pagination__item--next btn" href="/zh-tw/page/11/">下一頁&thinsp;»</a>
 
+	</div>
 </div>
 
 			</div>

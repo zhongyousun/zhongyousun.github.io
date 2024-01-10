@@ -765,66 +765,10 @@ nav.sharebuttons li > a:hover .will-change { fill: #444444 }
 		
 		
 
-		<div id="type-effect">
-</div>
-<br>
-<br>
-<br>
-<br>
-<iframe class="LikeCoin" height="180" src="https://button.like.co/in/embed/sunnote/button?referrer=http%3a%2f%2fsunnote.xyz%2ftutorials%2furl-querystring-encoding-decoding%2f" width="80%" frameborder=0></iframe>
-
-<style>
-	#type-effect {
-	  white-space: nowrap;
-	  overflow: hidden;
-	  font-size: 20px;
-	  font-family: monospace, sans-serif  ;
-	  border-right: 1px solid rgb(255, 255, 255);
-	   
-	  padding-right: 5px;
-	  white-space: pre-wrap;
-	  position: absolute;
-    
-	}
-  </style>
-  <script>
-  	var url = window.location.href;
-	var ln = "en";
-	if (url.indexOf("/zh-tw/") > -1) {
-  	ln = "zh";
-	}
-	if (ln === "zh") {
-	  var message = "如果這個文章對您有幫助或是有任何疑問，歡迎留言。👇"
-	  speed = 100
-	}
-	else {
-	  var message = "If this posts was helpful to you or if you have any questions, feel free to leave a comment and ask.👇"
-	  speed = 50
-	}
-  
-	const typeEffectDiv = document.getElementById("type-effect");
-  
-	function typeEffect(message, element) {
-	  let i = 0;
-	  const interval = setInterval(function () {
-		if (i === message.length) {
-		  clearInterval(interval);
-		  setTimeout(function () {
-			element.textContent = "";
-			typeEffect(message, element);
-		  }, 2000); 
-		} else {
-		  element.textContent += message[i];
-		  i++;
-		}
-	  }, speed); 
-
-	}
-	typeEffect(message, typeEffectDiv);
-  </script>
-
+		
 		
 	</article>
+	
 </main>
 
 <style>
@@ -846,7 +790,22 @@ nav.sharebuttons li > a:hover .will-change { fill: #444444 }
 
 
 
-<hr>
+<br>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/tutorials/aspnetcore-6.0-aws-s3/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">Operating Amazon S3 with ASP.NET Core Web API and Blazor</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/tutorials/api-with-synology-nas/" rel="next">
+			<span class="pager__subtitle">Next&thinsp;»</span>
+			<p class="pager__title">Use API to connect to Synology NAS services</p>
+		</a>
+	</div>
+</nav>
 <div class="related-content">
 
 <h3>See Also</h3>
@@ -1153,7 +1112,6 @@ window.addEventListener('load', () => {
 		Life is about pursuing a sense of accomplishment while messing around.
 	</div>
 </div>
-
 
 <div>
 	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img

@@ -842,66 +842,10 @@ nav.sharebuttons li > a:hover .will-change { fill: #444444 }
 		
 		
 
-		<div id="type-effect">
-</div>
-<br>
-<br>
-<br>
-<br>
-<iframe class="LikeCoin" height="180" src="https://button.like.co/in/embed/sunnote/button?referrer=http%3a%2f%2fsunnote.xyz%2fzh-tw%2fcebu%2fpre-departure-mood-record%2f" width="80%" frameborder=0></iframe>
-
-<style>
-	#type-effect {
-	  white-space: nowrap;
-	  overflow: hidden;
-	  font-size: 20px;
-	  font-family: monospace, sans-serif  ;
-	  border-right: 1px solid rgb(255, 255, 255);
-	   
-	  padding-right: 5px;
-	  white-space: pre-wrap;
-	  position: absolute;
-    
-	}
-  </style>
-  <script>
-  	var url = window.location.href;
-	var ln = "en";
-	if (url.indexOf("/zh-tw/") > -1) {
-  	ln = "zh";
-	}
-	if (ln === "zh") {
-	  var message = "如果這個文章對您有幫助或是有任何疑問，歡迎留言。👇"
-	  speed = 100
-	}
-	else {
-	  var message = "If this posts was helpful to you or if you have any questions, feel free to leave a comment and ask.👇"
-	  speed = 50
-	}
-  
-	const typeEffectDiv = document.getElementById("type-effect");
-  
-	function typeEffect(message, element) {
-	  let i = 0;
-	  const interval = setInterval(function () {
-		if (i === message.length) {
-		  clearInterval(interval);
-		  setTimeout(function () {
-			element.textContent = "";
-			typeEffect(message, element);
-		  }, 2000); 
-		} else {
-		  element.textContent += message[i];
-		  i++;
-		}
-	  }, speed); 
-
-	}
-	typeEffect(message, typeEffectDiv);
-  </script>
-
+		
 		
 	</article>
+	
 </main>
 
 <style>
@@ -923,7 +867,22 @@ nav.sharebuttons li > a:hover .will-change { fill: #444444 }
 
 
 
-<hr>
+<br>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/zh-tw/%E8%8B%B1%E6%96%87%E5%BE%88%E7%88%9B%E8%83%BD%E5%8E%BB%E5%BF%B5%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E5%97%8E%E6%95%88%E7%9B%8A%E8%A9%95%E4%BC%B0/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;上一篇文章</span>
+			<p class="pager__title">英文很爛能去念語言學校嗎(效益評估)</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/zh-tw/cebu/daily-life-part1/" rel="next">
+			<span class="pager__subtitle">下一篇文章&thinsp;»</span>
+			<p class="pager__title">宿霧遊學-日常生活(一)</p>
+		</a>
+	</div>
+</nav>
 <div class="related-content">
 
 <h3>也可以看看</h3>
@@ -1227,21 +1186,6 @@ window.addEventListener('load', () => {
 		不是一個很努力的人，生活就是在耍廢中順便追求點成就感。
 	</div>
 </div>
-
-<nav class="pager flex">
-	<div class="pager__item pager__item--prev">
-		<a class="pager__link" href="/zh-tw/%E8%8B%B1%E6%96%87%E5%BE%88%E7%88%9B%E8%83%BD%E5%8E%BB%E5%BF%B5%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1%E5%97%8E%E6%95%88%E7%9B%8A%E8%A9%95%E4%BC%B0/" rel="prev">
-			<span class="pager__subtitle">«&thinsp;上一篇文章</span>
-			<p class="pager__title">英文很爛能去念語言學校嗎(效益評估)</p>
-		</a>
-	</div>
-	<div class="pager__item pager__item--next">
-		<a class="pager__link" href="/zh-tw/cebu/daily-life-part1/" rel="next">
-			<span class="pager__subtitle">下一篇文章&thinsp;»</span>
-			<p class="pager__title">宿霧遊學-日常生活(一)</p>
-		</a>
-	</div>
-</nav>
 
 <section class="comments">
 	
