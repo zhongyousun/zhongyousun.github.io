@@ -19,13 +19,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://sunnote.xyz/zh-tw/tutorials/aspnetcore-blazor-cache/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-01-09T07:44:38+08:00" />
-<meta property="article:modified_time" content="2024-01-10T15:28:24+08:00" />
+<meta property="article:modified_time" content="2024-01-11T15:47:48+08:00" />
 <meta property="og:image" content="http://sunnote.xyz/img/thumbnail/051.webp" />
 		  	
 	<meta itemprop="name" content="ASP.NET Core API &amp; Blazor 實作快取機制提升效能">
 <meta itemprop="description" content="何謂快取? 快取機制基本介紹與紀錄如何使用 ASP.NET Core API 實作快取機制。"><meta itemprop="datePublished" content="2024-01-09T07:44:38+08:00" />
-<meta itemprop="dateModified" content="2024-01-10T15:28:24+08:00" />
-<meta itemprop="wordCount" content="191">
+<meta itemprop="dateModified" content="2024-01-11T15:47:48+08:00" />
+<meta itemprop="wordCount" content="252">
 <meta itemprop="keywords" content="Csharp,Blazor,Web," />
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ASP.NET Core API &amp; Blazor 實作快取機制提升效能"/>
@@ -616,7 +616,7 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 8 12.667969 C 10.578125 12.667969 12.667969 10.578125 12.667969 8 C 12.667969 5.421875 10.578125 3.332031 8 3.332031 C 5.421875 3.332031 3.332031 5.421875 3.332031 8 C 3.332031 10.578125 5.421875 12.667969 8 12.667969 Z M 3.957031 12.433594 C 2.753906 11.335938 2 9.757812 2 8 C 2 4.6875 4.6875 2 8 2 C 11.3125 2 14 4.6875 14 8 C 14 9.757812 13.246094 11.335938 12.042969 12.433594 L 12.9375 13.328125 C 13.207031 13.597656 13.203125 14.015625 12.941406 14.277344 C 12.679688 14.539062 12.257812 14.535156 11.996094 14.273438 L 10.949219 13.226562 C 10.078125 13.71875 9.070312 14 8 14 C 6.929688 14 5.921875 13.71875 5.050781 13.226562 L 4.003906 14.273438 C 3.738281 14.539062 3.316406 14.535156 3.058594 14.277344 C 2.796875 14.015625 2.796875 13.589844 3.0625 13.328125 Z M 7.332031 5.335938 C 7.332031 4.964844 7.628906 4.667969 8 4.667969 C 8.367188 4.667969 8.667969 4.957031 8.667969 5.335938 L 8.667969 9.332031 L 7.332031 9.332031 Z M 5.332031 8.667969 C 5.332031 8.296875 5.628906 8 6 8 L 7.332031 8 L 7.332031 9.332031 L 6 9.332031 C 5.632812 9.332031 5.332031 9.039062 5.332031 8.667969 Z M 5.332031 8.667969 "/>
 </g>
 </svg>
-5 min read.　</span>
+6 min read.　</span>
 				
 			
 				
@@ -649,7 +649,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
     </li>
     <li><a href="#代碼">代碼</a>
       <ul>
+        <li><a href="#建立快取">建立快取</a></li>
         <li><a href="#移除快取">移除快取</a></li>
+        <li><a href="#取得快取列表">取得快取列表</a></li>
       </ul>
     </li>
     <li><a href="#結論">結論</a></li>
@@ -669,6 +671,7 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <p>若要使用 <code>MemoryCache</code> 類進行緩存，因資料存放於記憶體，若應用程式關閉或重啟、系統故障，或是系統本身對於內存進行管理與優化，都會造成存放的資料消失。所以快取並不建議存放重要資料，或是頻繁變動的資料以致網站內容資訊不正確。</p>
 <p>以本篇為例，專案網站在首頁會顯示封面圖，而因為封面圖並不會頻繁更新，且資料也已儲存在資料庫與AWS S3，所以預先儲存在快取，就是一個不錯的方式以提升使用者載入首頁的速度。</p>
 <h2 id="代碼">代碼</h2>
+<h3 id="建立快取">建立快取</h3>
 <p>架構不管是 Blazor WASM 還是 一般的 Web API 都是對控制器內的 API 進行修改。
 代碼如下:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">using</span> Microsoft.Extensions.Caching.Memory;
@@ -718,8 +721,23 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <p>有時也有清除快取的需求，例如資料更新後清除快取以讓使用者看到即時內容。<br>
 移除特定快取代碼:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span>_cache.Remove(<span style="color:#e6db74">&#34;logo&#34;</span>);
-</span></span></code></pre></div><p>移除所有快取代碼:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span>_cache.Dispose();
+</span></span></code></pre></div><h3 id="取得快取列表">取得快取列表</h3>
+<p>網站有快取之後，為了部分即時更新的資料還是得提供管理者清除快取功能，可以藉由取得目前記憶體儲存的快取 key 列表後，再配合上方移除快取進一步刪除。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#a6e22e">[HttpGet(&#34;cache&#34;)]</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task&lt;List&lt;<span style="color:#66d9ef">string</span>&gt;&gt; GetCacheList()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>    <span style="color:#66d9ef">var</span> field = <span style="color:#66d9ef">typeof</span>(MemoryCache).GetProperty(<span style="color:#e6db74">&#34;EntriesCollection&#34;</span>, BindingFlags.NonPublic | BindingFlags.Instance);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>    <span style="color:#66d9ef">var</span> collection = field.GetValue(_cache) <span style="color:#66d9ef">as</span> ICollection;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    <span style="color:#66d9ef">var</span> items = <span style="color:#66d9ef">new</span> List&lt;<span style="color:#66d9ef">string</span>&gt;();
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    <span style="color:#66d9ef">if</span> (collection != <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>        <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">var</span> item <span style="color:#66d9ef">in</span> collection)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>        {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>            <span style="color:#66d9ef">var</span> methodInfo = item.GetType().GetProperty(<span style="color:#e6db74">&#34;Key&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>            <span style="color:#66d9ef">var</span> val = methodInfo.GetValue(item);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>            items.Add(val.ToString());
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>        }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    <span style="color:#66d9ef">return</span> items;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>}
 </span></span></code></pre></div><h2 id="結論">結論</h2>
 <p>以上就是如何使用 ASP.NET Core 實作內存快取機制，個人是把需要快取的資料分為兩支 API，比較好分類，實際可依照需求增加判斷決定是否取得快取資料或是實際資料。網站若是使用雲端資料庫或是 S3 等服務，如果能好好善用快取，相信可以減少許多傳輸資料的花費呢。😎</p>
 		</div>

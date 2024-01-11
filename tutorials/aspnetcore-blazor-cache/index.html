@@ -19,13 +19,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://sunnote.xyz/tutorials/aspnetcore-blazor-cache/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-01-09T07:44:38+08:00" />
-<meta property="article:modified_time" content="2024-01-09T08:45:34+08:00" /><meta property="og:site_name" content="Sun Notes" />
+<meta property="article:modified_time" content="2024-01-11T15:48:14+08:00" /><meta property="og:site_name" content="Sun Notes" />
 <meta property="og:image" content="http://sunnote.xyz/img/thumbnail/051en.webp" />
 		  	
 	<meta itemprop="name" content="ASP.NET Core API &amp; Blazor Implements Caching Mechanism to Improve Performance">
 <meta itemprop="description" content="What is caching ? A basic introduction to the caching mechanism and records how to use the ASP.NET Core API to implement the caching mechanism."><meta itemprop="datePublished" content="2024-01-09T07:44:38+08:00" />
-<meta itemprop="dateModified" content="2024-01-09T08:45:34+08:00" />
-<meta itemprop="wordCount" content="828">
+<meta itemprop="dateModified" content="2024-01-11T15:48:14+08:00" />
+<meta itemprop="wordCount" content="929">
 <meta itemprop="keywords" content="Csharp,Blazor,Web," />
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ASP.NET Core API &amp; Blazor Implements Caching Mechanism to Improve Performance"/>
@@ -616,8 +616,8 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019608%,29.019608%,29.019608%);fill-opacity:1;" d="M 8 12.667969 C 10.578125 12.667969 12.667969 10.578125 12.667969 8 C 12.667969 5.421875 10.578125 3.332031 8 3.332031 C 5.421875 3.332031 3.332031 5.421875 3.332031 8 C 3.332031 10.578125 5.421875 12.667969 8 12.667969 Z M 3.957031 12.433594 C 2.753906 11.335938 2 9.757812 2 8 C 2 4.6875 4.6875 2 8 2 C 11.3125 2 14 4.6875 14 8 C 14 9.757812 13.246094 11.335938 12.042969 12.433594 L 12.9375 13.328125 C 13.207031 13.597656 13.203125 14.015625 12.941406 14.277344 C 12.679688 14.539062 12.257812 14.535156 11.996094 14.273438 L 10.949219 13.226562 C 10.078125 13.71875 9.070312 14 8 14 C 6.929688 14 5.921875 13.71875 5.050781 13.226562 L 4.003906 14.273438 C 3.738281 14.539062 3.316406 14.535156 3.058594 14.277344 C 2.796875 14.015625 2.796875 13.589844 3.0625 13.328125 Z M 7.332031 5.335938 C 7.332031 4.964844 7.628906 4.667969 8 4.667969 C 8.367188 4.667969 8.667969 4.957031 8.667969 5.335938 L 8.667969 9.332031 L 7.332031 9.332031 Z M 5.332031 8.667969 C 5.332031 8.296875 5.628906 8 6 8 L 7.332031 8 L 7.332031 9.332031 L 6 9.332031 C 5.632812 9.332031 5.332031 9.039062 5.332031 8.667969 Z M 5.332031 8.667969 "/>
 </g>
 </svg>
-1278 words</span>
-				<span>| 4 min read.　</span>
+1538 words</span>
+				<span>| 5 min read.　</span>
 				
 			
 				
@@ -650,7 +650,9 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
     </li>
     <li><a href="#code">Code</a>
       <ul>
+        <li><a href="#create-cache">Create cache</a></li>
         <li><a href="#remove-cache">Remove cache</a></li>
+        <li><a href="#get-cache-list">Get cache list</a></li>
       </ul>
     </li>
     <li><a href="#conclusion">Conclusion</a></li>
@@ -670,6 +672,7 @@ width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
 <p>If you want to use the <code>MemoryCache</code> class for caching, since the data is stored in memory, if the application is closed or restarted, the system fails, or the system itself manages and optimizes the memory, the stored data will disappear. Therefore, caching is not recommended to store important data, or data that changes frequently, resulting in incorrect website content information.</p>
 <p>Taking this article as an example, the project website will display a cover image on the homepage. Since the cover image is not updated frequently, and the data has been stored in the database and AWS S3, it is a good way to pre-store it in the cache to improve the speed at which users load the homepage.</p>
 <h2 id="code">Code</h2>
+<h3 id="create-cache">Create cache</h3>
 <p>The architecture, whether it is Blazor WASM or general Web API, is to modify the API in the controller.<br>
 code show as below:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">using</span> Microsoft.Extensions.Caching.Memory;
@@ -719,8 +722,23 @@ After obtaining the data, store the data in the cache and set it to expire in 24
 <p>Sometimes there is a need to clear the cache, such as clearing the cache after data is updated to allow users to see real-time content.<br>
 Remove specific cache codes:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span>_cache.Remove(<span style="color:#e6db74">&#34;logo&#34;</span>);
-</span></span></code></pre></div><p>Remove all cache codes:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span>_cache.Dispose();
+</span></span></code></pre></div><h3 id="get-cache-list">Get cache list</h3>
+<p>After create cache feature, it is necessary to provide admin with the ability to remove the cache for frequently update info. They can obtain the cache key list currently stored in the memory and then further delete it with above Remove cache method.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#a6e22e">[HttpGet(&#34;cache&#34;)]</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task&lt;List&lt;<span style="color:#66d9ef">string</span>&gt;&gt; GetCacheList()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>    <span style="color:#66d9ef">var</span> field = <span style="color:#66d9ef">typeof</span>(MemoryCache).GetProperty(<span style="color:#e6db74">&#34;EntriesCollection&#34;</span>, BindingFlags.NonPublic | BindingFlags.Instance);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>    <span style="color:#66d9ef">var</span> collection = field.GetValue(_cache) <span style="color:#66d9ef">as</span> ICollection;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    <span style="color:#66d9ef">var</span> items = <span style="color:#66d9ef">new</span> List&lt;<span style="color:#66d9ef">string</span>&gt;();
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    <span style="color:#66d9ef">if</span> (collection != <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>        <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">var</span> item <span style="color:#66d9ef">in</span> collection)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>        {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>            <span style="color:#66d9ef">var</span> methodInfo = item.GetType().GetProperty(<span style="color:#e6db74">&#34;Key&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>            <span style="color:#66d9ef">var</span> val = methodInfo.GetValue(item);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>            items.Add(val.ToString());
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>        }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    <span style="color:#66d9ef">return</span> items;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>}
 </span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
 <p>The above is how to use ASP.NET Core to implement the memory caching mechanism. Personally, I divide the data that needs to be cached into two APIs, which is easier to classify. In fact, you can determine whether to retrieve cached or actual data by modifying the API conditions. If the website uses a cloud database or S3 and other services, if it can make good use of cache, I believe it can reduce a lot of data transmission costs.😎</p>
 		</div>
