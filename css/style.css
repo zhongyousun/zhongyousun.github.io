@@ -39,9 +39,10 @@ section {
 	--bodyBG: #f7f7f7;
 	--wrapperBG:#ffffff;
 	--wrapperBG2:#f5f5f5;
-	--text-color: #000000;
+	--text-color: #060303;
 	--codeBG:#f6f8fa;
 	--shadow:rgba(0, 0, 0, 0.1); 
+	--default:#ACD6FF;
   }
   
 html {

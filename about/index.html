@@ -25,7 +25,7 @@
 	<meta itemprop="name" content="About">
 <meta itemprop="description" content="About"><meta itemprop="datePublished" content="2022-11-20T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2024-01-05T11:46:28+08:00" />
-<meta itemprop="wordCount" content="145">
+<meta itemprop="wordCount" content="142">
 <meta itemprop="keywords" content="" />
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="About"/>
@@ -657,7 +657,7 @@ if (!doNotTrack) {
 </p>
 
 <div class="toggle" onclick="toggleContent('hiddenContent1', 'toggleIcon1')">
-  <span class="toggle-btn" id="toggleIcon1">▶</span>
+  <span class="toggle-btn" id="toggleIcon1"><i class="fa-solid fa-angle-down"></i></span>
   <span>Cryptocurrency</span>
 </div>
 <div class="hidden-content" id="hiddenContent1">
@@ -675,7 +675,7 @@ if (!doNotTrack) {
 
 
 <div class="toggle" onclick="toggleContent('hiddenContent2', 'toggleIcon2')">
-  <span class="toggle-btn" id="toggleIcon2">▶</span>
+  <span class="toggle-btn" id="toggleIcon2"><i class="fa-solid fa-angle-down"></i></span>
   <span>JKOPAY</span>
 </div>
 <div class="hidden-content" id="hiddenContent2">
@@ -684,7 +684,7 @@ if (!doNotTrack) {
 
 
 <div class="toggle" onclick="toggleContent('hiddenContent3', 'toggleIcon3')">
-  <span class="toggle-btn" id="toggleIcon3">▶</span>
+  <span class="toggle-btn" id="toggleIcon3"><i class="fa-solid fa-angle-down"></i></span>
   <span>Buy Me a Coffee</span>
 </div>
 <div class="hidden-content" id="hiddenContent3">
@@ -740,13 +740,14 @@ if (!doNotTrack) {
     
     if (content.style.maxHeight) {
       content.style.maxHeight = null;
-      toggleIcon.innerText = "▶";
+      toggleIcon.innerHTML = '<i class="fa-solid fa-angle-down"></i>';
     } else {
       content.style.maxHeight = content.scrollHeight + "px";
-      toggleIcon.innerText = "▼";
+      toggleIcon.innerHTML = '<i class="fa-solid fa-angle-up"></i>';
     }
   }
 </script>
+
 <p><div id="block"></div>
 <script>
     var myDiv = document.getElementById("block");
