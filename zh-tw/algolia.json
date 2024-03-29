@@ -2,28 +2,6 @@
 	{
 	
 		
-	  "url": "http://sunnote.xyz/zh-tw/tutorials/nextjs-route/",
-	  "title": "Next.js 14 路由機制",
-	  "summary": "\u003cp\u003e介紹 Next.js 14 目錄與路由機制\u003c/p\u003e",
-	  "content": "介紹 Next.js 14 目錄與路由機制\n路由機制 Next 專案的路由取決於目錄資料夾結構。\napp資料夾下方的page.tsx為網站初始的畫面路由，layout.tsx為畫面的\npackage.json 打開配置文件，可以看到生產環境與開發環境所需要的庫都已包含在專案內。\ndependencies \u0026amp; devDependencies 1 \u0026#34;dependencies\u0026#34;: { 2 \u0026#34;react\u0026#34;: \u0026#34;^18\u0026#34;, 3 \u0026#34;react-dom\u0026#34;: \u0026#34;^18\u0026#34;, 4 \u0026#34;next\u0026#34;: \u0026#34;14.1.0\u0026#34; 5 }, 6 \u0026#34;devDependencies\u0026#34;: { 7 \u0026#34;typescript\u0026#34;: \u0026#34;^5\u0026#34;, 8 \u0026#34;@types/node\u0026#34;: \u0026#34;^20\u0026#34;, 9 \u0026#34;@types/react\u0026#34;: \u0026#34;^18\u0026#34;, 10 \u0026#34;@types/react-dom\u0026#34;: \u0026#34;^18\u0026#34;, 11 \u0026#34;eslint\u0026#34;: \u0026#34;^8\u0026#34;, 12 \u0026#34;eslint-config-next\u0026#34;: \u0026#34;14.1.0\u0026#34; 13 } scripts \u0026#34;scripts\u0026#34;: { \u0026#34;dev\u0026#34;: \u0026#34;next dev\u0026#34;, \u0026#34;build\u0026#34;: \u0026#34;next build\u0026#34;, \u0026#34;start\u0026#34;: \u0026#34;next start\u0026#34;, \u0026#34;lint\u0026#34;: \u0026#34;next lint\u0026#34; } next dev:啟動 Next.js 專案開發模式，，支援熱模塊替換（Hot Module Replacement，HMR），自動刷新頁面。\nnext build:在部署到生產環境之前，運行以生成優化過的代碼。\nnext start:在應用程序已經構建完成並準備好佈署時，運行專案。\nnext lint:在專案中設定 ESLint。\nsrc/app app 為主要放置代碼區域包含css與tsx檔案，因初始專案時選擇使用src/ 目錄，所以上方會多一層src/，後續若要增加API，可以在src/底下建立api目錄，個人是認為這樣的分類方式比較有條理。\n啟動專案 使用\nnpm run dev 開啟瀏覽器就能看到專案畫面。 Initial screen\r結論 此篇記錄了 Next 專案結構與如何啟動專案，後續會分享文件系統路由機制，包括如何創建和導航頁面。\n",
-	  "pubDate": "2024-02-10T07:44:38+08:00",
-	  "cover": "https://sunnote.xyz/img/thumbnail/053.webp"
-
-	}, 
-	{
-	
-		
-	  "url": "http://sunnote.xyz/zh-tw/tutorials/nextjs-project-structure/",
-	  "title": "Next.js 14 環境設置、建立、專案結構",
-	  "summary": "\u003cp\u003e紀錄如何建立 Next.js 14 專案與結構說明。\u003c/p\u003e",
-	  "content": "紀錄如何建立 Next.js 14 專案與結構說明。\n建立專案 環境需先安裝 Node.js，之後開啟終端就能藉由\nnpx create-next-app@latest 建立 Next.js 專案。(此方式能快速建立與設置 Next 專案所需與預設的檔案。)\n專案初始過程會出現以下提示:\nWhat is your project named? my-app\rWould you like to use TypeScript? No / Yes\rWould you like to use ESLint? No / Yes\rWould you like to use Tailwind CSS? No / Yes\rWould you like to use `src/` directory? No / Yes\rWould you like to use App Router? (recommended) No / Yes\rWould you like to customize the default import alias (@/*)? No / Yes TypeScript 的選擇取決於語言熟悉度，對於從後端轉為全端的我基本上不太熟悉JavaScript，而 TypeScript 提供靜態類型檢查，可以在開發過程中捕捉潛在的錯誤，提高代碼的穩定性和可讀性，建議選擇。\nESLint 是一個用於檢查和修復 JavaScript 代碼風格和錯誤的開源工具。\nTailwind CSS 可依據需求使否需要。\n選擇 src/ directory 會在原本程式的資料夾上方增加一個src/，也就是多一層資料夾的意思，可以將程式碼與設定檔分開，對於專案分類比較清晰，建議使用。\ncustomize the default import alias (@/*) 為了方便引用特定的目錄或模塊，可以透過設置自定義的導入別名（import alias）來簡化導入語句，也就是藉由 \u0026ldquo;@\u0026rdquo; 或自定義符號代替過長的絕對路徑，可依據需求選擇。\n建立完成後，專案結構如下:\nNext Project structure\rpackage.json 打開配置文件，可以看到生產環境與開發環境所需要的庫都已包含在專案內。\ndependencies \u0026amp; devDependencies 1 \u0026#34;dependencies\u0026#34;: { 2 \u0026#34;react\u0026#34;: \u0026#34;^18\u0026#34;, 3 \u0026#34;react-dom\u0026#34;: \u0026#34;^18\u0026#34;, 4 \u0026#34;next\u0026#34;: \u0026#34;14.1.0\u0026#34; 5 }, 6 \u0026#34;devDependencies\u0026#34;: { 7 \u0026#34;typescript\u0026#34;: \u0026#34;^5\u0026#34;, 8 \u0026#34;@types/node\u0026#34;: \u0026#34;^20\u0026#34;, 9 \u0026#34;@types/react\u0026#34;: \u0026#34;^18\u0026#34;, 10 \u0026#34;@types/react-dom\u0026#34;: \u0026#34;^18\u0026#34;, 11 \u0026#34;eslint\u0026#34;: \u0026#34;^8\u0026#34;, 12 \u0026#34;eslint-config-next\u0026#34;: \u0026#34;14.1.0\u0026#34; 13 } scripts \u0026#34;scripts\u0026#34;: { \u0026#34;dev\u0026#34;: \u0026#34;next dev\u0026#34;, \u0026#34;build\u0026#34;: \u0026#34;next build\u0026#34;, \u0026#34;start\u0026#34;: \u0026#34;next start\u0026#34;, \u0026#34;lint\u0026#34;: \u0026#34;next lint\u0026#34; } next dev:啟動 Next.js 專案開發模式，，支援熱模塊替換（Hot Module Replacement，HMR），自動刷新頁面。\nnext build:在部署到生產環境之前，運行以生成優化過的代碼。\nnext start:在應用程序已經構建完成並準備好佈署時，運行專案。\nnext lint:在專案中設定 ESLint。\nsrc/app app 為主要放置代碼區域包含css與tsx檔案，因初始專案時選擇使用src/ 目錄，所以上方會多一層src/，後續若要增加API，可以在src/底下建立api目錄，個人是認為這樣的分類方式比較有條理。\n啟動專案 使用\nnpm run dev 開啟瀏覽器就能看到專案畫面。 Initial screen\r結論 此篇記錄了 Next 專案結構與如何啟動專案，後續會分享文件系統路由機制，包括如何創建和導航頁面。\n",
-	  "pubDate": "2024-02-10T07:44:38+08:00",
-	  "cover": "https://sunnote.xyz/img/thumbnail/052.webp"
-
-	}, 
-	{
-	
-		
 	  "url": "http://sunnote.xyz/zh-tw/tutorials/aspnetcore-blazor-cache/",
 	  "title": "ASP.NET Core API \u0026 Blazor 實作快取機制提升效能",
 	  "summary": "\u003cp\u003e何謂快取? 一些基本介紹與紀錄使用 ASP.NET Core API 實作快取機制。\u003c/p\u003e",

@@ -6,25 +6,7 @@
     <description>Recent content on Sun 記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 10 Feb 2024 07:44:38 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Next.js 14 路由機制</title>
-      <link>http://sunnote.xyz/zh-tw/tutorials/nextjs-route/</link>
-      <pubDate>Sat, 10 Feb 2024 07:44:38 +0800</pubDate>
-      
-      <guid>http://sunnote.xyz/zh-tw/tutorials/nextjs-route/</guid>
-      <description>&lt;p&gt;介紹 Next.js 14 目錄與路由機制&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Next.js 14 環境設置、建立、專案結構</title>
-      <link>http://sunnote.xyz/zh-tw/tutorials/nextjs-project-structure/</link>
-      <pubDate>Sat, 10 Feb 2024 07:44:38 +0800</pubDate>
-      
-      <guid>http://sunnote.xyz/zh-tw/tutorials/nextjs-project-structure/</guid>
-      <description>&lt;p&gt;紀錄如何建立 Next.js 14 專案與結構說明。&lt;/p&gt;</description>
-    </item>
-    
+    <lastBuildDate>Tue, 09 Jan 2024 07:44:38 +0800</lastBuildDate><atom:link href="http://sunnote.xyz/zh-tw/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ASP.NET Core API &amp; Blazor 實作快取機制提升效能</title>
       <link>http://sunnote.xyz/zh-tw/tutorials/aspnetcore-blazor-cache/</link>
