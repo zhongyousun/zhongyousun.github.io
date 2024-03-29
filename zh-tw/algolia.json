@@ -2,6 +2,28 @@
 	{
 	
 		
+	  "url": "http://sunnote.xyz/zh-tw/tutorials/nextjs-route/",
+	  "title": "Next.js 14 路由機制",
+	  "summary": "\u003cp\u003e介紹 Next.js 14 目錄與路由機制\u003c/p\u003e",
+	  "content": "介紹 Next.js 14 目錄與路由機制\n路由機制 Next 專案的路由取決於目錄資料夾結構。\napp資料夾下方的page.tsx為網站初始的畫面路由，layout.tsx為畫面的\npackage.json 打開配置文件，可以看到生產環境與開發環境所需要的庫都已包含在專案內。\ndependencies \u0026amp; devDependencies 1 \u0026#34;dependencies\u0026#34;: { 2 \u0026#34;react\u0026#34;: \u0026#34;^18\u0026#34;, 3 \u0026#34;react-dom\u0026#34;: \u0026#34;^18\u0026#34;, 4 \u0026#34;next\u0026#34;: \u0026#34;14.1.0\u0026#34; 5 }, 6 \u0026#34;devDependencies\u0026#34;: { 7 \u0026#34;typescript\u0026#34;: \u0026#34;^5\u0026#34;, 8 \u0026#34;@types/node\u0026#34;: \u0026#34;^20\u0026#34;, 9 \u0026#34;@types/react\u0026#34;: \u0026#34;^18\u0026#34;, 10 \u0026#34;@types/react-dom\u0026#34;: \u0026#34;^18\u0026#34;, 11 \u0026#34;eslint\u0026#34;: \u0026#34;^8\u0026#34;, 12 \u0026#34;eslint-config-next\u0026#34;: \u0026#34;14.1.0\u0026#34; 13 } scripts \u0026#34;scripts\u0026#34;: { \u0026#34;dev\u0026#34;: \u0026#34;next dev\u0026#34;, \u0026#34;build\u0026#34;: \u0026#34;next build\u0026#34;, \u0026#34;start\u0026#34;: \u0026#34;next start\u0026#34;, \u0026#34;lint\u0026#34;: \u0026#34;next lint\u0026#34; } next dev:啟動 Next.js 專案開發模式，，支援熱模塊替換（Hot Module Replacement，HMR），自動刷新頁面。\nnext build:在部署到生產環境之前，運行以生成優化過的代碼。\nnext start:在應用程序已經構建完成並準備好佈署時，運行專案。\nnext lint:在專案中設定 ESLint。\nsrc/app app 為主要放置代碼區域包含css與tsx檔案，因初始專案時選擇使用src/ 目錄，所以上方會多一層src/，後續若要增加API，可以在src/底下建立api目錄，個人是認為這樣的分類方式比較有條理。\n啟動專案 使用\nnpm run dev 開啟瀏覽器就能看到專案畫面。 Initial screen\r結論 此篇記錄了 Next 專案結構與如何啟動專案，後續會分享文件系統路由機制，包括如何創建和導航頁面。\n",
+	  "pubDate": "2024-02-10T07:44:38+08:00",
+	  "cover": "https://sunnote.xyz/img/thumbnail/053.webp"
+
+	}, 
+	{
+	
+		
+	  "url": "http://sunnote.xyz/zh-tw/tutorials/nextjs-project-structure/",
+	  "title": "Next.js 14 環境設置、建立、專案結構",
+	  "summary": "\u003cp\u003e紀錄如何建立 Next.js 14 專案與結構說明。\u003c/p\u003e",
+	  "content": "紀錄如何建立 Next.js 14 專案與結構說明。\n建立專案 環境需先安裝 Node.js，之後開啟終端就能藉由\nnpx create-next-app@latest 建立 Next.js 專案。(此方式能快速建立與設置 Next 專案所需與預設的檔案。)\n專案初始過程會出現以下提示:\nWhat is your project named? my-app\rWould you like to use TypeScript? No / Yes\rWould you like to use ESLint? No / Yes\rWould you like to use Tailwind CSS? No / Yes\rWould you like to use `src/` directory? No / Yes\rWould you like to use App Router? (recommended) No / Yes\rWould you like to customize the default import alias (@/*)? No / Yes TypeScript 的選擇取決於語言熟悉度，對於從後端轉為全端的我基本上不太熟悉JavaScript，而 TypeScript 提供靜態類型檢查，可以在開發過程中捕捉潛在的錯誤，提高代碼的穩定性和可讀性，建議選擇。\nESLint 是一個用於檢查和修復 JavaScript 代碼風格和錯誤的開源工具。\nTailwind CSS 可依據需求使否需要。\n選擇 src/ directory 會在原本程式的資料夾上方增加一個src/，也就是多一層資料夾的意思，可以將程式碼與設定檔分開，對於專案分類比較清晰，建議使用。\ncustomize the default import alias (@/*) 為了方便引用特定的目錄或模塊，可以透過設置自定義的導入別名（import alias）來簡化導入語句，也就是藉由 \u0026ldquo;@\u0026rdquo; 或自定義符號代替過長的絕對路徑，可依據需求選擇。\n建立完成後，專案結構如下:\nNext Project structure\rpackage.json 打開配置文件，可以看到生產環境與開發環境所需要的庫都已包含在專案內。\ndependencies \u0026amp; devDependencies 1 \u0026#34;dependencies\u0026#34;: { 2 \u0026#34;react\u0026#34;: \u0026#34;^18\u0026#34;, 3 \u0026#34;react-dom\u0026#34;: \u0026#34;^18\u0026#34;, 4 \u0026#34;next\u0026#34;: \u0026#34;14.1.0\u0026#34; 5 }, 6 \u0026#34;devDependencies\u0026#34;: { 7 \u0026#34;typescript\u0026#34;: \u0026#34;^5\u0026#34;, 8 \u0026#34;@types/node\u0026#34;: \u0026#34;^20\u0026#34;, 9 \u0026#34;@types/react\u0026#34;: \u0026#34;^18\u0026#34;, 10 \u0026#34;@types/react-dom\u0026#34;: \u0026#34;^18\u0026#34;, 11 \u0026#34;eslint\u0026#34;: \u0026#34;^8\u0026#34;, 12 \u0026#34;eslint-config-next\u0026#34;: \u0026#34;14.1.0\u0026#34; 13 } scripts \u0026#34;scripts\u0026#34;: { \u0026#34;dev\u0026#34;: \u0026#34;next dev\u0026#34;, \u0026#34;build\u0026#34;: \u0026#34;next build\u0026#34;, \u0026#34;start\u0026#34;: \u0026#34;next start\u0026#34;, \u0026#34;lint\u0026#34;: \u0026#34;next lint\u0026#34; } next dev:啟動 Next.js 專案開發模式，，支援熱模塊替換（Hot Module Replacement，HMR），自動刷新頁面。\nnext build:在部署到生產環境之前，運行以生成優化過的代碼。\nnext start:在應用程序已經構建完成並準備好佈署時，運行專案。\nnext lint:在專案中設定 ESLint。\nsrc/app app 為主要放置代碼區域包含css與tsx檔案，因初始專案時選擇使用src/ 目錄，所以上方會多一層src/，後續若要增加API，可以在src/底下建立api目錄，個人是認為這樣的分類方式比較有條理。\n啟動專案 使用\nnpm run dev 開啟瀏覽器就能看到專案畫面。 Initial screen\r結論 此篇記錄了 Next 專案結構與如何啟動專案，後續會分享文件系統路由機制，包括如何創建和導航頁面。\n",
+	  "pubDate": "2024-02-10T07:44:38+08:00",
+	  "cover": "https://sunnote.xyz/img/thumbnail/052.webp"
+
+	}, 
+	{
+	
+		
 	  "url": "http://sunnote.xyz/zh-tw/tutorials/aspnetcore-blazor-cache/",
 	  "title": "ASP.NET Core API \u0026 Blazor 實作快取機制提升效能",
 	  "summary": "\u003cp\u003e何謂快取? 一些基本介紹與紀錄使用 ASP.NET Core API 實作快取機制。\u003c/p\u003e",
@@ -71,7 +93,7 @@
 	  "url": "http://sunnote.xyz/zh-tw/tutorials/url-querystring-encoding-decoding/",
 	  "title": "URL 查詢字串與編、解碼淺談",
 	  "summary": "\u003cp\u003eURL查詢字串傳遞參數時，使用編碼與解碼與該注意的細節。\u003c/p\u003e",
-	  "content": "URL查詢字串傳遞參數時，使用編碼與解碼與該注意的細節。\n問題 工作許久最近才被這個問題搞到，原本已經剛上線的服務提供檔案上傳與下載，不知為何部分檔案無法順利下載。系統邏輯為客戶上傳檔案時，會生成UUID，並把客戶資訊一起寫進DB，同時儲存檔案。下載時則時藉由當下使用者的資訊與檔案UUID，即時產生包含限制時間資訊的JWT，用來派發一次性下載網址。\n而JWT則是由前端藉由Query string的方式夾帶在檔案下載的API中呼叫取得檔案，在使用者介面很常發生下載錯誤的問題，但使用Swagger直接呼叫API又能下載成功。\n原因 查了許久才發現是URL傳遞參數包含特殊符號的問題。 一般URL若有使用特殊符號，是有不同的含意的。\n舉幾個例子:\n?： 一般出現在 URL 的開頭或在路徑與查詢字串之間，用於分隔 URL 的主要部分和查詢參數。在 URL 中，? 之後的部分通常是查詢字串（query string），用於向伺服器傳遞參數和數據。 例如：https://www.example.com/search?query=example\n上面的 URL 中 ? 後的 query=example 就是查詢字串，用來傳遞搜尋的參數。\n\u0026amp;： 在 URL 的查詢字串中，用於分隔不同的查詢參數。它允許在同一個 URL 中傳遞多個參數。 例如：https://www.example.com/search?query=example\u0026amp;page=2\n在這個例子中，\u0026amp; 用來將 query=example 和 page=2 這兩個查詢參數分開。\n=： 在 URL 的查詢字串中，用於將參數名稱和參數值分隔開來。它將參數名和參數值相連接。 例如：https://www.example.com/search?query=example\n在這裡，= 將 query（參數名）和 example（參數值）分隔開來。1.\n若查詢字串夾帶的參數有包含這類的特殊符號，基本上瀏覽器在解析上就會有問題。\n還有其他一些有的沒的像是 + 與空格等在使用URL傳遞時都要很小心。\n編碼與解碼 所以若還是硬要透過查詢字串傳遞這類特殊字符的資訊時，就可以透過URL 編碼與解碼解決。\n以我目前遇到的例子，需使用查詢字串夾帶JWT，JWT裡面必定包含很多特殊字符，這時就可以在後端產生JWT後執行編碼，再回傳前端就能使用正確的API下載檔案了。\n範例 :\n若夾帶參數為: =hello+world.\n沒編碼前使用Query String 夾帶參數瀏覽器就會誤判。\n經編碼後為 : %3Dhello%2Bworld.\n再回傳給前端，在呼叫時就不會有問題了。\n至於後端在接收此參數時，大多數後端框架或語言的 HTTP 請求處理器會自動對 URL 參數進行解碼，但在使用時還是可以先確認一下，避免之後出錯又得花時間除錯\u0026hellip;。\n結論 很基本簡單的觀念，所以一直以來都沒去搞清楚，害我花了半小時除錯，所以紀錄一下。😎\n",
+	  "content": "URL查詢字串傳遞參數時，使用編碼與解碼與該注意的細節。\n問題 工作許久最近才被這個問題搞到，原本已經剛上線的服務提供檔案上傳與下載，不知為何部分檔案無法順利下載。系統邏輯為客戶上傳檔案時，會生成UUID，並把客戶資訊一起寫進DB，同時儲存檔案。下載時則時藉由當下使用者的資訊與檔案UUID，即時產生包含限制時間資訊的JWT，用來派發一次性下載網址。\n而JWT則是由前端藉由Query string的方式夾帶在檔案下載的API中呼叫取得檔案，在使用者介面很常發生下載錯誤的問題，但使用Swagger直接呼叫API又能下載成功。\n原因 查了許久才發現是URL傳遞參數包含特殊符號的問題。 一般URL若有使用特殊符號，是有不同的含意的。\n舉幾個例子:\n?： 一般出現在 URL 的開頭或在路徑與查詢字串之間，用於分隔 URL 的主要部分和查詢參數。在 URL 中，? 之後的部分通常是查詢字串（query string），用於向伺服器傳遞參數和數據。 例如：https://www.example.com/search?query=example\n上面的 URL 中 ? 後的 query=example 就是查詢字串，用來傳遞搜尋的參數。\n\u0026amp;： 在 URL 的查詢字串中，用於分隔不同的查詢參數。它允許在同一個 URL 中傳遞多個參數。 例如：https://www.example.com/search?query=example\u0026amp;page=2\n在這個例子中，\u0026amp; 用來將 query=example 和 page=2 這兩個查詢參數分開。\n=： 在 URL 的查詢字串中，用於將參數名稱和參數值分隔開來。它將參數名和參數值相連接。 例如：https://www.example.com/search?query=example\n在這裡，= 將 query（參數名）和 example（參數值）分隔開來。\n若查詢字串夾帶的參數有包含這類的特殊符號，基本上瀏覽器在解析上就會有問題。\n還有其他一些有的沒的像是 + 與空格等在使用URL傳遞時都要很小心。\n編碼與解碼 所以若還是硬要透過查詢字串傳遞這類特殊字符的資訊時，就可以透過URL 編碼與解碼解決。\n以我目前遇到的例子，需使用查詢字串夾帶JWT，JWT裡面必定包含很多特殊字符，這時就可以在後端產生JWT後執行編碼，再回傳前端就能使用正確的API下載檔案了。\n範例 :\n若夾帶參數為: =hello+world.\n沒編碼前使用Query String 夾帶參數瀏覽器就會誤判。\n經編碼後為 : %3Dhello%2Bworld.\n再回傳給前端，在呼叫時就不會有問題了。\n至於後端在接收此參數時，大多數後端框架或語言的 HTTP 請求處理器會自動對 URL 參數進行解碼，但在使用時還是可以先確認一下，避免之後出錯又得花時間除錯\u0026hellip;。\n結論 很基本簡單的觀念，所以一直以來都沒去搞清楚，害我花了半小時除錯，所以紀錄一下。😎\n",
 	  "pubDate": "2023-12-07T07:44:38+08:00",
 	  "cover": "https://sunnote.xyz/img/thumbnail/045.webp"
 
@@ -555,7 +577,7 @@
 	  "url": "http://sunnote.xyz/zh-tw/footprint/",
 	  "title": "足跡",
 	  "summary": "時間軸",
-	  "content": " 存錢中\r~\n北海道-札幌、登別、函館\r札幌、登別、函館\r2023-05-05~\n2023-05-09\r菲律賓-宿霧\r4 months 宿霧\r2019-11-17~\n2020-03-21\rBackend Engineer\r3 years 4 months 2020-09-14~\nField Application Engineer\r1 month 2020-07-01~\n2020-08-26\r",
+	  "content": " 存錢中\r~\n北海道-札幌、登別、函館\r札幌、登別、函館\r2023-05-05~\n2023-05-09\r菲律賓-宿霧\r4 months 宿霧\r2019-11-17~\n2020-03-21\rBackend Engineer\r3 years 6 months 2020-09-14~\nField Application Engineer\r1 month 2020-07-01~\n2020-08-26\r",
 	  "pubDate": "2022-11-20T00:00:00Z",
 	  "cover": "https://sunnote.xyz"
 
